@@ -1,0 +1,11 @@
+{
+  "add": [
+    {
+      "reason": "Upscan rejects requests with additional headers",
+      "contextId": 1,
+      "url": "http:\/\/localhost:12600\/advance-valuation-ruling\/upload-supporting-documents.*",
+      "ruleId": 10202,
+      "urlIsRegex": "true"
+    }
+  ]
+}

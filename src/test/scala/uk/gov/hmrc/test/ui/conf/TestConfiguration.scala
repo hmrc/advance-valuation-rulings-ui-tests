@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,5 +36,6 @@ object TestConfiguration {
 
   def servicePort(serviceName: String): String = envConfig.getString(s"services.$serviceName.port")
 
-  def serviceRoute(serviceName: String): String = envConfig.getString(s"services.$serviceName.productionRoute")
+  def serviceRoute(serviceName: String): String =
+    envConfig.getString(s"services.$serviceName.productionRoute")
 }

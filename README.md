@@ -1,7 +1,7 @@
 **This is a template README.md.  Be sure to update this with project specific content that describes your ui test project.**
 
 # advance-valuation-rulings-ui-tests
-UI test suite for the `<digital service name>` using WebDriver and `<scalatest/cucumber>`.  
+UI test suite for the `advance-valuation-rulings-frontend` using WebDriver and `cucumber`.  
 
 ## Running the tests
 
@@ -13,7 +13,7 @@ Prior to executing the tests ensure you have:
 Run the following command to start services locally:
 
     docker run --rm -d --name mongo -d -p 27017:27017 mongo:4.0
-    sm --start PLATFORM_EXAMPLE_UI_TESTS -r --wait 100
+    sm --start ARS_ALL -r --wait 100
 
 Using the `--wait 100` argument ensures a health check is run on all the services started as part of the profile. `100` refers to the given number of seconds to wait for services to pass health checks.
 
@@ -106,19 +106,26 @@ See the `drivers/` directory for some helpful scripts to do the installation wor
 
 **Note 2** *These scripts use sudo to set the right permissions on the drivers so you will likely be prompted to enter your password.*
 
-### Scalafmt
- This repository uses [Scalafmt](https://scalameta.org/scalafmt/), a code formatter for Scala. The formatting rules configured for this repository are defined within [.scalafmt.conf](.scalafmt.conf).
+## Scalafmt
 
- To apply formatting to this repository using the configured rules in [.scalafmt.conf](.scalafmt.conf) execute:
+Check all project files are formatted as expected as follows:
 
- ```
- sbt scalafmtAll
- ```
+```bash
+sbt scalafmtCheckAll scalafmtCheck
+```
 
- To check files have been formatted as expected execute:
+Format `*.sbt` and `project/*.scala` files as follows:
 
- ```
- sbt scalafmtCheckAll scalafmtSbtCheck
- ```
+```bash
+sbt scalafmtSbt
+```
 
-[Visit the official Scalafmt documentation to view a complete list of tasks which can be run.](https://scalameta.org/scalafmt/docs/installation.html#task-keys)
+Format all project files as follows:
+
+```bash
+sbt scalafmtAll
+```
+
+## License
+
+This code is open source software licensed under the [Apache 2.0 License]("http://www.apache.org/licenses/LICENSE-2.0.html").
