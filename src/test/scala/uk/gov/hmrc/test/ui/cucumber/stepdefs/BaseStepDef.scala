@@ -26,12 +26,11 @@ import org.scalatest.concurrent.Eventually
 import org.scalatest.matchers.should.Matchers
 
 trait BaseStepDef extends ScalaDsl with EN with BrowserDriver with Eventually with Matchers {
-  ParameterType("booleanValue", ".*") {
-    value: String =>
-      value.filterNot(_ == '\"') match {
-        case "yes" | "Yes" | "YES" => true
-        case _                     => false
-      }
+  ParameterType("booleanValue", ".*") { value: String =>
+    value.filterNot(_ == '\"') match {
+      case "yes" | "Yes" | "YES" => true
+      case _                     => false
+    }
   }
 
   sys.addShutdownHook {

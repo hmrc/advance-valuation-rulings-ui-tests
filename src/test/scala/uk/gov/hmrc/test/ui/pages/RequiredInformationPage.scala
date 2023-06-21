@@ -24,27 +24,5 @@ object RequiredInformationPage extends BasePage {
   val pageTitle =
     "Before you start your application"
 
-  val ele_Checkbox1 = By.id("value_0")
-  val ele_Checkbox2 = By.id("value_1")
-  val ele_Checkbox3 = By.id("value_2")
-  val ele_Checkbox4 = By.id("value_3")
-  val ele_Checkbox5 = By.id("value_4")
-  val ele_Checkbox6 = By.id("value_5")
-  val ele_Continue  = By.id("govuk-button")
-
-  private val allBoxes = Seq(
-    ele_Checkbox1,
-    ele_Checkbox2,
-    ele_Checkbox3,
-    ele_Checkbox4,
-    ele_Checkbox5,
-    ele_Checkbox6
-  )
-
-  def selectAllCheckbox(): this.type = {
-    allBoxes.foreach {
-      box => if (!driver.findElement(box).isSelected) driver.findElement(box).click()
-    }
-    this
-  }
+  val ele_Continue = By.id("continue-button")
 }

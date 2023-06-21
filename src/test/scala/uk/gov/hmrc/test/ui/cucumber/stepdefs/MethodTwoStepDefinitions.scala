@@ -19,38 +19,35 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import uk.gov.hmrc.test.ui.pages._
 
 trait MethodTwoStepDefintions extends BaseStepDef {
-  Then("I will be navigated to Outline Why Not Method One page") {
-    () => OutlineWhyNotMethodOne.loadPage()
+  Then("I will be navigated to Outline Why Not Method One page") { () =>
+    OutlineWhyNotMethodOne.loadPage()
   }
 
-  And("I enter {string} as my reason why I did not select method 1") {
-    (reason: String) =>
-      OutlineWhyNotMethodOne
-        .enterText(reason)
-        .submitPage()
+  And("I enter {string} as my reason why I did not select method 1") { (reason: String) =>
+    OutlineWhyNotMethodOne
+      .enterText(reason)
+      .submitPage()
   }
 
-  Then("I will be navigated to In the Past Have you used Method 1 to import any goods") {
-    () => HaveYouUsedMethodOneToImportInPast.loadPage()
+  Then("I will be navigated to In the Past Have you used Method 1 to import any goods") { () =>
+    HaveYouUsedMethodOneToImportInPast.loadPage()
   }
 
-  And("I select that I have used Method 1 to import goods and press continue") {
-    () => HaveYouUsedMethodOneToImportInPast.selectYes().submitPage()
+  And("I select that I have used Method 1 to import goods and press continue") { () =>
+    HaveYouUsedMethodOneToImportInPast.selectYes().submitPage()
   }
 
-  And("I select that I have not used Method 1 to import goods and press continue") {
-    () => HaveYouUsedMethodOneToImportInPast.selectNo().submitPage()
+  And("I select that I have not used Method 1 to import goods and press continue") { () =>
+    HaveYouUsedMethodOneToImportInPast.selectNo().submitPage()
   }
 
-  Then("I will be navigated to Describe the Identical Goods") {
-    () =>
-      DescribeTheIdenticalGoods
-        .loadPage()
+  Then("I will be navigated to Describe the Identical Goods") { () =>
+    DescribeTheIdenticalGoods
+      .loadPage()
   }
-  And("I enter {string} as the description of the identical goods and press continue") {
-    (description: String) =>
-      DescribeTheIdenticalGoods
-        .enterText(description)
-        .submitPage()
+  And("I enter {string} as the description of the identical goods and press continue") { (description: String) =>
+    DescribeTheIdenticalGoods
+      .enterText(description)
+      .submitPage()
   }
 }
