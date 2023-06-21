@@ -131,6 +131,10 @@ class StepDefinitions
     AreYouSureYouWantToRemoveFile.select(option).submitPage()
   )
 
+  Then("I will be navigated to Do you want to upload any supporting documents page") { () =>
+    DoYouWantToUploadAnySupportingDocuments.loadPage()
+  }
+
   And(
     "I enter Name- {string} Email- {string},Phone- {string} details and continue in Provide your contact details page"
   ) { (name: String, email: String, phone: String) =>
