@@ -17,13 +17,21 @@
 package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.pages.base.YesNoPage
-import org.openqa.selenium.By
+import uk.gov.hmrc.test.ui.pages.base.PageNotFoundException
 
-object YouHaveUploadedOneSupportingDocument extends YesNoPage {
+object AreYouSureYouWantToRemoveFile extends YesNoPage {
 
   val pageTitle =
-    "You have uploaded one supporting document"
+    "Are you sure you want to remove"
 
-  def removeFile() =
-    By.id(s"remove-file-0").find.click()
+  override def loadPage(): this.type = {
+    val actual: String = driver.getTitle.trim
+
+    if (!actual.contains(pageTitle)) {
+      throw PageNotFoundException(
+        s"Expected '$pageTitle' within page title, but found '$actual' page."
+      )
+    }
+    this
+  }
 }

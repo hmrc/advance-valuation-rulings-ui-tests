@@ -44,117 +44,115 @@ class StepDefinitions
     (() => BasePage.invokeURL(BasePage.URL_ARSHomePage, "Individual", "User", false))
   }
 
-  Then("user should see subscribe to advance rulings page to enrol") {
-    () =>
-      driver.getTitle.contains(
-        "Subscribe to advance rulings - Subscribe to advance rulings - GOV.UK"
-      )
+  Then("user should see subscribe to advance rulings page to enrol") { () =>
+    driver.getTitle.contains(
+      "Subscribe to advance rulings - Subscribe to advance rulings - GOV.UK"
+    )
   }
 
-  When("I click on Start new application in ARS Home") {
-    () =>
-      onPage(base.BasePage.arsHomePageText)
-      submitPage()
+  When("I click on Start new application in ARS Home") { () =>
+    onPage(base.BasePage.arsHomePageText)
+    submitPage()
   }
   And(
     "I check all the checkboxes and click continue in Information you need to complete an application page"
-  ) {
-    () =>
-      RequiredInformationPage.loadPage()
-      RequiredInformationPage.selectAllCheckbox()
-      submitPage()
+  ) { () =>
+    RequiredInformationPage.loadPage()
+    RequiredInformationPage.selectAllCheckbox()
+    submitPage()
   }
-  And("I select {booleanValue} and continue in Are you planning to import goods page") {
-    (option: Boolean) =>
-      PlanningToImportGoods.loadPage()
-      PlanningToImportGoods.select(option)
-      submitPage()
+  And("I select {booleanValue} and continue in Are you planning to import goods page") { (option: Boolean) =>
+    PlanningToImportGoods.loadPage()
+    PlanningToImportGoods.select(option)
+    submitPage()
   }
-  And("I click on continue in How We Contact You page") {
-    () =>
-      HowWeContactYou.loadPage()
-      submitPage()
+  And("I click on continue in How We Contact You page") { () =>
+    HowWeContactYou.loadPage()
+    submitPage()
   }
-  And("I select {booleanValue} and continue in Check the name and address page") {
-    (option: Boolean) => AddressPage.loadPage().select(option).submitPage()
+  And("I select {booleanValue} and continue in Check the name and address page") { (option: Boolean) =>
+    AddressPage.loadPage().select(option).submitPage()
   }
-  And("I select {booleanValue} and continue in Have you found the commodity code") {
-    (option: Boolean) => HaveYouFoundTheCommodityCode.loadPage().select(option).submitPage()
+  And("I select {booleanValue} and continue in Have you found the commodity code") { (option: Boolean) =>
+    HaveYouFoundTheCommodityCode.loadPage().select(option).submitPage()
   }
   And(
     "I select {booleanValue} and continue in Do you want to add any confidential information page"
-  ) {
-    (option: Boolean) =>
-      DoYouWantToAddAnyConfidentialInformation
-        .loadPage()
-        .select(option)
-        .submitPage()
+  ) { (option: Boolean) =>
+    DoYouWantToAddAnyConfidentialInformation
+      .loadPage()
+      .select(option)
+      .submitPage()
   }
 
   And(
     "I select {booleanValue} on You have uploaded supporting document"
-  ) {
-    (option: Boolean) =>
-      YouHaveUploadedOneSupportingDocument
-        .loadPage()
-        .select(option)
-        .submitPage()
+  ) { (option: Boolean) =>
+    YouHaveUploadedOneSupportingDocument
+      .loadPage()
+      .select(option)
+      .submitPage()
   }
 
   And(
     "I select {booleanValue} on You have uploaded second supporting document"
-  ) {
-    (option: Boolean) =>
-      YouHaveUploadedTwoSupportingDocuments
-        .loadPage()
-        .select(option)
-        .submitPage()
+  ) { (option: Boolean) =>
+    YouHaveUploadedTwoSupportingDocuments
+      .loadPage()
+      .select(option)
+      .submitPage()
   }
   And(
     "I select {booleanValue} and continue in Do you want to upload any supporting documents page"
-  ) {
-    (option: Boolean) =>
-      DoYouWantToUploadAnySupportingDocuments
-        .loadPage()
-        .select(option)
-        .submitPage()
+  ) { (option: Boolean) =>
+    DoYouWantToUploadAnySupportingDocuments
+      .loadPage()
+      .select(option)
+      .submitPage()
   }
 
-  And("I upload the document {string} and continue in Upload supporting documents page") {
-    (filePath: String) =>
-      val path = getClass.getResource(s"/testdata/${filePath}").getPath
-      UploadSupportingDocuments
-        .loadPage()
-        .uploadDocument(path)
-      submitPage()
-      Thread.sleep(5000)
+  And("I upload the document {string} and continue in Upload supporting documents page") { (filePath: String) =>
+    val path = getClass.getResource(s"/testdata/$filePath").getPath
+    UploadSupportingDocuments
+      .loadPage()
+      .uploadDocument(path)
+    submitPage()
+    Thread.sleep(5000)
   }
+
+  And("I click remove on the first file") { () =>
+    YouHaveUploadedOneSupportingDocument
+      .removeFile()
+  }
+
+  Then("I will be navigated to Do you want to remove the file page")(() => AreYouSureYouWantToRemoveFile.loadPage())
+
+  And("I Select {booleanValue} and continue in Do You Want to Remove the File page")((option: Boolean) =>
+    AreYouSureYouWantToRemoveFile.select(option).submitPage()
+  )
 
   And(
     "I enter Name- {string} Email- {string},Phone- {string} details and continue in Provide your contact details page"
-  ) {
-    (name: String, email: String, phone: String) =>
-      ProvideYourContactDetails.loadPage()
-      ProvideYourContactDetails.enterContactDetails(name, email, phone)
-      submitPage()
+  ) { (name: String, email: String, phone: String) =>
+    ProvideYourContactDetails.loadPage()
+    ProvideYourContactDetails.enterContactDetails(name, email, phone)
+    submitPage()
   }
   Then("I will be navigated to the Select a Method page")(() => MethodSelectionPage.loadPage())
-  And("I select Method {int} and continue in Select the method page") {
-    (methodNumber: Int) =>
-      MethodSelectionPage.loadPage()
-      MethodSelectionPage.selectOption(methodNumber)
-      submitPage()
+  And("I select Method {int} and continue in Select the method page") { (methodNumber: Int) =>
+    MethodSelectionPage.loadPage()
+    MethodSelectionPage.selectOption(methodNumber)
+    submitPage()
   }
   Then("I navigate to Description of the Goods")(() => DescriptionOfTheGoods.url)
 
-  And("I enter {string} as the description and press continue") {
-    (goodsName: String) =>
-      DescriptionOfTheGoods
-        .enterText(goodsName)
-        .submitPage()
+  And("I enter {string} as the description and press continue") { (goodsName: String) =>
+    DescriptionOfTheGoods
+      .enterText(goodsName)
+      .submitPage()
   }
-  And("I select {booleanValue} and continue in Have you found the commodity code page") {
-    (option: Boolean) => HaveYouFoundTheCommodityCode.loadPage().select(option)
+  And("I select {booleanValue} and continue in Have you found the commodity code page") { (option: Boolean) =>
+    HaveYouFoundTheCommodityCode.loadPage().select(option)
   }
 
   And("I enter the commodity code {string} and continue in What is the commodity code page") {
@@ -167,84 +165,77 @@ class StepDefinitions
 
   And(
     "I select {booleanValue} and continue in Do you want this file to be marked as confidential page"
-  ) {
-    (option: Boolean) =>
-      DoYouWantThisFileToBeMarkedAsConfidential.loadPage().select(option).submitPage()
+  ) { (option: Boolean) =>
+    DoYouWantThisFileToBeMarkedAsConfidential.loadPage().select(option).submitPage()
   }
 
-  Then("I will be navigated to This service is designed for those") {
-    () =>
-      ThisServiceIsDesignedForThose.loadPage()
-      ThisServiceIsDesignedForThose.linkNavigationValidation()
+  Then("I will be navigated to This service is designed for those") { () =>
+    ThisServiceIsDesignedForThose.loadPage()
+    ThisServiceIsDesignedForThose.linkNavigationValidation()
   }
-  Then("I will be navigated to Your EORI number details must be correct to use this service")(
-    () => YourEORIMustBeUpToDate.loadPage()
+  Then("I will be navigated to Your EORI number details must be correct to use this service")(() =>
+    YourEORIMustBeUpToDate.loadPage()
   )
-  Then("I will be navigated to You must have a commodity code") {
-    () =>
-      YouMustHaveACommodityCode.loadPage()
-      YouMustHaveACommodityCode.linkNavigationValidation()
+  Then("I will be navigated to You must have a commodity code") { () =>
+    YouMustHaveACommodityCode.loadPage()
+    YouMustHaveACommodityCode.linkNavigationValidation()
   }
-  Then("I will be navigated to Have the goods been subject to legal challenges") {
-    () => HaveTheGoodsBeenSubjectToLegalChallenges.loadPage()
+  Then("I will be navigated to Have the goods been subject to legal challenges") { () =>
+    HaveTheGoodsBeenSubjectToLegalChallenges.loadPage()
   }
-  And("I select that the goods been subject to legal challenges") {
-    () =>
-      HaveTheGoodsBeenSubjectToLegalChallenges
-        .selectYes()
-        .submitPage()
+  And("I select that the goods been subject to legal challenges") { () =>
+    HaveTheGoodsBeenSubjectToLegalChallenges
+      .selectYes()
+      .submitPage()
   }
-  And("I select that the goods have not been subject to legal challenges") {
-    () =>
-      HaveTheGoodsBeenSubjectToLegalChallenges
-        .selectNo()
-        .submitPage()
+  And("I select that the goods have not been subject to legal challenges") { () =>
+    HaveTheGoodsBeenSubjectToLegalChallenges
+      .selectNo()
+      .submitPage()
   }
 
-  Then("I will be navigated to You have uploaded supporting document") {
-    () => YouHaveUploadedOneSupportingDocument.loadPage()
+  Then("I will be navigated to You have uploaded supporting document") { () =>
+    YouHaveUploadedOneSupportingDocument.loadPage()
   }
 
-  Then("I will be navigated to You have uploaded second supporting document") {
-    () => YouHaveUploadedTwoSupportingDocuments.loadPage()
+  Then("I will be navigated to You have uploaded second supporting document") { () =>
+    YouHaveUploadedTwoSupportingDocuments.loadPage()
   }
 
   Then("I will be navigated to Why Computed Value page")(() => WhyComputedValue.loadPage())
 
-  And("I enter a reason and continue in Why Computed Value page") {
-    () => WhyComputedValue.enterText("Reasonable argument with evidence").submitPage()
+  And("I enter a reason and continue in Why Computed Value page") { () =>
+    WhyComputedValue.enterText("Reasonable argument with evidence").submitPage()
   }
 
-  Then("I will be navigated to Explain Reason Computed Value page") {
-    () => ExplainWhyComputedValue.loadPage()
+  Then("I will be navigated to Explain Reason Computed Value page") { () =>
+    ExplainWhyComputedValue.loadPage()
   }
 
-  And("I enter a reason and continue in Explain Reason Computed Value page") {
-    () => ExplainWhyComputedValue.enterText("Detailed explanation").submitPage()
+  And("I enter a reason and continue in Explain Reason Computed Value page") { () =>
+    ExplainWhyComputedValue.enterText("Detailed explanation").submitPage()
   }
 
-  And("I select {booleanValue} and continue in Is There a Sale Involved") {
-    (option: Boolean) => IsThereASaleInvolved.loadPage().select(option).submitPage()
+  And("I select {booleanValue} and continue in Is There a Sale Involved") { (option: Boolean) =>
+    IsThereASaleInvolved.loadPage().select(option).submitPage()
   }
 
-  And("I select {booleanValue} and continue in Is the sale between related parties") {
-    (option: Boolean) => IsTheSaleBetweenRelatedParties.loadPage().select(option).submitPage()
+  And("I select {booleanValue} and continue in Is the sale between related parties") { (option: Boolean) =>
+    IsTheSaleBetweenRelatedParties.loadPage().select(option).submitPage()
   }
 
-  And("I enter {string} and continue in Describe how the parties are related") {
-    (text: String) =>
-      DescribeHowPartiesAreRelated.enterText(text)
-      submitPage()
+  And("I enter {string} and continue in Describe how the parties are related") { (text: String) =>
+    DescribeHowPartiesAreRelated.enterText(text)
+    submitPage()
   }
 
   And(
     "I select {booleanValue} and continue in Are there any restrictions on the use or resale of the goods"
   )((option: Boolean) => AreThereAnyRestrictionsOnGoods.select(option).submitPage())
 
-  And("I enter {string} and continue in Describe any restrictions on the use or resale of goods") {
-    (text: String) =>
-      DescribeAnyRestrictions.enterText(text)
-      submitPage()
+  And("I enter {string} and continue in Describe any restrictions on the use or resale of goods") { (text: String) =>
+    DescribeAnyRestrictions.enterText(text)
+    submitPage()
   }
 
   And(
@@ -252,8 +243,8 @@ class StepDefinitions
   )
   ((text: String) => DescribeAnyConditions.enterText(text).submitPage())
 
-  And("I enter {string} as the conditions which cannot be calculated and press continue") {
-    (text: String) => DescribeAnyConditions.enterText(text).submitPage()
+  And("I enter {string} as the conditions which cannot be calculated and press continue") { (text: String) =>
+    DescribeAnyConditions.enterText(text).submitPage()
   }
 
   And("I enter {string} as the conditions which cannot be calculated and press continue")
@@ -269,10 +260,9 @@ class StepDefinitions
 
   Then("I will be navigated to the Application Complete page")(() => ApplicationComplete.loadPage())
 
-  Then("I should see submitted application once I click Go to application and ruling button") {
-    () =>
-      ApplicationComplete.clickGoToApplicationAndRulingButton()
-      ApplicationNoViewPage.loadPage();
+  Then("I should see submitted application once I click Go to application and ruling button") { () =>
+    ApplicationComplete.clickGoToApplicationAndRulingButton()
+    ApplicationNoViewPage.loadPage();
   }
 
   Then("I sign out")((() => BasePage.signOut()))

@@ -58,6 +58,34 @@ Feature: End To End Journey
     And I select "No" and continue in Is There a Sale Involved
     Then I will be navigated to the Select a Method page
 
+  @removefile
+  Scenario: Method 1 upload and remove file
+    Given I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+    When I click on Start new application in ARS Home
+    And I check all the checkboxes and click continue in Information you need to complete an application page
+    And I select "Yes" and continue in Are you planning to import goods page
+    And I click on continue in How We Contact You page
+    And I select "Yes" and continue in Check the name and address page
+    And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211" details and continue in Provide your contact details page
+    And I select Method 1 and continue in Select the method page
+    And I select "Yes" and continue in Is There a Sale Involved
+    And I select "No" and continue in Is the sale between related parties
+    And I select "No" and continue in Are there any restrictions on the use or resale of the goods
+    And I select "No" and continue in Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods
+    Then I navigate to Description of the Goods
+    And I enter "nice things" as the description and press continue
+    And I select "No" and continue in Have you found the commodity code
+    Then I will be navigated to Have the goods been subject to legal challenges
+    And I select that the goods have not been subject to legal challenges
+    And I select "No" and continue in Do you want to add any confidential information page
+    And I select "Yes" and continue in Do you want to upload any supporting documents page
+    And I upload the document "test1.pdf" and continue in Upload supporting documents page
+    And I select "Yes" and continue in Do you want this file to be marked as confidential page
+    Then I will be navigated to You have uploaded supporting document
+    And I click remove on the first file
+    Then I will be navigated to Do you want to remove the file page
+    And I Select "Yes" and continue in Do You Want to Remove the File page
+    Then I will be navigated to Do you want to upload any supporting documents page
 
   Scenario: Method 1 full flow with multiple upload
     Given I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
