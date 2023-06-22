@@ -26,26 +26,24 @@ trait AgentStepDefs
     with MethodFourStepDefintions
     with MethodSixStepDefintions {
 
-  When("I select role as a {string}") {
-    s: String ⇒
-      s match {
-        case "employee of the organisation"    => AgentSelectRole.selectRole(true)
-        case "agent acting on an organisation" => AgentSelectRole.selectRole(false)
-      }
-      submitPage()
+  When("I select role as a {string}") { s: String ⇒
+    s match {
+      case "employee of the organisation"    => AgentSelectRole.selectRole(true)
+      case "agent acting on an organisation" => AgentSelectRole.selectRole(false)
+    }
+    submitPage()
   }
 
   And(
     "I enter Name: {string}, Email: {string}, Phone: {string} details and continue in Provide your own contact details page"
-  ) {
-    (name: String, email: String, phone: String) =>
-      OrganisationContactDetailsPage.loadPage()
-      OrganisationContactDetailsPage.enterContactDetails(
-        name,
-        email,
-        phone
-      )
-      submitPage()
+  ) { (name: String, email: String, phone: String) =>
+    OrganisationContactDetailsPage.loadPage()
+    OrganisationContactDetailsPage.enterContactDetails(
+      name,
+      email,
+      phone
+    )
+    submitPage()
   }
 
   And(

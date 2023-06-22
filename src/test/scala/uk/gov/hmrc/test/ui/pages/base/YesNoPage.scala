@@ -31,7 +31,7 @@ trait YesNoPage extends BasePage {
     yesRadio.find.click()
     this
   }
-  def selectNo(): YesNoPage  = {
+  def selectNo(): YesNoPage = {
     noRadio.find.click()
     this
   }

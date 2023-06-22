@@ -19,22 +19,21 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import uk.gov.hmrc.test.ui.pages._
 
 trait MethodFourStepDefintions extends BaseStepDef {
-  Then("I will be navigated to Explain Why Not Method Methods one, two, or three") {
-    () => ExplainWhyNotMethodsOneTwoOrThree.loadPage()
+  Then("I will be navigated to Explain Why Not Method Methods one, two, or three") { () =>
+    ExplainWhyNotMethodsOneTwoOrThree.loadPage()
   }
 
-  And("I enter {string} as my reason why I did not select Methods one, two, or three") {
-    (reason: String) =>
-      ExplainWhyNotMethodsOneTwoOrThree
-        .enterText(reason)
-        .submitPage()
+  And("I enter {string} as my reason why I did not select Methods one, two, or three") { (reason: String) =>
+    ExplainWhyNotMethodsOneTwoOrThree
+      .enterText(reason)
+      .submitPage()
   }
 
-  Then("I will be navigated to Explain why you have selected Method 4") {
-    () => ExplainWhyMethodFour.loadPage()
+  Then("I will be navigated to Explain why you have selected Method 4") { () =>
+    ExplainWhyMethodFour.loadPage()
   }
 
-  And("I enter {string} as my reason for selecting method Method 4") {
-    (reason: String) => ExplainWhyMethodFour.enterText(reason).submitPage()
+  And("I enter {string} as my reason for selecting method Method 4") { (reason: String) =>
+    ExplainWhyMethodFour.enterText(reason).submitPage()
   }
 }

@@ -20,50 +20,45 @@ import uk.gov.hmrc.test.ui.pages._
 
 trait MethodThreeStepDefintions extends BaseStepDef {
 
-  Then("I will be navigated to Explain Why Transaction of Similar Goods page") {
-    () => ExplainWhyNotMethodOneOrTwo.loadPage()
+  Then("I will be navigated to Explain Why Transaction of Similar Goods page") { () =>
+    ExplainWhyNotMethodOneOrTwo.loadPage()
   }
 
-  Then("I will be navigated to Describe the Similar Goods page") {
-    () => DescribeTheSimilarGoodsPage.loadPage()
+  Then("I will be navigated to Describe the Similar Goods page") { () =>
+    DescribeTheSimilarGoodsPage.loadPage()
   }
 
-  And("I select {booleanValue} and continue in Have You Used Method One In the Past 90 days") {
-    (option: Boolean) =>
-      HaveYouUsedMethodOneToImportSimilarGoods.loadPage()
-      HaveYouUsedMethodOneToImportSimilarGoods.select(option)
-      HaveYouUsedMethodOneToImportSimilarGoods.submitPage()
+  And("I select {booleanValue} and continue in Have You Used Method One In the Past 90 days") { (option: Boolean) =>
+    HaveYouUsedMethodOneToImportSimilarGoods.loadPage()
+    HaveYouUsedMethodOneToImportSimilarGoods.select(option)
+    HaveYouUsedMethodOneToImportSimilarGoods.submitPage()
   }
 
-  And("I enter a reason and continue in Explain Why Transaction of Similar Goods page") {
-    () =>
-      ExplainWhyNotMethodOneOrTwo
-        .enterText("Detailed explanation")
-        .submitPage()
+  And("I enter a reason and continue in Explain Why Transaction of Similar Goods page") { () =>
+    ExplainWhyNotMethodOneOrTwo
+      .enterText("Detailed explanation")
+      .submitPage()
   }
 
-  And("I enter a reason and continue in Describe the Similar Goods page") {
-    () =>
-      DescribeTheSimilarGoodsPage
-        .enterText("Detailed explanation")
-        .submitPage()
+  And("I enter a reason and continue in Describe the Similar Goods page") { () =>
+    DescribeTheSimilarGoodsPage
+      .enterText("Detailed explanation")
+      .submitPage()
   }
 
-  Then("I will be navigated to have you used Valuation Method 1 to import similar goods") {
-    () => ExplainWhyNotMethodOneOrTwo.loadPage()
+  Then("I will be navigated to have you used Valuation Method 1 to import similar goods") { () =>
+    ExplainWhyNotMethodOneOrTwo.loadPage()
   }
 
-  And("I select that I have used Method 1 to import similar goods in the past 90 days") {
-    () =>
-      ExplainWhyNotMethodOneOrTwo
-        .enterText("Detailed explanation")
-        .submitPage()
+  And("I select that I have used Method 1 to import similar goods in the past 90 days") { () =>
+    ExplainWhyNotMethodOneOrTwo
+      .enterText("Detailed explanation")
+      .submitPage()
   }
 
-  And("I select that I have not used Method 1 to import similar goods in the past 90 days") {
-    () =>
-      ExplainWhyNotMethodOneOrTwo
-        .enterText("Detailed explanation")
-        .submitPage()
+  And("I select that I have not used Method 1 to import similar goods in the past 90 days") { () =>
+    ExplainWhyNotMethodOneOrTwo
+      .enterText("Detailed explanation")
+      .submitPage()
   }
 }

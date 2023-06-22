@@ -5,7 +5,7 @@ Feature: Admin of Organisation End To End Journey
   Scenario: Organisation User End To End Journey without upload
     Given I am on the ARS Home Page with affinity group as a Organisation and Credential role as a User
     When I click on Start new application in ARS Home
-    And I check all the checkboxes and click continue in Information you need to complete an application page
+    And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
     And I select "Yes" and continue in Check the name and address page

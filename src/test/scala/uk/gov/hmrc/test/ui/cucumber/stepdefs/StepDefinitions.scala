@@ -55,10 +55,9 @@ class StepDefinitions
     submitPage()
   }
   And(
-    "I check all the checkboxes and click continue in Information you need to complete an application page"
+    "I click continue on Information you need to complete an application page"
   ) { () =>
     RequiredInformationPage.loadPage()
-    RequiredInformationPage.selectAllCheckbox()
     submitPage()
   }
   And("I select {booleanValue} and continue in Are you planning to import goods page") { (option: Boolean) =>
