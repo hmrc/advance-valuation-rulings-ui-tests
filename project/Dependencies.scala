@@ -11,7 +11,7 @@ object Dependencies {
     "io.cucumber"          % "cucumber-junit"    % "7.6.0"    % Test,
     "junit"                % "junit"             % "4.13.2"   % Test,
     "com.novocode"         % "junit-interface"   % "0.11"     % Test,
-    "uk.gov.hmrc"         %% "webdriver-factory" % "0.41.0"   % Test,
+    "uk.gov.hmrc"         %% "webdriver-factory" % "0.44.0"   % Test,
   )
 
 }
