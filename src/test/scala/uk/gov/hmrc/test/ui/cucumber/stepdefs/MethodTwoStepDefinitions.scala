@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages._
+import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
 
 trait MethodTwoStepDefintions extends BaseStepDef {
   Then("I will be navigated to Outline Why Not Method One page") { () =>
@@ -49,5 +50,14 @@ trait MethodTwoStepDefintions extends BaseStepDef {
     DescribeTheIdenticalGoods
       .enterText(description)
       .submitPage()
+  }
+  And("I enter {string} as the description of the identical goods") { (identicalGoods: String) =>
+    DescribeTheIdenticalGoods.enterText(identicalGoods)
+    ScenarioContext.setContext("identical goods", identicalGoods)
+  }
+
+  Then("I navigate to describe the identical goods page and compare the text") { () =>
+    driver.get(DescribeTheIdenticalGoods.pageUrl)
+    assert(ScenarioContext.getContext("identical goods") == DescribeTheIdenticalGoods.getText())
   }
 }

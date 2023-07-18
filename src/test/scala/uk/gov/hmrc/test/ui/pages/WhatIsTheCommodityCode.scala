@@ -17,13 +17,13 @@
 package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.pages.base.BasePage
-
 import org.openqa.selenium.By
 object WhatIsTheCommodityCode extends BasePage {
 
   val goodsNameDisplay  = "What is the commodity code for the goods?"
   val pageTitle         = "What is the commodity code for the goods?"
   val ele_CommodityCode = "value"
+  val pageUrl           = driver.getCurrentUrl
 
   override def loadPage(): this.type = {
     super.loadPage()
@@ -35,4 +35,6 @@ object WhatIsTheCommodityCode extends BasePage {
     driver.findElement(By.id(ele_CommodityCode)).clear()
     driver.findElement(By.id(ele_CommodityCode)).sendKeys(Code)
   }
+
+  def getCommodityCode(): String = driver.findElement(By.id(ele_CommodityCode)).getAttribute("value")
 }

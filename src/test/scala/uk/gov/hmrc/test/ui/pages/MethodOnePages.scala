@@ -16,6 +16,10 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import org.openqa.selenium.By
+import uk.gov.hmrc.test.ui.pages.DescribeAnyRestrictions.driver
+import uk.gov.hmrc.test.ui.pages.DescribeHowPartiesAreRelated.driver
+import uk.gov.hmrc.test.ui.pages.ProvideYourContactDetails.driver
 import uk.gov.hmrc.test.ui.pages.base._
 
 object IsThereASaleInvolved extends YesNoPage {
@@ -25,7 +29,9 @@ object IsTheSaleBetweenRelatedParties extends YesNoPage {
   override val pageTitle: String =
     "Is the sale between related parties?"
 }
+
 object DescribeHowPartiesAreRelated extends TextAreaPage {
+  val pageUrl: String            = driver.getCurrentUrl
   override val pageTitle: String =
     "Describe how the parties are related"
 }
@@ -35,6 +41,7 @@ object AreThereAnyRestrictionsOnGoods extends YesNoPage {
 }
 
 object DescribeAnyRestrictions extends TextAreaPage {
+  val pageUrl: String            = driver.getCurrentUrl
   override val pageTitle: String =
     "Describe any restrictions on the use or resale of goods"
 }
@@ -43,6 +50,7 @@ object IsSaleSubjectToConditions extends YesNoPage {
     "Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods?"
 }
 object DescribeAnyConditions extends TextAreaPage {
+  val pageUrl: String            = driver.getCurrentUrl
   override val pageTitle: String =
     "Describe the conditions or circumstances which cannot be calculated"
 }

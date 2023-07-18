@@ -16,9 +16,9 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import uk.gov.hmrc.test.ui.pages.{ApplicationComplete, DoYouWantToUploadAnySupportingDocuments, _}
-import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.{onPage, submitPage}
-import uk.gov.hmrc.test.ui.pages.base.BasePage
+import uk.gov.hmrc.test.ui.pages.{ApplicationComplete, DoYouWantToUploadAnySupportingDocuments, DescribeTheLegalChallenges, _}
+import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.{clickSaveAsDraftButton, onPage, submitPage}
+import uk.gov.hmrc.test.ui.pages.base.{BasePage, ScenarioContext}
 
 class StepDefinitions
     extends BaseStepDef
@@ -75,6 +75,17 @@ class StepDefinitions
   And("I select {booleanValue} and continue in Have you found the commodity code") { (option: Boolean) =>
     HaveYouFoundTheCommodityCode.loadPage().select(option).submitPage()
   }
+
+  And("I enter {string} commodity code") { (commodityCode: String) =>
+    WhatIsTheCommodityCode.enterCommodityCode(commodityCode)
+    ScenarioContext.setContext("commodity code", commodityCode)
+  }
+
+  Then("I navigate to enter commodity code page and compare the text") { () =>
+    driver.get(WhatIsTheCommodityCode.pageUrl)
+    assert(ScenarioContext.getContext("commodity code") == WhatIsTheCommodityCode.getCommodityCode())
+  }
+
   And(
     "I select {booleanValue} and continue in Do you want to add any confidential information page"
   ) { (option: Boolean) =>
@@ -82,6 +93,16 @@ class StepDefinitions
       .loadPage()
       .select(option)
       .submitPage()
+  }
+
+  And("I enter {string} in describe confidential information page") { (confidentialInformationText: String) =>
+    DescriptionConfidentialInformation.loadPage().enterText(confidentialInformationText)
+    ScenarioContext.setContext("confidential information", confidentialInformationText)
+  }
+
+  Then("I navigate to describe confidential information page and compare the text") { () =>
+    driver.get(DescriptionConfidentialInformation.pageUrl)
+    assert(ScenarioContext.getContext("confidential information") == DescriptionConfidentialInformation.getText())
   }
 
   And(
@@ -126,7 +147,40 @@ class StepDefinitions
     ProvideYourContactDetails.enterContactDetails(name, email, phone)
     submitPage()
   }
+  And(
+    "I enter Name- {string} Email- {string},Phone- {string} details"
+  ) { (name: String, email: String, phone: String) =>
+    ProvideYourContactDetails.loadPage()
+    ProvideYourContactDetails.enterContactDetails(name, email, phone)
+    ScenarioContext.setContext("name", name)
+    ScenarioContext.setContext("email", email)
+    ScenarioContext.setContext("phone", phone)
+  }
+
+  And("I click on Save as draft button")(() => clickSaveAsDraftButton())
+
+  And("I click on Continue button")(() => submitPage())
+
+  And("I am on Save as draft page and I click on your applications and rulings link") { () =>
+    SaveAsDraftPage.loadPage()
+    SaveAsDraftPage.clickReturnToApplicationLink()
+  }
+
+  And("I navigate to provide your contact details page and compare the text") { () =>
+    driver.get(ProvideYourContactDetails.pageUrl)
+    assert(ScenarioContext.getContext("name") == ProvideYourContactDetails.getName())
+    assert(ScenarioContext.getContext("email") == ProvideYourContactDetails.getEmail())
+    assert(ScenarioContext.getContext("phone") == ProvideYourContactDetails.getContact())
+  }
+
   Then("I will be navigated to the Select a Method page")(() => MethodSelectionPage.loadPage())
+
+  And("I navigate to the Select a Method page") { () =>
+    logger.info(s"url is " + MethodSelectionPage.pageUrl)
+    driver.get(MethodSelectionPage.pageUrl)
+    MethodSelectionPage.loadPage()
+  }
+
   And("I select Method {int} and continue in Select the method page") { (methodNumber: Int) =>
     MethodSelectionPage.loadPage()
     MethodSelectionPage.selectOption(methodNumber)
@@ -134,11 +188,22 @@ class StepDefinitions
   }
   Then("I navigate to Description of the Goods")(() => DescriptionOfTheGoods.url)
 
+  Then("I navigate to Description of the Goods page and compare the text") { () =>
+    driver.get(DescriptionOfTheGoods.pageURL)
+    assert(ScenarioContext.getContext("goodsName") == DescriptionOfTheGoods.getText())
+  }
+
+  And("I enter {string} as the description") { (goodsName: String) =>
+    DescriptionOfTheGoods.enterText(goodsName)
+    ScenarioContext.setContext("goods description", goodsName)
+  }
+
   And("I enter {string} as the description and press continue") { (goodsName: String) =>
     DescriptionOfTheGoods
       .enterText(goodsName)
       .submitPage()
   }
+
   And("I select {booleanValue} and continue in Have you found the commodity code page") { (option: Boolean) =>
     HaveYouFoundTheCommodityCode.loadPage().select(option)
   }
@@ -182,6 +247,16 @@ class StepDefinitions
       .submitPage()
   }
 
+  And("I enter {string} in describe legal challenges page") { (legalChallenges: String) =>
+    DescribeTheLegalChallenges.enterText(legalChallenges)
+    ScenarioContext.setContext("legal challenges", legalChallenges)
+  }
+
+  Then("I navigate to enter legal challenges page and compare the text") { () =>
+    driver.get(DescribeTheLegalChallenges.pageUrl)
+    assert(ScenarioContext.getContext("legal challenges") == DescribeTheLegalChallenges.getText())
+  }
+
   Then("I will be navigated to You have uploaded supporting document") { () =>
     YouHaveUploadedOneSupportingDocument.loadPage()
   }
@@ -192,8 +267,18 @@ class StepDefinitions
 
   Then("I will be navigated to Why Computed Value page")(() => WhyComputedValue.loadPage())
 
-  And("I enter a reason and continue in Why Computed Value page") { () =>
+  And("I enter a reason and continue in Why Computed Value page and continue") { () =>
     WhyComputedValue.enterText("Reasonable argument with evidence").submitPage()
+  }
+
+  And("I enter a {string} and continue in Why Computed Value page") { (reason: String) =>
+    WhyComputedValue.enterText(reason)
+    ScenarioContext.setContext("why not method 1-4", reason)
+  }
+
+  And("I navigate to explain why not methods one till four page and compare text") { () =>
+    driver.get(WhyComputedValue.pageUrl)
+    assert(ScenarioContext.getContext("why not method 1-4") == WhyComputedValue.getText())
   }
 
   Then("I will be navigated to Explain Reason Computed Value page") { () =>
@@ -217,6 +302,17 @@ class StepDefinitions
     submitPage()
   }
 
+  And("I enter {string} in Describe how the parties are related") { (text: String) =>
+    DescribeHowPartiesAreRelated.enterText(text)
+    ScenarioContext.setContext("describe how parties are related", text)
+  }
+
+  And("I navigate to Describe how the parties are related page and compare the text") { () =>
+    driver.get(DescribeHowPartiesAreRelated.pageUrl)
+    DescribeHowPartiesAreRelated.getText()
+    assert(ScenarioContext.getContext("describe how parties are related") == DescribeHowPartiesAreRelated.getText())
+  }
+
   And(
     "I select {booleanValue} and continue in Are there any restrictions on the use or resale of the goods"
   )((option: Boolean) => AreThereAnyRestrictionsOnGoods.select(option).submitPage())
@@ -226,6 +322,16 @@ class StepDefinitions
     submitPage()
   }
 
+  And("I enter {string} in Describe any restrictions on the use or resale of goods") { (text: String) =>
+    DescribeAnyRestrictions.enterText(text)
+    ScenarioContext.setContext("describe restrictions", text)
+  }
+
+  And("I navigate to Describe any restrictions on the use or resale of goods page and compare the text") { () =>
+    driver.get(DescribeAnyRestrictions.pageUrl)
+    assert(ScenarioContext.getContext("describe restrictions") == DescribeAnyRestrictions.getText())
+  }
+
   And(
     "I enter {string} and continue in Describe the conditions or circumstances which cannot be calculated"
   )
@@ -233,6 +339,16 @@ class StepDefinitions
 
   And("I enter {string} as the conditions which cannot be calculated and press continue") { (text: String) =>
     DescribeAnyConditions.enterText(text).submitPage()
+  }
+  And("I enter {string} as the conditions which cannot be calculated") { (text: String) =>
+    DescribeAnyConditions.enterText(text)
+    ScenarioContext.setContext("conditions which cannot be calculated", text)
+  }
+
+  And("I navigate to Is the sale subject to any conditions or circumstances page and compare the text") { () =>
+    driver.get(DescribeAnyConditions.pageUrl)
+    assert(ScenarioContext.getContext("conditions which cannot be calculated") == DescribeAnyConditions.getText())
+
   }
 
   And("I enter {string} as the conditions which cannot be calculated and press continue")
@@ -252,6 +368,5 @@ class StepDefinitions
     ApplicationComplete.clickGoToApplicationAndRulingButton()
     ApplicationNoViewPage.loadPage();
   }
-
   Then("I sign out")((() => BasePage.signOut()))
 }

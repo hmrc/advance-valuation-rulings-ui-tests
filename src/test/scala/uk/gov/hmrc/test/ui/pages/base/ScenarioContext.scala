@@ -14,16 +14,18 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.pages.base
 
-import org.openqa.selenium.By
-import uk.gov.hmrc.test.ui.pages.base.BasePage
+import scala.collection.mutable
 
-object ApplicationNoViewPage extends BasePage {
+object ScenarioContext {
+  var scenarioContext = new mutable.HashMap[String, String]()
 
-  val pageTitle               = "Your applications and rulings"
-  val btn_continueApplication = "//*[text()='Continue application']"
+  def setContext(key: String, value: String): Unit =
+    scenarioContext.put(key, value)
 
-  def clickContinueApplicationButton(value: String): Unit =
-    driver.findElement(By.xpath(btn_continueApplication))
+  def getContext(key: String): String = scenarioContext.get(key).getOrElse("")
+
+//  def isContains(key: Nothing): Boolean = scenarioContext.containsKey(key.toString)
+
 }

@@ -19,6 +19,7 @@ package uk.gov.hmrc.test.ui.pages
 import uk.gov.hmrc.test.ui.pages.base._
 
 object ExplainWhyNotMethodsOneTwoOrThree extends TextAreaPage {
+  val pageUrl   = driver.getCurrentUrl
   val pageTitle =
     "Explain why you have not selected Methods 1-3 to value your goods"
 }

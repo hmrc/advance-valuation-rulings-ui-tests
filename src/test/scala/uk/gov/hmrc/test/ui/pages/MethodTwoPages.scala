@@ -29,6 +29,7 @@ object OutlineWhyNotMethodOne extends TextAreaPage {
 }
 
 object DescribeTheIdenticalGoods extends TextAreaPage {
+  val pageUrl   = driver.getCurrentUrl
   val pageTitle =
     "Describe the identical goods"
 }

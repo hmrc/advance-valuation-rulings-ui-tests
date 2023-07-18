@@ -19,11 +19,11 @@ package uk.gov.hmrc.test.ui.pages
 import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.pages.base.BasePage
 
-object ApplicationNoViewPage extends BasePage {
+object SaveAsDraftPage extends BasePage {
 
-  val pageTitle               = "Your applications and rulings"
-  val btn_continueApplication = "//*[text()='Continue application']"
+  val pageTitle                          = "Your application draft has been saved for 28 days"
+  val link_yourApplicationAndRulingsLink = "return_to_applications_link"
 
-  def clickContinueApplicationButton(value: String): Unit =
-    driver.findElement(By.xpath(btn_continueApplication))
+  def clickReturnToApplicationLink(): Unit =
+    driver.findElement(By.id(link_yourApplicationAndRulingsLink)).click();
 }

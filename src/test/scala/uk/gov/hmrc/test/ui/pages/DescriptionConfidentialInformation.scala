@@ -16,14 +16,9 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
-import uk.gov.hmrc.test.ui.pages.base.BasePage
+import uk.gov.hmrc.test.ui.pages.base._
 
-object ApplicationNoViewPage extends BasePage {
-
-  val pageTitle               = "Your applications and rulings"
-  val btn_continueApplication = "//*[text()='Continue application']"
-
-  def clickContinueApplicationButton(value: String): Unit =
-    driver.findElement(By.xpath(btn_continueApplication))
+object DescriptionConfidentialInformation extends TextAreaPage {
+  val pageUrl   = driver.getCurrentUrl
+  val pageTitle = "Describe any confidential information you would like to add about the goods"
 }

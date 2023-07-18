@@ -12,6 +12,6 @@ Feature: Method 5 flows
     And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211" details and continue in Provide your contact details page
     And I select Method 5 and continue in Select the method page
     Then I will be navigated to Why Computed Value page
-    And I enter a reason and continue in Why Computed Value page
+    And I enter a reason and continue in Why Computed Value page and continue
     Then I will be navigated to Explain Reason Computed Value page
     And I enter a reason and continue in Explain Reason Computed Value page

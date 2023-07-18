@@ -17,16 +17,27 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages._
+import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
 
 trait MethodSixStepDefintions extends BaseStepDef {
   Then("I will be navigated to explain why have you not selected Methods 1-5 to value your goods") { () =>
     ExplainWhyNotMethodsOneToFive.loadPage()
   }
 
-  And("I enter {string} as my reason why I did not select methods 1 through 5") { (reason: String) =>
+  And("I enter {string} as my reason why I did not select methods 1 through 5 and continue") { (reason: String) =>
     ExplainWhyNotMethodsOneToFive
       .enterText(reason)
       .submitPage()
+  }
+
+  And("I enter {string} as my reason why I did not select methods 1 through 5") { (reason: String) =>
+    ExplainWhyNotMethodsOneToFive.enterText(reason)
+    ScenarioContext.setContext("why not methods 1-5", reason)
+  }
+
+  And("I navigate to explain why not methods one through five page and compare text") { () =>
+    driver.get(ExplainWhyNotMethodsOneToFive.pageUrl)
+    assert(ScenarioContext.getContext("why not methods 1-5") == ExplainWhyNotMethodsOneToFive.getText())
   }
 
   Then("I will be navigated to which method do you wish to adapt") { () =>
@@ -42,7 +53,18 @@ trait MethodSixStepDefintions extends BaseStepDef {
     ExplainHowYouHaveUsedMethodSix.loadPage()
   }
 
+  And("I enter {string} as my explanation of how I have used method six to value goods and continue") {
+    (reason: String) =>
+      ExplainHowYouHaveUsedMethodSix.enterText(reason).submitPage()
+  }
+
   And("I enter {string} as my explanation of how I have used method six to value goods") { (reason: String) =>
-    ExplainHowYouHaveUsedMethodSix.enterText(reason).submitPage()
+    ExplainHowYouHaveUsedMethodSix.enterText(reason)
+    ScenarioContext.setContext("how method 6", reason)
+  }
+
+  And("I navigate to explain how method 6 page and compare text") { () =>
+    driver.get(ExplainHowYouHaveUsedMethodSix.pageUrl)
+    assert(ScenarioContext.getContext("how method 6") == ExplainHowYouHaveUsedMethodSix.getText())
   }
 }
