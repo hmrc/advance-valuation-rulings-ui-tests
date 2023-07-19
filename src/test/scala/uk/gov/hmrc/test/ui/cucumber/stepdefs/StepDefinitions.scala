@@ -28,6 +28,8 @@ class StepDefinitions
     with MethodSixStepDefintions
     with AgentStepDefs {
 
+  var provideYourContactDetailsUrl: String = ""
+
   Given(
     "I am on the ARS Home Page with affinity group as a Organisation and Credential role as a Assistant"
   )(() => BasePage.invokeURL(BasePage.URL_ARSHomePage, "Organisation", "Assistant"))
@@ -144,6 +146,7 @@ class StepDefinitions
     "I enter Name- {string} Email- {string},Phone- {string} details and continue in Provide your contact details page"
   ) { (name: String, email: String, phone: String) =>
     ProvideYourContactDetails.loadPage()
+    provideYourContactDetailsUrl = ProvideYourContactDetails.getPageUrl()
     ProvideYourContactDetails.enterContactDetails(name, email, phone)
     submitPage()
   }
@@ -151,6 +154,7 @@ class StepDefinitions
     "I enter Name- {string} Email- {string},Phone- {string} details"
   ) { (name: String, email: String, phone: String) =>
     ProvideYourContactDetails.loadPage()
+    provideYourContactDetailsUrl = ProvideYourContactDetails.getPageUrl()
     ProvideYourContactDetails.enterContactDetails(name, email, phone)
     ScenarioContext.setContext("name", name)
     ScenarioContext.setContext("email", email)
@@ -164,10 +168,14 @@ class StepDefinitions
   And("I am on Save as draft page and I click on your applications and rulings link") { () =>
     SaveAsDraftPage.loadPage()
     SaveAsDraftPage.clickReturnToApplicationLink()
+    Thread.sleep(1000)
   }
 
   And("I navigate to provide your contact details page and compare the text") { () =>
-    driver.get(ProvideYourContactDetails.pageUrl)
+//    driver.get(ProvideYourContactDetails.pageUrl)
+//    logger.info(s"url is" + ProvideYourContactDetails.pageUrl)
+    logger.info(s"url is" + provideYourContactDetailsUrl)
+    driver.get(provideYourContactDetailsUrl)
     assert(ScenarioContext.getContext("name") == ProvideYourContactDetails.getName())
     assert(ScenarioContext.getContext("email") == ProvideYourContactDetails.getEmail())
     assert(ScenarioContext.getContext("phone") == ProvideYourContactDetails.getContact())
@@ -368,5 +376,10 @@ class StepDefinitions
     ApplicationComplete.clickGoToApplicationAndRulingButton()
     ApplicationNoViewPage.loadPage();
   }
+
+  And("I delete the application in draft") { () =>
+    ApplicationNoViewPage.clickDeleteApplicationButton()
+  }
+
   Then("I sign out")((() => BasePage.signOut()))
 }

@@ -1,70 +1,7 @@
 @EndToEndJourney
 Feature: Save as draft functionality for all text pages in the application journeys
 
-  @WIP1
-  Scenario: Save as draft functionality check as Individual User End To End Journey for Method 2 through 6
-    Given I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
-    When I click on Start new application in ARS Home
-    And I click continue on Information you need to complete an application page
-    And I select "Yes" and continue in Are you planning to import goods page
-    And I click on continue in How We Contact You page
-    And I select "Yes" and continue in Check the name and address page
-    And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211" details and continue in Provide your contact details page
-    And I select Method 2 and continue in Select the method page
-    Then I will be navigated to Outline Why Not Method One page
-    And I enter "not applicable" as my reason why I did not select method 1
-    Then I will be navigated to In the Past Have you used Method 1 to import any goods
-    And I select that I have used Method 1 to import goods and press continue
-    Then I will be navigated to Describe the Identical Goods
-    And I enter "many details" as the description of the identical goods
-    And I click on Save as draft button
-    And I am on Save as draft page and I click on your applications and rulings link
-    Then I navigate to describe the identical goods page and compare the text
-    And I navigate to the Select a Method page
-    And I select Method 3 and continue in Select the method page
-    And I enter a "method 1 and 2 not applicable" in explain why not method one or two page
-    And I click on Save as draft button
-    And I am on Save as draft page and I click on your applications and rulings link
-    Then I navigate to explain why not select method one or two page and compare text
-    And I click on Continue button
-    And I select "Yes" and continue in Have You Used Method One In the Past 90 days
-    Then I will be navigated to Describe the Similar Goods page
-    And I enter a "reason" in Describe the Similar Goods page
-    And I click on Save as draft button
-    And I am on Save as draft page and I click on your applications and rulings link
-    Then I navigate to Describe the Similar Goods page and compare text
-    And I navigate to the Select a Method page
-    And I select Method 4 and continue in Select the method page
-    Then I will be navigated to explain why not methods one till three
-    And I enter "not applicable" as my reason why I did not select methods one till three
-    And I click on Save as draft button
-    And I am on Save as draft page and I click on your applications and rulings link
-    Then I navigate to explain why not methods one till three page and compare text
-    And I navigate to the Select a Method page
-    And I select Method 5 and continue in Select the method page
-    Then I will be navigated to Why Computed Value page
-    And I enter a "reason" and continue in Why Computed Value page
-    And I click on Save as draft button
-    And I am on Save as draft page and I click on your applications and rulings link
-    Then I navigate to explain why not methods one till four page and compare text
-    And I navigate to the Select a Method page
-    And I select Method 6 and continue in Select the method page
-    Then I will be navigated to explain why have you not selected Methods 1-5 to value your goods
-    And I enter "various reasons" as my reason why I did not select methods 1 through 5
-    And I click on Save as draft button
-    And I am on Save as draft page and I click on your applications and rulings link
-    Then I navigate to explain why not methods one through five page and compare text
-    And I click on Continue button
-    Then I will be navigated to which method do you wish to adapt
-    And I select Method 6 as the method I wish to adapt
-    Then I will be navigated to how have you used method six to value goods
-    And I enter "using calculator" as my explanation of how I have used method six to value goods
-    And I click on Save as draft button
-    And I am on Save as draft page and I click on your applications and rulings link
-    And I navigate to explain how method 6 page and compare text
-    Then I navigate to Description of the Goods
-
-  @WIP1
+  @WIP
   Scenario: Save as draft functionality check as Individual User End To End Journey for Method 1
     Given I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
     When I click on Start new application in ARS Home
@@ -126,6 +63,117 @@ Feature: Save as draft functionality for all text pages in the application journ
     Then I will be navigated to the Check Your Answers page
     And I check my answers and click on continue
     Then I will be navigated to the Application Complete page
+
+  @WIP
+  Scenario: Save as draft functionality check as Individual User End To End Journey for Method 2
+    Given I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+    When I click on Start new application in ARS Home
+    And I click continue on Information you need to complete an application page
+    And I select "Yes" and continue in Are you planning to import goods page
+    And I click on continue in How We Contact You page
+    And I select "Yes" and continue in Check the name and address page
+    And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211" details and continue in Provide your contact details page
+    And I select Method 2 and continue in Select the method page
+    And I will be navigated to Outline Why Not Method One page
+    And I enter "not applicable" as my reason why I did not select method 1
+    And I will be navigated to In the Past Have you used Method 1 to import any goods
+    And I select that I have used Method 1 to import goods and press continue
+    And I will be navigated to Describe the Identical Goods
+    And I enter "many details" as the description of the identical goods
+    And I click on Save as draft button
+    And I am on Save as draft page and I click on your applications and rulings link
+    Then I navigate to describe the identical goods page and compare the text
+    And I should see submitted application once I click Go to application and ruling button
+    And I delete the application in draft
+
+  @WIP
+  Scenario: Save as draft functionality check as Individual User End To End Journey for Method 3
+    Given I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+    When I click on Start new application in ARS Home
+    And I click continue on Information you need to complete an application page
+    And I select "Yes" and continue in Are you planning to import goods page
+    And I click on continue in How We Contact You page
+    And I select "Yes" and continue in Check the name and address page
+    And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211" details and continue in Provide your contact details page
+    And I select Method 3 and continue in Select the method page
+    And I enter a "method 1 and 2 not applicable" in explain why not method one or two page
+    And I click on Save as draft button
+    And I am on Save as draft page and I click on your applications and rulings link
+    Then I navigate to explain why not select method one or two page and compare text
+    And I click on Continue button
+    And I select "Yes" and continue in Have You Used Method One In the Past 90 days
+    Then I will be navigated to Describe the Similar Goods page
+    And I enter a "reason" in Describe the Similar Goods page
+    And I click on Save as draft button
+    And I am on Save as draft page and I click on your applications and rulings link
+    Then I navigate to Describe the Similar Goods page and compare text
+    And I should see submitted application once I click Go to application and ruling button
+    And I delete the application in draft
+
+  @WIP
+  Scenario: Save as draft functionality check as Individual User End To End Journey for Method 4
+    Given I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+    When I click on Start new application in ARS Home
+    And I click continue on Information you need to complete an application page
+    And I select "Yes" and continue in Are you planning to import goods page
+    And I click on continue in How We Contact You page
+    And I select "Yes" and continue in Check the name and address page
+    And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211" details and continue in Provide your contact details page
+    And I select Method 4 and continue in Select the method page
+    Then I will be navigated to explain why not methods one till three
+    And I enter "not applicable" as my reason why I did not select methods one till three
+    And I click on Save as draft button
+    And I am on Save as draft page and I click on your applications and rulings link
+    Then I navigate to explain why not methods one till three page and compare text
+    And I should see submitted application once I click Go to application and ruling button
+    And I delete the application in draft
+
+  @WIP1
+  Scenario: Save as draft functionality check as Individual User End To End Journey for Method 5
+    Given I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+    When I click on Start new application in ARS Home
+    And I click continue on Information you need to complete an application page
+    And I select "Yes" and continue in Are you planning to import goods page
+    And I click on continue in How We Contact You page
+    And I select "Yes" and continue in Check the name and address page
+    And I enter Name- "Automation Test payal" Email- "Test1@automation.com",Phone- "9876543210" details and continue in Provide your contact details page
+    And I select Method 5 and continue in Select the method page
+    Then I will be navigated to Why Computed Value page
+    And I enter a "reason" and continue in Why Computed Value page
+    And I click on Save as draft button
+    And I am on Save as draft page and I click on your applications and rulings link
+    Then I navigate to explain why not methods one till four page and compare text
+    And I should see submitted application once I click Go to application and ruling button
+    And I delete the application in draft
+
+  @WIP
+  Scenario: Save as draft functionality check as Individual User End To End Journey for Method 6
+    Given I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+    When I click on Start new application in ARS Home
+    And I click continue on Information you need to complete an application page
+    And I select "Yes" and continue in Are you planning to import goods page
+    And I click on continue in How We Contact You page
+    And I select "Yes" and continue in Check the name and address page
+    And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211" details and continue in Provide your contact details page
+    And I select Method 6 and continue in Select the method page
+    Then I will be navigated to explain why have you not selected Methods 1-5 to value your goods
+    And I enter "various reasons" as my reason why I did not select methods 1 through 5
+    And I click on Save as draft button
+    And I am on Save as draft page and I click on your applications and rulings link
+    Then I navigate to explain why not methods one through five page and compare text
+    And I click on Continue button
+    Then I will be navigated to which method do you wish to adapt
+    And I select Method 6 as the method I wish to adapt
+    Then I will be navigated to how have you used method six to value goods
+    And I enter "using calculator" as my explanation of how I have used method six to value goods
+    And I click on Save as draft button
+    And I am on Save as draft page and I click on your applications and rulings link
+    And I navigate to explain how method 6 page and compare text
+    And I should see submitted application once I click Go to application and ruling button
+    And I delete the application in draft
+
+
+
 
 
 

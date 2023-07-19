@@ -27,7 +27,7 @@ trait BasePage extends BrowserDriver with Matchers {
 
   val continueButton          = "govuk-button"
   val ele_StartNewApplication = "csrfToken"
-  val goToAppAndRuling        = "a[role='button']"
+  val goToAppAndRuling        = "Advance Valuation Ruling"
   val saveAsDraftButton       = "//button[contains(text(),'Save as draft')]"
 
   def submitPage(): Unit =
@@ -37,7 +37,7 @@ trait BasePage extends BrowserDriver with Matchers {
     driver.findElement(By.xpath(saveAsDraftButton)).click()
 
   def clickGoToApplicationAndRulingButton(): Unit =
-    driver.findElement(By.cssSelector(goToAppAndRuling)).click()
+    driver.findElement(By.linkText(goToAppAndRuling)).click()
 
   def loadPage(): this.type = {
     onPage(this.pageTitle + titleSuffix)

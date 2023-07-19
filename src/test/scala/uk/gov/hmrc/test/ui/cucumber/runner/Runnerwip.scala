@@ -14,20 +14,23 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.cucumber.runner
 
-import org.openqa.selenium.By
-import uk.gov.hmrc.test.ui.pages.base.BasePage
+import io.cucumber.junit.{Cucumber, CucumberOptions}
+import org.junit.runner.RunWith
 
-object ApplicationNoViewPage extends BasePage {
-
-  val pageTitle               = "Your applications and rulings"
-  val btn_continueApplication = "Continue application"
-  val btn_deleteApplication   = "Delete application"
-
-  def clickContinueApplicationButton(value: String): Unit =
-    driver.findElement(By.linkText(btn_continueApplication))
-
-  def clickDeleteApplicationButton(): Unit =
-    driver.findElement(By.linkText(btn_deleteApplication))
-}
+@RunWith(classOf[Cucumber])
+@CucumberOptions(
+  features = Array("src/test/resources/features"),
+  glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
+  plugin = Array(
+    "pretty",
+    "html:target/cucumber",
+    "json:target/cucumber.json",
+    "junit:target/test-reports/Runner.xml"
+  ),
+  // tags = "@GoodsInformation"
+  // tags = "@RequiredInformationPage"
+  tags = "@WIP"
+)
+class Runnerwip{}
