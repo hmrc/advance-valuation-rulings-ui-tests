@@ -19,8 +19,8 @@ package uk.gov.hmrc.test.ui.pages
 import uk.gov.hmrc.test.ui.pages.base._
 
 object WhyComputedValue extends TextAreaPage {
-  val pageUrl   = driver.getCurrentUrl
-  val pageTitle =
+  val redirectUrl = "/explain-why-not-methods-1-4"
+  val pageTitle   =
     "Explain why you have not selected Methods 1-4 to value your goods"
 }
 

@@ -19,8 +19,8 @@ package uk.gov.hmrc.test.ui.pages
 import uk.gov.hmrc.test.ui.pages.base._
 
 object DescriptionOfTheGoods extends TextAreaPage {
-  val pageURL = driver.getCurrentUrl
-  val url     = s"${BasePage.baseUrl}/advance-valuation-ruling/give-short-description-goods"
+  val redirectUrl = "/give-short-description-goods"
+  val url         = s"${BasePage.baseUrl}/advance-valuation-ruling/give-short-description-goods"
 
   val pageTitle = "Give a short description of the goods"
 }

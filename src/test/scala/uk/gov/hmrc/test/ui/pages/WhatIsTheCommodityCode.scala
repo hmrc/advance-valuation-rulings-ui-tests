@@ -23,7 +23,7 @@ object WhatIsTheCommodityCode extends BasePage {
   val goodsNameDisplay  = "What is the commodity code for the goods?"
   val pageTitle         = "What is the commodity code for the goods?"
   val ele_CommodityCode = "value"
-  val pageUrl           = driver.getCurrentUrl
+  val redirectUrl       = "/enter-commodity-code"
 
   override def loadPage(): this.type = {
     super.loadPage()

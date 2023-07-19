@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages._
+import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
 import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
 
 trait MethodSixStepDefintions extends BaseStepDef {
@@ -36,7 +37,10 @@ trait MethodSixStepDefintions extends BaseStepDef {
   }
 
   And("I navigate to explain why not methods one through five page and compare text") { () =>
-    driver.get(ExplainWhyNotMethodsOneToFive.pageUrl)
+    val url = s"$baseUrl/advance-valuation-ruling/" +
+      ScenarioContext.getContext("draftId") +
+      ExplainWhyNotMethodsOneToFive.redirectUrl
+    driver.get(url)
     assert(ScenarioContext.getContext("why not methods 1-5") == ExplainWhyNotMethodsOneToFive.getText())
   }
 
@@ -64,7 +68,11 @@ trait MethodSixStepDefintions extends BaseStepDef {
   }
 
   And("I navigate to explain how method 6 page and compare text") { () =>
-    driver.get(ExplainHowYouHaveUsedMethodSix.pageUrl)
+//    driver.get(ExplainHowYouHaveUsedMethodSix.pageUrl)
+    val url = s"$baseUrl/advance-valuation-ruling/" +
+      ScenarioContext.getContext("draftId") +
+      ExplainHowYouHaveUsedMethodSix.redirectUrl
+    driver.get(url)
     assert(ScenarioContext.getContext("how method 6") == ExplainHowYouHaveUsedMethodSix.getText())
   }
 }

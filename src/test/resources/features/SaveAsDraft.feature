@@ -1,7 +1,7 @@
 @EndToEndJourney
 Feature: Save as draft functionality for all text pages in the application journeys
 
-  @WIP
+  @EndToEndJourney
   Scenario: Save as draft functionality check as Individual User End To End Journey for Method 1
     Given I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
     When I click on Start new application in ARS Home

@@ -19,6 +19,6 @@ package uk.gov.hmrc.test.ui.pages
 import uk.gov.hmrc.test.ui.pages.base._
 
 object DescriptionConfidentialInformation extends TextAreaPage {
-  val pageUrl   = driver.getCurrentUrl
-  val pageTitle = "Describe any confidential information you would like to add about the goods"
+  val redirectUrl = "/provide-confidential-information"
+  val pageTitle   = "Describe any confidential information you would like to add about the goods"
 }

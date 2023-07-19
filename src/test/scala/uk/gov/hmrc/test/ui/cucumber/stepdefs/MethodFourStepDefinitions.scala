@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages._
+import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
 import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
 
 trait MethodFourStepDefintions extends BaseStepDef {
@@ -36,7 +37,10 @@ trait MethodFourStepDefintions extends BaseStepDef {
   }
 
   And("I navigate to explain why not methods one till three page and compare text") { () =>
-    driver.get(ExplainWhyNotMethodsOneTwoOrThree.pageUrl)
+    val url = s"$baseUrl/advance-valuation-ruling/" +
+      ScenarioContext.getContext("draftId") +
+      ExplainWhyNotMethodsOneTwoOrThree.redirectUrl
+    driver.get(url)
     assert(ScenarioContext.getContext("why not method one tll three") == ExplainWhyNotMethodsOneTwoOrThree.getText())
   }
 

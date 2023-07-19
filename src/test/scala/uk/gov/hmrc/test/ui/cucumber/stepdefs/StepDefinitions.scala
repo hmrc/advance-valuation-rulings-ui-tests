@@ -16,8 +16,9 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import uk.gov.hmrc.test.ui.pages.{ApplicationComplete, DoYouWantToUploadAnySupportingDocuments, DescribeTheLegalChallenges, _}
+import uk.gov.hmrc.test.ui.pages.{ApplicationComplete, DescribeAnyRestrictions, DescribeTheLegalChallenges, DoYouWantToUploadAnySupportingDocuments, _}
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.{clickSaveAsDraftButton, onPage, submitPage}
+import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
 import uk.gov.hmrc.test.ui.pages.base.{BasePage, ScenarioContext}
 
 class StepDefinitions
@@ -28,7 +29,7 @@ class StepDefinitions
     with MethodSixStepDefintions
     with AgentStepDefs {
 
-  var provideYourContactDetailsUrl: String = ""
+  var draftId = ""
 
   Given(
     "I am on the ARS Home Page with affinity group as a Organisation and Credential role as a Assistant"
@@ -84,7 +85,8 @@ class StepDefinitions
   }
 
   Then("I navigate to enter commodity code page and compare the text") { () =>
-    driver.get(WhatIsTheCommodityCode.pageUrl)
+    val url = s"$baseUrl/advance-valuation-ruling/" + draftId + WhatIsTheCommodityCode.redirectUrl
+    driver.get(url)
     assert(ScenarioContext.getContext("commodity code") == WhatIsTheCommodityCode.getCommodityCode())
   }
 
@@ -103,7 +105,8 @@ class StepDefinitions
   }
 
   Then("I navigate to describe confidential information page and compare the text") { () =>
-    driver.get(DescriptionConfidentialInformation.pageUrl)
+    val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescriptionConfidentialInformation.redirectUrl
+    driver.get(url)
     assert(ScenarioContext.getContext("confidential information") == DescriptionConfidentialInformation.getText())
   }
 
@@ -146,7 +149,6 @@ class StepDefinitions
     "I enter Name- {string} Email- {string},Phone- {string} details and continue in Provide your contact details page"
   ) { (name: String, email: String, phone: String) =>
     ProvideYourContactDetails.loadPage()
-    provideYourContactDetailsUrl = ProvideYourContactDetails.getPageUrl()
     ProvideYourContactDetails.enterContactDetails(name, email, phone)
     submitPage()
   }
@@ -154,7 +156,6 @@ class StepDefinitions
     "I enter Name- {string} Email- {string},Phone- {string} details"
   ) { (name: String, email: String, phone: String) =>
     ProvideYourContactDetails.loadPage()
-    provideYourContactDetailsUrl = ProvideYourContactDetails.getPageUrl()
     ProvideYourContactDetails.enterContactDetails(name, email, phone)
     ScenarioContext.setContext("name", name)
     ScenarioContext.setContext("email", email)
@@ -168,26 +169,19 @@ class StepDefinitions
   And("I am on Save as draft page and I click on your applications and rulings link") { () =>
     SaveAsDraftPage.loadPage()
     SaveAsDraftPage.clickReturnToApplicationLink()
-    Thread.sleep(1000)
+    draftId = ApplicationNoViewPage.getDraftId()
+    ScenarioContext.setContext("draftId", draftId)
   }
 
   And("I navigate to provide your contact details page and compare the text") { () =>
-//    driver.get(ProvideYourContactDetails.pageUrl)
-//    logger.info(s"url is" + ProvideYourContactDetails.pageUrl)
-    logger.info(s"url is" + provideYourContactDetailsUrl)
-    driver.get(provideYourContactDetailsUrl)
+    val url = s"$baseUrl/advance-valuation-ruling/" + draftId + ProvideYourContactDetails.redirectUrl
+    driver.get(url)
     assert(ScenarioContext.getContext("name") == ProvideYourContactDetails.getName())
     assert(ScenarioContext.getContext("email") == ProvideYourContactDetails.getEmail())
     assert(ScenarioContext.getContext("phone") == ProvideYourContactDetails.getContact())
   }
 
   Then("I will be navigated to the Select a Method page")(() => MethodSelectionPage.loadPage())
-
-  And("I navigate to the Select a Method page") { () =>
-    logger.info(s"url is " + MethodSelectionPage.pageUrl)
-    driver.get(MethodSelectionPage.pageUrl)
-    MethodSelectionPage.loadPage()
-  }
 
   And("I select Method {int} and continue in Select the method page") { (methodNumber: Int) =>
     MethodSelectionPage.loadPage()
@@ -197,7 +191,8 @@ class StepDefinitions
   Then("I navigate to Description of the Goods")(() => DescriptionOfTheGoods.url)
 
   Then("I navigate to Description of the Goods page and compare the text") { () =>
-    driver.get(DescriptionOfTheGoods.pageURL)
+    val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescriptionOfTheGoods.redirectUrl
+    driver.get(url)
     assert(ScenarioContext.getContext("goodsName") == DescriptionOfTheGoods.getText())
   }
 
@@ -261,7 +256,8 @@ class StepDefinitions
   }
 
   Then("I navigate to enter legal challenges page and compare the text") { () =>
-    driver.get(DescribeTheLegalChallenges.pageUrl)
+    val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescribeTheLegalChallenges.redirectUrl
+    driver.get(url)
     assert(ScenarioContext.getContext("legal challenges") == DescribeTheLegalChallenges.getText())
   }
 
@@ -285,7 +281,10 @@ class StepDefinitions
   }
 
   And("I navigate to explain why not methods one till four page and compare text") { () =>
-    driver.get(WhyComputedValue.pageUrl)
+    val url = s"$baseUrl/advance-valuation-ruling/" +
+      ScenarioContext.getContext("draftId") +
+      WhyComputedValue.redirectUrl
+    driver.get(url)
     assert(ScenarioContext.getContext("why not method 1-4") == WhyComputedValue.getText())
   }
 
@@ -316,8 +315,8 @@ class StepDefinitions
   }
 
   And("I navigate to Describe how the parties are related page and compare the text") { () =>
-    driver.get(DescribeHowPartiesAreRelated.pageUrl)
-    DescribeHowPartiesAreRelated.getText()
+    val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescribeHowPartiesAreRelated.redirectUrl
+    driver.get(url)
     assert(ScenarioContext.getContext("describe how parties are related") == DescribeHowPartiesAreRelated.getText())
   }
 
@@ -336,14 +335,14 @@ class StepDefinitions
   }
 
   And("I navigate to Describe any restrictions on the use or resale of goods page and compare the text") { () =>
-    driver.get(DescribeAnyRestrictions.pageUrl)
+    val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescribeAnyRestrictions.redirectUrl
+    driver.get(url)
     assert(ScenarioContext.getContext("describe restrictions") == DescribeAnyRestrictions.getText())
   }
 
   And(
     "I enter {string} and continue in Describe the conditions or circumstances which cannot be calculated"
-  )
-  ((text: String) => DescribeAnyConditions.enterText(text).submitPage())
+  )((text: String) => DescribeAnyConditions.enterText(text).submitPage())
 
   And("I enter {string} as the conditions which cannot be calculated and press continue") { (text: String) =>
     DescribeAnyConditions.enterText(text).submitPage()
@@ -354,9 +353,9 @@ class StepDefinitions
   }
 
   And("I navigate to Is the sale subject to any conditions or circumstances page and compare the text") { () =>
-    driver.get(DescribeAnyConditions.pageUrl)
+    val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescribeAnyConditions.redirectUrl
+    driver.get(url)
     assert(ScenarioContext.getContext("conditions which cannot be calculated") == DescribeAnyConditions.getText())
-
   }
 
   And("I enter {string} as the conditions which cannot be calculated and press continue")

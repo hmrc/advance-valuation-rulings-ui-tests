@@ -27,6 +27,7 @@ object ProvideYourContactDetails extends BasePage {
   val nameField    = By.id("name")
   val emailField   = By.id("email")
   val contactField = By.id("phone")
+  val redirectUrl  = "/provide-contact-details"
 
   def enterContactDetails(name: String, email: String, contact: String): Unit = {
     nameField.find.enterText(name)
@@ -38,7 +39,5 @@ object ProvideYourContactDetails extends BasePage {
   def getEmail(): String = emailField.find.getAttribute("value")
 
   def getContact(): String = contactField.find.getAttribute("value")
-
-  def getPageUrl(): String = driver.getCurrentUrl
 
 }

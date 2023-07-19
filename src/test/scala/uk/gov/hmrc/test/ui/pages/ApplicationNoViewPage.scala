@@ -30,4 +30,7 @@ object ApplicationNoViewPage extends BasePage {
 
   def clickDeleteApplicationButton(): Unit =
     driver.findElement(By.linkText(btn_deleteApplication))
+
+  def getDraftId(): String =
+    driver.findElement(By.xpath("//tr//td")).getText
 }

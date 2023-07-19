@@ -24,12 +24,13 @@ object HaveYouUsedMethodOneToImportInPast extends YesNoPage {
 }
 
 object OutlineWhyNotMethodOne extends TextAreaPage {
-  val pageTitle =
+  val redirectUrl = "/explain-why-not-method-1"
+  val pageTitle   =
     "Explain why you have not selected Method 1 to value your goods"
 }
 
 object DescribeTheIdenticalGoods extends TextAreaPage {
-  val pageUrl   = driver.getCurrentUrl
-  val pageTitle =
+  val redirectUrl = "/describe-identical-goods"
+  val pageTitle   =
     "Describe the identical goods"
 }

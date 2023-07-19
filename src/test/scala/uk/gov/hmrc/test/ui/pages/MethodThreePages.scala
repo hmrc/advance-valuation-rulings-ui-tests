@@ -19,9 +19,8 @@ package uk.gov.hmrc.test.ui.pages
 import uk.gov.hmrc.test.ui.pages.base._
 
 object ExplainWhyNotMethodOneOrTwo extends TextAreaPage {
-  val pageUrl   = driver.getCurrentUrl
-  val pageTitle =
-    "Explain why you have not selected Methods 1 or 2 to value your goods"
+  val redirectUrl = "/explain-why-not-methods-1-2"
+  val pageTitle   = "Explain why you have not selected Methods 1 or 2 to value your goods"
 }
 
 object HaveYouUsedMethodOneToImportSimilarGoods extends YesNoPage {
@@ -30,6 +29,6 @@ object HaveYouUsedMethodOneToImportSimilarGoods extends YesNoPage {
 }
 
 object DescribeTheSimilarGoods extends TextAreaPage {
-  val pageTitle =
-    "Describe the similar goods"
+  val redirectUrl = "/describe-similar-goods"
+  val pageTitle   = "Describe the similar goods"
 }

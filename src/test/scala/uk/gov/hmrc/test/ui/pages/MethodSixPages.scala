@@ -19,8 +19,8 @@ package uk.gov.hmrc.test.ui.pages
 import uk.gov.hmrc.test.ui.pages.base._
 
 object ExplainWhyNotMethodsOneToFive extends TextAreaPage {
-  val pageUrl   = driver.getCurrentUrl
-  val pageTitle =
+  val redirectUrl = "/explain-why-not-methods-1-5"
+  val pageTitle   =
     "Explain why you have not selected Methods 1-5 to value your goods"
 }
 
@@ -30,7 +30,7 @@ object WhichMethodWouldYouLikeToAdapt extends OptionSelectionPage {
 }
 
 object ExplainHowYouHaveUsedMethodSix extends TextAreaPage {
-  val pageUrl   = driver.getCurrentUrl
-  val pageTitle =
+  val redirectUrl = "/explain-how-method-6"
+  val pageTitle   =
     "Explain how you have used Method 6 to value your goods"
 }
