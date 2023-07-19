@@ -12,7 +12,7 @@ Feature: Agent Acting on Behalf of Organisation End to End Journey
     And I click on continue in How We Contact You page
     And I select "Yes" and continue in Check the name and address page
     And I enter Name: "Automation Test", Email: "Test@automation.com", Phone: "9876543211" details and continue in Provide your own contact details page
-    And I enter Eori: "GB12341234123", CompanyName: "Agent Company Name", StreetAndNumber: "#1 Street and Number", City: "City Upon River", Country: "United Kingdom", PostalCode: "POS CODE" and continue on Your company's contact page
+    And I enter Eori: "GB12341234123", CompanyName: "Agent Company Name", StreetAndNumber: "#1 Street and Number", City: "City Upon River", Country: "GB", PostalCode: "POS CODE" and continue on Your company's contact page
     And I select Method 1 and continue in Select the method page
     And I select "Yes" and continue in Is There a Sale Involved
     And I select "Yes" and continue in Is the sale between related parties
