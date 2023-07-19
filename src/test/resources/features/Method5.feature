@@ -1,4 +1,4 @@
-@Method4
+@Method5
 @EndToEndJourney
 Feature: Method 5 flows
 

@@ -32,7 +32,7 @@ import org.junit.runner.RunWith
   ),
   // tags = "@GoodsInformation"
   // tags = "@RequiredInformationPage"
-  tags = "@EndToEndJourney"
+  tags = "@Regression"
 )
 class Runner
 object Runner extends Runner
