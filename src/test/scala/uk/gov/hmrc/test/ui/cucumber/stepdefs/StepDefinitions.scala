@@ -32,16 +32,10 @@ class StepDefinitions
   var draftId = ""
 
   Given(
-    "I am on the ARS Home Page with affinity group as a Organisation and Credential role as a Assistant"
-  )(() => BasePage.invokeURL(BasePage.URL_ARSHomePage, "Organisation", "Assistant"))
-
-  Given(
-    "I am on the ARS Home Page with affinity group as a Organisation and Credential role as a User"
-  )(() => BasePage.invokeURL(BasePage.URL_ARSHomePage, "Organisation", "User"))
-
-  Given(
-    "I am on the ARS Home Page with affinity group as a Individual and Credential role as a User"
-  )(() => BasePage.invokeURL(BasePage.URL_ARSHomePage, "Individual", "User"))
+    "I am on the ARS Home Page with affinity group as a {string} and Credential role as a {string}"
+  )((affinityGroup: String, credentialRole: String) =>
+    BasePage.invokeURL(BasePage.URL_ARSHomePage, affinityGroup, credentialRole)
+  )
 
   Given("I am on the ARS Home Page and Login without enrolment") {
     (() => BasePage.invokeURL(BasePage.URL_ARSHomePage, "Individual", "User", false))
