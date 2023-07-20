@@ -1,11 +1,12 @@
 @SaveAsDraft
 @Regression
+@EndToEndJourney
 Feature: Save as draft functionality for all text pages in the application journeys
 
   @Method1
   @EndToEndJourney
   Scenario: Save as draft functionality check as Individual User End To End Journey for Method 1
-    Given I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+    Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
@@ -68,7 +69,7 @@ Feature: Save as draft functionality for all text pages in the application journ
 
   @Method2
   Scenario: Save as draft functionality check as Individual User End To End Journey for Method 2
-    Given I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+    Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
@@ -90,7 +91,7 @@ Feature: Save as draft functionality for all text pages in the application journ
 
   @Method3
   Scenario: Save as draft functionality check as Individual User End To End Journey for Method 3
-    Given I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+    Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
@@ -114,7 +115,7 @@ Feature: Save as draft functionality for all text pages in the application journ
 
   @Method4
   Scenario: Save as draft functionality check as Individual User End To End Journey for Method 4
-    Given I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+    Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
@@ -132,7 +133,7 @@ Feature: Save as draft functionality for all text pages in the application journ
 
   @Method5
   Scenario: Save as draft functionality check as Individual User End To End Journey for Method 5
-    Given I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+    Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
@@ -150,7 +151,7 @@ Feature: Save as draft functionality for all text pages in the application journ
 
   @Method6
   Scenario: Save as draft functionality check as Individual User End To End Journey for Method 6
-    Given I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+    Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
@@ -174,6 +175,22 @@ Feature: Save as draft functionality for all text pages in the application journ
     And I should see submitted application once I click Go to application and ruling button
     And I delete the application in draft
 
+  @OrganisationAssistant
+  Scenario: Save as draft functionality check as Organisation Assistant
+    Given I am on the ARS Home Page with affinity group as a "Organisation" and Credential role as a "Assistant"
+    When I click on Start new application in ARS Home
+    Then I select role as a "agent acting on an organisation"
+    And I click continue on Information you need to complete an application page
+    And I select "Yes" and continue in Are you planning to import goods page
+    And I click on continue in How We Contact You page
+    And I select "Yes" and continue in Check the name and address page
+    And I enter Name: "Automation Test", Email: "Test@automation.com", Phone: "9876543211" details and continue in Provide your own contact details page
+    And I enter Eori: "GB12341234123", CompanyName: "Agent Company Name", StreetAndNumber: "#1 Street and Number", City: "City Upon River", Country: "GB", PostalCode: "POS CODE" on Your company's contact page
+    And I click on Save as draft button
+    And I am on Save as draft page and I click on your applications and rulings link
+    Then I navigate to agent company's contact details page and compare the text
+    And I should see submitted application once I click Go to application and ruling button
+    And I delete the application in draft
 
 
 

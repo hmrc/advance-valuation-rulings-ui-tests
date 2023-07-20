@@ -4,7 +4,7 @@ Feature: End To End Journey
 
   @crossbrowsing
   Scenario: Method 1 full flow without upload
-    Given I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+    Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
@@ -32,7 +32,7 @@ Feature: End To End Journey
     And I should see submitted application once I click Go to application and ruling button
 
   Scenario: Method 1 short flow
-    Given I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+    Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
@@ -47,7 +47,7 @@ Feature: End To End Journey
     Then I navigate to Description of the Goods
 
   Scenario: Method 1 no sale involved
-    Given I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+    Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
@@ -60,7 +60,7 @@ Feature: End To End Journey
 
 
   Scenario: Method 1 full flow with multiple upload
-    Given I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+    Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page

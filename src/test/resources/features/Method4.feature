@@ -6,7 +6,7 @@ Feature: Method 4 flows
 
 @AccessibilityTest
   Scenario: Method 4 all pages
-    Given I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+    Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page

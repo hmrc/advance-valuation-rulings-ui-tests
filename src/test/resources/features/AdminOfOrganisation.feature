@@ -3,7 +3,7 @@
 Feature: Admin of Organisation End To End Journey
 
   Scenario: Organisation User End To End Journey without upload
-    Given I am on the ARS Home Page with affinity group as a Organisation and Credential role as a User
+    Given I am on the ARS Home Page with affinity group as a "Organisation" and Credential role as a "User"
     When I click on Start new application in ARS Home
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
