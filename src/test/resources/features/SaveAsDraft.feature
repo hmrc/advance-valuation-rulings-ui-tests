@@ -1,5 +1,6 @@
 @SaveAsDraft
 @Regression
+@EndToEndJourneygit
 Feature: Save as draft functionality for all text pages in the application journeys
 
   @Method1
