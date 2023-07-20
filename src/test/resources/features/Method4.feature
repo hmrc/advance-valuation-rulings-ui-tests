@@ -1,7 +1,6 @@
 # Disabled for now as it is not working
 @Method4
 @EndToEndJourney
-@Method4
 Feature: Method 4 flows
 
 @AccessibilityTest
