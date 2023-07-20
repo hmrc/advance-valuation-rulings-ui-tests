@@ -17,16 +17,31 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages._
+import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
+import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
 
 trait MethodFourStepDefintions extends BaseStepDef {
-  Then("I will be navigated to Explain Why Not Method Methods one, two, or three") { () =>
+  Then("I will be navigated to explain why not methods one till three") { () =>
     ExplainWhyNotMethodsOneTwoOrThree.loadPage()
   }
 
-  And("I enter {string} as my reason why I did not select Methods one, two, or three") { (reason: String) =>
+  And("I enter {string} as my reason why I did not select methods one till three and continue") { (reason: String) =>
     ExplainWhyNotMethodsOneTwoOrThree
       .enterText(reason)
       .submitPage()
+  }
+
+  And("I enter {string} as my reason why I did not select methods one till three") { (reason: String) =>
+    ExplainWhyNotMethodsOneTwoOrThree.enterText(reason)
+    ScenarioContext.setContext("why not method one tll three", reason)
+  }
+
+  And("I navigate to explain why not methods one till three page and compare text") { () =>
+    val url = s"$baseUrl/advance-valuation-ruling/" +
+      ScenarioContext.getContext("draftId") +
+      ExplainWhyNotMethodsOneTwoOrThree.redirectUrl
+    driver.get(url)
+    assert(ScenarioContext.getContext("why not method one tll three") == ExplainWhyNotMethodsOneTwoOrThree.getText())
   }
 
   Then("I will be navigated to Explain why you have selected Method 4") { () =>

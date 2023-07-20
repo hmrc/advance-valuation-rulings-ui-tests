@@ -27,4 +27,7 @@ trait TextAreaPage extends BasePage {
     textArea.find.enterText(content)
     this
   }
+
+  def getText(): String =
+    textArea.find.getText
 }

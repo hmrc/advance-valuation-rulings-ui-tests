@@ -29,6 +29,7 @@ object AgentCompanyDetailsPage extends BasePage {
   val agentCityField            = By.id("agentCity")
   val agentCountryField         = "agentCountry"
   val agentPostalCodeField      = By.id("agentPostalCode")
+  val redirectUrl               = "/agent-company-details"
 
   def enterFormDetails(
     agentEori: String,
@@ -45,4 +46,14 @@ object AgentCompanyDetailsPage extends BasePage {
     selectFromAutocomplete(agentCountryField, agentCountry)
     agentPostalCodeField.find.enterText(agentPostalCode)
   }
+
+  def getAgentEori(): String = agentEoriField.find.getAttribute("value")
+
+  def getAgentCompanyName(): String = agentCompanyNameField.find.getAttribute("value")
+
+  def getStreetAndNumber(): String = agentStreetAndNumberField.find.getAttribute("value")
+
+  def getCity(): String = agentCityField.find.getAttribute("value")
+
+  def getPostcode(): String = agentPostalCodeField.find.getAttribute("value")
 }

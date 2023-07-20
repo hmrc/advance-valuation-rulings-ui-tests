@@ -14,11 +14,18 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.pages.base
 
-import uk.gov.hmrc.test.ui.pages.base.TextAreaPage
+import scala.collection.mutable
 
-case object DescribeTheSimilarGoodsPage extends TextAreaPage {
-  val redirectUrl = "/describe-similar-goods"
-  val pageTitle   = "Describe the similar goods"
+object ScenarioContext {
+  var scenarioContext = new mutable.HashMap[String, String]()
+
+  def setContext(key: String, value: String): Unit =
+    scenarioContext.put(key, value)
+
+  def getContext(key: String): String = scenarioContext.get(key).getOrElse("")
+
+//  def isContains(key: Nothing): Boolean = scenarioContext.containsKey(key.toString)
+
 }

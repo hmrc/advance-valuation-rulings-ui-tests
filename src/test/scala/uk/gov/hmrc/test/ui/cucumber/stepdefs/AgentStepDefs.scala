@@ -18,6 +18,8 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.{AgentCompanyDetailsPage, AgentSelectRole, OrganisationContactDetailsPage}
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.submitPage
+import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
+import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
 
 trait AgentStepDefs
     extends BaseStepDef
@@ -67,6 +69,45 @@ trait AgentStepDefs
         agentPostalCode
       )
       submitPage()
+  }
 
+  And(
+    "I enter Eori: {string}, CompanyName: {string}, StreetAndNumber: {string}, City: {string}, Country: {string}, PostalCode: {string} on Your company's contact page"
+  ) {
+    (
+      agentEori: String,
+      agentCompanyName: String,
+      agentStreetAndNumber: String,
+      agentCity: String,
+      agentCountry: String,
+      agentPostalCode: String
+    ) =>
+      AgentCompanyDetailsPage.loadPage()
+      AgentCompanyDetailsPage.enterFormDetails(
+        agentEori,
+        agentCompanyName,
+        agentStreetAndNumber,
+        agentCity,
+        agentCountry,
+        agentPostalCode
+      )
+      ScenarioContext.setContext("agent Eori", agentEori)
+      ScenarioContext.setContext("agent company", agentCompanyName)
+      ScenarioContext.setContext("agent company street", agentStreetAndNumber)
+      ScenarioContext.setContext("agent company city", agentCity)
+      ScenarioContext.setContext("agent country", agentCountry)
+      ScenarioContext.setContext("agent company postcode", agentPostalCode)
+  }
+
+  And("I navigate to agent company's contact details page and compare the text") { () =>
+    val url = s"$baseUrl/advance-valuation-ruling/" +
+      ScenarioContext.getContext("draftId") +
+      AgentCompanyDetailsPage.redirectUrl
+    driver.get(url)
+    assert(ScenarioContext.getContext("agent Eori") == AgentCompanyDetailsPage.getAgentEori())
+    assert(ScenarioContext.getContext("agent company") == AgentCompanyDetailsPage.getAgentCompanyName())
+    assert(ScenarioContext.getContext("agent company street") == AgentCompanyDetailsPage.getStreetAndNumber())
+    assert(ScenarioContext.getContext("agent company city") == AgentCompanyDetailsPage.getCity())
+    assert(ScenarioContext.getContext("agent company postcode") == AgentCompanyDetailsPage.getPostcode())
   }
 }
