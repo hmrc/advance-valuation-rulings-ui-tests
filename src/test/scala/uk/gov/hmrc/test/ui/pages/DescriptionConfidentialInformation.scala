@@ -18,17 +18,7 @@ package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.pages.base._
 
-object ExplainWhyNotMethodOneOrTwo extends TextAreaPage {
-  val redirectUrl = "/explain-why-not-methods-1-2"
-  val pageTitle   = "Explain why you have not selected Methods 1 or 2 to value your goods"
-}
-
-object HaveYouUsedMethodOneToImportSimilarGoods extends YesNoPage {
-  val pageTitle =
-    "Can you provide evidence of a Method 1 declaration, which has been accepted by UK Customs within 90 days of importation, for goods similar to those being valued?"
-}
-
-object DescribeTheSimilarGoods extends TextAreaPage {
-  val redirectUrl = "/describe-similar-goods"
-  val pageTitle   = "Describe the similar goods"
+object DescriptionConfidentialInformation extends TextAreaPage {
+  val redirectUrl = "/provide-confidential-information"
+  val pageTitle   = "Describe any confidential information you would like to add about the goods"
 }

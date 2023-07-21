@@ -18,6 +18,7 @@ package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.pages.base._
 
-object SescribeTheLegalChallenges extends TextAreaPage {
-  val pageTitle = "Describe the legal challenges relating to the goods"
+object DescribeTheLegalChallenges extends TextAreaPage {
+  val redirectUrl = "/describe-legal-challenges"
+  val pageTitle   = "Describe the legal challenges relating to the goods"
 }

@@ -25,7 +25,9 @@ object IsTheSaleBetweenRelatedParties extends YesNoPage {
   override val pageTitle: String =
     "Is the sale between related parties?"
 }
+
 object DescribeHowPartiesAreRelated extends TextAreaPage {
+  val redirectUrl                = "/describe-related-parties"
   override val pageTitle: String =
     "Describe how the parties are related"
 }
@@ -35,6 +37,7 @@ object AreThereAnyRestrictionsOnGoods extends YesNoPage {
 }
 
 object DescribeAnyRestrictions extends TextAreaPage {
+  val redirectUrl                = "/describe-restrictions-use-resale-goods"
   override val pageTitle: String =
     "Describe any restrictions on the use or resale of goods"
 }
@@ -43,6 +46,7 @@ object IsSaleSubjectToConditions extends YesNoPage {
     "Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods?"
 }
 object DescribeAnyConditions extends TextAreaPage {
+  val redirectUrl                = "/describe-conditions-circumstances"
   override val pageTitle: String =
     "Describe the conditions or circumstances which cannot be calculated"
 }

@@ -17,8 +17,9 @@
 package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.pages.base.BasePage
-
 import org.openqa.selenium.By
+//import uk.gov.hmrc.test.ui.pages.ApplicationNoViewPage.{btn_continueApplication, driver}
+//import uk.gov.hmrc.test.ui.pages.ProvideYourContactDetails.pageUrl
 
 object ProvideYourContactDetails extends BasePage {
 
@@ -26,10 +27,17 @@ object ProvideYourContactDetails extends BasePage {
   val nameField    = By.id("name")
   val emailField   = By.id("email")
   val contactField = By.id("phone")
+  val redirectUrl  = "/provide-contact-details"
 
   def enterContactDetails(name: String, email: String, contact: String): Unit = {
     nameField.find.enterText(name)
     emailField.find.enterText(email)
     contactField.find.enterText(contact)
   }
+  def getName(): String = nameField.find.getAttribute("value")
+
+  def getEmail(): String = emailField.find.getAttribute("value")
+
+  def getContact(): String = contactField.find.getAttribute("value")
+
 }
