@@ -16,8 +16,8 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import uk.gov.hmrc.test.ui.pages.{ApplicationComplete, DescribeAnyRestrictions, DescribeTheLegalChallenges, DoYouWantToUploadAnySupportingDocuments, _}
-import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.{clickSaveAsDraftButton, onPage, submitPage}
+import uk.gov.hmrc.test.ui.pages.{ApplicationComplete, DescribeAnyRestrictions, DescribeTheLegalChallenges, DoYouWantToUploadAnySupportingDocuments, CancelApplicationPage, _}
+import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.{clickCancelApplicationLink, clickSaveAsDraftButton, onPage, submitPage}
 import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
 import uk.gov.hmrc.test.ui.pages.base.{BasePage, ScenarioContext}
 
@@ -361,7 +361,10 @@ class StepDefinitions
 
   Then("I will be navigated to the Check Your Answers page")(() => CheckYourAnswers.loadPage())
 
-  And("I check my answers and click on continue")(() => CheckYourAnswers.submitPage())
+  And("I check my answers and click on continue") { () =>
+    CheckYourAnswers.submitPage()
+    Thread.sleep(5000)
+  }
 
   Then("I will be navigated to the Application Complete page")(() => ApplicationComplete.loadPage())
 
@@ -372,6 +375,29 @@ class StepDefinitions
 
   And("I delete the application in draft") { () =>
     ApplicationNoViewPage.clickDeleteApplicationButton()
+  }
+
+  And("I click on cancel application link") { () =>
+    clickCancelApplicationLink()
+    CancelApplicationPage.loadPage()
+  }
+
+  And("I click on confirm button on cancellation page") { () =>
+    CancelApplicationPage.clickConfirmCancellationButton()
+    ApplicationNoViewPage.loadPage()
+  }
+
+  And("I click back button in the browser") { () =>
+    driver.navigate().back()
+  }
+
+  Then("You cannot view this application page is displayed") { () =>
+    CancelledApplicationPage.loadPage()
+  }
+
+  Then("I click on go to application and rulings page button on application cancelled page") { () =>
+    CancelledApplicationPage.clickGoToApplicationAndRulingButton()
+    ApplicationNoViewPage.loadPage()
   }
 
   Then("I sign out")((() => BasePage.signOut()))
