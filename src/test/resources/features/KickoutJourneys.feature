@@ -22,7 +22,7 @@ Feature: End To End Journey
     Then user should see subscribe to advance rulings page to enrol
     Then I sign out
 
-  Scenario: Method 1 full flow with multiple upload
+  Scenario: User clicks on cancel application link
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     And I click on Start new application in ARS Home
     And I click continue on Information you need to complete an application page
