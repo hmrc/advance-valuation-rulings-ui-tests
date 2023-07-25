@@ -5,7 +5,7 @@ Feature: Agent Acting on Behalf of Organisation End to End Journey
   Scenario: Organisation Assistant End To End Journey with multiple upload
     Given I am on the ARS Home Page with affinity group as a "Organisation" and Credential role as a "Assistant"
     When I click on Start new application in ARS Home
-    Then I select role as a "agent acting on an organisation"
+    And I select role as a "Agent acting on behalf of an organisation"
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page

@@ -50,6 +50,7 @@ class StepDefinitions
   When("I click on Start new application in ARS Home") { () =>
     onPage(base.BasePage.arsHomePageText)
     submitPage()
+    AgentSelectRole.loadPage()
   }
   And(
     "I click continue on Information you need to complete an application page"

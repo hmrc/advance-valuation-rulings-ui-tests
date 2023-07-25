@@ -8,6 +8,7 @@ Feature: Method 3 flows
   Scenario: Method 3 flow
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home
+    And I select role as a "An employee of the organisation"
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
@@ -23,6 +24,7 @@ Feature: Method 3 flows
   Scenario: Method 3: Have not used Method 1 to import similar goods in past
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home
+    And I select role as a "An employee of the organisation"
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
