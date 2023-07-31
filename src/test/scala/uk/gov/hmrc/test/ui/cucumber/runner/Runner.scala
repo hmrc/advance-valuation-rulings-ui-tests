@@ -33,6 +33,8 @@ import org.junit.runner.RunWith
   // tags = "@GoodsInformation"
   // tags = "@RequiredInformationPage"
   tags = "@EndToEndJourney"
+  //  tags = "@EndToEndJourneyNew"
 )
 class Runner
+
 object Runner extends Runner

@@ -15,21 +15,24 @@
  */
 
 package uk.gov.hmrc.test.ui.pages
-import uk.gov.hmrc.test.ui.pages.base.{BasePage, YesNoPage}
+import uk.gov.hmrc.test.ui.pages.base.{BasePage}
 
 import org.openqa.selenium.By
 
 object AgentSelectRole extends BasePage {
 
-  override val pageTitle: String          = "Authority Wizard"
+  override val pageTitle: String          = "How would you describe your role as an importer?"
   private val employeeOfTheOrganisation   = "div:nth-of-type(1) > input[name='value']"
   private val agentActingOnAnOrganisation = "div:nth-of-type(2) > input[name='value']"
+  private val agentActingOnBehalfOfTrader = "div:nth-of-type(3) > input[name='value']"
 
-  def selectRole(Role: Boolean = true): Unit =
-    if (Role) {
+  def selectRole(role: String): Unit =
+    if (role == "An employee of the organisation") {
       driver.findElement(By.cssSelector(employeeOfTheOrganisation)).click
-    } else {
+    } else if (role == "Agent acting on behalf of an organisation") {
       driver.findElement(By.cssSelector(agentActingOnAnOrganisation)).click
-    }
-
+    } else if (role == "Agent acting on behalf of a trader") {
+      driver.findElement(By.cssSelector(agentActingOnBehalfOfTrader)).click
+    } else
+      throw new Exception("Invalid role selected")
 }

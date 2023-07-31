@@ -1,17 +1,16 @@
-@OrganisationAssistant
-@EndToEndJourney
-Feature: Agent Acting on Behalf of Organisation End to End Journey
+@OrganisationUserNew
+@EndToEndJourneyNew
+Feature: Admin of Organisation End To End Journey
 
-  Scenario: Organisation Assistant End To End Journey with multiple upload
-    Given I am on the ARS Home Page with affinity group as a "Organisation" and Credential role as a "Assistant"
+  Scenario: Organisation User End To End Journey without upload
+    Given I am on the ARS Home Page with affinity group as a "Organisation" and Credential role as a "User"
     When I click on Start new application in ARS Home
-    Then I select role as a "agent acting on an organisation"
+    And I select role as a "An employee of the organisation"
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
     And I select "Yes" and continue in Check the name and address page
-    And I enter Name: "Automation Test", Email: "Test@automation.com", Phone: "9876543211" details and continue in Provide your own contact details page
-    And I enter Eori: "GB12341234123", CompanyName: "Agent Company Name", StreetAndNumber: "#1 Street and Number", City: "City Upon River", Country: "GB", PostalCode: "POS CODE" and continue on Your company's contact page
+    And I enter Name- "Automation Test" Email- "Test6@automation.com",Phone- "9876543211" details and continue in Provide your contact details page
     And I select Method 1 and continue in Select the method page
     And I select "Yes" and continue in Is There a Sale Involved
     And I select "Yes" and continue in Is the sale between related parties
