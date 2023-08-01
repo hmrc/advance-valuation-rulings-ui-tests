@@ -1,5 +1,5 @@
-@Method1New
-@EndToEndJourneyNew
+@MethodAgentsCred
+@EndToEndJourneyAgentsCred
 Feature: End To End Journey
 
   @crossbrowsing
@@ -61,7 +61,7 @@ Feature: End To End Journey
     And I select "No" and continue in Is There a Sale Involved
     Then I will be navigated to the Select a Method page
 
-  @EndToEndJourneyNew
+  @EndToEndJourneyAgentsCred
   Scenario: Method 1 full flow with multiple upload
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home

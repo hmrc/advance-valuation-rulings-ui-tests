@@ -1,5 +1,5 @@
-@OrganisationUserNew
-@EndToEndJourneyNew
+@OrganisationUserAgentsCred
+@EndToEndJourneyAgentsCred
 Feature: Admin of Organisation End To End Journey
 
   Scenario: Organisation User End To End Journey without upload

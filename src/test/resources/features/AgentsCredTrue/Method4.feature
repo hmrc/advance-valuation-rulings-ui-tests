@@ -1,8 +1,8 @@
-@Method4New
-@EndToEndJourneyNew
+@Method4AgentsCred
+@EndToEndJourneyAgentsCred
 Feature: Method 4 flows
 
-  @AccessibilityTestNew
+  @AccessibilityTestAgentsCred
   Scenario: Method 4 all pages
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home
