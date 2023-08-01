@@ -16,8 +16,7 @@
 
 package uk.gov.hmrc.test.ui.cucumber.runner
 
-import io.cucumber.junit.Cucumber
-import io.cucumber.junit.CucumberOptions
+import io.cucumber.junit.{Cucumber, CucumberOptions}
 import org.junit.runner.RunWith
 
 @RunWith(classOf[Cucumber])
@@ -28,12 +27,10 @@ import org.junit.runner.RunWith
     "pretty",
     "html:target/cucumber",
     "json:target/cucumber.json",
-    "junit:target/test-reports/Runner.xml"
+    "junit:target/test-reports/AgentsCredRunner.xml"
   ),
-  // tags = "@GoodsInformation"
-  // tags = "@RequiredInformationPage"
-  tags = "@EndToEndJourney"
+  tags = "@EndToEndJourneyAgentsCred"
 )
-class Runner
+class AgentsCredRunner
 
-object Runner extends Runner
+//object AgentsCredRunnerRunner extends Runner

@@ -1,5 +1,5 @@
-@Method5New
-@EndToEndJourneyNew
+@Method5AgentsCred
+@EndToEndJourneyAgentsCred
 Feature: Method 5 flows
 
   Scenario: Method 5 flow

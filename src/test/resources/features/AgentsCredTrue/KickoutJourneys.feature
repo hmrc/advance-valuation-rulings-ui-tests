@@ -1,4 +1,4 @@
-@EndToEndJourneyNew
+@EndToEndJourneyAgentsCred
 Feature: End To End Journey
 
   Scenario: User's EORI number details are incorrect

@@ -27,8 +27,8 @@ import org.junit.runner.RunWith
     "pretty",
     "html:target/cucumber",
     "json:target/cucumber.json",
-    "junit:target/test-reports/@AcceptanceTest.xml"
+    "junit:target/test-reports/AccessibilityTestAgentsCred.xml"
   ),
-  tags = "@AccessibilityTest"
+  tags = "@AccessibilityTestAgentsCred"
 )
-class AccessibilityTest
+class AgentCredAccessibilityTestRunner
