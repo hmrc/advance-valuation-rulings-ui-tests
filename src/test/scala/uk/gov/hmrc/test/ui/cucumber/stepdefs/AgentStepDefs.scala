@@ -28,11 +28,8 @@ trait AgentStepDefs
     with MethodFourStepDefintions
     with MethodSixStepDefintions {
 
-  When("I select role as a {string}") { s: String ⇒
-    s match {
-      case "employee of the organisation"    => AgentSelectRole.selectRole(true)
-      case "agent acting on an organisation" => AgentSelectRole.selectRole(false)
-    }
+  When("I select role as a {string}") { role: String ⇒
+    AgentSelectRole.selectRole(role: String)
     submitPage()
   }
 

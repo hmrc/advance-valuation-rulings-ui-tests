@@ -4,7 +4,6 @@
 Feature: Save as draft functionality for all text pages in the application journeys
 
   @Method1
-  @EndToEndJourney
   Scenario: Save as draft functionality check as Individual User End To End Journey for Method 1
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     And I click on Start new application in ARS Home
@@ -179,7 +178,7 @@ Feature: Save as draft functionality for all text pages in the application journ
   Scenario: Save as draft functionality check as Organisation Assistant
     Given I am on the ARS Home Page with affinity group as a "Organisation" and Credential role as a "Assistant"
     And I click on Start new application in ARS Home
-    And I select role as a "agent acting on an organisation"
+    And I select role as a "Agent acting on behalf of an organisation"
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
@@ -191,8 +190,5 @@ Feature: Save as draft functionality for all text pages in the application journ
     Then I navigate to agent company's contact details page and compare the text
     And I should see submitted application once I click Go to application and ruling button
     And I delete the application in draft
-
-
-
 
 

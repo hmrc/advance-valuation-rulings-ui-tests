@@ -1,11 +1,12 @@
-@EndToEndJourney
-@Method2
-Feature: Method 2 flows
+@EndToEndJourneyNew
+@Method2New
+Feature: Method 2 flows 1
 
-@AccessibilityTest
+  @AccessibilityTestNew
   Scenario: Method 2 all pages answered 'yes'
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home
+    And I select role as a "An employee of the organisation"
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
@@ -19,10 +20,11 @@ Feature: Method 2 flows
     Then I will be navigated to Describe the Identical Goods
     And I enter "many details" as the description of the identical goods and press continue
     Then I navigate to Description of the Goods
-    
+
   Scenario: Method 2: Have not used Method 1 to import identical goods in past
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home
+    And I select role as a "An employee of the organisation"
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
