@@ -16,17 +16,10 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.pages.base.{BasePage, YesNoPage}
+import uk.gov.hmrc.test.ui.pages.base.BasePage
 
-object AddressPage extends YesNoPage {
-  val pageTitle = s"Check the name and address for EORI number ${BasePage.publicEORINumber}"
-}
+object TradersEoriMustBeUpToDate extends BasePage {
 
-object AddressPageForPrivateEori extends YesNoPage {
-  val pageTitle = s"The registration details for EORI number ${BasePage.privateEORINumber} are private"
-}
-
-object AddressPageForInvalidEori extends YesNoPage {
-  val pageTitle          = s"EORI number ${BasePage.invalidEORINumber} is invalid"
-  def getTitle(): String = driver.getTitle
+  val pageTitle =
+    "The trader’s EORI details must be correct to use this service"
 }

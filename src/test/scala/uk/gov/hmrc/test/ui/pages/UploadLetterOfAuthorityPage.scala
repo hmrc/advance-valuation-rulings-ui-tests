@@ -16,17 +16,16 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.pages.base.{BasePage, YesNoPage}
+import org.openqa.selenium.By
+import uk.gov.hmrc.test.ui.pages.base.BasePage
 
-object AddressPage extends YesNoPage {
-  val pageTitle = s"Check the name and address for EORI number ${BasePage.publicEORINumber}"
-}
+object UploadLetterOfAuthorityPage extends BasePage {
 
-object AddressPageForPrivateEori extends YesNoPage {
-  val pageTitle = s"The registration details for EORI number ${BasePage.privateEORINumber} are private"
-}
+  val pageTitle          = "Upload your letter of authority"
+  val ele_UploadDocument = "file-input"
 
-object AddressPageForInvalidEori extends YesNoPage {
-  val pageTitle          = s"EORI number ${BasePage.invalidEORINumber} is invalid"
-  def getTitle(): String = driver.getTitle
+  def uploadDocument(uploadFilePath: String) {
+    driver.findElement(By.id(ele_UploadDocument)).sendKeys(uploadFilePath)
+  }
+
 }
