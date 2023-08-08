@@ -31,5 +31,34 @@ Feature: End To End Journey
     Then You cannot view this application page is displayed
     And I click on go to application and rulings page button on application cancelled page
 
+  Scenario: Agent on behalf of trader when invalid EORI is entered
+    Given I am on the ARS Home Page with affinity group as a "Organisation" and Credential role as a "User"
+    And I click on Start new application in ARS Home
+    And I select role as a "Agent acting on behalf of a trader"
+    And I click continue on Information you need to complete an application page
+    And I select "Yes" and continue in Are you planning to import goods page
+    And I click on continue in How We Contact You page
+    When I enter EORI number "GB321888888041" on Provide traders EORI number page
+    And I click on Continue button
+    Then I verify error message for invalid EORI is displayed
+
+  Scenario Outline: Agent on behalf of trader enters valid EORI and selects No on check name and address page
+    Given I am on the ARS Home Page with affinity group as a "Organisation" and Credential role as a "User"
+    And I click on Start new application in ARS Home
+    And I select role as a "Agent acting on behalf of a trader"
+    And I click continue on Information you need to complete an application page
+    And I select "Yes" and continue in Are you planning to import goods page
+    And I click on continue in How We Contact You page
+    And I enter EORI number <EORINo> on Provide traders EORI number page
+    And I click on Continue button
+    When I select "No" for <EORIType> EORI on Check the name and address page
+    And I click on Continue button
+    Then I will be navigated to traders EORI number details must be correct to use this service
+    Examples:
+      | EORINo           | EORIType  |
+      | "GB113888888041" | "public"  |
+      | "GB112888888041" | "private" |
+
+
 
 

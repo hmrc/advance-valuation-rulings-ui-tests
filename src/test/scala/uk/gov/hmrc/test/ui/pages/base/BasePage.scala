@@ -68,7 +68,9 @@ case class PageNotFoundException(s: String) extends Exception(s)
 object BasePage {
   lazy val baseUrl = TestConfiguration.environmentHost
 
-  val publicEORINumber = "GBE9XSDF10BCKEYAX"
+  val publicEORINumber  = "GBE9XSDF10BCKEYAX"
+  val privateEORINumber = "GB112SDF10BCKEYAX"
+  val invalidEORINumber = "GB321888888041"
 
   val EORINumber      = "GB333186844456"
   val continueButton  = "govuk-button"

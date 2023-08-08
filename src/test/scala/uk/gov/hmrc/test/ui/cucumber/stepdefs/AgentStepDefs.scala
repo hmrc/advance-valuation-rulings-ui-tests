@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import uk.gov.hmrc.test.ui.pages.{AgentCompanyDetailsPage, AgentSelectRole, OrganisationContactDetailsPage}
+import uk.gov.hmrc.test.ui.pages.{AddressPage, AddressPageForInvalidEori, AddressPageForPrivateEori, AgentCompanyDetailsPage, AgentSelectRole, OrganisationContactDetailsPage, ProvideTraderEori, RequiredInformationPage, TradersEoriMustBeUpToDate, UploadLetterOfAuthorityPage, UploadSupportingDocuments, YourEORIMustBeUpToDate}
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.submitPage
 import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
 import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
@@ -31,6 +31,11 @@ trait AgentStepDefs
   When("I select role as a {string}") { role: String ⇒
     AgentSelectRole.selectRole(role: String)
     submitPage()
+  }
+
+  And("I verify starter checklist page for {string} is displayed") { role: String ⇒
+    RequiredInformationPage.loadPage()
+    assert(driver.getPageSource.contains(RequiredInformationPage.returnChecklistTextForRole(role)))
   }
 
   And(
@@ -106,5 +111,33 @@ trait AgentStepDefs
     assert(ScenarioContext.getContext("agent company street") == AgentCompanyDetailsPage.getStreetAndNumber())
     assert(ScenarioContext.getContext("agent company city") == AgentCompanyDetailsPage.getCity())
     assert(ScenarioContext.getContext("agent company postcode") == AgentCompanyDetailsPage.getPostcode())
+  }
+
+  And("I enter EORI number {string} on Provide traders EORI number page") { (eoriNo: String) =>
+    ProvideTraderEori.loadPage()
+    ProvideTraderEori.enterEoriNumber(eoriNo)
+  }
+
+  And("I verify error message for invalid EORI is displayed") { () =>
+    assert(AddressPageForInvalidEori.pageTitle == AddressPageForInvalidEori.getTitle())
+  }
+
+  And("I upload the document {string} and continue in Upload letter of authority page") { (filename: String) =>
+    val path = getClass.getResource(s"/testdata/$filename").getPath
+    UploadLetterOfAuthorityPage.uploadDocument(path)
+    submitPage()
+  }
+
+  Then("I will be navigated to traders EORI number details must be correct to use this service")(() =>
+    TradersEoriMustBeUpToDate.loadPage()
+  )
+
+  And("I select {booleanValue} for {string} EORI on Check the name and address page") {
+    (option: Boolean, eoriType: String) =>
+      if (eoriType == "public") {
+        AddressPage.loadPage().select(option)
+      } else if (eoriType == "private") {
+        AddressPageForPrivateEori.loadPage().select(option)
+      } else throw new Exception("Invalid EORI type passed")
   }
 }
