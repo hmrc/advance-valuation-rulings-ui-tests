@@ -119,12 +119,13 @@ trait AgentStepDefs
   }
 
   And("I verify error message for invalid EORI is displayed") { () =>
+    AddressPageForInvalidEori.loadPage()
     assert(AddressPageForInvalidEori.pageTitle == AddressPageForInvalidEori.getTitle())
   }
 
   And("I upload the document {string} and continue in Upload letter of authority page") { (filename: String) =>
     val path = getClass.getResource(s"/testdata/$filename").getPath
-    UploadLetterOfAuthorityPage.uploadDocument(path)
+    UploadLetterOfAuthorityPage.loadPage().uploadDocument(path)
     submitPage()
   }
 
