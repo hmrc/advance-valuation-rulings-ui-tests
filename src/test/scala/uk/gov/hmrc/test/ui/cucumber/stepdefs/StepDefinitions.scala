@@ -225,8 +225,18 @@ class StepDefinitions
     ThisServiceIsDesignedForThose.loadPage()
     ThisServiceIsDesignedForThose.linkNavigationValidation()
   }
+
   Then("I will be navigated to Your EORI number details must be correct to use this service")(() =>
     YourEORIMustBeUpToDate.loadPage()
+  )
+
+  Then("I will be navigated to Your EORI number details must be correct for {string} to use this service")(
+    (role: String) =>
+      if (role == "An employee of the organisation")
+        YourEORIMustBeUpToDate.loadPage()
+      else if (role == "An employee of the organisation")
+        OrgEORIMustBeUpToDate.loadPage()
+      else throw new Exception("Invalid role selected")
   )
   Then("I will be navigated to You must have a commodity code") { () =>
     YouMustHaveACommodityCode.loadPage()
