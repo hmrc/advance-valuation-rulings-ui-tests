@@ -234,7 +234,7 @@ class StepDefinitions
     (role: String) =>
       if (role == "An employee of the organisation")
         YourEORIMustBeUpToDate.loadPage()
-      else if (role == "An employee of the organisation")
+      else if (role == "Agent acting on behalf of an organisation")
         OrgEORIMustBeUpToDate.loadPage()
       else throw new Exception("Invalid role selected")
   )

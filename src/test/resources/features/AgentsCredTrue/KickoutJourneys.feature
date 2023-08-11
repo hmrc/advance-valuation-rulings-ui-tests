@@ -1,7 +1,7 @@
 @EndToEndJourneyAgentsCred
 Feature: End To End Journey
 
-  Scenario: User's EORI number details are incorrect for employee of the org
+  Scenario Outline: User  EORI number details are incorrect for employee of the org and agent of the org
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home
     And I select role as a <role>
