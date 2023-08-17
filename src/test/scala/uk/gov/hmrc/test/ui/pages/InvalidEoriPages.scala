@@ -18,8 +18,20 @@ package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.pages.base.BasePage
 
+object YourEORIMustBeUpToDate extends BasePage {
+
+  val pageTitle =
+    "Your EORI number details must be correct to use this service"
+}
+
 object TradersEoriMustBeUpToDate extends BasePage {
 
   val pageTitle =
     "The trader’s EORI details must be correct to use this service"
+}
+
+object TradersIncorrectPrivateEori extends BasePage {
+
+  val pageTitle =
+    "You cannot continue with this application"
 }
