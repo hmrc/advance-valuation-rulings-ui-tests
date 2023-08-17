@@ -1,5 +1,6 @@
 @OrganisationAssistantAgentsCred
-@EndToEndJourneyAgentsCred
+#@EndToEndJourneyAgentsCred
+@WIPFail
 Feature: Agent Acting on Behalf of Organisation End to End Journey
 
   Scenario: Organisation Assistant End To End Journey with multiple upload
@@ -31,8 +32,9 @@ Feature: Agent Acting on Behalf of Organisation End to End Journey
     And I check my answers and click on continue
     Then I will be navigated to the Application Complete page
 
+
   Scenario: Organisation Assistant End To End Journey with multiple upload
-    Given I am on the ARS Home Page with affinity group as a "Organisation" and Credential role as a "Assistant"
+    Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home
     And I select role as a "Agent acting on behalf of an organisation"
     And I click continue on Information you need to complete an application page

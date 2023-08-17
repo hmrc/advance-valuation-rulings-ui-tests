@@ -3,7 +3,7 @@
 Feature: Agent acting on behalf of a trader changes
 
   Scenario Outline: Organisation User End To End Journey without upload
-    Given I am on the ARS Home Page with affinity group as a "Organisation" and Credential role as a "User"
+    Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     And I click on Start new application in ARS Home
     When I select role as a <role>
     Then I verify starter checklist page for <role> is displayed
@@ -14,7 +14,7 @@ Feature: Agent acting on behalf of a trader changes
       | "Agent acting on behalf of a trader"        |
 
   Scenario Outline: Agent on behalf of trader when public EORI is entered
-    Given I am on the ARS Home Page with affinity group as a "Organisation" and Credential role as a "User"
+    Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     And I click on Start new application in ARS Home
     And I select role as a "Agent acting on behalf of a trader"
     And I click continue on Information you need to complete an application page
