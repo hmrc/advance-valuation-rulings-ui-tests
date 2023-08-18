@@ -1,7 +1,6 @@
-#@EndToEndJourneyAgentsCred
+@EndToEndJourneyAgentsCred
 Feature: End To End Journey
 
-  @WIPFail
   Scenario Outline: User  EORI number details are incorrect for employee of the org and agent of the org
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home
@@ -50,7 +49,6 @@ Feature: End To End Journey
     And I click on Continue button
     Then I verify error message for invalid EORI is displayed
 
-  @WIPFail
   Scenario Outline: Agent on behalf of trader enters valid EORI and selects No on check name and address page
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     And I click on Start new application in ARS Home
