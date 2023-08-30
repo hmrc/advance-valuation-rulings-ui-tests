@@ -174,22 +174,22 @@ Feature: Save as draft functionality for all text pages in the application journ
     And I should see submitted application once I click Go to application and ruling button
     And I delete the application in draft
 
-#   @WIPFAIl
-#  Scenario: Save as draft functionality check as Organisation Assistant
-#    Given I am on the ARS Home Page with affinity group as a "Organisation" and Credential role as a "Assistant"
-#    And I click on Start new application in ARS Home
-#    And I select role as a "Agent acting on behalf of an organisation"
-#    And I click continue on Information you need to complete an application page
-#    And I select "Yes" and continue in Are you planning to import goods page
-#    And I click on continue in How We Contact You page
-#    And I select "Yes" and continue in Check the name and address page
-#    And I enter Name: "Automation Test", Email: "Test@automation.com", Phone: "9876543211" details and continue in Provide your own contact details page
-#    When I enter Eori: "GB12341234123", CompanyName: "Agent Company Name", StreetAndNumber: "#1 Street and Number", City: "City Upon River", Country: "GB", PostalCode: "POS CODE" on Your company's contact page
-#    And I click on Save as draft button
-#    And I am on Save as draft page and I click on your applications and rulings link
-#    Then I navigate to agent company's contact details page and compare the text
-#    And I should see submitted application once I click Go to application and ruling button
-#    And I delete the application in draft
+   @WIPFAIl
+  Scenario: Save as draft functionality check as Organisation Assistant
+    Given I am on the ARS Home Page with affinity group as a "Organisation" and Credential role as a "Assistant"
+    And I click on Start new application in ARS Home
+    And I select role as a "Agent acting on behalf of an organisation"
+    And I click continue on Information you need to complete an application page
+    And I select "Yes" and continue in Are you planning to import goods page
+    And I click on continue in How We Contact You page
+    And I select "Yes" and continue in Check the name and address page
+    And I enter Name: "Automation Test", Email: "Test@automation.com", Phone: "9876543211" details and continue in Provide your own contact details page
+    When I enter Eori: "GB12341234123", CompanyName: "Agent Company Name", StreetAndNumber: "#1 Street and Number", City: "City Upon River", Country: "GB", PostalCode: "POS CODE" on Your company's contact page
+    And I click on Save as draft button
+    And I am on Save as draft page and I click on your applications and rulings link
+    Then I navigate to agent company's contact details page and compare the text
+    And I should see submitted application once I click Go to application and ruling button
+    And I delete the application in draft
 
 
 
