@@ -2,7 +2,7 @@
 @AccessibilityTestAgentsCred
 Feature: Agent acting on behalf of a trader changes
 
-  Scenario Outline: Organisation User End To End Journey without upload
+  Scenario Outline: Agent on behalf of trader starter checklist for three roles
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     And I click on Start new application in ARS Home
     When I select role as a <role>
@@ -14,7 +14,7 @@ Feature: Agent acting on behalf of a trader changes
       | "Agent acting on behalf of a trader"        |
 
 
-  Scenario Outline: Agent on behalf of trader when public EORI is entered
+  Scenario Outline: Agent for trader when public or private EORI is entered
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     And I click on Start new application in ARS Home
     And I select role as a "Agent acting on behalf of a trader"
@@ -25,14 +25,13 @@ Feature: Agent acting on behalf of a trader changes
     And I click on Continue button
     And I select "Yes" for <EORIType> EORI on Check the name and address page
     And I click on Continue button
-    And I upload the document "test1.pdf" and continue in Upload letter of authority page
     Examples:
-      | EORINo            | EORIType  |
+      | EORINo           | EORIType  |
       | "GB113888888041" | "public"  |
       | "GB112888888041" | "private" |
 
   @WIP
-  Scenario Outline: Agent on behalf of trader when public EORI is entered
+  Scenario Outline: Agent for trader journey for public or private EORI is entered with upload supporting documents
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     And I click on Start new application in ARS Home
     And I select role as a "Agent acting on behalf of a trader"
