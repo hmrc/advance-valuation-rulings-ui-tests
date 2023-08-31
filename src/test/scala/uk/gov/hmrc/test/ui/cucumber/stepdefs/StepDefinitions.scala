@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import org.openqa.selenium.support.ui.{ExpectedConditions}
 import uk.gov.hmrc.test.ui.pages.{ApplicationComplete, CancelApplicationPage, DescribeAnyRestrictions, DescribeTheLegalChallenges, DoYouWantToUploadAnySupportingDocuments, _}
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.{clickCancelApplicationLink, clickSaveAsDraftButton, onPage, submitPage}
 import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
@@ -138,7 +139,7 @@ class StepDefinitions
       .loadPage()
       .uploadDocument(path)
     submitPage()
-    Thread.sleep(5000)
+    webDriverWait().until(ExpectedConditions.urlContains("mark-confidential"))
   }
 
   And(

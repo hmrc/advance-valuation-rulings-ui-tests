@@ -17,10 +17,12 @@
 package uk.gov.hmrc.test.ui.driver
 
 import uk.gov.hmrc.webdriver.SingletonDriver
-
 import com.typesafe.scalalogging.LazyLogging
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeOptions
+import org.openqa.selenium.support.ui.WebDriverWait
+
+import java.time.Duration
 
 trait BrowserDriver extends LazyLogging {
   logger.info(
@@ -38,4 +40,7 @@ trait BrowserDriver extends LazyLogging {
   }
 
   implicit lazy val driver: WebDriver = SingletonDriver.getInstance(options)
+
+  def webDriverWait()(implicit driver: WebDriver): WebDriverWait = new WebDriverWait(driver, Duration.ofSeconds(15))
+
 }

@@ -16,7 +16,8 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import uk.gov.hmrc.test.ui.pages.{AddressPage, AddressPageForInvalidEori, AddressPageForPrivateEori, AgentCompanyDetailsPage, AgentSelectRole, OrganisationContactDetailsPage, ProvideTraderEori, RequiredInformationPage, TradersEoriMustBeUpToDate, TradersIncorrectPrivateEori, UploadLetterOfAuthorityPage}
+import org.openqa.selenium.support.ui.{ExpectedConditions}
+import uk.gov.hmrc.test.ui.pages.{AddressPage, AddressPageForInvalidEori, AddressPageForPrivateEori, AgentCompanyDetailsPage, AgentForTraderContactDetailsPage, AgentSelectRole, OrganisationContactDetailsPage, ProvideTraderEori, RequiredInformationPage, TradersEoriMustBeUpToDate, TradersIncorrectPrivateEori, UploadLetterOfAuthorityPage, UploadedLetterOfAuthorityPage}
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.submitPage
 import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
 import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
@@ -126,6 +127,19 @@ trait AgentStepDefs
     val path = getClass.getResource(s"/testdata/$filename").getPath
     UploadLetterOfAuthorityPage.loadPage().uploadDocument(path)
     submitPage()
+    webDriverWait().until(ExpectedConditions.urlContains("ars-loa-uploaded"))
+  }
+
+  And("I click on continue on Uploaded letter of authority page") { () =>
+    UploadedLetterOfAuthorityPage.loadPage()
+    submitPage()
+  }
+
+  And(
+    "I enter Name- {string} Email- {string},Phone- {string}, Company name - {string} details"
+  ) { (name: String, email: String, phone: String, companyName: String) =>
+    AgentForTraderContactDetailsPage.loadPage()
+    AgentForTraderContactDetailsPage.enterContactDetails(name, email, phone, companyName)
   }
 
   Then("I will be navigated to {string} kickout screen")((eoriType: String) =>
