@@ -82,11 +82,11 @@ Feature: End To End Journey
     And I select that the goods have not been subject to legal challenges
     And I select "No" and continue in Do you want to add any confidential information page
     And I select "Yes" and continue in Do you want to upload any supporting documents page
-    And I upload the document "test1.pdf" and continue in Upload supporting documents page
+    And I upload the document "test1.pdf" in Upload supporting documents page
     And I select "Yes" and continue in Do you want this file to be marked as confidential page
     Then I will be navigated to You have uploaded supporting document
     Then I select "Yes" on You have uploaded supporting document
-    And I upload the document "test2.jpg" and continue in Upload supporting documents page
+    And I upload the document "test2.jpg" in Upload supporting documents page
     And I select "Yes" and continue in Do you want this file to be marked as confidential page
     Then I will be navigated to You have uploaded second supporting document
     Then I select "No" on You have uploaded second supporting document

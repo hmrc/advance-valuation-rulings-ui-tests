@@ -127,7 +127,7 @@ trait AgentStepDefs
     val path = getClass.getResource(s"/testdata/$filename").getPath
     UploadLetterOfAuthorityPage.loadPage().uploadDocument(path)
     submitPage()
-    webDriverWait().until(ExpectedConditions.urlContains("ars-loa-uploaded"))
+    webDriverWait().until(ExpectedConditions.urlContains("ars-upload-loa-uploaded"))
   }
 
   And("I click on continue on Uploaded letter of authority page") { () =>

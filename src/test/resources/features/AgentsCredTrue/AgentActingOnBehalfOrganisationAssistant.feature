@@ -31,7 +31,6 @@ Feature: Agent Acting on Behalf of Organisation End to End Journey
     And I check my answers and click on continue
     Then I will be navigated to the Application Complete page
 
-  @WIP
   Scenario: Organisation Assistant End To End Journey - when affinity group doesn't matter
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home
