@@ -16,22 +16,16 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.pages.base.BasePage
 import org.openqa.selenium.By
-import org.openqa.selenium.support.ui.ExpectedConditions
+import uk.gov.hmrc.test.ui.pages.base.BasePage
 
-import java.time.Duration
-object UploadSupportingDocuments extends BasePage {
+object UploadingInProgressPage extends BasePage {
 
-  val pageTitle          =
-    "Upload supporting documents"
-  val ele_UploadDocument = "file-input"
+  val pageTitle         = "Upload In Progress"
+  val btn_checkProgress = "//button[contains(text(),'Check progress')]"
 
-  def uploadDocument(uploadFilePath: String) {
-    driver
-      .findElement(By.id(ele_UploadDocument))
-      .sendKeys(uploadFilePath)
-    submitPage()
-    Thread.sleep(5000)
+  def clickCheckProgressButton(): DoYouWantThisFileToBeMarkedAsConfidential.type = {
+    driver.findElement(By.xpath(btn_checkProgress)).click()
+    DoYouWantThisFileToBeMarkedAsConfidential
   }
 }

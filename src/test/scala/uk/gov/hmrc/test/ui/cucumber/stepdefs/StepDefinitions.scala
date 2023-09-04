@@ -142,6 +142,15 @@ class StepDefinitions
     webDriverWait().until(ExpectedConditions.urlContains("mark-confidential"))
   }
 
+  And("I upload the document {string} in Upload supporting documents page") { (filePath: String) =>
+    val path = getClass.getResource(s"/testdata/$filePath").getPath
+    UploadSupportingDocuments
+      .loadPage()
+      .uploadDocument(path)
+    UploadingInProgressPage
+      .clickCheckProgressButton()
+  }
+
   And(
     "I enter Name- {string} Email- {string},Phone- {string} details and continue in Provide your contact details page"
   ) { (name: String, email: String, phone: String) =>

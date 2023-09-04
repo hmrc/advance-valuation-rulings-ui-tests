@@ -174,7 +174,6 @@ Feature: Save as draft functionality for all text pages in the application journ
     And I should see submitted application once I click Go to application and ruling button
     And I delete the application in draft
 
-   @WIPFAIl
   Scenario: Save as draft functionality check as Organisation Assistant
     Given I am on the ARS Home Page with affinity group as a "Organisation" and Credential role as a "Assistant"
     And I click on Start new application in ARS Home

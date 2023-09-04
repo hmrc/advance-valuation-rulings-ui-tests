@@ -30,7 +30,6 @@ Feature: Agent acting on behalf of a trader changes
       | "GB113888888041" | "public"  |
       | "GB112888888041" | "private" |
 
-  @WIP
   Scenario Outline: Agent for trader journey for public or private EORI is entered with upload supporting documents
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     And I click on Start new application in ARS Home
@@ -61,11 +60,11 @@ Feature: Agent acting on behalf of a trader changes
     And I select that the goods have not been subject to legal challenges
     And I select "No" and continue in Do you want to add any confidential information page
     And I select "Yes" and continue in Do you want to upload any supporting documents page
-    And I upload the document "test1.pdf" and continue in Upload supporting documents page
+    And I upload the document "test1.pdf" in Upload supporting documents page
     And I select "Yes" and continue in Do you want this file to be marked as confidential page
     And I will be navigated to You have uploaded supporting document
     And I select "Yes" on You have uploaded supporting document
-    And I upload the document "test2.jpg" and continue in Upload supporting documents page
+    And I upload the document "test2.jpg" in Upload supporting documents page
     And I select "Yes" and continue in Do you want this file to be marked as confidential page
     And I will be navigated to You have uploaded second supporting document
     And I select "No" on You have uploaded second supporting document
