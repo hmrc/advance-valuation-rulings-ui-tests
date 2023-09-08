@@ -1,4 +1,5 @@
 @EndToEndJourney
+@ZAP
 Feature: End To End Journey
 
   Scenario: User does not intend to import goods
