@@ -1,5 +1,6 @@
 @EndToEndJourneyAgentsCred
 @AccessibilityTestAgentsCred
+@ZAP
 Feature: Agent acting on behalf of a trader changes
 
   Scenario Outline: Agent on behalf of trader starter checklist for three roles
