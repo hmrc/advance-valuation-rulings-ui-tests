@@ -74,7 +74,7 @@ object BasePage {
 
   val EORINumber      = "GB333186844456"
   val continueButton  = "govuk-button"
-  val titleSuffix     = " - Advance Valuation Ruling - GOV.UK"
+  val titleSuffix     = " - Apply for an Advance Valuation Ruling - GOV.UK"
   val arsHomePageText = "Your applications and rulings" + titleSuffix
   val URL_ARSHomePage = s"$baseUrl/advance-valuation-ruling/applications-and-rulings"
 
