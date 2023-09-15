@@ -30,6 +30,6 @@ import org.junit.runner.RunWith
     "junit:target/test-reports/AgentsCredRunner.xml"
   ),
   tags = "@EndToEndJourneyAgentsCred"
-//  tags = "@WIP1"
+//  tags = "@WIPFail"
 )
 class AgentsCredRunner

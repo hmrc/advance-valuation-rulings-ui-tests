@@ -26,8 +26,6 @@ object UploadLetterOfAuthorityPage extends BasePage {
 
   def uploadDocument(uploadFilePath: String) {
     driver.findElement(By.id(ele_UploadDocument)).sendKeys(uploadFilePath)
-    submitPage()
-    Thread.sleep(5000)
   }
 
 }
