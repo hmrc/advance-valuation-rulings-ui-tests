@@ -16,8 +16,7 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import org.openqa.selenium.support.ui.{ExpectedConditions}
-import uk.gov.hmrc.test.ui.pages.{AddressPage, AddressPageForInvalidEori, AddressPageForPrivateEori, AgentCompanyDetailsPage, AgentForTraderContactDetailsPage, AgentSelectRole, OrganisationContactDetailsPage, ProvideTraderEori, RequiredInformationPage, TradersEoriMustBeUpToDate, TradersIncorrectPrivateEori, UploadLetterOfAuthorityPage, UploadedLetterOfAuthorityPage}
+import uk.gov.hmrc.test.ui.pages.{AddressPage, AddressPageForInvalidEori, AddressPageForPrivateEori, AgentCompanyDetailsPage, AgentForTraderContactDetailsPage, AgentSelectRole, OrganisationContactDetailsPage, ProvideTraderEori, RequiredInformationPage, TradersEoriMustBeUpToDate, TradersIncorrectPrivateEori, UploadLetterOfAuthorityPage, UploadSupportingDocuments, UploadedLetterOfAuthorityPage, UploadingInProgressPage}
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.submitPage
 import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
 import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
@@ -126,8 +125,8 @@ trait AgentStepDefs
   And("I upload the document {string} and continue in Upload letter of authority page") { (filename: String) =>
     val path = getClass.getResource(s"/testdata/$filename").getPath
     UploadLetterOfAuthorityPage.loadPage().uploadDocument(path)
-    submitPage()
-    webDriverWait().until(ExpectedConditions.urlContains("ars-upload-loa-uploaded"))
+    UploadingInProgressPage
+      .clickCheckProgressButton()
   }
 
   And("I click on continue on Uploaded letter of authority page") { () =>
