@@ -172,7 +172,7 @@ class StepDefinitions
 
   And("I click on Continue button")(() => submitPage())
 
-  And("I am on Save as draft page and I click on your applications and rulings link") { () =>
+  And("I am on Save as draft page and I click on your applications link") { () =>
     SaveAsDraftPage.loadPage()
     SaveAsDraftPage.clickReturnToApplicationLink()
     draftId = ApplicationNoViewPage.getDraftId()

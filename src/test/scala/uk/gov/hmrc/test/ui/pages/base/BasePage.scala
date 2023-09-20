@@ -27,7 +27,7 @@ trait BasePage extends BrowserDriver with Matchers {
 
   val continueButton          = "govuk-button"
   val ele_StartNewApplication = "csrfToken"
-  val goToAppAndRuling        = "Advance Valuation Ruling"
+  val goToAppAndRuling        = "Apply for an Advance Valuation Ruling"
   val saveAsDraftButton       = "//button[contains(text(),'Save as draft')]"
   val link_cancelButton       = "cancel_application"
 
@@ -75,8 +75,8 @@ object BasePage {
   val EORINumber      = "GB333186844456"
   val continueButton  = "govuk-button"
   val titleSuffix     = " - Apply for an Advance Valuation Ruling - GOV.UK"
-  val arsHomePageText = "Your applications and rulings" + titleSuffix
-  val URL_ARSHomePage = s"$baseUrl/advance-valuation-ruling/applications-and-rulings"
+  val arsHomePageText = "Your applications" + titleSuffix
+  val URL_ARSHomePage = s"$baseUrl/advance-valuation-ruling/applications"
 
   def signOut()(implicit driver: WebDriver): Unit =
     driver.findElement(By.className("hmrc-sign-out-nav__link")).click()
