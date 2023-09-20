@@ -21,7 +21,7 @@ import uk.gov.hmrc.test.ui.pages.base.BasePage
 
 object ApplicationNoViewPage extends BasePage {
 
-  val pageTitle               = "Your applications and rulings"
+  val pageTitle               = "Your applications"
   val btn_continueApplication = "Continue application"
   val btn_deleteApplication   = "Delete application"
 
