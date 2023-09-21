@@ -76,7 +76,7 @@ object BasePage {
   val continueButton  = "govuk-button"
   val titleSuffix     = " - Apply for an Advance Valuation Ruling - GOV.UK"
   val arsHomePageText = "Your applications" + titleSuffix
-  val URL_ARSHomePage = s"$baseUrl/advance-valuation-ruling/applications"
+  val URL_ARSHomePage = s"$baseUrl/advance-valuation-ruling/applications-and-rulings"
 
   def signOut()(implicit driver: WebDriver): Unit =
     driver.findElement(By.className("hmrc-sign-out-nav__link")).click()
