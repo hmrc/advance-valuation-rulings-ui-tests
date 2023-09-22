@@ -18,7 +18,11 @@ package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.pages.base.YesNoPage
 
-case object YouHaveUploadedTwoSupportingDocuments extends YesNoPage {
+case object UploadedTwoSupportingDocumentsForAgentForTrader extends YesNoPage {
+  val pageTitle = "You have uploaded two supporting documents and 1 letter of authority"
+}
+
+case object UploadedTwoSupportingDocumentsForEmployeeAndAgentOfOrg extends YesNoPage {
   val pageTitle = "You have uploaded two supporting documents"
 
 }

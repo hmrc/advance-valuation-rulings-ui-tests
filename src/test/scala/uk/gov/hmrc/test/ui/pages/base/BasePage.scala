@@ -71,6 +71,9 @@ object BasePage {
   val publicEORINumber  = "GBE9XSDF10BCKEYAX"
   val privateEORINumber = "GB112SDF10BCKEYAX"
   val invalidEORINumber = "GB321888888041"
+  val employeeOfOrg     = "An employee of the organisation"
+  val agentOfOrg        = "Agent acting on behalf of an organisation"
+  val agentForTrader    = "Agent acting on behalf of a trader"
 
   val EORINumber      = "GB333186844456"
   val continueButton  = "govuk-button"

@@ -59,5 +59,4 @@ Feature: Agent Acting on Behalf of Organisation End to End Journey
     And I select "No" and continue in Do you want to upload any supporting documents page
     Then I will be navigated to the Check Your Answers page
     And I check my answers and click on continue
-#   not yet implemented
-#   Then I will be navigated to the Application Complete page
+    Then I will be navigated to the Application Complete page

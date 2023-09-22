@@ -16,14 +16,14 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import org.openqa.selenium.support.ui.{ExpectedConditions}
+import org.openqa.selenium.support.ui.ExpectedConditions
 import uk.gov.hmrc.test.ui.pages.{ApplicationComplete, CancelApplicationPage, DescribeAnyRestrictions, DescribeTheLegalChallenges, DoYouWantToUploadAnySupportingDocuments, _}
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.{clickCancelApplicationLink, clickSaveAsDraftButton, onPage, submitPage}
-import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
+import uk.gov.hmrc.test.ui.pages.base.BasePage.{baseUrl, titleSuffix}
 import uk.gov.hmrc.test.ui.pages.base.{BasePage, ScenarioContext}
 
 class StepDefinitions
-    extends BaseStepDef
+  extends BaseStepDef
     with MethodTwoStepDefintions
     with MethodThreeStepDefintions
     with MethodFourStepDefintions
@@ -110,19 +110,31 @@ class StepDefinitions
   And(
     "I select {booleanValue} on You have uploaded supporting document"
   ) { (option: Boolean) =>
-    YouHaveUploadedOneSupportingDocument
-      .loadPage()
-      .select(option)
-      .submitPage()
+    if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader)
+      UploadedOneSupportingDocumentForAgentForTrader
+        .loadPage()
+        .select(option)
+        .submitPage()
+    else
+      UploadedOneSupportingDocumentForEmployeeAndAgentOfOrg
+        .loadPage()
+        .select(option)
+        .submitPage()
   }
 
   And(
     "I select {booleanValue} on You have uploaded second supporting document"
   ) { (option: Boolean) =>
-    YouHaveUploadedTwoSupportingDocuments
-      .loadPage()
-      .select(option)
-      .submitPage()
+    if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader)
+      UploadedTwoSupportingDocumentsForAgentForTrader
+        .loadPage()
+        .select(option)
+        .submitPage()
+    else
+      UploadedTwoSupportingDocumentsForEmployeeAndAgentOfOrg
+        .loadPage()
+        .select(option)
+        .submitPage()
   }
   And(
     "I select {booleanValue} and continue in Do you want to upload any supporting documents page"
@@ -278,11 +290,23 @@ class StepDefinitions
   }
 
   Then("I will be navigated to You have uploaded supporting document") { () =>
-    YouHaveUploadedOneSupportingDocument.loadPage()
+    if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader)
+      assert(driver.getTitle == UploadedOneSupportingDocumentForAgentForTrader.pageTitle + titleSuffix)
+    else
+      assert(driver.getTitle == UploadedOneSupportingDocumentForEmployeeAndAgentOfOrg.pageTitle + titleSuffix)
   }
 
   Then("I will be navigated to You have uploaded second supporting document") { () =>
-    YouHaveUploadedTwoSupportingDocuments.loadPage()
+    if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader) {
+      println(s"xyz1" + driver.getTitle)
+      println(s"abc1" + UploadedTwoSupportingDocumentsForAgentForTrader.pageTitle + titleSuffix)
+      assert(driver.getTitle == UploadedTwoSupportingDocumentsForAgentForTrader.pageTitle + titleSuffix)
+
+    } else {
+      println(s"xyz2" + driver.getTitle)
+      println(s"abc2" + UploadedTwoSupportingDocumentsForAgentForTrader.pageTitle + titleSuffix)
+      assert(driver.getTitle == UploadedTwoSupportingDocumentsForEmployeeAndAgentOfOrg.pageTitle + titleSuffix)
+    }
   }
 
   Then("I will be navigated to Why Computed Value page")(() => WhyComputedValue.loadPage())
