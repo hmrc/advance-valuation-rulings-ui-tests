@@ -31,6 +31,7 @@ trait AgentStepDefs
 
   When("I select role as a {string}") { role: String ⇒
     AgentSelectRole.selectRole(role: String)
+    ScenarioContext.setContext("Description Of Role", role)
     submitPage()
   }
 

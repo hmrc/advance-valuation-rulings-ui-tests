@@ -71,12 +71,11 @@ Feature: Agent acting on behalf of a trader changes
     And I select "No" on You have uploaded second supporting document
     And I will be navigated to the Check Your Answers page
     And I check my answers and click on continue
+    Then I will be navigated to the Application Complete page
     Examples:
-      | EORINo            | EORIType  |
+      | EORINo           | EORIType  |
       | "GB113888888041" | "public"  |
       | "GB112888888041" | "private" |
-#   Not yet implemented
-#   Then I will be navigated to the Application Complete page
 
 
 
