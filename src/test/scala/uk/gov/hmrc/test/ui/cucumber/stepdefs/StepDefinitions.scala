@@ -298,13 +298,9 @@ class StepDefinitions
 
   Then("I will be navigated to You have uploaded second supporting document") { () =>
     if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader) {
-      println(s"xyz1" + driver.getTitle)
-      println(s"abc1" + UploadedTwoSupportingDocumentsForAgentForTrader.pageTitle + titleSuffix)
       assert(driver.getTitle == UploadedTwoSupportingDocumentsForAgentForTrader.pageTitle + titleSuffix)
 
     } else {
-      println(s"xyz2" + driver.getTitle)
-      println(s"abc2" + UploadedTwoSupportingDocumentsForAgentForTrader.pageTitle + titleSuffix)
       assert(driver.getTitle == UploadedTwoSupportingDocumentsForEmployeeAndAgentOfOrg.pageTitle + titleSuffix)
     }
   }
