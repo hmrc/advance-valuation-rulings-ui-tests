@@ -37,7 +37,7 @@ object ThisServiceIsDesignedForThose extends BasePage {
   val link_HelpAndSupport       =
     "https://www.gov.uk/guidance/hmrc-email-alerts-videos-and-webinars-about-importing-and-exporting"
 
-  def linkNavigationValidation() {
+  def linkNavigationValidation(): Unit = {
     assert(
       driver
         .findElement(By.id(ele_link_AdvanceTariffRulings))

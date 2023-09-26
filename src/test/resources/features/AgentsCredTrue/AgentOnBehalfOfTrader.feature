@@ -1,6 +1,4 @@
-@EndToEndJourneyAgentsCred
-@AccessibilityTestAgentsCred
-@ZAP
+@FunctionalTests
 Feature: Agent acting on behalf of a trader changes
 
   Scenario Outline: Agent on behalf of trader starter checklist for three roles
@@ -31,6 +29,7 @@ Feature: Agent acting on behalf of a trader changes
       | "GB113888888041" | "public"  |
       | "GB112888888041" | "private" |
 
+  @EndToEndJourneyAgentsCred @ZAP @AccessibilityTest
   Scenario Outline: Agent for trader journey for public or private EORI is entered with upload supporting documents
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     And I click on Start new application in ARS Home

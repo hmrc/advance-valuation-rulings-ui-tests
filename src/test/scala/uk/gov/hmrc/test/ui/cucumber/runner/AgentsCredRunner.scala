@@ -29,6 +29,7 @@ import org.junit.runner.RunWith
     "json:target/cucumber.json",
     "junit:target/test-reports/AgentsCredRunner.xml"
   ),
+//  tags = "@FunctionalTests"
   tags = "@EndToEndJourneyAgentsCred"
 )
 class AgentsCredRunner
