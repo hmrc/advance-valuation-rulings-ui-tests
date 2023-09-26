@@ -1,6 +1,5 @@
-@OrganisationAssistantAgentsCred
 @EndToEndJourneyAgentsCred
-@ZAP
+@FunctionalTests
 Feature: Agent Acting on Behalf of Organisation End to End Journey
 
   Scenario: Organisation Assistant End To End Journey - when Org assistant chosen

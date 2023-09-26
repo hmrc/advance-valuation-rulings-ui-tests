@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import org.openqa.selenium.support.ui.ExpectedConditions
 import uk.gov.hmrc.test.ui.pages.{AddressPage, AddressPageForInvalidEori, AddressPageForPrivateEori, AgentCompanyDetailsPage, AgentForTraderContactDetailsPage, AgentSelectRole, OrganisationContactDetailsPage, ProvideTraderEori, RequiredInformationPage, TradersEoriMustBeUpToDate, TradersIncorrectPrivateEori, UploadLetterOfAuthorityPage, UploadedLetterOfAuthorityPage, UploadingInProgressPage}
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.submitPage
 import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
@@ -29,13 +28,13 @@ trait AgentStepDefs
     with MethodFourStepDefintions
     with MethodSixStepDefintions {
 
-  When("I select role as a {string}") { role: String ⇒
+  When("I select role as a {string}") { role: String =>
     AgentSelectRole.selectRole(role: String)
     ScenarioContext.setContext("Description Of Role", role)
     submitPage()
   }
 
-  And("I verify starter checklist page for {string} is displayed") { role: String ⇒
+  And("I verify starter checklist page for {string} is displayed") { role: String =>
     RequiredInformationPage.loadPage()
     assert(driver.getPageSource.contains(RequiredInformationPage.returnChecklistTextForRole(role)))
   }

@@ -18,16 +18,14 @@ package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.pages.base.BasePage
 import org.openqa.selenium.By
-import org.openqa.selenium.support.ui.ExpectedConditions
 
-import java.time.Duration
 object UploadSupportingDocuments extends BasePage {
 
   val pageTitle          =
     "Upload supporting documents"
   val ele_UploadDocument = "file-input"
 
-  def uploadDocument(uploadFilePath: String) {
+  def uploadDocument(uploadFilePath: String): Unit = {
     driver
       .findElement(By.id(ele_UploadDocument))
       .sendKeys(uploadFilePath)

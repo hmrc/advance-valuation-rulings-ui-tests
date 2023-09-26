@@ -15,7 +15,7 @@
  */
 
 package uk.gov.hmrc.test.ui.pages
-import uk.gov.hmrc.test.ui.pages.base.{BasePage}
+import uk.gov.hmrc.test.ui.pages.base.BasePage
 
 import org.openqa.selenium.By
 

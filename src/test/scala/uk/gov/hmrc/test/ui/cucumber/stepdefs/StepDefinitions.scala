@@ -23,7 +23,7 @@ import uk.gov.hmrc.test.ui.pages.base.BasePage.{baseUrl, titleSuffix}
 import uk.gov.hmrc.test.ui.pages.base.{BasePage, ScenarioContext}
 
 class StepDefinitions
-  extends BaseStepDef
+    extends BaseStepDef
     with MethodTwoStepDefintions
     with MethodThreeStepDefintions
     with MethodFourStepDefintions
@@ -38,8 +38,8 @@ class StepDefinitions
     BasePage.invokeURL(BasePage.URL_ARSHomePage, affinityGroup, credentialRole)
   )
 
-  Given("I am on the ARS Home Page and Login without enrolment") {
-    (() => BasePage.invokeURL(BasePage.URL_ARSHomePage, "Individual", "User", false))
+  Given("I am on the ARS Home Page and Login without enrolment") { () =>
+    BasePage.invokeURL(BasePage.URL_ARSHomePage, "Individual", "User", false)
   }
 
   Then("user should see subscribe to advance rulings page to enrol") { () =>
@@ -394,9 +394,6 @@ class StepDefinitions
     assert(ScenarioContext.getContext("conditions which cannot be calculated") == DescribeAnyConditions.getText())
   }
 
-  And("I enter {string} as the conditions which cannot be calculated and press continue")
-  ((text: String) => DescribeAnyConditions.enterText(text).submitPage())
-
   And(
     "I select {booleanValue} and continue in Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods"
   )((option: Boolean) => IsSaleSubjectToConditions.select(option).submitPage())
@@ -442,5 +439,5 @@ class StepDefinitions
     ApplicationNoViewPage.loadPage()
   }
 
-  Then("I sign out")((() => BasePage.signOut()))
+  Then("I sign out")(() => BasePage.signOut())
 }

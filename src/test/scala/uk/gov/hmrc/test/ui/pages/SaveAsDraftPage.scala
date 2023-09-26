@@ -25,5 +25,5 @@ object SaveAsDraftPage extends BasePage {
   val link_yourApplicationAndRulingsLink = "return_to_applications_link"
 
   def clickReturnToApplicationLink(): Unit =
-    driver.findElement(By.id(link_yourApplicationAndRulingsLink)).click();
+    driver.findElement(By.id(link_yourApplicationAndRulingsLink)).click()
 }
