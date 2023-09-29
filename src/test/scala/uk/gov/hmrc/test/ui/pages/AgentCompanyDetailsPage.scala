@@ -27,7 +27,7 @@ object AgentCompanyDetailsPage extends BasePage {
   val agentCompanyNameField     = By.id("agentCompanyName")
   val agentStreetAndNumberField = By.id("agentStreetAndNumber")
   val agentCityField            = By.id("agentCity")
-  val agentCountryField         = "agentCountry"
+  val agentCountryField         = "country"
   val agentPostalCodeField      = By.id("agentPostalCode")
   val redirectUrl               = "/agent-company-details"
 
