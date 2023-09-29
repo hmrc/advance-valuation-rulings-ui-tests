@@ -59,7 +59,7 @@ trait BasePage extends BrowserDriver with Matchers {
 
   def selectFromAutocomplete(inputId: String, data: String): Unit = {
     driver.findElement(By.id(inputId)).sendKeys(data)
-    driver.findElement(By.cssSelector(s"""#agentCountry > option[value="$data"]""")).click()
+    driver.findElement(By.cssSelector(s"""#country > option[value="$data"]""")).click()
   }
 }
 
