@@ -10,7 +10,7 @@
     {
       "reason": "Intentional CSRF is expected with Upscan as that is how the service is designed to work",
       "contextId": 1,
-      "url": "http://localhost:12600/advance-valuation-ruling/*upload",
+      "url": "http:\\/\\/localhost:12600\\/advance-valuation-ruling\\/[a-zA-Z0-9]+\\/.*upload.*",
       "ruleId": 10202,
       "newLevel": -1,
       "urlIsRegex": "true"
