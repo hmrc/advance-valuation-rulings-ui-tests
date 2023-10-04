@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import uk.gov.hmrc.test.ui.pages.{AddressPage, AddressPageForInvalidEori, AddressPageForPrivateEori, AgentCompanyDetailsPage, AgentForTraderContactDetailsPage, AgentSelectRole, OrganisationContactDetailsPage, ProvideTraderEori, RequiredInformationPage, TradersEoriMustBeUpToDate, TradersIncorrectPrivateEori, UploadLetterOfAuthorityPage, UploadedLetterOfAuthorityPage, UploadingInProgressPage}
+import uk.gov.hmrc.test.ui.pages.{AddressPageForAgentForTrader, AddressPageForInvalidEori, AddressPageForPrivateEori, AgentCompanyDetailsPage, AgentForTraderContactDetailsPage, AgentSelectRole, OrganisationContactDetailsPage, ProvideTraderEori, RequiredInformationPage, TradersEoriMustBeUpToDate, TradersIncorrectPrivateEori, UploadLetterOfAuthorityPage, UploadedLetterOfAuthorityPage, UploadingInProgressPage}
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.submitPage
 import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
 import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
@@ -153,7 +153,7 @@ trait AgentStepDefs
   And("I select {booleanValue} for {string} EORI on Check the name and address page") {
     (option: Boolean, eoriType: String) =>
       if (eoriType == "public") {
-        AddressPage.loadPage().select(option)
+        AddressPageForAgentForTrader.loadPage().select(option)
       } else if (eoriType == "private") {
         AddressPageForPrivateEori.loadPage().select(option)
       } else throw new Exception("Invalid EORI type passed")

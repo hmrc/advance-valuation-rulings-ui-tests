@@ -21,5 +21,5 @@ import uk.gov.hmrc.test.ui.pages.base.YesNoPage
 object DoYouWantToUploadAnySupportingDocuments extends YesNoPage {
 
   val pageTitle =
-    "Do you want to upload any supporting documents?"
+    "Supporting documents"
 }

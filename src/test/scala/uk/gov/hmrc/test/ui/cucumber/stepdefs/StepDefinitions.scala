@@ -68,8 +68,18 @@ class StepDefinitions
     submitPage()
   }
 
-  And("I select {booleanValue} and continue in Check the name and address page") { (option: Boolean) =>
-    AddressPage.loadPage().select(option).submitPage()
+//  And("I select {booleanValue} and continue in Check the name and address page") { (option: Boolean) =>
+//    AddressPage.loadPage().select(option).submitPage()
+//  }
+
+  And("I select {booleanValue} and continue in Check the name and address page for agent for org") {
+    (option: Boolean) =>
+      AddressPageForAgentForOrg.loadPage().select(option).submitPage()
+  }
+
+  And("I select {booleanValue} and continue in Check the name and address page for employee of org") {
+    (option: Boolean) =>
+      AddressPageForEmployeeOfOrg.loadPage().select(option).submitPage()
   }
 
   And("I select {booleanValue} and continue in Have you found the commodity code") { (option: Boolean) =>

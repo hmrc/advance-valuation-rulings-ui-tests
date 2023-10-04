@@ -1,4 +1,4 @@
-@EndToEndJourneyAgentsCred
+@EndToEndJourney @ZAP @AccessibilityTest
 Feature: End To End Journey
 
   Scenario Outline: User  EORI number details are incorrect for employee of the org and agent of the org
@@ -8,11 +8,23 @@ Feature: End To End Journey
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
-    And I select "No" and continue in Check the name and address page
+    And I select "No" and continue in Check the name and address page for employee of org
+    Then I will be navigated to Your EORI number details must be correct for <role> to use this service
+    Examples:
+      | role                              |
+      | "An employee of the organisation" |
+
+  Scenario Outline: User  EORI number details are incorrect for employee of the org and agent of the org
+    Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
+    When I click on Start new application in ARS Home
+    And I select role as a <role>
+    And I click continue on Information you need to complete an application page
+    And I select "Yes" and continue in Are you planning to import goods page
+    And I click on continue in How We Contact You page
+    And I select "No" and continue in Check the name and address page for agent for org
     Then I will be navigated to Your EORI number details must be correct for <role> to use this service
     Examples:
       | role                                        |
-      | "An employee of the organisation"           |
       | "Agent acting on behalf of an organisation" |
 
   Scenario: User does not have an enrolment to access service
@@ -27,7 +39,7 @@ Feature: End To End Journey
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
-    And I select "Yes" and continue in Check the name and address page
+    And I select "Yes" and continue in Check the name and address page for employee of org
     And I enter Name- "Automation Test" Email- "TestSaveAsDraft@automation.com",Phone- "9876543211" details
     When I click on cancel application link
     And I click on confirm button on cancellation page

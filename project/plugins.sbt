@@ -6,7 +6,7 @@ resolvers += Resolver.url(
   Resolver.ivyStylePatterns
 )
 
-addSbtPlugin("uk.gov.hmrc" % "sbt-auto-build" % "3.8.0")
+addSbtPlugin("uk.gov.hmrc" % "sbt-auto-build" % "3.14.0")
 
 addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.4.6")
 
