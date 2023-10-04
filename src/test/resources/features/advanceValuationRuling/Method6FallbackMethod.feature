@@ -1,14 +1,14 @@
 @FunctionalTests
-Feature: Method 6 flows
+Feature: Journeys for Method 6 which is Fallback method
 
-  Scenario: Method 6 all pages
+  Scenario: Journey for Method 6 all pages for employee of org
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home
     And I select role as a "An employee of the organisation"
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
-    And I select "Yes" and continue in Check the name and address page
+    And I select "Yes" and continue in Check the name and address page for employee of org
     And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211" details and continue in Provide your contact details page
     And I select Method 6 and continue in Select the method page
     Then I will be navigated to explain why have you not selected Methods 1-5 to value your goods
@@ -19,7 +19,7 @@ Feature: Method 6 flows
     And I enter "using calculator" as my explanation of how I have used method six to value goods and continue
     Then I navigate to Description of the Goods
 
-  @EndToEndJourneyAgentsCred @ZAP @AccessibilityTestAgentsCred
+  @EndToEndJourney @ZAP @AccessibilityTest
   Scenario Outline: Agent on behalf of trader selects Method 6 all pages
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home

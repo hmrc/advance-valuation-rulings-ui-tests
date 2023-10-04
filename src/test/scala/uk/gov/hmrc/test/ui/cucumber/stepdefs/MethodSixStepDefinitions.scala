@@ -68,7 +68,6 @@ trait MethodSixStepDefintions extends BaseStepDef {
   }
 
   And("I navigate to explain how method 6 page and compare text") { () =>
-//    driver.get(ExplainHowYouHaveUsedMethodSix.pageUrl)
     val url = s"$baseUrl/advance-valuation-ruling/" +
       ScenarioContext.getContext("draftId") +
       ExplainHowYouHaveUsedMethodSix.redirectUrl

@@ -27,9 +27,8 @@ import org.junit.runner.RunWith
     "pretty",
     "html:target/cucumberAgentCreds.html",
     "json:target/cucumber.json",
-    "junit:target/test-reports/AgentsCredRunner.xml"
+    "junit:target/test-reports/JourneyTestsRunner.xml"
   ),
-//  tags = "@FunctionalTests"
-  tags = "@EndToEndJourneyAgentsCred"
+  tags = "@EndToEndJourney"
 )
-class AgentsCredRunner
+class JourneyTestsRunner

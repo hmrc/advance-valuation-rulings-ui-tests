@@ -1,7 +1,8 @@
-@EndToEndJourneyAgentsCred
+@EndToEndJourney
 @FunctionalTests
 Feature: Agent Acting on Behalf of Organisation End to End Journey
 
+  @AccessibilityTest @ZAP
   Scenario: Organisation Assistant End To End Journey - when Org assistant chosen
     Given I am on the ARS Home Page with affinity group as a "Organisation" and Credential role as a "Assistant"
     When I click on Start new application in ARS Home
@@ -9,7 +10,7 @@ Feature: Agent Acting on Behalf of Organisation End to End Journey
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
-    And I select "Yes" and continue in Check the name and address page
+    And I select "Yes" and continue in Check the name and address page for agent for org
     And I enter Name: "Automation Test", Email: "Test@automation.com", Phone: "9876543211" details and continue in Provide your own contact details page
     And I enter Eori: "GB12341234123", CompanyName: "Agent Company Name", StreetAndNumber: "#1 Street and Number", City: "City Upon River", Country: "GB", PostalCode: "PO11 1OD" and continue on Your company's contact page
     And I select Method 1 and continue in Select the method page
@@ -38,7 +39,7 @@ Feature: Agent Acting on Behalf of Organisation End to End Journey
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
-    And I select "Yes" and continue in Check the name and address page
+    And I select "Yes" and continue in Check the name and address page for agent for org
     And I enter Name: "Automation Test", Email: "Test@automation.com", Phone: "9876543211" details and continue in Provide your own contact details page
     And I enter Eori: "GB12341234123", CompanyName: "Agent Company Name", StreetAndNumber: "#1 Street and Number", City: "City Upon River", Country: "GB", PostalCode: "PO11 1OD" and continue on Your company's contact page
     And I select Method 1 and continue in Select the method page

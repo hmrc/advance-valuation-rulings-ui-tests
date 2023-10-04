@@ -20,7 +20,7 @@ import uk.gov.hmrc.test.ui.pages.base._
 
 object HaveYouUsedMethodOneToImportInPast extends YesNoPage {
   val pageTitle =
-    "Can you provide evidence of a Method 1 declaration, which has been accepted by UK Customs within 90 days of importation, for goods identical to those being valued?"
+    "Provide evidence of a Method 1 declaration"
 }
 
 object OutlineWhyNotMethodOne extends TextAreaPage {

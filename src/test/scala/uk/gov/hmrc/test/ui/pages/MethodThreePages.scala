@@ -25,7 +25,7 @@ object ExplainWhyNotMethodOneOrTwo extends TextAreaPage {
 
 object HaveYouUsedMethodOneToImportSimilarGoods extends YesNoPage {
   val pageTitle =
-    "Can you provide evidence of a Method 1 declaration, which has been accepted by UK Customs within 90 days of importation, for goods similar to those being valued?"
+    "Provide evidence of a Method 1 declaration"
 }
 
 object DescribeTheSimilarGoods extends TextAreaPage {

@@ -18,8 +18,16 @@ package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.pages.base.{BasePage, YesNoPage}
 
-object AddressPage extends YesNoPage {
-  val pageTitle = s"Check the name and address for EORI number ${BasePage.publicEORINumber}"
+object AddressPageForAgentForOrg extends YesNoPage {
+  val pageTitle = s"Check the organisation’s EORI details"
+}
+
+object AddressPageForEmployeeOfOrg extends YesNoPage {
+  val pageTitle = s"Check your EORI details"
+}
+
+object AddressPageForAgentForTrader extends YesNoPage {
+  val pageTitle = s"Check the trader’s EORI details"
 }
 
 object AddressPageForPrivateEori extends YesNoPage {
