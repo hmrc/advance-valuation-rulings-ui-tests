@@ -6,6 +6,14 @@
       "url": "http:\/\/localhost:12600\/advance-valuation-ruling\/upload-supporting-documents.*",
       "ruleId": 10202,
       "urlIsRegex": "true"
+    },
+    {
+      "reason": "Intentional CSRF is expected with Upscan as that is how the service is designed to work",
+      "contextId": 1,
+      "url": "http://localhost:12600/advance-valuation-ruling/*upload",
+      "ruleId": 10202,
+      "newLevel": -1,
+      "urlIsRegex": "true"
     }
   ]
 }
