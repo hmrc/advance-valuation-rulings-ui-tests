@@ -34,6 +34,6 @@ trait BaseStepDef extends ScalaDsl with EN with BrowserDriver with Eventually wi
   }
 
   sys.addShutdownHook {
-//    Try(SingletonDriver.closeInstance())
+    Try(SingletonDriver.closeInstance())
   }
 }
