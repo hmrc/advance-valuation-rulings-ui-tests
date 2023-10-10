@@ -10,7 +10,7 @@ Feature: Flows for Method 2 which is based on Transaction value of identical goo
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
     And I select "Yes" and continue in Check the name and address page for employee of org
-    And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211" details and continue in Provide your contact details page
+    And I enter Name- "Automation Test" Email- "Test6@automation.com",Phone- "9876543211", Job title- "Accountant" details and continue in Provide your contact details page
     And I select Method 2 and continue in Select the method page
     Then I will be navigated to Outline Why Not Method One page
     And I enter "not applicable" as my reason why I did not select method 1
@@ -28,7 +28,7 @@ Feature: Flows for Method 2 which is based on Transaction value of identical goo
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
     And I select "Yes" and continue in Check the name and address page for employee of org
-    And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211" details and continue in Provide your contact details page
+    And I enter Name- "Automation Test" Email- "Test6@automation.com",Phone- "9876543211", Job title- "Accountant" details and continue in Provide your contact details page
     And I select Method 2 and continue in Select the method page
     Then I will be navigated to Outline Why Not Method One page
     And I enter "not applicable" as my reason why I did not select method 1
@@ -50,7 +50,7 @@ Feature: Flows for Method 2 which is based on Transaction value of identical goo
     And I click on Continue button
     And I upload the document "test1.pdf" and continue in Upload letter of authority page
     And I click on continue on Uploaded letter of authority page
-    And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211", Company name - "company test" details
+    And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211", Company name - "company test", Job title - "agent for trader" details
     And I click on Continue button
     And I select Method 2 and continue in Select the method page
     Then I will be navigated to Outline Why Not Method One page

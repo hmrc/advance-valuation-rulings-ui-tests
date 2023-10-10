@@ -31,7 +31,7 @@ Feature: End To End Journey
     Given I am on the ARS Home Page and Login without enrolment
     Then user should see subscribe to advance rulings page to enrol
     Then I sign out
-
+    
   Scenario: User clicks on cancel application link
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     And I click on Start new application in ARS Home
@@ -40,7 +40,7 @@ Feature: End To End Journey
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
     And I select "Yes" and continue in Check the name and address page for employee of org
-    And I enter Name- "Automation Test" Email- "TestSaveAsDraft@automation.com",Phone- "9876543211" details
+    And I enter Name- "Automation Test" Email- "TestSaveAsDraft@automation.com",Phone- "9876543211", Job title- "employee of org" details
     When I click on cancel application link
     And I click on confirm button on cancellation page
     And I click back button in the browser

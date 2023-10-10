@@ -174,17 +174,17 @@ class StepDefinitions
   }
 
   And(
-    "I enter Name- {string} Email- {string},Phone- {string} details and continue in Provide your contact details page"
-  ) { (name: String, email: String, phone: String) =>
+    "I enter Name- {string} Email- {string},Phone- {string}, Job title- {string} details and continue in Provide your contact details page"
+  ) { (name: String, email: String, phone: String, jobTitle: String) =>
     ProvideYourContactDetails.loadPage()
-    ProvideYourContactDetails.enterContactDetails(name, email, phone)
+    ProvideYourContactDetails.enterContactDetails(name, email, phone, jobTitle)
     submitPage()
   }
   And(
-    "I enter Name- {string} Email- {string},Phone- {string} details"
-  ) { (name: String, email: String, phone: String) =>
+    "I enter Name- {string} Email- {string},Phone- {string}, Job title- {string} details"
+  ) { (name: String, email: String, phone: String, jobTitle: String) =>
     ProvideYourContactDetails.loadPage()
-    ProvideYourContactDetails.enterContactDetails(name, email, phone)
+    ProvideYourContactDetails.enterContactDetails(name, email, phone, jobTitle)
     ScenarioContext.setContext("name", name)
     ScenarioContext.setContext("email", email)
     ScenarioContext.setContext("phone", phone)

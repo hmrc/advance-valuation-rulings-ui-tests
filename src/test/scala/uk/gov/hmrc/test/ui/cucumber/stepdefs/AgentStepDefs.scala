@@ -40,13 +40,14 @@ trait AgentStepDefs
   }
 
   And(
-    "I enter Name: {string}, Email: {string}, Phone: {string} details and continue in Provide your own contact details page"
-  ) { (name: String, email: String, phone: String) =>
+    "I enter Name: {string}, Email: {string}, Phone: {string}, Job title: {string} details and continue in Provide your own contact details page"
+  ) { (name: String, email: String, phone: String, jobTitle: String) =>
     OrganisationContactDetailsPage.loadPage()
     OrganisationContactDetailsPage.enterContactDetails(
       name,
       email,
-      phone
+      phone,
+      jobTitle
     )
     submitPage()
   }
@@ -136,10 +137,10 @@ trait AgentStepDefs
   }
 
   And(
-    "I enter Name- {string} Email- {string},Phone- {string}, Company name - {string} details"
-  ) { (name: String, email: String, phone: String, companyName: String) =>
+    "I enter Name- {string} Email- {string},Phone- {string}, Company name - {string}, Job title - {string} details"
+  ) { (name: String, email: String, phone: String, companyName: String, jobTitle: String) =>
     AgentForTraderContactDetailsPage.loadPage()
-    AgentForTraderContactDetailsPage.enterContactDetails(name, email, phone, companyName)
+    AgentForTraderContactDetailsPage.enterContactDetails(name, email, phone, companyName, jobTitle)
   }
 
   Then("I will be navigated to {string} kickout screen")((eoriType: String) =>

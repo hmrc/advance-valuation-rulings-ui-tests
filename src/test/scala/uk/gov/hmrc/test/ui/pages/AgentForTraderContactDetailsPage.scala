@@ -18,23 +18,24 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.pages.base.BasePage
-//import uk.gov.hmrc.test.ui.pages.ApplicationNoViewPage.{btn_continueApplication, driver}
-//import uk.gov.hmrc.test.ui.pages.ProvideYourContactDetails.pageUrl
 
 object AgentForTraderContactDetailsPage extends BasePage {
 
-  val pageTitle        = "Your own contact details"
+  val pageTitle        = "Your contact details"
   val nameField        = By.id("name")
   val emailField       = By.id("email")
   val contactField     = By.id("phone")
   val companyNameField = By.id("companyName")
-  val redirectUrl      = "/business-contact-details"
+  val jobTitleField    = By.id("jobTitle")
 
-  def enterContactDetails(name: String, email: String, contact: String, companyName: String): Unit = {
+  val redirectUrl = "/business-contact-details"
+
+  def enterContactDetails(name: String, email: String, contact: String, companyName: String, jobTitle: String): Unit = {
     nameField.find.enterText(name)
     emailField.find.enterText(email)
     contactField.find.enterText(contact)
     companyNameField.find.enterText(companyName)
+    jobTitleField.find.enterText(jobTitle)
   }
   def getName(): String = nameField.find.getAttribute("value")
 
