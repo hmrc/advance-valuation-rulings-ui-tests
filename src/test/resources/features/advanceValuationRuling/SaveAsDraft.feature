@@ -9,7 +9,7 @@ Feature: Save as draft functionality for all text pages in the application journ
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
     And I select "Yes" and continue in Check the name and address page for employee of org
-    When I enter Name- "Automation Test" Email- "TestSaveAsDraft@automation.com",Phone- "9876543211" details
+    And I enter Name- "Automation Test" Email- "Test6@automation.com",Phone- "9876543211", Job title- "Accountant" details
     And I click on Save as draft button
     And I am on Save as draft page and I click on your applications link
     Then I navigate to provide your contact details page and compare the text
@@ -72,7 +72,7 @@ Feature: Save as draft functionality for all text pages in the application journ
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
     And I select "Yes" and continue in Check the name and address page for employee of org
-    And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211" details and continue in Provide your contact details page
+    And I enter Name- "Automation Test" Email- "Test6@automation.com",Phone- "9876543211", Job title- "Accountant" details and continue in Provide your contact details page
     And I select Method 2 and continue in Select the method page
     And I will be navigated to Outline Why Not Method One page
     And I enter "not applicable" as my reason why I did not select method 1
@@ -94,7 +94,7 @@ Feature: Save as draft functionality for all text pages in the application journ
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
     And I select "Yes" and continue in Check the name and address page for employee of org
-    And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211" details and continue in Provide your contact details page
+    And I enter Name- "Automation Test" Email- "Test6@automation.com",Phone- "9876543211", Job title- "Accountant" details and continue in Provide your contact details page
     And I select Method 3 and continue in Select the method page
     When I enter a "method 1 and 2 not applicable" in explain why not method one or two page
     And I click on Save as draft button
@@ -118,7 +118,7 @@ Feature: Save as draft functionality for all text pages in the application journ
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
     And I select "Yes" and continue in Check the name and address page for employee of org
-    And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211" details and continue in Provide your contact details page
+    And I enter Name- "Automation Test" Email- "Test6@automation.com",Phone- "9876543211", Job title- "Accountant" details and continue in Provide your contact details page
     And I select Method 4 and continue in Select the method page
     And I will be navigated to explain why not methods one till three
     When I enter "not applicable" as my reason why I did not select methods one till three
@@ -136,7 +136,7 @@ Feature: Save as draft functionality for all text pages in the application journ
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
     And I select "Yes" and continue in Check the name and address page for employee of org
-    And I enter Name- "Automation Test payal" Email- "Test1@automation.com",Phone- "9876543210" details and continue in Provide your contact details page
+    And I enter Name- "Automation Test" Email- "Test6@automation.com",Phone- "9876543211", Job title- "Accountant" details and continue in Provide your contact details page
     And I select Method 5 and continue in Select the method page
     And I will be navigated to Why Computed Value page
     When I enter a "reason" and continue in Why Computed Value page
@@ -154,7 +154,7 @@ Feature: Save as draft functionality for all text pages in the application journ
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
     And I select "Yes" and continue in Check the name and address page for employee of org
-    And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211" details and continue in Provide your contact details page
+    And I enter Name: "Automation Test", Email: "Test@automation.com", Phone: "9876543211", Job title: "Agent for Org" details and continue in Provide your own contact details page
     And I select Method 6 and continue in Select the method page
     And I will be navigated to explain why have you not selected Methods 1-5 to value your goods
     When I enter "various reasons" as my reason why I did not select methods 1 through 5
@@ -180,7 +180,7 @@ Feature: Save as draft functionality for all text pages in the application journ
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
     And I select "Yes" and continue in Check the name and address page for agent for org
-    And I enter Name: "Automation Test", Email: "Test@automation.com", Phone: "9876543211" details and continue in Provide your own contact details page
+    And I enter Name: "Automation Test", Email: "Test@automation.com", Phone: "9876543211", Job title: "Agent for Org" details and continue in Provide your own contact details page
     When I enter Eori: "GB12341234123", CompanyName: "Agent Company Name", StreetAndNumber: "#1 Street and Number", City: "City Upon River", Country: "GB", PostalCode: "PO11 1OD" on Your company's contact page
     And I click on Save as draft button
     And I am on Save as draft page and I click on your applications link

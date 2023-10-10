@@ -43,7 +43,7 @@ Feature: Agent acting on behalf of a trader changes
     And I click on Continue button
     And I upload the document "test1.pdf" and continue in Upload letter of authority page
     And I click on continue on Uploaded letter of authority page
-    And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211", Company name - "company test" details
+    And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211", Company name - "company test", Job title - "agent for trader" details
     And I click on Continue button
     And I select Method 1 and continue in Select the method page
     And I select "Yes" and continue in Is There a Sale Involved

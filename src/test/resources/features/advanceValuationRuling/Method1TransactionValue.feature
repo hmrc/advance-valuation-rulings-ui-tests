@@ -9,7 +9,7 @@ Feature: End To End Journey for Method 1 which is based on Transaction value of 
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
     And I select "Yes" and continue in Check the name and address page for employee of org
-    And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211" details and continue in Provide your contact details page
+    And I enter Name- "Automation Test" Email- "Test6@automation.com",Phone- "9876543211", Job title- "Accountant" details and continue in Provide your contact details page
     And I select Method 1 and continue in Select the method page
     And I select "Yes" and continue in Is There a Sale Involved
     And I select "No" and continue in Is the sale between related parties
@@ -25,7 +25,7 @@ Feature: End To End Journey for Method 1 which is based on Transaction value of 
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
     And I select "Yes" and continue in Check the name and address page for employee of org
-    And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211" details and continue in Provide your contact details page
+    And I enter Name- "Automation Test" Email- "Test6@automation.com",Phone- "9876543211", Job title- "Accountant" details and continue in Provide your contact details page
     And I select Method 1 and continue in Select the method page
     And I select "No" and continue in Is There a Sale Involved
     Then I will be navigated to the Select a Method page
@@ -39,7 +39,7 @@ Feature: End To End Journey for Method 1 which is based on Transaction value of 
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
     And I select "Yes" and continue in Check the name and address page for employee of org
-    And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211" details and continue in Provide your contact details page
+    And I enter Name- "Automation Test" Email- "Test6@automation.com",Phone- "9876543211", Job title- "Accountant" details and continue in Provide your contact details page
     And I select Method 1 and continue in Select the method page
     And I select "Yes" and continue in Is There a Sale Involved
     And I select "Yes" and continue in Is the sale between related parties

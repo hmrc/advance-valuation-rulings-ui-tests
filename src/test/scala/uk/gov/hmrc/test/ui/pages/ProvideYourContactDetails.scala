@@ -23,16 +23,18 @@ import org.openqa.selenium.By
 
 object ProvideYourContactDetails extends BasePage {
 
-  val pageTitle    = "Your contact details"
-  val nameField    = By.id("name")
-  val emailField   = By.id("email")
-  val contactField = By.id("phone")
-  val redirectUrl  = "/provide-contact-details"
+  val pageTitle     = "Your contact details"
+  val nameField     = By.id("name")
+  val emailField    = By.id("email")
+  val contactField  = By.id("phone")
+  val jobTitleField = By.id("jobTitle")
+  val redirectUrl   = "/provide-contact-details"
 
-  def enterContactDetails(name: String, email: String, contact: String): Unit = {
+  def enterContactDetails(name: String, email: String, contact: String, jobTitle: String): Unit = {
     nameField.find.enterText(name)
     emailField.find.enterText(email)
     contactField.find.enterText(contact)
+    jobTitleField.find.enterText(jobTitle)
   }
   def getName(): String = nameField.find.getAttribute("value")
 
