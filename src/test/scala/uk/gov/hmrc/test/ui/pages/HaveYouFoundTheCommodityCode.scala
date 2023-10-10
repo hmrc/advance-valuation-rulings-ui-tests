@@ -22,8 +22,8 @@ import org.openqa.selenium.By
 
 object HaveYouFoundTheCommodityCode extends YesNoPage {
 
-  val goodsNameDisaply = "Do you have a commodity code for the goods?"
-  val pageTitle        = "Do you have a commodity code for the goods?"
+  val goodsNameDisaply = "Commodity code for the goods"
+  val pageTitle        = "Commodity code for the goods"
 
   override def loadPage(): this.type = {
     super.loadPage()
