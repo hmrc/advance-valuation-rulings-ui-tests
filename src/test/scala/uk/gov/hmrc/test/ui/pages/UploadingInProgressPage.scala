@@ -21,7 +21,7 @@ import uk.gov.hmrc.test.ui.pages.base.BasePage
 
 object UploadingInProgressPage extends BasePage {
 
-  val pageTitle         = "Upload In Progress"
+  val pageTitle         = "Uploading your document"
   val btn_checkProgress = "//button[contains(text(),'Check progress')]"
 
   def clickCheckProgressButton(): DoYouWantThisFileToBeMarkedAsConfidential.type = {
