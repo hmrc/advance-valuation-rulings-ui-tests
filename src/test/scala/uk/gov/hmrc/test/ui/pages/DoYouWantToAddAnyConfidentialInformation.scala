@@ -21,5 +21,5 @@ import uk.gov.hmrc.test.ui.pages.base.YesNoPage
 object DoYouWantToAddAnyConfidentialInformation extends YesNoPage {
 
   val pageTitle =
-    "Do you want to add any confidential information about the goods?"
+    "Confidential information about the goods"
 }

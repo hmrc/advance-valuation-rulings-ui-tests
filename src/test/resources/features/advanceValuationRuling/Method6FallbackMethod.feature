@@ -44,6 +44,8 @@ Feature: Journeys for Method 6 which is Fallback method
     And I enter "using calculator" as my explanation of how I have used method six to value goods and continue
     Then I navigate to Description of the Goods
     And I enter "nice things" as the description and press continue
+    And I select "Yes" and continue in Tell us about the previous ruling page
+    And I enter "previous ruling information" and continue
     And I select "No" and continue in Have you found the commodity code
     Then I will be navigated to Have the goods been subject to legal challenges
     And I select that the goods have not been subject to legal challenges

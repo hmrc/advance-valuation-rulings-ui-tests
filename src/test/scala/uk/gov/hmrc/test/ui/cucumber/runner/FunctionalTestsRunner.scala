@@ -14,13 +14,21 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.cucumber.runner
 
-import uk.gov.hmrc.test.ui.pages.base.YesNoPage
+import io.cucumber.junit.{Cucumber, CucumberOptions}
+import org.junit.runner.RunWith
 
-object HaveTheGoodsBeenSubjectToLegalChallenges extends YesNoPage {
-
-  val pageTitle =
-    "Legal challenges relating to the goods"
-
-}
+@RunWith(classOf[Cucumber])
+@CucumberOptions(
+  features = Array("src/test/resources/features"),
+  glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
+  plugin = Array(
+    "pretty",
+    "html:target/cucumberAgentCreds.html",
+    "json:target/cucumber.json",
+    "junit:target/test-reports/JourneyTestsRunner.xml"
+  ),
+  tags = "@FunctionalTests"
+)
+class FunctionalTestsRunner

@@ -50,6 +50,8 @@ Feature: End To End Journey for Method 1 which is based on Transaction value of 
     And I enter "various conditions" as the conditions which cannot be calculated and press continue
     Then I navigate to Description of the Goods
     And I enter "nice things" as the description and press continue
+    And I select "Yes" and continue in Tell us about the previous ruling page
+    And I enter "previous ruling information" and continue
     And I select "No" and continue in Have you found the commodity code
     Then I will be navigated to Have the goods been subject to legal challenges
     And I select that the goods have not been subject to legal challenges

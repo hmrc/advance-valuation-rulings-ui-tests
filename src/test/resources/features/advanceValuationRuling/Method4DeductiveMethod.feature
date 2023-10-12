@@ -17,6 +17,8 @@ Feature: Method 4 which is deductive method to value goods flows
     And I enter "string" as my reason for selecting method Method 4
     Then I navigate to Description of the Goods
     And I enter "Coffee" as the description and press continue
+    And I select "Yes" and continue in Tell us about the previous ruling page
+    And I enter "previous ruling information" and continue
     And I select "No" and continue in Have you found the commodity code
     Then I will be navigated to Have the goods been subject to legal challenges
 
@@ -43,6 +45,8 @@ Feature: Method 4 which is deductive method to value goods flows
     And I enter "string" as my reason for selecting method Method 4
     Then I navigate to Description of the Goods
     And I enter "Coffee" as the description and press continue
+    And I select "Yes" and continue in Tell us about the previous ruling page
+    And I enter "previous ruling information" and continue
     And I select "No" and continue in Have you found the commodity code
     Then I will be navigated to Have the goods been subject to legal challenges
     And I select that the goods have not been subject to legal challenges

@@ -16,11 +16,11 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.pages.base.YesNoPage
+import uk.gov.hmrc.test.ui.pages.base.TextAreaPage
 
-object HaveTheGoodsBeenSubjectToLegalChallenges extends YesNoPage {
+object TellUsAboutThePreviousRuling extends TextAreaPage {
 
-  val pageTitle =
-    "Legal challenges relating to the goods"
+  val pageTitle = "Tell us about the ruling"
+//  val pageTitle = "About the previous ruling"
 
 }
