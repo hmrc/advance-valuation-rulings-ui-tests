@@ -31,7 +31,7 @@ Feature: End To End Journey
     Given I am on the ARS Home Page and Login without enrolment
     Then user should see subscribe to advance rulings page to enrol
     Then I sign out
-    
+
   Scenario: User clicks on cancel application link
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     And I click on Start new application in ARS Home

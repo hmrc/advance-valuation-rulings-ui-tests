@@ -235,6 +235,14 @@ class StepDefinitions
       .submitPage()
   }
 
+  And("I select {booleanValue} and continue in Tell us about the previous ruling page") { (option: Boolean) =>
+    PreviousRulingsBasedOnSimilarMethods.loadPage().select(option).submitPage()
+  }
+
+  And("I enter {string} and continue") { (previousRulingInfo: String) =>
+    TellUsAboutThePreviousRuling.enterText(previousRulingInfo).submitPage()
+  }
+
   And("I select {booleanValue} and continue in Have you found the commodity code page") { (option: Boolean) =>
     HaveYouFoundTheCommodityCode.loadPage().select(option)
   }
