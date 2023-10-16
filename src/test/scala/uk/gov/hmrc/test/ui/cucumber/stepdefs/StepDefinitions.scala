@@ -212,9 +212,8 @@ class StepDefinitions
   Then("I will be navigated to the Select a Method page")(() => MethodSelectionPage.loadPage())
 
   And("I select Method {int} and continue in Select the method page") { (methodNumber: Int) =>
-    MethodSelectionPage.loadPage()
-    MethodSelectionPage.selectOption(methodNumber)
-    submitPage()
+    MethodDetailsPage.loadPage().submitPage()
+    MethodSelectionPage.loadPage().selectOption(methodNumber).submitPage()
   }
   Then("I navigate to Description of the Goods")(() => DescriptionOfTheGoods.url)
 
