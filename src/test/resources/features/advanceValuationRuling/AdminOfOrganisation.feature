@@ -3,6 +3,7 @@ Feature: Employee of Organisation End To End Journey
 
   Scenario: Organisation User End To End Journey without upload
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
+    Given I have accepted additional cookies
     When I click on Start new application in ARS Home
     And I select role as a "An employee of the organisation"
     And I click continue on Information you need to complete an application page

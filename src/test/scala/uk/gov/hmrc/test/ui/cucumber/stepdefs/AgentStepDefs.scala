@@ -23,10 +23,10 @@ import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
 
 trait AgentStepDefs
     extends BaseStepDef
-    with MethodTwoStepDefintions
-    with MethodThreeStepDefintions
-    with MethodFourStepDefintions
-    with MethodSixStepDefintions {
+    with MethodTwoStepDefinitions
+    with MethodThreeStepDefinitions
+    with MethodFourStepDefinitions
+    with MethodSixStepDefinitions {
 
   When("I select role as a {string}") { role: String =>
     AgentSelectRole.selectRole(role: String)

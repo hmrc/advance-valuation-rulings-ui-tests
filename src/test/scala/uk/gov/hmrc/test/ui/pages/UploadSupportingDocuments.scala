@@ -16,20 +16,36 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import org.openqa.selenium.support.ui.{FluentWait, WebDriverWait}
+import org.openqa.selenium.{By, WebDriver}
 import uk.gov.hmrc.test.ui.pages.base.BasePage
-import org.openqa.selenium.By
+
+import java.time.Duration
 
 object UploadSupportingDocuments extends BasePage {
 
-  val pageTitle          =
-    "Upload supporting documents"
+  val pageTitle = "Upload supporting documents"
+
   val ele_UploadDocument = "file-input"
 
-  def uploadDocument(uploadFilePath: String): Unit = {
+  def pollingClick(): FluentWait[Unit] =
+    new FluentWait(driver.findElement(By.className(continueButton)).click())
+      .pollingEvery(Duration.ofSeconds(3))
+      .withTimeout(Duration.ofSeconds(15))
+
+  // Old method
+//  def uploadDocument(uploadFilePath: String): Unit = {
+//    driver
+//      .findElement(By.id(ele_UploadDocument))
+//      .sendKeys(uploadFilePath)
+//    submitPage()
+//    Thread.sleep(5000)
+//  }
+
+  def uploadDocument(uploadFilePath: String)(implicit driver: WebDriver): Unit = {
     driver
       .findElement(By.id(ele_UploadDocument))
       .sendKeys(uploadFilePath)
-    submitPage()
-    Thread.sleep(5000)
+    pollingClick()
   }
 }

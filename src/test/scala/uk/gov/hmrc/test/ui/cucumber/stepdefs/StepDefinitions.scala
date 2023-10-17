@@ -16,18 +16,20 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.ExpectedConditions
-import uk.gov.hmrc.test.ui.pages.{ApplicationComplete, CancelApplicationPage, DescribeAnyRestrictions, DescribeTheLegalChallenges, DoYouWantToUploadAnySupportingDocuments, _}
+import uk.gov.hmrc.test.ui.pages.DoYouWantThisFileToBeMarkedAsConfidential.pollingClick2
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.{clickCancelApplicationLink, clickSaveAsDraftButton, onPage, submitPage}
 import uk.gov.hmrc.test.ui.pages.base.BasePage.{baseUrl, titleSuffix}
 import uk.gov.hmrc.test.ui.pages.base.{BasePage, ScenarioContext}
+import uk.gov.hmrc.test.ui.pages._
 
 class StepDefinitions
     extends BaseStepDef
-    with MethodTwoStepDefintions
-    with MethodThreeStepDefintions
-    with MethodFourStepDefintions
-    with MethodSixStepDefintions
+    with MethodTwoStepDefinitions
+    with MethodThreeStepDefinitions
+    with MethodFourStepDefinitions
+    with MethodSixStepDefinitions
     with AgentStepDefs {
 
   var draftId = ""
@@ -37,6 +39,12 @@ class StepDefinitions
   )((affinityGroup: String, credentialRole: String) =>
     BasePage.invokeURL(BasePage.URL_ARSHomePage, affinityGroup, credentialRole)
   )
+
+  Given("I have accepted additional cookies") { () =>
+    driver
+      .findElement(By.cssSelector("body > div > div > div.cbanner-govuk-button-group > button:nth-child(1)"))
+      .click()
+  }
 
   Given("I am on the ARS Home Page and Login without enrolment") { () =>
     BasePage.invokeURL(BasePage.URL_ARSHomePage, "Individual", "User", false)
@@ -52,17 +60,18 @@ class StepDefinitions
     onPage(base.BasePage.arsHomePageText)
     submitPage()
   }
-  And(
-    "I click continue on Information you need to complete an application page"
-  ) { () =>
+
+  And("I click continue on Information you need to complete an application page") { () =>
     RequiredInformationPage.loadPage()
     submitPage()
   }
+
   And("I select {booleanValue} and continue in Are you planning to import goods page") { (option: Boolean) =>
     PlanningToImportGoods.loadPage()
     PlanningToImportGoods.select(option)
     submitPage()
   }
+
   And("I click on continue in How We Contact You page") { () =>
     HowWeContactYou.loadPage()
     submitPage()
@@ -146,13 +155,13 @@ class StepDefinitions
         .select(option)
         .submitPage()
   }
-  And(
-    "I select {booleanValue} and continue in Do you want to upload any supporting documents page"
-  ) { (option: Boolean) =>
-    DoYouWantToUploadAnySupportingDocuments
-      .loadPage()
-      .select(option)
-      .submitPage()
+
+  And("I select {booleanValue} and continue in Do you want to upload any supporting documents page") {
+    (option: Boolean) =>
+      DoYouWantToUploadAnySupportingDocuments
+        .loadPage()
+        .select(option)
+        .submitPage()
   }
 
   And("I upload the document {string} and continue in Upload supporting documents page") { (filePath: String) =>
@@ -165,12 +174,16 @@ class StepDefinitions
   }
 
   And("I upload the document {string} in Upload supporting documents page") { (filePath: String) =>
+    println("here")
     val path = getClass.getResource(s"/testdata/$filePath").getPath
     UploadSupportingDocuments
       .loadPage()
       .uploadDocument(path)
-    UploadingInProgressPage
-      .clickCheckProgressButton()
+    println("hmmm")
+    pollingClick2()
+    println("yay!!!")
+//    Thread.sleep(36000000)
+//    DoYouWantThisFileToBeMarkedAsConfidential.loadPage()
   }
 
   And(
@@ -180,6 +193,7 @@ class StepDefinitions
     ProvideYourContactDetails.enterContactDetails(name, email, phone, jobTitle)
     submitPage()
   }
+
   And(
     "I enter Name- {string} Email- {string},Phone- {string}, Job title- {string} details"
   ) { (name: String, email: String, phone: String, jobTitle: String) =>
@@ -193,6 +207,10 @@ class StepDefinitions
   And("I click on Save as draft button")(() => clickSaveAsDraftButton())
 
   And("I click on Continue button")(() => submitPage())
+
+  Then("""^I wait for (.*) seconds$""") { (seconds: Int) =>
+    Thread.sleep(seconds * 1000)
+  }
 
   And("I am on Save as draft page and I click on your applications link") { () =>
     SaveAsDraftPage.loadPage()
@@ -212,9 +230,12 @@ class StepDefinitions
   Then("I will be navigated to the Select a Method page")(() => MethodSelectionPage.loadPage())
 
   And("I select Method {int} and continue in Select the method page") { (methodNumber: Int) =>
-    MethodDetailsPage.loadPage().submitPage()
-    MethodSelectionPage.loadPage().selectOption(methodNumber).submitPage()
+    MethodSelectionPage
+      .loadPage()
+      .selectOption(methodNumber)
+      .submitPage()
   }
+
   Then("I navigate to Description of the Goods")(() => DescriptionOfTheGoods.url)
 
   Then("I navigate to Description of the Goods page and compare the text") { () =>
@@ -286,18 +307,22 @@ class StepDefinitions
         OrgEORIMustBeUpToDate.loadPage()
       else throw new Exception("Invalid role selected")
   )
+
   Then("I will be navigated to You must have a commodity code") { () =>
     YouMustHaveACommodityCode.loadPage()
     YouMustHaveACommodityCode.linkNavigationValidation()
   }
+
   Then("I will be navigated to Have the goods been subject to legal challenges") { () =>
     HaveTheGoodsBeenSubjectToLegalChallenges.loadPage()
   }
+
   And("I select that the goods been subject to legal challenges") { () =>
     HaveTheGoodsBeenSubjectToLegalChallenges
       .selectYes()
       .submitPage()
   }
+
   And("I select that the goods have not been subject to legal challenges") { () =>
     HaveTheGoodsBeenSubjectToLegalChallenges
       .selectNo()
@@ -409,6 +434,7 @@ class StepDefinitions
   And("I enter {string} as the conditions which cannot be calculated and press continue") { (text: String) =>
     DescribeAnyConditions.enterText(text).submitPage()
   }
+
   And("I enter {string} as the conditions which cannot be calculated") { (text: String) =>
     DescribeAnyConditions.enterText(text)
     ScenarioContext.setContext("conditions which cannot be calculated", text)

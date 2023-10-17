@@ -16,10 +16,24 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import org.openqa.selenium.By
+import org.openqa.selenium.support.ui.FluentWait
 import uk.gov.hmrc.test.ui.pages.base.YesNoPage
+
+import java.time.Duration
 
 object DoYouWantThisFileToBeMarkedAsConfidential extends YesNoPage {
 
   val pageTitle =
     "Tell us if you want to make this document confidential"
+
+  def pollingClick2(): Unit =
+    new FluentWait(
+      driver.findElement(By.className(continueButton)).click()
+    ).pollingEvery(Duration.ofSeconds(3))
+      .withTimeout(Duration.ofSeconds(15))
+      .until { _ =>
+        driver.findElement(By.className(continueButton)).click()
+        driver.findElement(By.tagName("h1")).getText == pageTitle
+      }
 }

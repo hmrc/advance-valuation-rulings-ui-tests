@@ -20,7 +20,7 @@ import uk.gov.hmrc.test.ui.pages._
 import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
 import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
 
-trait MethodTwoStepDefintions extends BaseStepDef {
+trait MethodTwoStepDefinitions extends BaseStepDef {
   Then("I will be navigated to Outline Why Not Method One page") { () =>
     OutlineWhyNotMethodOne.loadPage()
   }
