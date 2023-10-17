@@ -19,6 +19,8 @@ Feature: Method 4 which is deductive method to value goods flows
     And I enter "Coffee" as the description and press continue
     And I select "Yes" and continue in Tell us about the previous ruling page
     And I enter "previous ruling information" and continue
+    And I select "Yes" on any other rulings that have used a similar method and continue
+    And I enter "other rulings for similar goods" on about the rulings for similar goods page and continue
     And I select "No" and continue in Have you found the commodity code
     Then I will be navigated to Have the goods been subject to legal challenges
 
