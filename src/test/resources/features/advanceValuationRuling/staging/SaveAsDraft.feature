@@ -3,6 +3,7 @@ Feature: Save as draft functionality for all text pages in the application journ
 
   Scenario: Save as draft functionality check as Individual User End To End Journey for Method 1
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
+    Given I have accepted additional cookies
     And I click on Start new application in ARS Home
     And I select role as a "An employee of the organisation"
     And I click continue on Information you need to complete an application page
@@ -70,6 +71,7 @@ Feature: Save as draft functionality for all text pages in the application journ
 
   Scenario: Save as draft functionality check as Individual User End To End Journey for Method 2
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
+    Given I have accepted additional cookies
     And I click on Start new application in ARS Home
     And I select role as a "An employee of the organisation"
     And I click continue on Information you need to complete an application page
