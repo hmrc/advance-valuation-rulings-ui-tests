@@ -1,4 +1,4 @@
-@EndToEndJourney @ZAP @AccessibilityTest
+@staging @ZAP @AccessibilityTest
 Feature: End To End Journey
 
   Scenario Outline: User  EORI number details are incorrect for employee of the org and agent of the org

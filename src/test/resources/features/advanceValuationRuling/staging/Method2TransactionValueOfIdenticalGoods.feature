@@ -1,5 +1,4 @@
-@EndToEndJourney
-@FunctionalTests
+@staging @FunctionalTests
 Feature: Flows for Method 2 which is based on Transaction value of identical goods
 
   Scenario: Method 2 which is based on Transaction value of identical goods where all pages answered 'yes'

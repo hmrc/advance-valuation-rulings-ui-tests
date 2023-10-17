@@ -28,7 +28,6 @@ import org.junit.runner.RunWith
     "html:target/journeyTests.html",
     "json:target/cucumber.json",
     "junit:target/test-reports/JourneyTestsRunner.xml"
-  ),
-  tags = "@EndToEndJourney"
+  )
 )
-class JourneyTestsRunner
+class CustomTagRunner {}

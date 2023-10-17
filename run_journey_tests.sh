@@ -8,4 +8,11 @@ if [ -z "$BROWSER_TYPE" ]; then
     echo ""
 fi
 
-sbt -Dbrowser="${BROWSER_TYPE:=$DEFAULT_BROWSER}" -Denvironment="${ENV:=local}" "testOnly uk.gov.hmrc.test.ui.cucumber.runner.JourneyTestsRunner"
+if [ "$ENV" = "staging" ]
+then
+  sbt -Dbrowser="${BROWSER_TYPE:=$DEFAULT_BROWSER}" -Denvironment="staging" "testOnly uk.gov.hmrc.test.ui.cucumber.runner.JourneyTestsRunnerStaging"
+ else
+  sbt -Dbrowser="${BROWSER_TYPE:=$DEFAULT_BROWSER}" -Denvironment="local" "testOnly uk.gov.hmrc.test.ui.cucumber.runner.JourneyTestsRunnerLocal"
+fi
+
+
