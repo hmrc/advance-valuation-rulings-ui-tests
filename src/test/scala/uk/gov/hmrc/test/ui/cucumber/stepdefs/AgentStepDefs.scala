@@ -16,10 +16,10 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import uk.gov.hmrc.test.ui.pages.{AddressPageForAgentForTrader, AddressPageForInvalidEori, AddressPageForPrivateEori, AgentCompanyDetailsPage, AgentForTraderContactDetailsPage, AgentSelectRole, OrganisationContactDetailsPage, ProvideTraderEori, RequiredInformationPage, TradersEoriMustBeUpToDate, TradersIncorrectPrivateEori, UploadLetterOfAuthorityPage, UploadedLetterOfAuthorityPage, UploadingInProgressPage}
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.submitPage
 import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
 import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
+import uk.gov.hmrc.test.ui.pages._
 
 trait AgentStepDefs
     extends BaseStepDef
@@ -127,8 +127,6 @@ trait AgentStepDefs
   And("I upload the document {string} and continue in Upload letter of authority page") { (filename: String) =>
     val path = getClass.getResource(s"/testdata/$filename").getPath
     UploadLetterOfAuthorityPage.loadPage().uploadDocument(path)
-    UploadingInProgressPage
-      .clickCheckProgressButton()
   }
 
   And("I click on continue on Uploaded letter of authority page") { () =>

@@ -28,24 +28,8 @@ object UploadSupportingDocuments extends BasePage {
 
   val ele_UploadDocument = "file-input"
 
-  def pollingClick(): FluentWait[Unit] =
-    new FluentWait(driver.findElement(By.className(continueButton)).click())
-      .pollingEvery(Duration.ofSeconds(3))
-      .withTimeout(Duration.ofSeconds(15))
-
-  // Old method
-//  def uploadDocument(uploadFilePath: String): Unit = {
-//    driver
-//      .findElement(By.id(ele_UploadDocument))
-//      .sendKeys(uploadFilePath)
-//    submitPage()
-//    Thread.sleep(5000)
-//  }
-
-  def uploadDocument(uploadFilePath: String)(implicit driver: WebDriver): Unit = {
+  def uploadDocument(uploadFilePath: String)(implicit driver: WebDriver): Unit =
     driver
       .findElement(By.id(ele_UploadDocument))
       .sendKeys(uploadFilePath)
-    pollingClick()
-  }
 }

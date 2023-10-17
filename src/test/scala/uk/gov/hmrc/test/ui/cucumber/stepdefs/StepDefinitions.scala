@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import org.openqa.selenium.By
-import org.openqa.selenium.support.ui.ExpectedConditions
+import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
 import uk.gov.hmrc.test.ui.pages.DoYouWantThisFileToBeMarkedAsConfidential.pollingClick2
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.{clickCancelApplicationLink, clickSaveAsDraftButton, onPage, submitPage}
 import uk.gov.hmrc.test.ui.pages.base.BasePage.{baseUrl, titleSuffix}
@@ -164,26 +164,20 @@ class StepDefinitions
         .submitPage()
   }
 
-  And("I upload the document {string} and continue in Upload supporting documents page") { (filePath: String) =>
-    val path = getClass.getResource(s"/testdata/$filePath").getPath
-    UploadSupportingDocuments
-      .loadPage()
-      .uploadDocument(path)
-    submitPage()
-    webDriverWait().until(ExpectedConditions.urlContains("mark-confidential"))
-  }
+//  And("I upload the document {string} and continue in Upload supporting documents page") { (filePath: String) =>
+//    val path = getClass.getResource(s"/testdata/$filePath").getPath
+//    UploadSupportingDocuments
+//      .loadPage()
+//      .uploadDocument(path)
+//    UploadingInProgressPage.pollingClick2()
+//  }
 
   And("I upload the document {string} in Upload supporting documents page") { (filePath: String) =>
-    println("here")
     val path = getClass.getResource(s"/testdata/$filePath").getPath
     UploadSupportingDocuments
       .loadPage()
       .uploadDocument(path)
-    println("hmmm")
-    pollingClick2()
-    println("yay!!!")
-//    Thread.sleep(36000000)
-//    DoYouWantThisFileToBeMarkedAsConfidential.loadPage()
+    DoYouWantThisFileToBeMarkedAsConfidential.pollingClick2()
   }
 
   And(
@@ -454,7 +448,6 @@ class StepDefinitions
 
   And("I check my answers and click on continue") { () =>
     CheckYourAnswers.submitPage()
-    Thread.sleep(5000)
   }
 
   Then("I will be navigated to the Application Complete page")(() => ApplicationComplete.loadPage())
