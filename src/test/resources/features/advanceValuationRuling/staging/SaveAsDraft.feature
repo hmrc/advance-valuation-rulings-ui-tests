@@ -1,6 +1,6 @@
-@staging @FunctionalTests
+@FunctionalTests
 Feature: Save as draft functionality for all text pages in the application journeys
-  
+
   Scenario: Save as draft functionality check as Individual User End To End Journey for Method 1
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     And I click on Start new application in ARS Home
@@ -42,6 +42,8 @@ Feature: Save as draft functionality for all text pages in the application journ
     And I click on Continue button
     And I select "Yes" and continue in Tell us about the previous ruling page
     And I enter "previous ruling information" and continue
+    And I select "Yes" on any other rulings that have used a similar method and continue
+    And I enter "other rulings for similar goods" on about the rulings for similar goods page and continue
     And I select "Yes" and continue in Have you found the commodity code
     When I enter "1234" commodity code
     And I click on Save as draft button

@@ -12,7 +12,6 @@ Feature: Agent acting on behalf of a trader changes
       | "Agent acting on behalf of an organisation" |
       | "Agent acting on behalf of a trader"        |
 
-
   Scenario Outline: Agent for trader when public or private EORI is entered
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     And I click on Start new application in ARS Home
@@ -29,7 +28,7 @@ Feature: Agent acting on behalf of a trader changes
       | "GB113888888041" | "public"  |
       | "GB112888888041" | "private" |
 
-  @AccessibilityTest @ZAP
+  @staging @AccessibilityTest @ZAP
   Scenario Outline: Agent for trader journey for public or private EORI is entered with upload supporting documents
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     And I click on Start new application in ARS Home
@@ -57,6 +56,8 @@ Feature: Agent acting on behalf of a trader changes
     And I enter "nice things" as the description and press continue
     And I select "Yes" and continue in Tell us about the previous ruling page
     And I enter "previous ruling information" and continue
+    And I select "Yes" on any other rulings that have used a similar method and continue
+    And I enter "other rulings for similar goods" on about the rulings for similar goods page and continue
     And I select "No" and continue in Have you found the commodity code
     And I will be navigated to Have the goods been subject to legal challenges
     And I select that the goods have not been subject to legal challenges

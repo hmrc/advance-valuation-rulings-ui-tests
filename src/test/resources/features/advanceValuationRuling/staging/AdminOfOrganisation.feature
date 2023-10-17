@@ -1,9 +1,8 @@
-@staging @FunctionalTests @ZAP @wip
+@staging @FunctionalTests @ZAP
 Feature: Employee of Organisation End To End Journey
 
   Scenario: Organisation User End To End Journey without upload
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
-    Given I have accepted additional cookies
     When I click on Start new application in ARS Home
     And I select role as a "An employee of the organisation"
     And I click continue on Information you need to complete an application page
@@ -23,8 +22,6 @@ Feature: Employee of Organisation End To End Journey
     And I enter "nice things" as the description and press continue
     And I select "Yes" and continue in Tell us about the previous ruling page
     And I enter "previous ruling information" and continue
-    And I select "Yes" on any other rulings that have used a similar method and continue
-    And I enter "other rulings for similar goods" on about the rulings for similar goods page and continue
     And I select "No" and continue in Have you found the commodity code
     Then I will be navigated to Have the goods been subject to legal challenges
     And I select that the goods have not been subject to legal challenges

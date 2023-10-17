@@ -30,10 +30,9 @@ Feature: End To End Journey for Method 1 which is based on Transaction value of 
     And I select "No" and continue in Is There a Sale Involved
     Then I will be navigated to the Select a Method page
 
-  @local @AccessibilityTest @ZAP
+  @staging @AccessibilityTest @ZAP
   Scenario: Employee of Org selects Method 1 based on Transaction value with full flow with multiple upload
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
-    Given I have accepted additional cookies
     When I click on Start new application in ARS Home
     And I select role as a "An employee of the organisation"
     And I click continue on Information you need to complete an application page

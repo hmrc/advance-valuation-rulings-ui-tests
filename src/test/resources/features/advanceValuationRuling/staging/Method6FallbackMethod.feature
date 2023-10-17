@@ -1,4 +1,4 @@
-@staging @FunctionalTests
+@FunctionalTests
 Feature: Journeys for Method 6 which is Fallback method
 
   Scenario: Journey for Method 6 all pages for employee of org
@@ -19,7 +19,7 @@ Feature: Journeys for Method 6 which is Fallback method
     And I enter "using calculator" as my explanation of how I have used method six to value goods and continue
     Then I navigate to Description of the Goods
 
-  @local @ZAP @AccessibilityTest
+  @staging @ZAP @AccessibilityTest
   Scenario Outline: Agent on behalf of trader selects Method 6 all pages
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home
@@ -46,6 +46,8 @@ Feature: Journeys for Method 6 which is Fallback method
     And I enter "nice things" as the description and press continue
     And I select "Yes" and continue in Tell us about the previous ruling page
     And I enter "previous ruling information" and continue
+    And I select "Yes" on any other rulings that have used a similar method and continue
+    And I enter "other rulings for similar goods" on about the rulings for similar goods page and continue
     And I select "No" and continue in Have you found the commodity code
     Then I will be navigated to Have the goods been subject to legal challenges
     And I select that the goods have not been subject to legal challenges
