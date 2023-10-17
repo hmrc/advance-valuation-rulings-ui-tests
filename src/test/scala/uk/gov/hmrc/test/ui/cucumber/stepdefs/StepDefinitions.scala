@@ -242,6 +242,15 @@ class StepDefinitions
     TellUsAboutThePreviousRuling.enterText(previousRulingInfo).submitPage()
   }
 
+  And("I select {booleanValue} on any other rulings that have used a similar method and continue") {
+    (option: Boolean) =>
+      OtherRulingsBasedOnSimilarMethod.loadPage().select(option).submitPage()
+  }
+
+  And("I enter {string} on about the rulings for similar goods page and continue") { (otherRulingInfo: String) =>
+    TellUsAboutOtherRulingsSimilarGoods.enterText(otherRulingInfo).submitPage()
+  }
+
   And("I select {booleanValue} and continue in Have you found the commodity code page") { (option: Boolean) =>
     HaveYouFoundTheCommodityCode.loadPage().select(option)
   }

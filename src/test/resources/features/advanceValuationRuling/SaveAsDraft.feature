@@ -43,6 +43,7 @@ Feature: Save as draft functionality for all text pages in the application journ
     And I select "Yes" and continue in Tell us about the previous ruling page
     And I enter "previous ruling information" and continue
     And I select "Yes" and continue in Have you found the commodity code
+    And I enter "other rulings for similar goods" on about the rulings for similar goods page and continue
     When I enter "1234" commodity code
     And I click on Save as draft button
     And I am on Save as draft page and I click on your applications link
