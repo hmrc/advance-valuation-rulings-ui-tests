@@ -16,9 +16,10 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.pages.base._
+import uk.gov.hmrc.test.ui.pages.base.YesNoPage
 
-object MethodSelectionPage extends OptionSelectionPage {
-  val pageTitle   = "Which method do you want to use to value your goods?"
-  val redirectUrl = "/select-valuation-method"
+object OtherRulingsBasedOnSimilarMethod extends YesNoPage {
+
+  val pageTitle = "Are you aware of any other rulings that have used a similar method?"
+
 }

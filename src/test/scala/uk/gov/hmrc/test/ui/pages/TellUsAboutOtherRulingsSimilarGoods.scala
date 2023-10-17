@@ -16,9 +16,9 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.pages.base._
+import uk.gov.hmrc.test.ui.pages.base.TextAreaPage
 
-object MethodSelectionPage extends OptionSelectionPage {
-  val pageTitle   = "Which method do you want to use to value your goods?"
-  val redirectUrl = "/select-valuation-method"
+object TellUsAboutOtherRulingsSimilarGoods extends TextAreaPage {
+
+  val pageTitle = "About the rulings for similar goods"
 }

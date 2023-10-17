@@ -25,9 +25,9 @@ import org.junit.runner.RunWith
   glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
   plugin = Array(
     "pretty",
-    "html:target/cucumberAgentCreds.html",
+    "html:target/FunctionalTestRunner.html",
     "json:target/cucumber.json",
-    "junit:target/test-reports/JourneyTestsRunner.xml"
+    "junit:target/test-reports/FunctionalTestsRunner.xml"
   ),
   tags = "@FunctionalTests"
 )

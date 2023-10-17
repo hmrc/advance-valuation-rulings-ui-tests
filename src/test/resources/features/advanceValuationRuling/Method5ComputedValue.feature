@@ -1,4 +1,3 @@
-@EndToEndJourney
 @FunctionalTests
 Feature: Method 5 which is computed value to value goods flows
 
