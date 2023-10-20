@@ -20,7 +20,6 @@ import uk.gov.hmrc.test.ui.pages.base.YesNoPage
 
 object PreviousRulingsBasedOnSimilarMethods extends YesNoPage {
 
-  val pageTitle = "Have you ever received a ruling based on a similar method?"
-//  val pageTitle = "Previous rulings based on similar methods"
+  val pageTitle = "Previous rulings based on similar methods"
 
 }
