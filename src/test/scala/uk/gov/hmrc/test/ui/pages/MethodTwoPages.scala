@@ -26,11 +26,11 @@ object HaveYouUsedMethodOneToImportInPast extends YesNoPage {
 object OutlineWhyNotMethodOne extends TextAreaPage {
   val redirectUrl = "/explain-why-not-method-1"
   val pageTitle   =
-    "Explain why you have not selected Method 1 to value your goods"
+    "Explain why you have not used Method 1"
 }
 
 object DescribeTheIdenticalGoods extends TextAreaPage {
   val redirectUrl = "/describe-identical-goods"
   val pageTitle   =
-    "Describe the identical goods"
+    "Description of the identical goods"
 }
