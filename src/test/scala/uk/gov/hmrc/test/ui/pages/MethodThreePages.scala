@@ -20,7 +20,7 @@ import uk.gov.hmrc.test.ui.pages.base._
 
 object ExplainWhyNotMethodOneOrTwo extends TextAreaPage {
   val redirectUrl = "/explain-why-not-methods-1-2"
-  val pageTitle   = "Explain why you have not selected Methods 1 or 2 to value your goods"
+  val pageTitle   = "Explain why you have not used Methods 1 or 2"
 }
 
 object HaveYouUsedMethodOneToImportSimilarGoods extends YesNoPage {
