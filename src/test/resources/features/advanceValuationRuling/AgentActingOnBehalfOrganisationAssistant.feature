@@ -34,9 +34,9 @@ Feature: Agent Acting on Behalf of Organisation End to End Journey
     And I check my answers and click on continue
     Then I will be navigated to the Application Complete page
 
-  @FunctionalTests
-  Scenario: Organisation Assistant End To End Journey - when affinity group doesn't matter
-    Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
+  @EndToEndJourney
+  Scenario Outline: Organisation Assistant End To End Journey - when affinity group doesn't matter
+    Given I am on the ARS Home Page with affinity group as a <AffinityGroup> and Credential role as a <CredentialRole>
     When I click on Start new application in ARS Home
     And I select role as a "Agent acting on behalf of an organisation"
     And I click continue on Information you need to complete an application page
@@ -67,3 +67,9 @@ Feature: Agent Acting on Behalf of Organisation End to End Journey
     Then I will be navigated to the Check Your Answers page
     And I check my answers and click on continue
     Then I will be navigated to the Application Complete page
+    Examples:
+      | AffinityGroup  | CredentialRole |
+      | "Organisation" | "User"         |
+      | "Individual"   | "User"         |
+      | "Agent"        | "User"         |
+      | "Agent"        | "Assistant"    |
