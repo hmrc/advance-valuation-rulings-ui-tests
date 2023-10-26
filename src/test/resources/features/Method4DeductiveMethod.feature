@@ -24,7 +24,7 @@ Feature: Method 4 which is deductive method to value goods flows
     And I select "No" and continue in Have you found the commodity code
     Then I will be navigated to Have the goods been subject to legal challenges
 
-  @EndToEndJourney @ZAP @AccessibilityTest @WIP
+  @EndToEndJourney @ZAP @AccessibilityTest
   Scenario Outline: Method 4 which is deductive method to value goods journey through all pages for agent for trader
     Given I am on the ARS Home Page with affinity group as a "Organisation" and Credential role as a "User"
     When I click on Start new application in ARS Home
