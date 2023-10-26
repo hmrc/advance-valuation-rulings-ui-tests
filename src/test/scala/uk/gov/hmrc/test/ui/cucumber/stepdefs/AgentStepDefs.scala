@@ -40,7 +40,8 @@ trait AgentStepDefs
   }
 
   And(
-    "I enter Name: {string}, Email: {string}, Phone: {string}, Job title: {string} details and continue in Provide your own contact details page"
+    "I enter Name: {string}, Email: {string}, Phone: {string}, Job title: {string} details and " +
+      "continue in Provide your own contact details page"
   ) { (name: String, email: String, phone: String, jobTitle: String) =>
     OrganisationContactDetailsPage.loadPage()
     OrganisationContactDetailsPage.enterContactDetails(
@@ -53,7 +54,8 @@ trait AgentStepDefs
   }
 
   And(
-    "I enter Eori: {string}, CompanyName: {string}, StreetAndNumber: {string}, City: {string}, Country: {string}, PostalCode: {string} and continue on Your company's contact page"
+    "I enter Eori: {string}, CompanyName: {string}, StreetAndNumber: {string}, City: {string}, " +
+      "Country: {string}, PostalCode: {string} and continue on Your company's contact page"
   ) {
     (
       agentEori: String,
@@ -76,7 +78,8 @@ trait AgentStepDefs
   }
 
   And(
-    "I enter Eori: {string}, CompanyName: {string}, StreetAndNumber: {string}, City: {string}, Country: {string}, PostalCode: {string} on Your company's contact page"
+    "I enter Eori: {string}, CompanyName: {string}, StreetAndNumber: {string}, City: {string}, " +
+      "Country: {string}, PostalCode: {string} on Your company's contact page"
   ) {
     (
       agentEori: String,
@@ -126,7 +129,10 @@ trait AgentStepDefs
 
   And("I upload the document {string} and continue in Upload letter of authority page") { (filename: String) =>
     val path = getClass.getResource(s"/testdata/$filename").getPath
-    UploadLetterOfAuthorityPage.loadPage().uploadDocument(path)
+    UploadLetterOfAuthorityPage
+      .loadPage()
+      .uploadDocument(path)
+    UploadedLetterOfAuthorityPage.pollingClick2()
   }
 
   And("I click on continue on Uploaded letter of authority page") { () =>
@@ -146,7 +152,9 @@ trait AgentStepDefs
       TradersEoriMustBeUpToDate.loadPage()
     } else if (eoriType == "private") {
       TradersIncorrectPrivateEori.loadPage()
-    } else throw new Exception("Invalid EORI type passed")
+    } else {
+      throw new Exception("Invalid EORI type passed")
+    }
   )
 
   And("I select {booleanValue} for {string} EORI on Check the name and address page") {
@@ -155,6 +163,8 @@ trait AgentStepDefs
         AddressPageForAgentForTrader.loadPage().select(option)
       } else if (eoriType == "private") {
         AddressPageForPrivateEori.loadPage().select(option)
-      } else throw new Exception("Invalid EORI type passed")
+      } else {
+        throw new Exception("Invalid EORI type passed")
+      }
   }
 }

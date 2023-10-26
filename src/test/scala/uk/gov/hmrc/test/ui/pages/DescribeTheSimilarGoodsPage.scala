@@ -20,5 +20,5 @@ import uk.gov.hmrc.test.ui.pages.base.TextAreaPage
 
 case object DescribeTheSimilarGoodsPage extends TextAreaPage {
   val redirectUrl = "/describe-similar-goods"
-  val pageTitle   = "Describe the similar goods"
+  val pageTitle   = "Description of the similar goods"
 }

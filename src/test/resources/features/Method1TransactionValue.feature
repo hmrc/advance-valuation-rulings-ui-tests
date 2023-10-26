@@ -30,9 +30,9 @@ Feature: End To End Journey for Method 1 which is based on Transaction value of 
     And I select "No" and continue in Is There a Sale Involved
     Then I will be navigated to the Select a Method page
 
-  @staging @AccessibilityTest @ZAP
+  @AccessibilityTest @ZAP
   Scenario: Employee of Org selects Method 1 based on Transaction value with full flow with multiple upload
-    Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
+    Given I am on the ARS Home Page with affinity group as a "Organisation" and Credential role as a "User"
     When I click on Start new application in ARS Home
     And I select role as a "An employee of the organisation"
     And I click continue on Information you need to complete an application page
@@ -52,15 +52,14 @@ Feature: End To End Journey for Method 1 which is based on Transaction value of 
     And I enter "nice things" as the description and press continue
     And I select "Yes" and continue in Tell us about the previous ruling page
     And I enter "previous ruling information" and continue
+    And I select "No" on any other rulings that have used a similar method and continue
     And I select "No" and continue in Have you found the commodity code
     Then I will be navigated to Have the goods been subject to legal challenges
     And I select that the goods have not been subject to legal challenges
     And I select "No" and continue in Do you want to add any confidential information page
     And I select "Yes" and continue in Do you want to upload any supporting documents page
     And I upload the document "test1.pdf" in Upload supporting documents page
-
     And I select "Yes" and continue in Do you want this file to be marked as confidential page
-
     Then I will be navigated to You have uploaded supporting document
     Then I select "Yes" on You have uploaded supporting document
     And I upload the document "test2.jpg" in Upload supporting documents page

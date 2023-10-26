@@ -25,10 +25,10 @@ import org.junit.runner.RunWith
   glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
   plugin = Array(
     "pretty",
-    "html:target/cucumberAgentCreds.html",
+    "html:target/cucumberReportJourneyTests.html",
     "json:target/cucumber.json",
-    "junit:target/test-reports/JourneyTestsRunnerLocal.xml"
+    "junit:target/test-reports/JourneyTestsRunner.xml"
   ),
-  tags = "@local"
+  tags = "@EndToEndJourney"
 )
-class JourneyTestsRunnerLocal
+class JourneyTestsRunner

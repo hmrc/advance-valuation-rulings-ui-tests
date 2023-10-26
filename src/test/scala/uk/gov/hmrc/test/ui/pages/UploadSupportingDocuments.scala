@@ -16,11 +16,8 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.support.ui.{FluentWait, WebDriverWait}
 import org.openqa.selenium.{By, WebDriver}
 import uk.gov.hmrc.test.ui.pages.base.BasePage
-
-import java.time.Duration
 
 object UploadSupportingDocuments extends BasePage {
 

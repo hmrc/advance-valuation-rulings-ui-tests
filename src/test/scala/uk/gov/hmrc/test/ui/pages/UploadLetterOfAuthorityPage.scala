@@ -17,25 +17,12 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
-import org.openqa.selenium.support.ui.FluentWait
 import uk.gov.hmrc.test.ui.pages.base.BasePage
-
-import java.time.Duration
 
 object UploadLetterOfAuthorityPage extends BasePage {
 
   val pageTitle          = "Upload your letter of authority"
   val ele_UploadDocument = "file-input"
-
-  def pollingClick2(): Unit =
-    new FluentWait(
-      driver.findElement(By.className(continueButton)).click()
-    ).pollingEvery(Duration.ofSeconds(3))
-      .withTimeout(Duration.ofSeconds(15))
-      .until { _ =>
-        driver.findElement(By.className(continueButton)).click()
-        driver.findElement(By.tagName("h1")).getText == UploadingInProgressPage.pageTitle
-      }
 
   def uploadDocument(uploadFilePath: String): Unit =
     driver.findElement(By.id(ele_UploadDocument)).sendKeys(uploadFilePath)

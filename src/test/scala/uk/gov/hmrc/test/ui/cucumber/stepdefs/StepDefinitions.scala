@@ -17,8 +17,7 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import org.openqa.selenium.By
-import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
-import uk.gov.hmrc.test.ui.pages.DoYouWantThisFileToBeMarkedAsConfidential.pollingClick2
+import org.openqa.selenium.support.ui.ExpectedConditions
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.{clickCancelApplicationLink, clickSaveAsDraftButton, onPage, submitPage}
 import uk.gov.hmrc.test.ui.pages.base.BasePage.{baseUrl, titleSuffix}
 import uk.gov.hmrc.test.ui.pages.base.{BasePage, ScenarioContext}
@@ -77,10 +76,6 @@ class StepDefinitions
     submitPage()
   }
 
-//  And("I select {booleanValue} and continue in Check the name and address page") { (option: Boolean) =>
-//    AddressPage.loadPage().select(option).submitPage()
-//  }
-
   And("I select {booleanValue} and continue in Check the name and address page for agent for org") {
     (option: Boolean) =>
       AddressPageForAgentForOrg.loadPage().select(option).submitPage()
@@ -129,31 +124,33 @@ class StepDefinitions
   And(
     "I select {booleanValue} on You have uploaded supporting document"
   ) { (option: Boolean) =>
-    if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader)
+    if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader) {
       UploadedOneSupportingDocumentForAgentForTrader
         .loadPage()
         .select(option)
         .submitPage()
-    else
+    } else {
       UploadedOneSupportingDocumentForEmployeeAndAgentOfOrg
         .loadPage()
         .select(option)
         .submitPage()
+    }
   }
 
   And(
     "I select {booleanValue} on You have uploaded second supporting document"
   ) { (option: Boolean) =>
-    if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader)
+    if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader) {
       UploadedTwoSupportingDocumentsForAgentForTrader
         .loadPage()
         .select(option)
         .submitPage()
-    else
+    } else {
       UploadedTwoSupportingDocumentsForEmployeeAndAgentOfOrg
         .loadPage()
         .select(option)
         .submitPage()
+    }
   }
 
   And("I select {booleanValue} and continue in Do you want to upload any supporting documents page") {
@@ -163,14 +160,6 @@ class StepDefinitions
         .select(option)
         .submitPage()
   }
-
-//  And("I upload the document {string} and continue in Upload supporting documents page") { (filePath: String) =>
-//    val path = getClass.getResource(s"/testdata/$filePath").getPath
-//    UploadSupportingDocuments
-//      .loadPage()
-//      .uploadDocument(path)
-//    UploadingInProgressPage.pollingClick2()
-//  }
 
   And("I upload the document {string} in Upload supporting documents page") { (filePath: String) =>
     val path = getClass.getResource(s"/testdata/$filePath").getPath
@@ -202,10 +191,6 @@ class StepDefinitions
 
   And("I click on Continue button")(() => submitPage())
 
-  Then("""^I wait for (.*) seconds$""") { (seconds: Int) =>
-    Thread.sleep(seconds * 1000)
-  }
-
   And("I am on Save as draft page and I click on your applications link") { () =>
     SaveAsDraftPage.loadPage()
     SaveAsDraftPage.clickReturnToApplicationLink()
@@ -224,10 +209,8 @@ class StepDefinitions
   Then("I will be navigated to the Select a Method page")(() => MethodSelectionPage.loadPage())
 
   And("I select Method {int} and continue in Select the method page") { (methodNumber: Int) =>
-    MethodSelectionPage
-      .loadPage()
-      .selectOption(methodNumber)
-      .submitPage()
+    MethodDetailsPage.loadPage().submitPage()
+    MethodSelectionPage.loadPage().selectOption(methodNumber).submitPage()
   }
 
   Then("I navigate to Description of the Goods")(() => DescriptionOfTheGoods.url)
@@ -295,11 +278,13 @@ class StepDefinitions
 
   Then("I will be navigated to Your EORI number details must be correct for {string} to use this service")(
     (role: String) =>
-      if (role == "An employee of the organisation")
+      if (role == "An employee of the organisation") {
         YourEORIMustBeUpToDate.loadPage()
-      else if (role == "Agent acting on behalf of an organisation")
+      } else if (role == "Agent acting on behalf of an organisation") {
         OrgEORIMustBeUpToDate.loadPage()
-      else throw new Exception("Invalid role selected")
+      } else {
+        throw new Exception("Invalid role selected")
+      }
   )
 
   Then("I will be navigated to You must have a commodity code") { () =>
@@ -335,10 +320,11 @@ class StepDefinitions
   }
 
   Then("I will be navigated to You have uploaded supporting document") { () =>
-    if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader)
+    if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader) {
       assert(driver.getTitle == UploadedOneSupportingDocumentForAgentForTrader.pageTitle + titleSuffix)
-    else
+    } else {
       assert(driver.getTitle == UploadedOneSupportingDocumentForEmployeeAndAgentOfOrg.pageTitle + titleSuffix)
+    }
   }
 
   Then("I will be navigated to You have uploaded second supporting document") { () =>
@@ -450,11 +436,14 @@ class StepDefinitions
     CheckYourAnswers.submitPage()
   }
 
-  Then("I will be navigated to the Application Complete page")(() => ApplicationComplete.loadPage())
+  Then("I will be navigated to the Application Complete page") { () =>
+    webDriverWait().until(ExpectedConditions.titleContains(ApplicationComplete.pageTitle))
+    ApplicationComplete.loadPage()
+  }
 
   Then("I should see submitted application once I click Go to application and ruling button") { () =>
     ApplicationComplete.clickGoToApplicationAndRulingButton()
-    ApplicationNoViewPage.loadPage();
+    ApplicationNoViewPage.loadPage()
   }
 
   And("I delete the application in draft") { () =>

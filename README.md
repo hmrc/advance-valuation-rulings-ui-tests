@@ -47,27 +47,24 @@ The script requires `remote-chrome`, `remote-firefox` or `remote-edge` as an arg
 
 Read more about the script's functionality [here](run_browser_with_docker.sh).
 
-To run against a containerised Chrome browser:
+For this project, to run against a containerised Chrome browser:
 
 ```bash
-./run_browser_with_docker.sh remote-chrome 
+./start_docker_with_chrome.sh
 ```
+and then run to run tests remotely on docker
 ```bash
-./run_tests.sh remote-chrome local
+./run_journey_tests.sh remote-chrome 
 ```
-
-`./run_browser_with_docker.sh` is **NOT** required when running in a CI environment. 
-
----
 
 ### Running the tests against a test environment
 
 To run the tests against an environment set the corresponding `host` environment property as specified under
  `<env>.host.services` in the [application.conf](/src/test/resources/application.conf). 
 
-For example, to execute the `run_tests.sh` script using Chrome remote-webdriver against QA environment 
+For example, to execute the `run_journey_tests.sh` script using Chrome remote-webdriver against QA environment 
 
-    ./run_tests.sh remote-chrome qa
+    ./run_journey_tests.sh remote-chrome qa
 
 ---
 
@@ -95,16 +92,13 @@ tagged as `ZapTests`, via ZAP.
 For example, to execute ZAP tests locally using a Chrome browser
 
 ```
-./run_zap_test.sh chrome local
+./run_zap_tests.sh chrome local
 ```
 
 To execute ZAP tests locally using a remote-chrome browser
 
 ```
-./run_browser_with_docker.sh remote-chrome 
-```
-```
-./run_zap_test.sh remote-chrome local
+./run_zap_tests.sh remote-chrome local
 ``` 
 
 `./run_browser_with_docker.sh` is **NOT** required when running in a CI environment.

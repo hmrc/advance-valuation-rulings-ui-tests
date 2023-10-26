@@ -1,4 +1,4 @@
-@staging @FunctionalTests
+@FunctionalTests
 Feature: Method 5 which is computed value to value goods flows
 
   Scenario: Method 5 which is computed value to value goods flow for employee of org

@@ -33,6 +33,7 @@ object AgentSelectRole extends BasePage {
       driver.findElement(By.cssSelector(agentActingOnAnOrganisation)).click
     } else if (role == "Agent acting on behalf of a trader") {
       driver.findElement(By.cssSelector(agentActingOnBehalfOfTrader)).click
-    } else
+    } else {
       throw new Exception("Invalid role selected")
+    }
 }
