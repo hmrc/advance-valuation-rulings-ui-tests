@@ -30,14 +30,11 @@ object RequiredInformationPage extends BasePage {
   def returnChecklistTextForRole(role: String): String =
     if (role == "An employee of the organisation") {
       "I have an EORI number starting with GB"
-    }
-    else if (role == "Agent acting on behalf of an organisation") {
+    } else if (role == "Agent acting on behalf of an organisation") {
       "I will supply HMRC with my contact email, phone number and registered EORI details as part of this application"
-    }
-    else if (role == "Agent acting on behalf of a trader") {
+    } else if (role == "Agent acting on behalf of a trader") {
       "I am aware that I will need a signed letter of authority"
-    }
-    else {
+    } else {
       throw new Exception("Invalid role selected")
     }
 }

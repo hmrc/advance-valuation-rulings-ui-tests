@@ -30,14 +30,15 @@ trait BrowserDriver extends LazyLogging {
   )
 
   val browser: Option[String] = sys.props.get("browser")
-  if (browser.isEmpty)
+  if (browser.isEmpty) {
     sys.props += ("browser" -> "chrome")
+  }
 
-  private val options =
-    browser match {
-      case Some("firefox") => None
-      case _               => Some(new ChromeOptions().addArguments("--remote-allow-origins=*"))
-    }
+  private val options = browser match {
+    case Some("chrome") | None => Some(new ChromeOptions())
+    case Some("firefox")       => None
+    case Some(_)               => None
+  }
 
   implicit lazy val driver: WebDriver =
     SingletonDriver.getInstance(options)
