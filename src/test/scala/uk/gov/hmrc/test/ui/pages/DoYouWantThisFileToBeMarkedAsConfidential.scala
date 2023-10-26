@@ -31,7 +31,7 @@ object DoYouWantThisFileToBeMarkedAsConfidential extends YesNoPage {
     new FluentWait(
       driver.findElement(By.className(continueButton)).click()
     ).pollingEvery(Duration.ofSeconds(3))
-      .withTimeout(Duration.ofSeconds(20))
+      .withTimeout(Duration.ofSeconds(15))
       .until { _ =>
         driver.findElement(By.className(continueButton)).click()
         driver.findElement(By.tagName("h1")).getText == pageTitle
