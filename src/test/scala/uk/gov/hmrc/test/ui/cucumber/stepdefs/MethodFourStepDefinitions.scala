@@ -20,7 +20,7 @@ import uk.gov.hmrc.test.ui.pages._
 import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
 import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
 
-trait MethodFourStepDefintions extends BaseStepDef {
+trait MethodFourStepDefinitions extends BaseStepDef {
   Then("I will be navigated to explain why not methods one till three") { () =>
     ExplainWhyNotMethodsOneTwoOrThree.loadPage()
   }

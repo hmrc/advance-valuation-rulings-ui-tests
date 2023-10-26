@@ -19,5 +19,5 @@ package uk.gov.hmrc.test.ui.pages
 import uk.gov.hmrc.test.ui.pages.base._
 
 object MethodDetailsPage extends OptionSelectionPage {
-  val pageTitle = "Choosing the most appropriate method to value your goods"
+  val pageTitle = "Methods for valuing your goods"
 }

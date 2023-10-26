@@ -1,4 +1,4 @@
-@EndToEndJourney @FunctionalTests @ZAP
+@FunctionalTests @ZAP @EndToEndJourney
 Feature: Employee of Organisation End To End Journey
 
   Scenario: Organisation User End To End Journey without upload
@@ -33,7 +33,7 @@ Feature: Employee of Organisation End To End Journey
     And I check my answers and click on continue
     Then I will be navigated to the Application Complete page
 
-  @EndToEndJourney
+
   Scenario Outline: Organisation User End To End Journey without upload
     Given I am on the ARS Home Page with affinity group as a <AffinityGroup> and Credential role as a <CredentialRole>
     When I click on Start new application in ARS Home
@@ -53,10 +53,8 @@ Feature: Employee of Organisation End To End Journey
     And I enter "various conditions" as the conditions which cannot be calculated and press continue
     Then I navigate to Description of the Goods
     And I enter "nice things" as the description and press continue
-    And I select "Yes" and continue in Tell us about the previous ruling page
-    And I enter "previous ruling information" and continue
-    And I select "Yes" on any other rulings that have used a similar method and continue
-    And I enter "other rulings for similar goods" on about the rulings for similar goods page and continue
+    And I select "No" and continue in Tell us about the previous ruling page
+    And I select "No" on any other rulings that have used a similar method and continue
     And I select "No" and continue in Have you found the commodity code
     Then I will be navigated to Have the goods been subject to legal challenges
     And I select that the goods have not been subject to legal challenges
@@ -67,7 +65,6 @@ Feature: Employee of Organisation End To End Journey
     Then I will be navigated to the Application Complete page
     Examples:
       | AffinityGroup  | CredentialRole |
-      | "Organisation" | "User"         |
       | "Organisation" | "Assistant"    |
       | "Agent"        | "User"         |
       | "Agent"        | "Assistant"    |

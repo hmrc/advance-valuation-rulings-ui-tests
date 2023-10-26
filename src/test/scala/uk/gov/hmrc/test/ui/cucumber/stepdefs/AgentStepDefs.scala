@@ -16,17 +16,17 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import uk.gov.hmrc.test.ui.pages.{AddressPageForAgentForTrader, AddressPageForInvalidEori, AddressPageForPrivateEori, AgentCompanyDetailsPage, AgentForTraderContactDetailsPage, AgentSelectRole, OrganisationContactDetailsPage, ProvideTraderEori, RequiredInformationPage, TradersEoriMustBeUpToDate, TradersIncorrectPrivateEori, UploadLetterOfAuthorityPage, UploadedLetterOfAuthorityPage, UploadingInProgressPage}
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.submitPage
 import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
 import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
+import uk.gov.hmrc.test.ui.pages._
 
 trait AgentStepDefs
     extends BaseStepDef
-    with MethodTwoStepDefintions
-    with MethodThreeStepDefintions
-    with MethodFourStepDefintions
-    with MethodSixStepDefintions {
+    with MethodTwoStepDefinitions
+    with MethodThreeStepDefinitions
+    with MethodFourStepDefinitions
+    with MethodSixStepDefinitions {
 
   When("I select role as a {string}") { role: String =>
     AgentSelectRole.selectRole(role: String)
@@ -40,7 +40,8 @@ trait AgentStepDefs
   }
 
   And(
-    "I enter Name: {string}, Email: {string}, Phone: {string}, Job title: {string} details and continue in Provide your own contact details page"
+    "I enter Name: {string}, Email: {string}, Phone: {string}, Job title: {string} details and " +
+      "continue in Provide your own contact details page"
   ) { (name: String, email: String, phone: String, jobTitle: String) =>
     OrganisationContactDetailsPage.loadPage()
     OrganisationContactDetailsPage.enterContactDetails(
@@ -53,7 +54,8 @@ trait AgentStepDefs
   }
 
   And(
-    "I enter Eori: {string}, CompanyName: {string}, StreetAndNumber: {string}, City: {string}, Country: {string}, PostalCode: {string} and continue on Your company's contact page"
+    "I enter Eori: {string}, CompanyName: {string}, StreetAndNumber: {string}, City: {string}, " +
+      "Country: {string}, PostalCode: {string} and continue on Your company's contact page"
   ) {
     (
       agentEori: String,
@@ -76,7 +78,8 @@ trait AgentStepDefs
   }
 
   And(
-    "I enter Eori: {string}, CompanyName: {string}, StreetAndNumber: {string}, City: {string}, Country: {string}, PostalCode: {string} on Your company's contact page"
+    "I enter Eori: {string}, CompanyName: {string}, StreetAndNumber: {string}, City: {string}, " +
+      "Country: {string}, PostalCode: {string} on Your company's contact page"
   ) {
     (
       agentEori: String,
@@ -126,9 +129,10 @@ trait AgentStepDefs
 
   And("I upload the document {string} and continue in Upload letter of authority page") { (filename: String) =>
     val path = getClass.getResource(s"/testdata/$filename").getPath
-    UploadLetterOfAuthorityPage.loadPage().uploadDocument(path)
-    UploadingInProgressPage
-      .clickCheckProgressButton()
+    UploadLetterOfAuthorityPage
+      .loadPage()
+      .uploadDocument(path)
+    UploadedLetterOfAuthorityPage.pollingClick2()
   }
 
   And("I click on continue on Uploaded letter of authority page") { () =>
@@ -148,7 +152,9 @@ trait AgentStepDefs
       TradersEoriMustBeUpToDate.loadPage()
     } else if (eoriType == "private") {
       TradersIncorrectPrivateEori.loadPage()
-    } else throw new Exception("Invalid EORI type passed")
+    } else {
+      throw new Exception("Invalid EORI type passed")
+    }
   )
 
   And("I select {booleanValue} for {string} EORI on Check the name and address page") {
@@ -157,6 +163,8 @@ trait AgentStepDefs
         AddressPageForAgentForTrader.loadPage().select(option)
       } else if (eoriType == "private") {
         AddressPageForPrivateEori.loadPage().select(option)
-      } else throw new Exception("Invalid EORI type passed")
+      } else {
+        throw new Exception("Invalid EORI type passed")
+      }
   }
 }

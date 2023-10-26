@@ -1,4 +1,3 @@
-@EndToEndJourney
 @FunctionalTests
 Feature: Flows for Method 2 which is based on Transaction value of identical goods
 

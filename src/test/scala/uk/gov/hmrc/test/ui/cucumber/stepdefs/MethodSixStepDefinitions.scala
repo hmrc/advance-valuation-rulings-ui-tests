@@ -20,7 +20,8 @@ import uk.gov.hmrc.test.ui.pages._
 import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
 import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
 
-trait MethodSixStepDefintions extends BaseStepDef {
+trait MethodSixStepDefinitions extends BaseStepDef {
+
   Then("I will be navigated to explain why have you not selected Methods 1-5 to value your goods") { () =>
     ExplainWhyNotMethodsOneToFive.loadPage()
   }

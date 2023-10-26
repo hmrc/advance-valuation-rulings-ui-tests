@@ -16,18 +16,19 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.ExpectedConditions
-import uk.gov.hmrc.test.ui.pages.{ApplicationComplete, CancelApplicationPage, DescribeAnyRestrictions, DescribeTheLegalChallenges, DoYouWantToUploadAnySupportingDocuments, _}
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.{clickCancelApplicationLink, clickSaveAsDraftButton, onPage, submitPage}
 import uk.gov.hmrc.test.ui.pages.base.BasePage.{baseUrl, titleSuffix}
 import uk.gov.hmrc.test.ui.pages.base.{BasePage, ScenarioContext}
+import uk.gov.hmrc.test.ui.pages._
 
 class StepDefinitions
     extends BaseStepDef
-    with MethodTwoStepDefintions
-    with MethodThreeStepDefintions
-    with MethodFourStepDefintions
-    with MethodSixStepDefintions
+    with MethodTwoStepDefinitions
+    with MethodThreeStepDefinitions
+    with MethodFourStepDefinitions
+    with MethodSixStepDefinitions
     with AgentStepDefs {
 
   var draftId = ""
@@ -37,6 +38,12 @@ class StepDefinitions
   )((affinityGroup: String, credentialRole: String) =>
     BasePage.invokeURL(BasePage.URL_ARSHomePage, affinityGroup, credentialRole)
   )
+
+  Given("I have accepted additional cookies") { () =>
+    driver
+      .findElement(By.cssSelector("body > div > div > div.cbanner-govuk-button-group > button:nth-child(1)"))
+      .click()
+  }
 
   Given("I am on the ARS Home Page and Login without enrolment") { () =>
     BasePage.invokeURL(BasePage.URL_ARSHomePage, "Individual", "User", false)
@@ -52,25 +59,22 @@ class StepDefinitions
     onPage(base.BasePage.arsHomePageText)
     submitPage()
   }
-  And(
-    "I click continue on Information you need to complete an application page"
-  ) { () =>
+
+  And("I click continue on Information you need to complete an application page") { () =>
     RequiredInformationPage.loadPage()
     submitPage()
   }
+
   And("I select {booleanValue} and continue in Are you planning to import goods page") { (option: Boolean) =>
     PlanningToImportGoods.loadPage()
     PlanningToImportGoods.select(option)
     submitPage()
   }
+
   And("I click on continue in How We Contact You page") { () =>
     HowWeContactYou.loadPage()
     submitPage()
   }
-
-//  And("I select {booleanValue} and continue in Check the name and address page") { (option: Boolean) =>
-//    AddressPage.loadPage().select(option).submitPage()
-//  }
 
   And("I select {booleanValue} and continue in Check the name and address page for agent for org") {
     (option: Boolean) =>
@@ -120,48 +124,41 @@ class StepDefinitions
   And(
     "I select {booleanValue} on You have uploaded supporting document"
   ) { (option: Boolean) =>
-    if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader)
+    if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader) {
       UploadedOneSupportingDocumentForAgentForTrader
         .loadPage()
         .select(option)
         .submitPage()
-    else
+    } else {
       UploadedOneSupportingDocumentForEmployeeAndAgentOfOrg
         .loadPage()
         .select(option)
         .submitPage()
+    }
   }
 
   And(
     "I select {booleanValue} on You have uploaded second supporting document"
   ) { (option: Boolean) =>
-    if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader)
+    if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader) {
       UploadedTwoSupportingDocumentsForAgentForTrader
         .loadPage()
         .select(option)
         .submitPage()
-    else
+    } else {
       UploadedTwoSupportingDocumentsForEmployeeAndAgentOfOrg
         .loadPage()
         .select(option)
         .submitPage()
-  }
-  And(
-    "I select {booleanValue} and continue in Do you want to upload any supporting documents page"
-  ) { (option: Boolean) =>
-    DoYouWantToUploadAnySupportingDocuments
-      .loadPage()
-      .select(option)
-      .submitPage()
+    }
   }
 
-  And("I upload the document {string} and continue in Upload supporting documents page") { (filePath: String) =>
-    val path = getClass.getResource(s"/testdata/$filePath").getPath
-    UploadSupportingDocuments
-      .loadPage()
-      .uploadDocument(path)
-    submitPage()
-    webDriverWait().until(ExpectedConditions.urlContains("mark-confidential"))
+  And("I select {booleanValue} and continue in Do you want to upload any supporting documents page") {
+    (option: Boolean) =>
+      DoYouWantToUploadAnySupportingDocuments
+        .loadPage()
+        .select(option)
+        .submitPage()
   }
 
   And("I upload the document {string} in Upload supporting documents page") { (filePath: String) =>
@@ -169,8 +166,7 @@ class StepDefinitions
     UploadSupportingDocuments
       .loadPage()
       .uploadDocument(path)
-    UploadingInProgressPage
-      .clickCheckProgressButton()
+    DoYouWantThisFileToBeMarkedAsConfidential.pollingClick2()
   }
 
   And(
@@ -180,6 +176,7 @@ class StepDefinitions
     ProvideYourContactDetails.enterContactDetails(name, email, phone, jobTitle)
     submitPage()
   }
+
   And(
     "I enter Name- {string} Email- {string},Phone- {string}, Job title- {string} details"
   ) { (name: String, email: String, phone: String, jobTitle: String) =>
@@ -215,6 +212,7 @@ class StepDefinitions
     MethodDetailsPage.loadPage().submitPage()
     MethodSelectionPage.loadPage().selectOption(methodNumber).submitPage()
   }
+
   Then("I navigate to Description of the Goods")(() => DescriptionOfTheGoods.url)
 
   Then("I navigate to Description of the Goods page and compare the text") { () =>
@@ -280,24 +278,30 @@ class StepDefinitions
 
   Then("I will be navigated to Your EORI number details must be correct for {string} to use this service")(
     (role: String) =>
-      if (role == "An employee of the organisation")
+      if (role == "An employee of the organisation") {
         YourEORIMustBeUpToDate.loadPage()
-      else if (role == "Agent acting on behalf of an organisation")
+      } else if (role == "Agent acting on behalf of an organisation") {
         OrgEORIMustBeUpToDate.loadPage()
-      else throw new Exception("Invalid role selected")
+      } else {
+        throw new Exception("Invalid role selected")
+      }
   )
+
   Then("I will be navigated to You must have a commodity code") { () =>
     YouMustHaveACommodityCode.loadPage()
     YouMustHaveACommodityCode.linkNavigationValidation()
   }
+
   Then("I will be navigated to Have the goods been subject to legal challenges") { () =>
     HaveTheGoodsBeenSubjectToLegalChallenges.loadPage()
   }
+
   And("I select that the goods been subject to legal challenges") { () =>
     HaveTheGoodsBeenSubjectToLegalChallenges
       .selectYes()
       .submitPage()
   }
+
   And("I select that the goods have not been subject to legal challenges") { () =>
     HaveTheGoodsBeenSubjectToLegalChallenges
       .selectNo()
@@ -316,10 +320,11 @@ class StepDefinitions
   }
 
   Then("I will be navigated to You have uploaded supporting document") { () =>
-    if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader)
+    if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader) {
       assert(driver.getTitle == UploadedOneSupportingDocumentForAgentForTrader.pageTitle + titleSuffix)
-    else
+    } else {
       assert(driver.getTitle == UploadedOneSupportingDocumentForEmployeeAndAgentOfOrg.pageTitle + titleSuffix)
+    }
   }
 
   Then("I will be navigated to You have uploaded second supporting document") { () =>
@@ -409,6 +414,7 @@ class StepDefinitions
   And("I enter {string} as the conditions which cannot be calculated and press continue") { (text: String) =>
     DescribeAnyConditions.enterText(text).submitPage()
   }
+
   And("I enter {string} as the conditions which cannot be calculated") { (text: String) =>
     DescribeAnyConditions.enterText(text)
     ScenarioContext.setContext("conditions which cannot be calculated", text)
@@ -428,14 +434,16 @@ class StepDefinitions
 
   And("I check my answers and click on continue") { () =>
     CheckYourAnswers.submitPage()
-    Thread.sleep(5000)
   }
 
-  Then("I will be navigated to the Application Complete page")(() => ApplicationComplete.loadPage())
+  Then("I will be navigated to the Application Complete page") { () =>
+    webDriverWait().until(ExpectedConditions.titleContains(ApplicationComplete.pageTitle))
+    ApplicationComplete.loadPage()
+  }
 
   Then("I should see submitted application once I click Go to application and ruling button") { () =>
     ApplicationComplete.clickGoToApplicationAndRulingButton()
-    ApplicationNoViewPage.loadPage();
+    ApplicationNoViewPage.loadPage()
   }
 
   And("I delete the application in draft") { () =>
