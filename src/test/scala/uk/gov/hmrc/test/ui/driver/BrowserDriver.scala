@@ -16,11 +16,11 @@
 
 package uk.gov.hmrc.test.ui.driver
 
-import uk.gov.hmrc.webdriver.SingletonDriver
 import com.typesafe.scalalogging.LazyLogging
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeOptions
 import org.openqa.selenium.support.ui.WebDriverWait
+import uk.gov.hmrc.webdriver.SingletonDriver
 
 import java.time.Duration
 
@@ -30,17 +30,19 @@ trait BrowserDriver extends LazyLogging {
   )
 
   val browser: Option[String] = sys.props.get("browser")
-  if (browser.isEmpty)
+  if (browser.isEmpty) {
     sys.props += ("browser" -> "chrome")
+  }
 
   private val options = browser match {
-    case Some("chrome") | None => Some(new ChromeOptions().addArguments("--remote-allow-origins=*"))
-    case Some("firefox")       => None
+    case Some("chrome") | None => Some(new ChromeOptions())
     case Some(_)               => None
   }
 
-  implicit lazy val driver: WebDriver = SingletonDriver.getInstance(options)
+  implicit lazy val driver: WebDriver =
+    SingletonDriver.getInstance(options)
 
-  def webDriverWait()(implicit driver: WebDriver): WebDriverWait = new WebDriverWait(driver, Duration.ofSeconds(15))
+  def webDriverWait()(implicit driver: WebDriver): WebDriverWait =
+    new WebDriverWait(driver, Duration.ofSeconds(15))
 
 }

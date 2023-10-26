@@ -51,10 +51,11 @@ trait BasePage extends BrowserDriver with Matchers {
   def onPage(pageTitle: String): Unit = {
     val actual: String = driver.getTitle.trim
 
-    if (actual != pageTitle)
+    if (actual != pageTitle) {
       throw PageNotFoundException(
         s"Expected '$pageTitle' page, but found '$actual' page."
       )
+    }
   }
 
   def selectFromAutocomplete(inputId: String, data: String): Unit = {

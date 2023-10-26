@@ -1,5 +1,5 @@
-@EndToEndJourney @ZAP @AccessibilityTest
-Feature: End To End Journey
+@ZAP @AccessibilityTest @EndToEndJourney
+Feature: Kickout Journeys
 
   Scenario Outline: User  EORI number details are incorrect for employee of the org and agent of the org
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"

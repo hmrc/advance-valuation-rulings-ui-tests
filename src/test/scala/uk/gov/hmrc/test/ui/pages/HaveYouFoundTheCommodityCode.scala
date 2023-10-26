@@ -27,7 +27,7 @@ object HaveYouFoundTheCommodityCode extends YesNoPage {
 
   override def loadPage(): this.type = {
     super.loadPage()
-    assert(driver.findElement(By.tagName("h1")).getText() == goodsNameDisaply)
+    assert(driver.findElement(By.tagName("h1")).getText == goodsNameDisaply)
     this
   }
 }

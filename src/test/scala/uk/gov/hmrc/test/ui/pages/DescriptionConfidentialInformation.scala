@@ -20,5 +20,5 @@ import uk.gov.hmrc.test.ui.pages.base._
 
 object DescriptionConfidentialInformation extends TextAreaPage {
   val redirectUrl = "/provide-confidential-information"
-  val pageTitle   = "Describe any confidential information you would like to add about the goods"
+  val pageTitle   = "Description of any confidential information you would like to add about the goods"
 }
