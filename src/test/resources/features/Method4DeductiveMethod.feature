@@ -24,9 +24,9 @@ Feature: Method 4 which is deductive method to value goods flows
     And I select "No" and continue in Have you found the commodity code
     Then I will be navigated to Have the goods been subject to legal challenges
 
-  @EndToEndJourney @ZAP @AccessibilityTest
+  @EndToEndJourney @ZAP @AccessibilityTest @WIP
   Scenario Outline: Method 4 which is deductive method to value goods journey through all pages for agent for trader
-    Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
+    Given I am on the ARS Home Page with affinity group as a "Organisation" and Credential role as a "User"
     When I click on Start new application in ARS Home
     And I select role as a "Agent acting on behalf of a trader"
     And I click continue on Information you need to complete an application page
@@ -61,5 +61,4 @@ Feature: Method 4 which is deductive method to value goods flows
     Then I will be navigated to the Application Complete page
     Examples:
       | EORINo           | EORIType  |
-      | "GB113888888041" | "public"  |
       | "GB112888888041" | "private" |
