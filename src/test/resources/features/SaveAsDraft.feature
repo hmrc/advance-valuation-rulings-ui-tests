@@ -185,7 +185,7 @@ Feature: Save as draft functionality for all text pages in the application journ
     And I click on continue in How We Contact You page
     And I select "Yes" and continue in Check the name and address page for agent for org
     And I enter Name: "Automation Test", Email: "Test@automation.com", Phone: "9876543211", Job title: "Agent for Org" details and continue in Provide your own contact details page
-    When I enter Eori: "GB12341234123", CompanyName: "Agent Company Name", StreetAndNumber: "#1 Street and Number", City: "City Upon River", Country: "GB", PostalCode: "PO11 1OD" on Your company's contact page
+    When I enter Eori: "GB123412341234", CompanyName: "Agent Company Name", StreetAndNumber: "#1 Street and Number", City: "City Upon River", Country: "GB", PostalCode: "PO11 1OD" on Your company's contact page
     And I click on Save as draft button
     And I am on Save as draft page and I click on your applications link
     Then I navigate to agent company's contact details page and compare the text
