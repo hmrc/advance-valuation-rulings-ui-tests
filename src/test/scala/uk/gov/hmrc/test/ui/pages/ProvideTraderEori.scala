@@ -21,7 +21,7 @@ import uk.gov.hmrc.test.ui.pages.base.BasePage
 
 object ProvideTraderEori extends BasePage {
 
-  val pageTitle      = "Provide the trader's EORI number"
+  val pageTitle      = "What is the trader's EORI number?"
   val ele_EoriNumber = "value"
 
   def enterEoriNumber(eoriNo: String): Unit =
