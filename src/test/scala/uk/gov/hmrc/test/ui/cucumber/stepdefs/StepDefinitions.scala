@@ -162,7 +162,7 @@ class StepDefinitions
   }
 
   And("I upload the document {string} in Upload supporting documents page") { (filePath: String) =>
-    val path = getClass.getResource(s"/testdata/$filePath").getPath
+    val path = getClass.getResource(s"/testdata/$filePath").toURI.getPath
     UploadSupportingDocuments
       .loadPage()
       .uploadDocument(path)
