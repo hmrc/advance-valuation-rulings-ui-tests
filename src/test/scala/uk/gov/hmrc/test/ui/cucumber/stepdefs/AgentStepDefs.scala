@@ -128,7 +128,7 @@ trait AgentStepDefs
   }
 
   And("I upload the document {string} and continue in Upload letter of authority page") { (filename: String) =>
-    val path = getClass.getResource(s"/testdata/$filename").getPath
+    val path = getClass.getResource(s"/testdata/$filename").toURI.getPath
     UploadLetterOfAuthorityPage
       .loadPage()
       .uploadDocument(path)
