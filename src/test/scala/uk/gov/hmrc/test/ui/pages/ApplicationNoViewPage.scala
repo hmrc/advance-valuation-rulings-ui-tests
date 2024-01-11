@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
+import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.base.BasePage
 
 object ApplicationNoViewPage extends BasePage {
@@ -26,11 +27,12 @@ object ApplicationNoViewPage extends BasePage {
   val btn_deleteApplication   = "Delete application"
 
   def clickContinueApplicationButton(value: String): Unit =
-    driver.findElement(By.linkText(btn_continueApplication))
+    Driver.instance.findElement(By.linkText(btn_continueApplication))
 
   def clickDeleteApplicationButton(): Unit =
-    driver.findElement(By.partialLinkText(btn_deleteApplication))
+    Driver.instance.findElement(By.partialLinkText(btn_deleteApplication))
 
   def getDraftId(): String =
-    driver.findElement(By.xpath("//tr//td")).getText
+    Driver.instance.findElement(By.xpath("//tr//td")).getText
+
 }

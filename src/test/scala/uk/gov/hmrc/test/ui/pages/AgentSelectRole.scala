@@ -16,8 +16,8 @@
 
 package uk.gov.hmrc.test.ui.pages
 import uk.gov.hmrc.test.ui.pages.base.BasePage
-
 import org.openqa.selenium.By
+import uk.gov.hmrc.selenium.webdriver.Driver
 
 object AgentSelectRole extends BasePage {
 
@@ -28,11 +28,11 @@ object AgentSelectRole extends BasePage {
 
   def selectRole(role: String): Unit =
     if (role == "An employee of the organisation") {
-      driver.findElement(By.cssSelector(employeeOfTheOrganisation)).click
+      Driver.instance.findElement(By.cssSelector(employeeOfTheOrganisation)).click
     } else if (role == "Agent acting on behalf of an organisation") {
-      driver.findElement(By.cssSelector(agentActingOnAnOrganisation)).click
+      Driver.instance.findElement(By.cssSelector(agentActingOnAnOrganisation)).click
     } else if (role == "Agent acting on behalf of a trader") {
-      driver.findElement(By.cssSelector(agentActingOnBehalfOfTrader)).click
+      Driver.instance.findElement(By.cssSelector(agentActingOnBehalfOfTrader)).click
     } else {
       throw new Exception("Invalid role selected")
     }

@@ -18,6 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.ExpectedConditions
+import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.{clickCancelApplicationLink, clickSaveAsDraftButton, onPage, submitPage}
 import uk.gov.hmrc.test.ui.pages.base.BasePage.{baseUrl, titleSuffix}
 import uk.gov.hmrc.test.ui.pages.base.{BasePage, ScenarioContext}
@@ -40,7 +41,7 @@ class StepDefinitions
   )
 
   Given("I have accepted additional cookies") { () =>
-    driver
+    Driver.instance
       .findElement(By.cssSelector("body > div > div > div.cbanner-govuk-button-group > button:nth-child(1)"))
       .click()
   }
@@ -50,7 +51,7 @@ class StepDefinitions
   }
 
   Then("user should see subscribe to advance rulings page to enrol") { () =>
-    driver.getTitle.contains(
+    Driver.instance.getTitle.contains(
       "Subscribe to advance rulings - Subscribe to advance rulings - GOV.UK"
     )
   }
@@ -97,7 +98,7 @@ class StepDefinitions
 
   Then("I navigate to enter commodity code page and compare the text") { () =>
     val url = s"$baseUrl/advance-valuation-ruling/" + draftId + WhatIsTheCommodityCode.redirectUrl
-    driver.get(url)
+    Driver.instance.get(url)
     assert(ScenarioContext.getContext("commodity code") == WhatIsTheCommodityCode.getCommodityCode())
   }
 
@@ -117,7 +118,7 @@ class StepDefinitions
 
   Then("I navigate to describe confidential information page and compare the text") { () =>
     val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescriptionConfidentialInformation.redirectUrl
-    driver.get(url)
+    Driver.instance.get(url)
     assert(ScenarioContext.getContext("confidential information") == DescriptionConfidentialInformation.getText())
   }
 
@@ -200,7 +201,7 @@ class StepDefinitions
 
   And("I navigate to provide your contact details page and compare the text") { () =>
     val url = s"$baseUrl/advance-valuation-ruling/" + draftId + ProvideYourContactDetails.redirectUrl
-    driver.get(url)
+    Driver.instance.get(url)
     assert(ScenarioContext.getContext("name") == ProvideYourContactDetails.getName())
     assert(ScenarioContext.getContext("email") == ProvideYourContactDetails.getEmail())
     assert(ScenarioContext.getContext("phone") == ProvideYourContactDetails.getContact())
@@ -217,7 +218,7 @@ class StepDefinitions
 
   Then("I navigate to Description of the Goods page and compare the text") { () =>
     val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescriptionOfTheGoods.redirectUrl
-    driver.get(url)
+    Driver.instance.get(url)
     assert(ScenarioContext.getContext("goodsName") == DescriptionOfTheGoods.getText())
   }
 
@@ -315,24 +316,24 @@ class StepDefinitions
 
   Then("I navigate to enter legal challenges page and compare the text") { () =>
     val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescribeTheLegalChallenges.redirectUrl
-    driver.get(url)
+    Driver.instance.get(url)
     assert(ScenarioContext.getContext("legal challenges") == DescribeTheLegalChallenges.getText())
   }
 
   Then("I will be navigated to You have uploaded supporting document") { () =>
     if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader) {
-      assert(driver.getTitle == UploadedOneSupportingDocumentForAgentForTrader.pageTitle + titleSuffix)
+      assert(Driver.instance.getTitle == UploadedOneSupportingDocumentForAgentForTrader.pageTitle + titleSuffix)
     } else {
-      assert(driver.getTitle == UploadedOneSupportingDocumentForEmployeeAndAgentOfOrg.pageTitle + titleSuffix)
+      assert(Driver.instance.getTitle == UploadedOneSupportingDocumentForEmployeeAndAgentOfOrg.pageTitle + titleSuffix)
     }
   }
 
   Then("I will be navigated to You have uploaded second supporting document") { () =>
     if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader) {
-      assert(driver.getTitle == UploadedTwoSupportingDocumentsForAgentForTrader.pageTitle + titleSuffix)
+      assert(Driver.instance.getTitle == UploadedTwoSupportingDocumentsForAgentForTrader.pageTitle + titleSuffix)
 
     } else {
-      assert(driver.getTitle == UploadedTwoSupportingDocumentsForEmployeeAndAgentOfOrg.pageTitle + titleSuffix)
+      assert(Driver.instance.getTitle == UploadedTwoSupportingDocumentsForEmployeeAndAgentOfOrg.pageTitle + titleSuffix)
     }
   }
 
@@ -351,7 +352,7 @@ class StepDefinitions
     val url = s"$baseUrl/advance-valuation-ruling/" +
       ScenarioContext.getContext("draftId") +
       WhyComputedValue.redirectUrl
-    driver.get(url)
+    Driver.instance.get(url)
     assert(ScenarioContext.getContext("why not method 1-4") == WhyComputedValue.getText())
   }
 
@@ -383,7 +384,7 @@ class StepDefinitions
 
   And("I navigate to Describe how the parties are related page and compare the text") { () =>
     val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescribeHowPartiesAreRelated.redirectUrl
-    driver.get(url)
+    Driver.instance.get(url)
     assert(ScenarioContext.getContext("describe how parties are related") == DescribeHowPartiesAreRelated.getText())
   }
 
@@ -403,7 +404,7 @@ class StepDefinitions
 
   And("I navigate to Describe any restrictions on the use or resale of goods page and compare the text") { () =>
     val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescribeAnyRestrictions.redirectUrl
-    driver.get(url)
+    Driver.instance.get(url)
     assert(ScenarioContext.getContext("describe restrictions") == DescribeAnyRestrictions.getText())
   }
 
@@ -422,7 +423,7 @@ class StepDefinitions
 
   And("I navigate to Is the sale subject to any conditions or circumstances page and compare the text") { () =>
     val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescribeAnyConditions.redirectUrl
-    driver.get(url)
+    Driver.instance.get(url)
     assert(ScenarioContext.getContext("conditions which cannot be calculated") == DescribeAnyConditions.getText())
   }
 
@@ -461,7 +462,7 @@ class StepDefinitions
   }
 
   And("I click back button in the browser") { () =>
-    driver.navigate().back()
+    Driver.instance.navigate().back()
   }
 
   Then("You cannot view this application page is displayed") { () =>

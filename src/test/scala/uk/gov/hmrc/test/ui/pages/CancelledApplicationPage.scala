@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
+import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.base.BasePage
 
 object CancelledApplicationPage extends BasePage {
@@ -25,5 +26,6 @@ object CancelledApplicationPage extends BasePage {
   val btn_applicationAndRulingsPage = "govuk-button"
 
   def clickGoToApplicationAndRulingButton(value: String): Unit =
-    driver.findElement(By.className(btn_applicationAndRulingsPage)).click
+    Driver.instance.findElement(By.className(btn_applicationAndRulingsPage)).click
+
 }

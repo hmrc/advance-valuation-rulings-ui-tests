@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.base.{BasePage, YesNoPage}
 
 object AddressPageForAgentForOrg extends YesNoPage {
@@ -36,5 +37,6 @@ object AddressPageForPrivateEori extends YesNoPage {
 
 object AddressPageForInvalidEori extends YesNoPage {
   val pageTitle          = s"EORI number ${BasePage.invalidEORINumber} is invalid"
-  def getTitle(): String = driver.getTitle
+  def getTitle(): String = Driver.instance.getTitle
+
 }

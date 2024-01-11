@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
+import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.base.BasePage
 
 object UploadLetterOfAuthorityPage extends BasePage {
@@ -25,6 +26,6 @@ object UploadLetterOfAuthorityPage extends BasePage {
   val ele_UploadDocument = "file-input"
 
   def uploadDocument(uploadFilePath: String): Unit =
-    driver.findElement(By.id(ele_UploadDocument)).sendKeys(uploadFilePath)
+    Driver.instance.findElement(By.id(ele_UploadDocument)).sendKeys(uploadFilePath)
 
 }

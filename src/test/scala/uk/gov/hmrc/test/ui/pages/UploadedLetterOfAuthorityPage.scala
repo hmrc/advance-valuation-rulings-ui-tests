@@ -18,6 +18,7 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.FluentWait
+import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.base.BasePage
 
 import java.time.Duration
@@ -29,11 +30,12 @@ object UploadedLetterOfAuthorityPage extends BasePage {
 
   def pollingClick2(): Unit =
     new FluentWait(
-      driver.findElement(By.className(continueButton)).click()
+      Driver.instance.findElement(By.className(continueButton)).click()
     ).pollingEvery(Duration.ofSeconds(3))
       .withTimeout(Duration.ofSeconds(15))
       .until { _ =>
-        driver.findElement(By.className(continueButton)).click()
-        driver.findElement(By.tagName("h1")).getText == pageTitle
+        Driver.instance.findElement(By.className(continueButton)).click()
+        Driver.instance.findElement(By.tagName("h1")).getText == pageTitle
       }
+
 }

@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
+import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.base.BasePage
 
 object UploadingInProgressPage extends BasePage {
@@ -25,7 +26,8 @@ object UploadingInProgressPage extends BasePage {
   val btn_checkProgress = "//button[contains(text(),'Check progress')]"
 
   def clickCheckProgressButton(): DoYouWantThisFileToBeMarkedAsConfidential.type = {
-    driver.findElement(By.xpath(btn_checkProgress)).click()
+    Driver.instance.findElement(By.xpath(btn_checkProgress)).click()
     DoYouWantThisFileToBeMarkedAsConfidential
   }
+
 }

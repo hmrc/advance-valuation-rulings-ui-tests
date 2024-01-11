@@ -17,12 +17,12 @@
 package uk.gov.hmrc.test.ui
 
 import org.openqa.selenium.By
-import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
+import uk.gov.hmrc.selenium.webdriver.Driver
 
 package object pages {
   implicit class ByExtension(val by: By) extends AnyVal {
-    def find(implicit driver: WebDriver): WebElement = driver.findElement(by)
+    def find: WebElement = Driver.instance.findElement(by)
   }
 
   implicit class WebElementExtension(val element: WebElement) extends AnyVal {

@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
+import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.base.BasePage
 
 object ProvideTraderEori extends BasePage {
@@ -25,6 +26,6 @@ object ProvideTraderEori extends BasePage {
   val ele_EoriNumber = "value"
 
   def enterEoriNumber(eoriNo: String): Unit =
-    driver.findElement(By.id(ele_EoriNumber)).sendKeys(eoriNo)
+    Driver.instance.findElement(By.id(ele_EoriNumber)).sendKeys(eoriNo)
 
 }

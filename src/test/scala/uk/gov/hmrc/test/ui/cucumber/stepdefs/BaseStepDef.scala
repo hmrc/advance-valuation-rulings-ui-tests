@@ -16,16 +16,15 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import scala.util.Try
-
-import uk.gov.hmrc.test.ui.driver.BrowserDriver
-import uk.gov.hmrc.webdriver.SingletonDriver
-
 import io.cucumber.scala.{EN, ScalaDsl}
-import org.scalatest.concurrent.Eventually
+import org.openqa.selenium.support.ui.WebDriverWait
 import org.scalatest.matchers.should.Matchers
+import uk.gov.hmrc.selenium.webdriver.Driver
 
-trait BaseStepDef extends ScalaDsl with EN with BrowserDriver with Eventually with Matchers {
+import java.time.Duration
+
+trait BaseStepDef extends ScalaDsl with EN with Matchers {
+
   ParameterType("booleanValue", ".*") { value: String =>
     value.filterNot(_ == '\"') match {
       case "yes" | "Yes" | "YES" => true
@@ -33,7 +32,7 @@ trait BaseStepDef extends ScalaDsl with EN with BrowserDriver with Eventually wi
     }
   }
 
-  sys.addShutdownHook {
-    Try(SingletonDriver.closeInstance())
-  }
+  def webDriverWait(): WebDriverWait =
+    new WebDriverWait(Driver.instance, Duration.ofSeconds(15))
+
 }

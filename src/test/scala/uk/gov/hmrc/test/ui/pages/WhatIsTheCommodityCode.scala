@@ -18,6 +18,7 @@ package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.pages.base.BasePage
 import org.openqa.selenium.By
+import uk.gov.hmrc.selenium.webdriver.Driver
 object WhatIsTheCommodityCode extends BasePage {
 
   val goodsNameDisplay  = "What is the commodity code for the goods?"
@@ -27,14 +28,15 @@ object WhatIsTheCommodityCode extends BasePage {
 
   override def loadPage(): this.type = {
     super.loadPage()
-    assert(driver.findElement(By.tagName("h1")).getText() == goodsNameDisplay)
+    assert(Driver.instance.findElement(By.tagName("h1")).getText() == goodsNameDisplay)
     this
   }
 
   def enterCommodityCode(Code: String): Unit = {
-    driver.findElement(By.id(ele_CommodityCode)).clear()
-    driver.findElement(By.id(ele_CommodityCode)).sendKeys(Code)
+    Driver.instance.findElement(By.id(ele_CommodityCode)).clear()
+    Driver.instance.findElement(By.id(ele_CommodityCode)).sendKeys(Code)
   }
 
-  def getCommodityCode(): String = driver.findElement(By.id(ele_CommodityCode)).getAttribute("value")
+  def getCommodityCode(): String = Driver.instance.findElement(By.id(ele_CommodityCode)).getAttribute("value")
+
 }

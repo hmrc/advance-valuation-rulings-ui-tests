@@ -16,12 +16,11 @@
 
 package uk.gov.hmrc.test.ui.pages.base
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.driver.BrowserDriver
-
-import org.openqa.selenium.{By, WebDriver}
+import org.openqa.selenium.By
 import org.scalatest.matchers.should.Matchers
+import uk.gov.hmrc.selenium.webdriver.Driver
 
-trait BasePage extends BrowserDriver with Matchers {
+trait BasePage extends Matchers {
   import BasePage._
   val pageTitle: String
 
@@ -32,16 +31,16 @@ trait BasePage extends BrowserDriver with Matchers {
   val link_cancelButton       = "cancel_application"
 
   def submitPage(): Unit =
-    driver.findElement(By.className(continueButton)).click()
+    Driver.instance.findElement(By.className(continueButton)).click()
 
   def clickSaveAsDraftButton(): Unit =
-    driver.findElement(By.xpath(saveAsDraftButton)).click()
+    Driver.instance.findElement(By.xpath(saveAsDraftButton)).click()
 
   def clickGoToApplicationAndRulingButton(): Unit =
-    driver.findElement(By.linkText(goToAppAndRuling)).click()
+    Driver.instance.findElement(By.linkText(goToAppAndRuling)).click()
 
   def clickCancelApplicationLink(): Unit =
-    driver.findElement(By.id(link_cancelButton)).click()
+    Driver.instance.findElement(By.id(link_cancelButton)).click()
 
   def loadPage(): this.type = {
     onPage(this.pageTitle + titleSuffix)
@@ -49,7 +48,7 @@ trait BasePage extends BrowserDriver with Matchers {
   }
 
   def onPage(pageTitle: String): Unit = {
-    val actual: String = driver.getTitle.trim
+    val actual: String = Driver.instance.getTitle.trim
 
     if (actual != pageTitle) {
       throw PageNotFoundException(
@@ -59,9 +58,10 @@ trait BasePage extends BrowserDriver with Matchers {
   }
 
   def selectFromAutocomplete(inputId: String, data: String): Unit = {
-    driver.findElement(By.id(inputId)).sendKeys(data)
-    driver.findElement(By.cssSelector(s"""#country > option[value="$data"]""")).click()
+    Driver.instance.findElement(By.id(inputId)).sendKeys(data)
+    Driver.instance.findElement(By.cssSelector(s"""#country > option[value="$data"]""")).click()
   }
+
 }
 
 case class PageNotFoundException(s: String) extends Exception(s)
@@ -82,49 +82,48 @@ object BasePage {
   val arsHomePageText = "Your applications" + titleSuffix
   val URL_ARSHomePage = s"$baseUrl/advance-valuation-ruling/applications-and-rulings"
 
-  def signOut()(implicit driver: WebDriver): Unit =
-    driver.findElement(By.className("hmrc-sign-out-nav__link")).click()
+  def signOut(): Unit =
+    Driver.instance.findElement(By.className("hmrc-sign-out-nav__link")).click()
 
   def invokeURL(
     url: String,
     affinityGroup: String,
     credentialRole: String,
     hasEnrolment: Boolean = true
-  )(implicit
-    driver: WebDriver
   ): Unit = {
-    driver.manage().deleteAllCookies()
-    driver.navigate().to(url)
-    val titlecheck = driver.getTitle
+    Driver.instance.manage().deleteAllCookies()
+    Driver.instance.navigate().to(url)
+    val titlecheck = Driver.instance.getTitle
     if (titlecheck == "Authority Wizard") {
-      driver.findElement(By.id("redirectionUrl")).clear()
-      driver.findElement(By.id("redirectionUrl")).sendKeys(URL_ARSHomePage)
-      driver.findElement(By.id("redirectionUrl"))
-      driver.findElement(By.id("affinityGroupSelect")).sendKeys(affinityGroup)
-      driver.findElement(By.id("credential-role-select")).sendKeys(credentialRole)
+      Driver.instance.findElement(By.id("redirectionUrl")).clear()
+      Driver.instance.findElement(By.id("redirectionUrl")).sendKeys(URL_ARSHomePage)
+      Driver.instance.findElement(By.id("redirectionUrl"))
+      Driver.instance.findElement(By.id("affinityGroupSelect")).sendKeys(affinityGroup)
+      Driver.instance.findElement(By.id("credential-role-select")).sendKeys(credentialRole)
       if (hasEnrolment) {
-        driver
+        Driver.instance
           .findElement(By.cssSelector("input[name='enrolment[0].name']"))
           .sendKeys("HMRC-ATAR-ORG")
-        driver
+        Driver.instance
           .findElement(By.cssSelector("input[name='enrolment[0].taxIdentifier[0].name']"))
           .sendKeys("EORINumber")
-        driver
+        Driver.instance
           .findElement(By.cssSelector("input[name='enrolment[0].taxIdentifier[0].value']"))
           .sendKeys(EORINumber)
       } else {
-        driver
+        Driver.instance
           .findElement(By.cssSelector("input[name='enrolment[0].name']"))
           .clear()
-        driver
+        Driver.instance
           .findElement(By.cssSelector("input[name='enrolment[0].taxIdentifier[0].name']"))
           .clear()
-        driver
+        Driver.instance
           .findElement(By.cssSelector("input[name='enrolment[0].taxIdentifier[0].value']"))
           .clear()
       }
 
-      driver.findElement(By.className(continueButton)).click()
+      Driver.instance.findElement(By.className(continueButton)).click()
     }
   }
+
 }

@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
+import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.base.BasePage
 
 object CancelApplicationPage extends BasePage {
@@ -25,5 +26,6 @@ object CancelApplicationPage extends BasePage {
   val btn_confirm_cancellation = "govuk-button"
 
   def clickConfirmCancellationButton(): Unit =
-    driver.findElement(By.className(btn_confirm_cancellation)).click()
+    Driver.instance.findElement(By.className(btn_confirm_cancellation)).click()
+
 }

@@ -17,8 +17,8 @@
 package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.pages.base.BasePage
-
 import org.openqa.selenium.By
+import uk.gov.hmrc.selenium.webdriver.Driver
 object YouMustHaveACommodityCode extends BasePage {
 
   val pageTitle =
@@ -37,20 +37,21 @@ object YouMustHaveACommodityCode extends BasePage {
 
   def linkNavigationValidation(): Unit = {
     assert(
-      driver
+      Driver.instance
         .findElement(By.id(ele_ImportingGoodsIntoUk))
         .getAttribute("href") == link_ImportingGoodsIntoUk
     )
     assert(
-      driver
+      Driver.instance
         .findElement(By.id(ele_CustomValueOfYourImportedGoods))
         .getAttribute("href") == link_CustomValueOfYourImportedGoods
     )
     assert(
-      driver
+      Driver.instance
         .findElement(By.id(ele_GetALegallyBindingDecision))
         .getAttribute("href") == link_GetALegallyBindingDecision
     )
-    assert(driver.findElement(By.xpath(btn_FindYourCommodityCode)).isDisplayed)
+    assert(Driver.instance.findElement(By.xpath(btn_FindYourCommodityCode)).isDisplayed)
   }
+
 }

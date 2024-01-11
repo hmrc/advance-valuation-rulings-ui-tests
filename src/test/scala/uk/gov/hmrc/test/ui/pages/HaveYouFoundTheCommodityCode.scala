@@ -17,8 +17,8 @@
 package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.pages.base.YesNoPage
-
 import org.openqa.selenium.By
+import uk.gov.hmrc.selenium.webdriver.Driver
 
 object HaveYouFoundTheCommodityCode extends YesNoPage {
 
@@ -27,7 +27,8 @@ object HaveYouFoundTheCommodityCode extends YesNoPage {
 
   override def loadPage(): this.type = {
     super.loadPage()
-    assert(driver.findElement(By.tagName("h1")).getText == goodsNameDisaply)
+    assert(Driver.instance.findElement(By.tagName("h1")).getText == goodsNameDisaply)
     this
   }
+
 }

@@ -17,8 +17,8 @@
 package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.pages.base.BasePage
-
 import org.openqa.selenium.By
+import uk.gov.hmrc.selenium.webdriver.Driver
 object ThisServiceIsDesignedForThose extends BasePage {
 
   val pageTitle =
@@ -39,27 +39,28 @@ object ThisServiceIsDesignedForThose extends BasePage {
 
   def linkNavigationValidation(): Unit = {
     assert(
-      driver
+      Driver.instance
         .findElement(By.id(ele_link_AdvanceTariffRulings))
         .getAttribute("href") == link_AdvanceTariffRulings
     )
     assert(
-      driver
+      Driver.instance
         .findElement(By.id(ele_link_AdvanceOriginRulings))
         .getAttribute("href") == link_AdvanceOriginRulings
     )
     assert(
-      driver
+      Driver.instance
         .findElement(By.id(ele_link_StepByStepGuide))
         .getAttribute("href") == link_StepByStepGuide
     )
     assert(
-      driver
+      Driver.instance
         .findElement(By.id(ele_link_GeneralInformation))
         .getAttribute("href") == link_GeneralInformation
     )
     assert(
-      driver.findElement(By.id(ele_link_HelpAndSupport)).getAttribute("href") == link_HelpAndSupport
+      Driver.instance.findElement(By.id(ele_link_HelpAndSupport)).getAttribute("href") == link_HelpAndSupport
     )
   }
+
 }

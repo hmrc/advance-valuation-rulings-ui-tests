@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.submitPage
 import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
 import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
@@ -36,7 +37,7 @@ trait AgentStepDefs
 
   And("I verify starter checklist page for {string} is displayed") { role: String =>
     RequiredInformationPage.loadPage()
-    assert(driver.getPageSource.contains(RequiredInformationPage.returnChecklistTextForRole(role)))
+    assert(Driver.instance.getPageSource.contains(RequiredInformationPage.returnChecklistTextForRole(role)))
   }
 
   And(
@@ -110,7 +111,7 @@ trait AgentStepDefs
     val url = s"$baseUrl/advance-valuation-ruling/" +
       ScenarioContext.getContext("draftId") +
       AgentCompanyDetailsPage.redirectUrl
-    driver.get(url)
+    Driver.instance.get(url)
     assert(ScenarioContext.getContext("agent Eori") == AgentCompanyDetailsPage.getAgentEori())
     assert(ScenarioContext.getContext("agent company") == AgentCompanyDetailsPage.getAgentCompanyName())
     assert(ScenarioContext.getContext("agent company street") == AgentCompanyDetailsPage.getStreetAndNumber())

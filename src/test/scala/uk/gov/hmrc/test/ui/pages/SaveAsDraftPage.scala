@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
+import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.base.BasePage
 
 object SaveAsDraftPage extends BasePage {
@@ -25,5 +26,6 @@ object SaveAsDraftPage extends BasePage {
   val link_yourApplicationAndRulingsLink = "return_to_applications_link"
 
   def clickReturnToApplicationLink(): Unit =
-    driver.findElement(By.id(link_yourApplicationAndRulingsLink)).click()
+    Driver.instance.findElement(By.id(link_yourApplicationAndRulingsLink)).click()
+
 }
