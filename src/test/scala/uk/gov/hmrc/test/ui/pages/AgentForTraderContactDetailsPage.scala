@@ -37,7 +37,7 @@ object AgentForTraderContactDetailsPage extends BasePage {
     companyNameField.find.enterText(companyName)
     jobTitleField.find.enterText(jobTitle)
   }
-  def getName(): String = nameField.find.getAttribute("value")
+  def getName(): String                                                                                              = nameField.find.getAttribute("value")
 
   def getEmail(): String = emailField.find.getAttribute("value")
 
