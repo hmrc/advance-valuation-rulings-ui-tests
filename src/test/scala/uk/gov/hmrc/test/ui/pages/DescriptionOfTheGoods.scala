@@ -16,11 +16,13 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import uk.gov.hmrc.configuration.TestEnvironment
 import uk.gov.hmrc.test.ui.pages.base._
 
 object DescriptionOfTheGoods extends TextAreaPage {
   val redirectUrl = "/give-short-description-goods"
-  val url         = s"${BasePage.baseUrl}/advance-valuation-ruling/give-short-description-goods"
+  val url         = TestEnvironment.url("advance-valuation-rulings-frontend") + "/give-short-description-goods"
 
   val pageTitle = "Give a short description of the goods"
+
 }

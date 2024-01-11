@@ -15,9 +15,9 @@
  */
 
 package uk.gov.hmrc.test.ui.pages.base
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import org.openqa.selenium.By
 import org.scalatest.matchers.should.Matchers
+import uk.gov.hmrc.configuration.TestEnvironment
 import uk.gov.hmrc.selenium.webdriver.Driver
 
 trait BasePage extends Matchers {
@@ -67,7 +67,6 @@ trait BasePage extends Matchers {
 case class PageNotFoundException(s: String) extends Exception(s)
 
 object BasePage {
-  lazy val baseUrl = TestConfiguration.environmentHost
 
   val publicEORINumber  = "GBE9XSDF10BCKEYAX"
   val privateEORINumber = "GB112SDF10BCKEYAX"
@@ -80,7 +79,7 @@ object BasePage {
   val continueButton  = "govuk-button"
   val titleSuffix     = " - Apply for an Advance Valuation Ruling - GOV.UK"
   val arsHomePageText = "Your applications" + titleSuffix
-  val URL_ARSHomePage = s"$baseUrl/advance-valuation-ruling/applications-and-rulings"
+  val URL_ARSHomePage = TestEnvironment.url("advance-valuation-rulings-frontend") + "/applications-and-rulings"
 
   def signOut(): Unit =
     Driver.instance.findElement(By.className("hmrc-sign-out-nav__link")).click()

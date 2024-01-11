@@ -16,9 +16,9 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import uk.gov.hmrc.configuration.TestEnvironment
 import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.submitPage
-import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
 import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
 import uk.gov.hmrc.test.ui.pages._
 
@@ -108,7 +108,7 @@ trait AgentStepDefs
   }
 
   And("I navigate to agent company's contact details page and compare the text") { () =>
-    val url = s"$baseUrl/advance-valuation-ruling/" +
+    val url = TestEnvironment.url("advance-valuation-rulings-frontend") +
       ScenarioContext.getContext("draftId") +
       AgentCompanyDetailsPage.redirectUrl
     Driver.instance.get(url)
@@ -168,4 +168,5 @@ trait AgentStepDefs
         throw new Exception("Invalid EORI type passed")
       }
   }
+
 }

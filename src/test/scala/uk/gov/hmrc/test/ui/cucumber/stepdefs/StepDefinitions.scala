@@ -18,9 +18,10 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.ExpectedConditions
+import uk.gov.hmrc.configuration.TestEnvironment
 import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.{clickCancelApplicationLink, clickSaveAsDraftButton, onPage, submitPage}
-import uk.gov.hmrc.test.ui.pages.base.BasePage.{baseUrl, titleSuffix}
+import uk.gov.hmrc.test.ui.pages.base.BasePage.titleSuffix
 import uk.gov.hmrc.test.ui.pages.base.{BasePage, ScenarioContext}
 import uk.gov.hmrc.test.ui.pages._
 
@@ -97,7 +98,7 @@ class StepDefinitions
   }
 
   Then("I navigate to enter commodity code page and compare the text") { () =>
-    val url = s"$baseUrl/advance-valuation-ruling/" + draftId + WhatIsTheCommodityCode.redirectUrl
+    val url = TestEnvironment.url("advance-valuation-rulings-frontend") + draftId + WhatIsTheCommodityCode.redirectUrl
     Driver.instance.get(url)
     assert(ScenarioContext.getContext("commodity code") == WhatIsTheCommodityCode.getCommodityCode())
   }
@@ -117,7 +118,9 @@ class StepDefinitions
   }
 
   Then("I navigate to describe confidential information page and compare the text") { () =>
-    val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescriptionConfidentialInformation.redirectUrl
+    val url = TestEnvironment.url(
+      "advance-valuation-rulings-frontend"
+    ) + draftId + DescriptionConfidentialInformation.redirectUrl
     Driver.instance.get(url)
     assert(ScenarioContext.getContext("confidential information") == DescriptionConfidentialInformation.getText())
   }
@@ -200,7 +203,8 @@ class StepDefinitions
   }
 
   And("I navigate to provide your contact details page and compare the text") { () =>
-    val url = s"$baseUrl/advance-valuation-ruling/" + draftId + ProvideYourContactDetails.redirectUrl
+    val url =
+      TestEnvironment.url("advance-valuation-rulings-frontend") + draftId + ProvideYourContactDetails.redirectUrl
     Driver.instance.get(url)
     assert(ScenarioContext.getContext("name") == ProvideYourContactDetails.getName())
     assert(ScenarioContext.getContext("email") == ProvideYourContactDetails.getEmail())
@@ -217,7 +221,7 @@ class StepDefinitions
   Then("I navigate to Description of the Goods")(() => DescriptionOfTheGoods.url)
 
   Then("I navigate to Description of the Goods page and compare the text") { () =>
-    val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescriptionOfTheGoods.redirectUrl
+    val url = TestEnvironment.url("advance-valuation-rulings-frontend") + draftId + DescriptionOfTheGoods.redirectUrl
     Driver.instance.get(url)
     assert(ScenarioContext.getContext("goodsName") == DescriptionOfTheGoods.getText())
   }
@@ -315,7 +319,8 @@ class StepDefinitions
   }
 
   Then("I navigate to enter legal challenges page and compare the text") { () =>
-    val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescribeTheLegalChallenges.redirectUrl
+    val url =
+      TestEnvironment.url("advance-valuation-rulings-frontend") + draftId + DescribeTheLegalChallenges.redirectUrl
     Driver.instance.get(url)
     assert(ScenarioContext.getContext("legal challenges") == DescribeTheLegalChallenges.getText())
   }
@@ -349,7 +354,7 @@ class StepDefinitions
   }
 
   And("I navigate to explain why not methods one till four page and compare text") { () =>
-    val url = s"$baseUrl/advance-valuation-ruling/" +
+    val url = TestEnvironment.url("advance-valuation-rulings-frontend") +
       ScenarioContext.getContext("draftId") +
       WhyComputedValue.redirectUrl
     Driver.instance.get(url)
@@ -383,7 +388,8 @@ class StepDefinitions
   }
 
   And("I navigate to Describe how the parties are related page and compare the text") { () =>
-    val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescribeHowPartiesAreRelated.redirectUrl
+    val url =
+      TestEnvironment.url("advance-valuation-rulings-frontend") + draftId + DescribeHowPartiesAreRelated.redirectUrl
     Driver.instance.get(url)
     assert(ScenarioContext.getContext("describe how parties are related") == DescribeHowPartiesAreRelated.getText())
   }
@@ -403,7 +409,7 @@ class StepDefinitions
   }
 
   And("I navigate to Describe any restrictions on the use or resale of goods page and compare the text") { () =>
-    val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescribeAnyRestrictions.redirectUrl
+    val url = TestEnvironment.url("advance-valuation-rulings-frontend") + draftId + DescribeAnyRestrictions.redirectUrl
     Driver.instance.get(url)
     assert(ScenarioContext.getContext("describe restrictions") == DescribeAnyRestrictions.getText())
   }
@@ -422,7 +428,7 @@ class StepDefinitions
   }
 
   And("I navigate to Is the sale subject to any conditions or circumstances page and compare the text") { () =>
-    val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescribeAnyConditions.redirectUrl
+    val url = TestEnvironment.url("advance-valuation-rulings-frontend") + draftId + DescribeAnyConditions.redirectUrl
     Driver.instance.get(url)
     assert(ScenarioContext.getContext("conditions which cannot be calculated") == DescribeAnyConditions.getText())
   }
@@ -475,4 +481,5 @@ class StepDefinitions
   }
 
   Then("I sign out")(() => BasePage.signOut())
+
 }

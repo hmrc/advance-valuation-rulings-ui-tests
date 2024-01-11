@@ -16,9 +16,9 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import uk.gov.hmrc.configuration.TestEnvironment
 import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.pages._
-import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
 import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
 
 trait MethodThreeStepDefinitions extends BaseStepDef {
@@ -49,7 +49,7 @@ trait MethodThreeStepDefinitions extends BaseStepDef {
   }
 
   Then("I navigate to explain why not select method one or two page and compare text") { () =>
-    val url = s"$baseUrl/advance-valuation-ruling/" +
+    val url = TestEnvironment.url("advance-valuation-rulings-frontend") +
       ScenarioContext.getContext("draftId") +
       ExplainWhyNotMethodOneOrTwo.redirectUrl
     Driver.instance.get(url)
@@ -67,7 +67,7 @@ trait MethodThreeStepDefinitions extends BaseStepDef {
   }
 
   Then("I navigate to Describe the Similar Goods page and compare text") { () =>
-    val url = s"$baseUrl/advance-valuation-ruling/" +
+    val url = TestEnvironment.url("advance-valuation-rulings-frontend") +
       ScenarioContext.getContext("draftId") +
       DescribeTheSimilarGoodsPage.redirectUrl
     Driver.instance.get(url)
@@ -89,4 +89,5 @@ trait MethodThreeStepDefinitions extends BaseStepDef {
       .enterText("Detailed explanation")
       .submitPage()
   }
+
 }
