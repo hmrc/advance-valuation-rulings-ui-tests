@@ -66,5 +66,4 @@ docker pull ${BROWSER} \
         -e PORT_MAPPINGS="$port_mappings" \
         -e TARGET_IP='host.docker.internal' \
         -e SE_OPTS="--enable-managed-downloads true" \
-        --net=host \
         ${BROWSER}
