@@ -18,21 +18,9 @@ Start `ARS_ALL` services as follows:
 sm2 --start ARS_ALL
 ```
 
-### Dockerized browser container(s)
+### Docker Selenium Grid
 
-Start a browser Docker container as follows:
-
-* Argument `<browser>` must be `chrome`, `edge` or `firefox`.
-
-```bash
-./run-docker-browser.sh <browser>
-```
-
-### Test inspection and debugging
-
-Connect to `127.0.0.1:5900` via a VNC client to inspect and debug test execution.
-
-If prompted for a password the default is `secret`.
+Confirm that [docker-selenium-grid](https://github.com/hmrc/docker-selenium-grid) is up-to-date and follow the provided [instructions](https://github.com/hmrc/docker-selenium-grid/blob/main/README.md).
 
 ## Tests
 
