@@ -32,37 +32,37 @@ Feature: A user attempts to change their importer role
     And I select "No" and continue in Do you want to upload any supporting documents page
     Then I will be navigated to the Check Your Answers page
 
-#  Scenario: User clicks change link but does not change the role
-#    Then I click on the change link on the check your answers page
-#    Then The page title is: Your role as an importer
-#    And The 'An employee of the organisation' radio has been previously selected
-#    And I click the continue button
-#    Then The page title is: Check your answers before sending your application
+  Scenario: User clicks change link but does not change the role
+    Then I click on the change link on the check your answers page
+    Then The page title is: Your role as an importer
+    And The 'An employee of the organisation' radio has been previously selected
+    And I click the continue button
+    Then The page title is: Check your answers before sending your application
 
-#  Scenario: User clicks change link and changes the role but does not wish to actually change the role.
-#    Then I click on the change link on the check your answers page
-#    Then The page title is: Your role as an importer
-#    And The 'An employee of the organisation' radio has been previously selected
-#    And The user clicks on the 'Agent acting on behalf of an organisation' radio
-#    And I click the continue button
-#    Then The page title is: Change your role as importer
-#    And I click the no radio button
-#    And I click the continue button
-#    Then The page title is: Your role as an importer
-#    And The 'An employee of the organisation' radio has been previously selected
-#    And I click the continue button
-#    Then The page title is: Check your answers before sending your application
-#
-#  Scenario: User clicks change link and changes the role and successfully changes their role to 'Agent acting on behalf of an organisation'
-#    Then I click on the change link on the check your answers page
-#    Then The page title is: Your role as an importer
-#    And The 'An employee of the organisation' radio has been previously selected
-#    And The user clicks on the 'Agent acting on behalf of an organisation' radio
-#    And I click the continue button
-#    Then The page title is: Change your role as importer
-#    And I click the yes radio button
-#    And I click the continue button
-#    Then The page title is: Before you start your application
+  Scenario: User clicks change link and changes the role but does not wish to actually change the role.
+    Then I click on the change link on the check your answers page
+    Then The page title is: Your role as an importer
+    And The 'An employee of the organisation' radio has been previously selected
+    And The user clicks on the 'Agent acting on behalf of an organisation' radio
+    And I click the continue button
+    Then The page title is: Change your role as importer
+    And I click the no radio button
+    And I click the continue button
+    Then The page title is: Your role as an importer
+    And The 'An employee of the organisation' radio has been previously selected
+    And I click the continue button
+    Then The page title is: Check your answers before sending your application
+
+  Scenario: User clicks change link and changes the role and successfully changes their role to 'Agent acting on behalf of an organisation'
+    Then I click on the change link on the check your answers page
+    Then The page title is: Your role as an importer
+    And The 'An employee of the organisation' radio has been previously selected
+    And The user clicks on the 'Agent acting on behalf of an organisation' radio
+    And I click the continue button
+    Then The page title is: Change your role as importer
+    And I click the yes radio button
+    And I click the continue button
+    Then The page title is: Before you start your application
 
   Scenario: User returns to a application via the start application/previous application page
     And I click on the service header
