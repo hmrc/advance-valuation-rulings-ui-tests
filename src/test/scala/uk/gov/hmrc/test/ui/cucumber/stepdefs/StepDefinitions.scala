@@ -29,7 +29,8 @@ class StepDefinitions
     with MethodThreeStepDefinitions
     with MethodFourStepDefinitions
     with MethodSixStepDefinitions
-    with AgentStepDefs {
+    with AgentStepDefs
+    with ChangeImporterRoleSteps {
 
   var draftId = ""
 
@@ -432,8 +433,6 @@ class StepDefinitions
 
   Then("I will be navigated to the Check Your Answers page")(() => CheckYourAnswers.loadPage())
 
-  Then("^I sleep (.*)$")((i: Int) => Thread.sleep(i * 1000))
-
   And("I check my answers and click on continue") { () =>
     CheckYourAnswers.submitPage()
   }
@@ -455,48 +454,6 @@ class StepDefinitions
   And("I click on cancel application link") { () =>
     clickCancelApplicationLink()
     CancelApplicationPage.loadPage()
-  }
-
-  And("^The page title is: (.*)$") { (titleExpected: String) =>
-    val title: String = driver.getTitle
-    title should include(titleExpected)
-  }
-
-  And("I click on the change link on the check your answers page") { () =>
-    driver.findElement(By.id("change-role")).click()
-  }
-
-  And("I click on the service header") { () =>
-    driver.findElement(By.className("hmrc-header__service-name")).click()
-  }
-
-  And("I click on the 'Continue application' link") { () =>
-    driver.findElement(By.partialLinkText("Continue application")).click()
-  }
-
-  And("I click on the 'Back' link") { () =>
-    driver.findElement(By.partialLinkText("Back")).click()
-  }
-
-  And("The 'An employee of the organisation' radio has been previously selected") { () =>
-    driver.findElement(By.id("value_0")).isSelected shouldBe true
-  }
-
-  And("The 'Agent acting on behalf of an organisation' radio has been previously selected") { () =>
-    driver.findElement(By.id("value_1")).isSelected shouldBe true
-  }
-
-  And("The user clicks on the 'An employee of the organisation' radio") { () =>
-    driver.findElement(By.id("value_0")).click()
-  }
-
-  And("The user clicks on the 'Agent acting on behalf of an organisation' radio") { () =>
-    driver.findElement(By.id("value_1")).click()
-  }
-
-  And("I click the continue button") { () =>
-    val continueButton = "govuk-button"
-    driver.findElement(By.className(continueButton)).click()
   }
 
   And("^I click the (.*) radio button$") { (yesNo: String) =>

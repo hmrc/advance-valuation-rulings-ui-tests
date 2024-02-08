@@ -1,10 +1,11 @@
-@FunctionalTests @ZAP @EndToEndJourney @wip
+@FunctionalTests @ZAP @EndToEndJourney
 Feature: A user attempts to change their importer role
 
   Background: User completes the journey up until the CYA page - Method 1
 
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home
+    Then The page title is: Your role as an importer
     And I select role as a "An employee of the organisation"
     And I click continue on Information you need to complete an application page
     And I select "Yes" and continue in Are you planning to import goods page
@@ -64,7 +65,7 @@ Feature: A user attempts to change their importer role
     And I click the continue button
     Then The page title is: Before you start your application
 
-  Scenario: User returns to a application via the start application/previous application page
+  Scenario: User returns to a application via the start application/previous application page and changes the Role
     And I click on the service header
     Then The page title is: Your applications
     And I click on the 'Continue application' link
