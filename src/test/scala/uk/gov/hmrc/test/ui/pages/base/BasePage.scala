@@ -22,6 +22,7 @@ import org.openqa.selenium.{By, WebDriver}
 import org.scalatest.matchers.should.Matchers
 
 trait BasePage extends BrowserDriver with Matchers {
+
   import BasePage._
   val pageTitle: String
 

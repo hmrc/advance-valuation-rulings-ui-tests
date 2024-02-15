@@ -17,9 +17,9 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.submitPage
+import uk.gov.hmrc.test.ui.pages._
 import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
 import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
-import uk.gov.hmrc.test.ui.pages._
 
 trait AgentStepDefs
     extends BaseStepDef
@@ -128,7 +128,7 @@ trait AgentStepDefs
   }
 
   And("I upload the document {string} and continue in Upload letter of authority page") { (filename: String) =>
-    val path = getClass.getResource(s"/testdata/$filename").toURI.getPath
+    val path = (os.pwd / "target" / "scala-2.13" / "test-classes" / "testdata" / s"$filename").toString()
     UploadLetterOfAuthorityPage
       .loadPage()
       .uploadDocument(path)

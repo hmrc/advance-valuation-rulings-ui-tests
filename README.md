@@ -4,7 +4,7 @@ UI test suite for the `advance-valuation-rulings-frontend` using Selenium WebDri
 
 ---
 
-### Running the tests
+### Running tests locally against a containerised browser - on a developer machine
 
 Prior to executing the tests ensure you have:
  - Docker - to run mongo and browser (Chrome, Firefox or Edge) inside a container 
@@ -21,41 +21,20 @@ docker run --rm -d --name mongo -d -p 27017:27017 mongo:4.0
 sm2 --start ARS_ALL
 ``` 
 
-Running the tests
 
+
+The new UI test tooling requires an instance of selenium grid available at localhost:444 to be able to create browsers.
+HMRC has provided and maintain hmrc/docker-selenium-grid for that purpose.
+At the time of writing an easy way to run these tests is to use [HMRC docker selenium-grid](https://github.com/hmrc/docker-selenium-grid)
+Clone this repo and follow the readme to start selenium-grid in a docker container.
+
+For this project, to run against a containerised browser:
+
+```bash
+./run-tests.sh chrome local
 ```
-./run_journey_tests.sh <browser-driver> <environment>
-```
-
-### e.g.
-
-```
-./run_journey_tests.sh headless-chrome staging
-```   
-
-
-The `run_journey_tests.sh` script defaults to using `chrome` in the `local` environment.  For a complete list of supported param values, see:
- - `src/test/resources/application.conf` for **environment** 
- - [webdriver-factory](https://github.com/hmrc/webdriver-factory#2-instantiating-a-browser-with-default-options) for **browser-driver**
 
 ---
-
-### Running tests against a containerised browser - on a developer machine
-
-The script `./run_browser_with_docker.sh` can be used to start a Chrome, Firefox or Edge container on a developer machine. 
-The script requires `remote-chrome`, `remote-firefox` or `remote-edge` as an argument.
-
-Read more about the script's functionality [here](run_browser_with_docker.sh).
-
-For this project, to run against a containerised Chrome browser:
-
-```bash
-./start_docker_with_chrome.sh
-```
-and then run to run tests remotely on docker
-```bash
-./run_journey_tests.sh remote-chrome 
-```
 
 ### Running the tests against a test environment
 
