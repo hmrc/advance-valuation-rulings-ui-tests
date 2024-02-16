@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.ExpectedConditions
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.{clickCancelApplicationLink, clickSaveAsDraftButton, onPage, submitPage}
+import uk.gov.hmrc.test.ui.pages._
 import uk.gov.hmrc.test.ui.pages.base.BasePage.{baseUrl, titleSuffix}
 import uk.gov.hmrc.test.ui.pages.base.{BasePage, ScenarioContext}
-import uk.gov.hmrc.test.ui.pages._
 
 class StepDefinitions
     extends BaseStepDef
@@ -29,7 +29,8 @@ class StepDefinitions
     with MethodThreeStepDefinitions
     with MethodFourStepDefinitions
     with MethodSixStepDefinitions
-    with AgentStepDefs {
+    with AgentStepDefs
+    with ChangeImporterRoleSteps {
 
   var draftId = ""
 
