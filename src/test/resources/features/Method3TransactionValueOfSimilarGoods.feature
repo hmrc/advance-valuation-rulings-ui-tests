@@ -1,4 +1,4 @@
-@FunctionalTests
+@FunctionalTests @wip
 Feature: Method 3 flows which is based on Transaction value of similar goods
 
   Scenario: Employee of the org selects Method 3 which is based on Transaction value of similar goods

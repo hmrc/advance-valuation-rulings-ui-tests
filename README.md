@@ -19,16 +19,14 @@ docker run --rm -d --name mongo -d -p 27017:27017 mongo:4.0
 
 ```
 sm2 --start ARS_ALL
-``` 
+```
 
-
-
-The new UI test tooling requires an instance of selenium grid available at localhost:444 to be able to create browsers.
-HMRC has provided and maintain hmrc/docker-selenium-grid for that purpose.
+The new UI test tooling requires an instance of selenium grid available at localhost:4444 to be able to create browsers.
+HMRC has provided and maintain hmrc/docker-selenium-grid for that purpose which will point selenium to localhost:4444.
 At the time of writing an easy way to run these tests is to use [HMRC docker selenium-grid](https://github.com/hmrc/docker-selenium-grid)
 Clone this repo and follow the readme to start selenium-grid in a docker container.
 
-For this project, to run against a containerised browser:
+For this project to run against a containerised remote webdriver browser instance:
 
 ```bash
 ./run-tests.sh chrome local
@@ -43,7 +41,11 @@ To run the tests against an environment set the corresponding `host` environment
 
 For example, to execute the `run_journey_tests.sh` script using Chrome remote-webdriver against QA environment 
 
-    ./run_journey_tests.sh remote-chrome qa
+    ./run-tests.sh chrome qa
+
+For example, to execute the `run_journey_tests.sh` script using Chrome remote-webdriver against Staging environment
+
+    ./run-tests.sh chrome staging
 
 ---
 

@@ -68,8 +68,8 @@ trait ChangeImporterRoleSteps extends BaseStepDef {
   And("^I click the (.*) radio button$") { (yesNo: String) =>
     yesNo.toLowerCase() match {
       case "yes" => driver.findElement(By.cssSelector("#value")).click()
-      case "no" => driver.findElement(By.cssSelector("#value-no")).click()
-      case s => fail(s"[StepDefinitions] yes/no radio failed to recognise and click: $s")
+      case "no"  => driver.findElement(By.cssSelector("#value-no")).click()
+      case s     => fail(s"[StepDefinitions] yes/no radio failed to recognise and click: $s")
     }
   }
 
