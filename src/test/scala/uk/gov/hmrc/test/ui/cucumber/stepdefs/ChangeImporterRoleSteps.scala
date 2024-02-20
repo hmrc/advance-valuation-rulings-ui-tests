@@ -17,9 +17,6 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import org.openqa.selenium.By
-import uk.gov.hmrc.test.ui.pages._
-import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
-import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
 
 trait ChangeImporterRoleSteps extends BaseStepDef {
 

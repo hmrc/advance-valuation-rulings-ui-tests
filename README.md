@@ -55,38 +55,25 @@ For example, to execute the `run_journey_tests.sh` script using Chrome remote-we
 
 ### Running ZAP tests
 
-ZAP tests can be automated using the HMRC Dynamic Application Security Testing approach. Running 
-automated ZAP tests should not be considered a substitute for manual exploratory testing using OWASP ZAP.
+ZAP tests can be ran by setting the system variable to `true` when running the tests via sbt command
 
-### Tagging tests for ZAP
+`-Dsecurity.assessment="true"`
 
-It is not required to proxy every journey test via ZAP. The intention of proxying a test through ZAP is to expose all the
- relevant pages of an application to ZAP. So tagging a subset of the journey tests or creating a 
- single ZAP focused journey test is sufficient.
+to disable zap tests from being ran set sys variable to `false` 
 
-### Configuring the browser to proxy via ZAP 
+`-Dsecurity.assessment="false"`
 
-Setting the system property `zap.proxy=true` configures the browser specified in `browser` property to proxy via ZAP. 
-This is achieved using [webdriver-factory](https://github.com/hmrc/webdriver-factory#proxying-trafic-via-zap).
+e.g.
 
-### Executing a ZAP test
+```
+sbt clean -Dbrowser="chrome" -Denvironment="local" -Dsecurity.assessment="true" "testOnly uk.gov.hmrc.test.ui.cucumber.runner.ZapRunner" testReport
+```
 
-The shell script `run_zap_tests.sh` is available to execute ZAP tests. The script proxies a set of journey tests, 
-tagged as `ZapTests`, via ZAP.  
-
-For example, to execute ZAP tests locally using a Chrome browser
+To execute ZAP tests selenium-grid remote chrome browser
 
 ```bash
 ./run_zap_tests.sh chrome local
 ```
-
-To execute ZAP tests locally using a chrome browser
-
-```bash
-./run_zap_tests.sh chrome local
-``` 
-
-`./run_browser_with_docker.sh` is **NOT** required when running in a CI environment.
 
 ---
 
