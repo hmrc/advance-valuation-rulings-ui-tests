@@ -19,7 +19,7 @@ Feature: Journeys for Method 6 which is Fallback method
     And I enter "using calculator" as my explanation of how I have used method six to value goods and continue
     Then I navigate to Description of the Goods
 
-  @ZAP @AccessibilityTest @EndToEndJourney
+   @AccessibilityTest @EndToEndJourney
   Scenario: Agent on behalf of trader selects Method 6 all pages
     Given I am on the ARS Home Page with affinity group as a "Agent" and Credential role as a "Assistant"
     When I click on Start new application in ARS Home

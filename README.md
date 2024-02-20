@@ -14,7 +14,7 @@ Prior to executing the tests ensure you have:
 Run the following command to start services locally:
 
 ```
-docker run --rm -d --name mongo -d -p 27017:27017 mongo:4.0
+docker run --rm -d --name mongo -d -p 27017:27017 mongo:5.0
 ```
 
 ```
@@ -41,11 +41,15 @@ To run the tests against an environment set the corresponding `host` environment
 
 For example, to execute the `run_journey_tests.sh` script using Chrome remote-webdriver against QA environment 
 
-    ./run-tests.sh chrome qa
+```bash
+./run-tests.sh chrome qa
+```    
 
 For example, to execute the `run_journey_tests.sh` script using Chrome remote-webdriver against Staging environment
 
-    ./run-tests.sh chrome staging
+```bash
+./run-tests.sh chrome staging
+```
 
 ---
 
@@ -72,14 +76,14 @@ tagged as `ZapTests`, via ZAP.
 
 For example, to execute ZAP tests locally using a Chrome browser
 
-```
+```bash
 ./run_zap_tests.sh chrome local
 ```
 
-To execute ZAP tests locally using a remote-chrome browser
+To execute ZAP tests locally using a chrome browser
 
-```
-./run_zap_tests.sh remote-chrome local
+```bash
+./run_zap_tests.sh chrome local
 ``` 
 
 `./run_browser_with_docker.sh` is **NOT** required when running in a CI environment.
@@ -88,29 +92,6 @@ To execute ZAP tests locally using a remote-chrome browser
 
 ### Running tests using BrowserStack
 If you would like to run your tests via BrowserStack from your local development environment please refer to the [webdriver-factory](https://github.com/hmrc/webdriver-factory/blob/main/README.md/#user-content-running-tests-using-browser-stack) project.
-
----
-
-### Installing local driver binaries
-
-This project supports UI test execution using Firefox (Geckodriver) and Chrome (Chromedriver) browsers. 
-
-See the `drivers/` directory for some helpful scripts to do the installation work for you.  They should work on both Mac and Linux by running the following command:
-
-```
-./installGeckodriver.sh <operating-system> <driver-version>
-```
-### or
-```
-./installChromedriver <operating-system> <driver-version>
-```
-
-- *<operating-system>* defaults to **linux64**, however it also supports **macos**
-- *<driver-version>* defaults to **0.21.0** for Gecko/Firefox, and the latest release for Chrome.  You can, however, however pass any version available at the [Geckodriver](https://github.com/mozilla/geckodriver/tags) or [Chromedriver](http://chromedriver.storage.googleapis.com/) repositories.
-
-**Note 1:** *You will need to ensure that you have a recent version of Chrome and/or Firefox installed for the later versions of the drivers to work reliably.*
-
-**Note 2** *These scripts use sudo to set the right permissions on the drivers so you will likely be prompted to enter your password.*
 
 ---
 
