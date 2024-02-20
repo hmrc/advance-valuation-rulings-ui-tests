@@ -27,13 +27,16 @@ object UploadedLetterOfAuthorityPage extends BasePage {
   val pageTitle          = "Uploaded letter of authority"
   val ele_UploadDocument = "file-input"
 
-  def pollingClick2(): Unit =
+  def uploadAuthLetterPollingClick(): Unit = {
+    val threeSeconds   = 3
+    val fifteenSeconds = 15
     new FluentWait(
       driver.findElement(By.className(continueButton)).click()
-    ).pollingEvery(Duration.ofSeconds(3))
-      .withTimeout(Duration.ofSeconds(15))
+    ).pollingEvery(Duration.ofSeconds(threeSeconds))
+      .withTimeout(Duration.ofSeconds(fifteenSeconds))
       .until { _ =>
         driver.findElement(By.className(continueButton)).click()
         driver.findElement(By.tagName("h1")).getText == pageTitle
       }
+  }
 }

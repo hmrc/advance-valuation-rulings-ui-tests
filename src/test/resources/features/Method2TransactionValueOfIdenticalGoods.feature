@@ -1,4 +1,4 @@
-@FunctionalTests
+@AllTests @Method2
 Feature: Flows for Method 2 which is based on Transaction value of identical goods
 
   Scenario: Method 2 which is based on Transaction value of identical goods where all pages answered 'yes'
@@ -35,7 +35,7 @@ Feature: Flows for Method 2 which is based on Transaction value of identical goo
     And I select that I have not used Method 1 to import goods and press continue
     Then I will be navigated to the Select a Method page
 
-  @AccessibilityTest
+
   Scenario Outline: Method 2: Have not used Method 1 to import identical goods in past
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     And I click on Start new application in ARS Home

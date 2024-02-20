@@ -99,7 +99,7 @@ class StepDefinitions
   Then("I navigate to enter commodity code page and compare the text") { () =>
     val url = s"$baseUrl/advance-valuation-ruling/" + draftId + WhatIsTheCommodityCode.redirectUrl
     driver.get(url)
-    assert(ScenarioContext.getContext("commodity code") == WhatIsTheCommodityCode.getCommodityCode())
+    assert(ScenarioContext.getContext("commodity code") == WhatIsTheCommodityCode.getCommodityCode)
   }
 
   And(
@@ -167,7 +167,7 @@ class StepDefinitions
     UploadSupportingDocuments
       .loadPage()
       .uploadDocument(path)
-    DoYouWantThisFileToBeMarkedAsConfidential.pollingClick2()
+    DoYouWantThisFileToBeMarkedAsConfidential.pollingClickAttempt()
   }
 
   And(

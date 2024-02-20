@@ -1,4 +1,4 @@
-@FunctionalTests
+@AllTests @SaveAsDraft
 Feature: Save as draft functionality for all text pages in the application journeys
 
   Scenario: Save as draft functionality check as Individual User End To End Journey for Method 1

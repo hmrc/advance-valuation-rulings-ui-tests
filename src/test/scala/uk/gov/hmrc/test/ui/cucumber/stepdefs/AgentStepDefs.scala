@@ -132,7 +132,7 @@ trait AgentStepDefs
     UploadLetterOfAuthorityPage
       .loadPage()
       .uploadDocument(path)
-    UploadedLetterOfAuthorityPage.pollingClick2()
+    UploadedLetterOfAuthorityPage.uploadAuthLetterPollingClick()
   }
 
   And("I click on continue on Uploaded letter of authority page") { () =>

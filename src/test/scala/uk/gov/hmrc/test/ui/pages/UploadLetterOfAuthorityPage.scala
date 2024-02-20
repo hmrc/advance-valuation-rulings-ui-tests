@@ -25,7 +25,7 @@ object UploadLetterOfAuthorityPage extends BasePage {
   val pageTitle          = "Upload your letter of authority"
   val ele_UploadDocument = "file-input"
 
-  def uploadDocument(uploadFilePath: String) = {
+  def uploadDocument(uploadFilePath: String): Unit = {
     driver.setFileDetector(new LocalFileDetector())
     driver.findElement(By.id(ele_UploadDocument)).sendKeys(uploadFilePath)
   }

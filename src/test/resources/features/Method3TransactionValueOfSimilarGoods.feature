@@ -1,4 +1,4 @@
-@FunctionalTests
+@AllTests @Method3
 Feature: Method 3 flows which is based on Transaction value of similar goods
 
   Scenario: Employee of the org selects Method 3 which is based on Transaction value of similar goods
@@ -32,7 +32,7 @@ Feature: Method 3 flows which is based on Transaction value of similar goods
     And I select "No" and continue in Have You Used Method One In the Past 90 days
     Then I will be navigated to the Select a Method page
 
-  @AccessibilityTest
+
   Scenario Outline: Agent on behalf of trader selects Method 3 which is based on Transaction value of similar goods
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
     When I click on Start new application in ARS Home

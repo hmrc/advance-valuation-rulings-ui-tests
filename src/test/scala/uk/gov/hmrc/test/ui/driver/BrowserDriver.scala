@@ -28,6 +28,8 @@ trait BrowserDriver {
   implicit def driver: RemoteWebDriver =
     Driver.instance
 
-  def webDriverWait()(implicit driver: WebDriver): WebDriverWait =
-    new WebDriverWait(driver, Duration.ofSeconds(15))
+  def webDriverWait()(implicit driver: WebDriver): WebDriverWait = {
+    val timeToWait = 15
+    new WebDriverWait(driver, Duration.ofSeconds(timeToWait))
+  }
 }
