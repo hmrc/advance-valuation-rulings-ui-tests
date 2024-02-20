@@ -27,13 +27,16 @@ object DoYouWantThisFileToBeMarkedAsConfidential extends YesNoPage {
   val pageTitle =
     "Tell us if you want to make this document confidential"
 
-  def pollingClick2(): Unit =
+  def pollingClickAttempt(): Unit = {
+    val threeSeconds   = 3
+    val fifteenSeconds = 15
     new FluentWait(
       driver.findElement(By.className(continueButton)).click()
-    ).pollingEvery(Duration.ofSeconds(3))
-      .withTimeout(Duration.ofSeconds(15))
+    ).pollingEvery(Duration.ofSeconds(threeSeconds))
+      .withTimeout(Duration.ofSeconds(fifteenSeconds))
       .until { _ =>
         driver.findElement(By.className(continueButton)).click()
         driver.findElement(By.tagName("h1")).getText == pageTitle
       }
+  }
 }

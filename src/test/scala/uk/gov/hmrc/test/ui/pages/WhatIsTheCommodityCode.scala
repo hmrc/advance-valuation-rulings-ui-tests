@@ -27,7 +27,7 @@ object WhatIsTheCommodityCode extends BasePage {
 
   override def loadPage(): this.type = {
     super.loadPage()
-    assert(driver.findElement(By.tagName("h1")).getText() == goodsNameDisplay)
+    assert(driver.findElement(By.tagName("h1")).getText == goodsNameDisplay)
     this
   }
 
@@ -36,5 +36,5 @@ object WhatIsTheCommodityCode extends BasePage {
     driver.findElement(By.id(ele_CommodityCode)).sendKeys(Code)
   }
 
-  def getCommodityCode(): String = driver.findElement(By.id(ele_CommodityCode)).getAttribute("value")
+  def getCommodityCode: String = driver.findElement(By.id(ele_CommodityCode)).getAttribute("value")
 }

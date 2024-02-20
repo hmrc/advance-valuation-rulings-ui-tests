@@ -17,9 +17,6 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import org.openqa.selenium.By
-import uk.gov.hmrc.test.ui.pages._
-import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
-import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
 
 trait ChangeImporterRoleSteps extends BaseStepDef {
 
@@ -68,8 +65,8 @@ trait ChangeImporterRoleSteps extends BaseStepDef {
   And("^I click the (.*) radio button$") { (yesNo: String) =>
     yesNo.toLowerCase() match {
       case "yes" => driver.findElement(By.cssSelector("#value")).click()
-      case "no" => driver.findElement(By.cssSelector("#value-no")).click()
-      case s => fail(s"[StepDefinitions] yes/no radio failed to recognise and click: $s")
+      case "no"  => driver.findElement(By.cssSelector("#value-no")).click()
+      case s     => fail(s"[StepDefinitions] yes/no radio failed to recognise and click: $s")
     }
   }
 

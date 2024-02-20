@@ -19,13 +19,11 @@ package uk.gov.hmrc.test.ui.pages.base
 import scala.collection.mutable
 
 object ScenarioContext {
+
   var scenarioContext = new mutable.HashMap[String, String]()
 
   def setContext(key: String, value: String): Unit =
     scenarioContext.put(key, value)
 
-  def getContext(key: String): String = scenarioContext.get(key).getOrElse("")
-
-//  def isContains(key: Nothing): Boolean = scenarioContext.containsKey(key.toString)
-
+  def getContext(key: String): String = scenarioContext.getOrElse(key, "")
 }

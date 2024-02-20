@@ -1,4 +1,4 @@
-@ZAP @AccessibilityTest @EndToEndJourney
+@AllTests @Kickout
 Feature: Kickout Journeys
 
   Scenario Outline: User  EORI number details are incorrect for employee of the org and agent of the org

@@ -16,33 +16,20 @@
 
 package uk.gov.hmrc.test.ui.driver
 
-import com.typesafe.scalalogging.LazyLogging
 import org.openqa.selenium.WebDriver
-import org.openqa.selenium.chrome.ChromeOptions
+import org.openqa.selenium.remote.RemoteWebDriver
 import org.openqa.selenium.support.ui.WebDriverWait
-import uk.gov.hmrc.webdriver.SingletonDriver
+import uk.gov.hmrc.selenium.webdriver.Driver
 
 import java.time.Duration
 
-trait BrowserDriver extends LazyLogging {
-  logger.info(
-    s"Instantiating Browser: ${sys.props.getOrElse("browser", "'browser' System property not set. This is required")}"
-  )
+trait BrowserDriver {
 
-  val browser: Option[String] = sys.props.get("browser")
-  if (browser.isEmpty) {
-    sys.props += ("browser" -> "chrome")
+  implicit def driver: RemoteWebDriver =
+    Driver.instance
+
+  def webDriverWait()(implicit driver: WebDriver): WebDriverWait = {
+    val timeToWait = 15
+    new WebDriverWait(driver, Duration.ofSeconds(timeToWait))
   }
-
-  private val options = browser match {
-    case Some("chrome") | None => Some(new ChromeOptions())
-    case Some(_)               => None
-  }
-
-  implicit lazy val driver: WebDriver =
-    SingletonDriver.getInstance(options)
-
-  def webDriverWait()(implicit driver: WebDriver): WebDriverWait =
-    new WebDriverWait(driver, Duration.ofSeconds(15))
-
 }

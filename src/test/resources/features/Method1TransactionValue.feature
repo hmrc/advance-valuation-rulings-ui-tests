@@ -1,4 +1,4 @@
-@FunctionalTests
+@AllTests @Method1
 Feature: End To End Journey for Method 1 which is based on Transaction value of goods
 
   Scenario: Method 1 based on Transaction value short flow
@@ -30,7 +30,7 @@ Feature: End To End Journey for Method 1 which is based on Transaction value of 
     And I select "No" and continue in Is There a Sale Involved
     Then I will be navigated to the Select a Method page
 
-  @AccessibilityTest @ZAP
+
   Scenario: Employee of Org selects Method 1 based on Transaction value with full flow with multiple upload
     Given I am on the ARS Home Page with affinity group as a "Organisation" and Credential role as a "User"
     When I click on Start new application in ARS Home

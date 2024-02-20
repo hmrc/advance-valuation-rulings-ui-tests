@@ -17,27 +17,14 @@
 package uk.gov.hmrc.test.ui.pages.base
 
 import org.openqa.selenium.By
+import uk.gov.hmrc.test.ui.pages._
 
 trait OptionSelectionPage extends BasePage {
-  import uk.gov.hmrc.test.ui.pages._
 
-  val optionOne   = By.id("value_0")
-  val optionTwo   = By.id("value_1")
-  val optionThree = By.id("value_2")
-  val optionFour  = By.id("value_3")
-  val optionFive  = By.id("value_4")
-  val optionSix   = By.id("value_5")
+  private val optionRadio = (i: Int) => By.id(s"value_$i")
 
-  def selectOption(optionNumber: Int): OptionSelectionPage = {
-    optionNumber match {
-      case 1 => optionOne.find.click()
-      case 2 => optionTwo.find.click()
-      case 3 => optionThree.find.click()
-      case 4 => optionFour.find.click()
-      case 5 => optionFive.find.click()
-      case 6 => optionSix.find.click()
-      case _ => throw new Exception("Invalid option number")
-    }
+  def selectOption(optionNumber: Int) = {
+    optionRadio(optionNumber - 1).find.click()
     this
   }
 }

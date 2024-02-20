@@ -16,8 +16,7 @@
 
 package uk.gov.hmrc.test.ui.cucumber.runner
 
-import io.cucumber.junit.Cucumber
-import io.cucumber.junit.CucumberOptions
+import io.cucumber.junit.{Cucumber, CucumberOptions}
 import org.junit.runner.RunWith
 
 @RunWith(classOf[Cucumber])
@@ -26,10 +25,10 @@ import org.junit.runner.RunWith
   glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
   plugin = Array(
     "pretty",
-    "html:target/cucumberZapTestsResults.html",
+    "html:target/cucumberReportJourneyTests.html",
     "json:target/cucumber.json",
-    "junit:target/test-reports/ZapRunner.xml"
+    "junit:target/test-reports/JourneyTestsRunner.xml"
   ),
-  tags = "@ZAP"
+  tags = "@AllTests"
 )
-class ZapRunner {}
+class AllTestsRunner

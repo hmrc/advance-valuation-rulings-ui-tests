@@ -1,7 +1,7 @@
-@EndToEndJourney
+@AllTests @Agent
 Feature: Agent Acting on Behalf of Organisation End to End Journey
 
-  @AccessibilityTest @ZAP
+
   Scenario: Organisation Assistant End To End Journey - when Org assistant chosen
     Given I am on the ARS Home Page with affinity group as a "Organisation" and Credential role as a "Assistant"
     When I click on Start new application in ARS Home

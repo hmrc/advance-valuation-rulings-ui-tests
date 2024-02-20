@@ -17,9 +17,9 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.submitPage
+import uk.gov.hmrc.test.ui.pages._
 import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
 import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
-import uk.gov.hmrc.test.ui.pages._
 
 trait AgentStepDefs
     extends BaseStepDef
@@ -132,7 +132,7 @@ trait AgentStepDefs
     UploadLetterOfAuthorityPage
       .loadPage()
       .uploadDocument(path)
-    UploadedLetterOfAuthorityPage.pollingClick2()
+    UploadedLetterOfAuthorityPage.uploadAuthLetterPollingClick()
   }
 
   And("I click on continue on Uploaded letter of authority page") { () =>
