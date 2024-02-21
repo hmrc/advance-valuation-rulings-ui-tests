@@ -1,4 +1,4 @@
-@AllTests @Method4
+@AllTests
 Feature: Method 4 which is deductive method to value goods flows
 
   Scenario: Method 4 which is deductive method to value goods journey all pages for employee of org

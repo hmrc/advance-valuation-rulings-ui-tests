@@ -1,4 +1,4 @@
-@AllTests @ChangeRole
+@AllTests
 Feature: A user attempts to change their importer role
 
   Background: User completes the journey up until the CYA page - Method 1

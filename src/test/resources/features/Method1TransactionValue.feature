@@ -1,4 +1,4 @@
-@AllTests @Method1
+@AllTests
 Feature: End To End Journey for Method 1 which is based on Transaction value of goods
 
   Scenario: Method 1 based on Transaction value short flow
