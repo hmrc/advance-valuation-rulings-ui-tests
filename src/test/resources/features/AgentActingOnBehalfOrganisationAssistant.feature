@@ -1,4 +1,4 @@
-@AllTests @Agent
+@AllTests
 Feature: Agent Acting on Behalf of Organisation End to End Journey
 
 

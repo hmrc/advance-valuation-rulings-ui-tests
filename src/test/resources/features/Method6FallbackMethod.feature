@@ -1,4 +1,4 @@
-@AllTests @Method6
+@AllTests
 Feature: Journeys for Method 6 which is Fallback method
 
   Scenario: Journey for Method 6 all pages for employee of org

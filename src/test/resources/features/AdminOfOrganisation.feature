@@ -1,4 +1,4 @@
-@AllTests @AdminOfOrganisation
+@AllTests
 Feature: Employee of Organisation End To End Journey
 
   Scenario: Organisation User End To End Journey without upload
