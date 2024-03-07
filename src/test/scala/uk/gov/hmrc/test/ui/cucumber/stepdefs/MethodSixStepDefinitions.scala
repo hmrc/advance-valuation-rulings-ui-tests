@@ -42,7 +42,7 @@ trait MethodSixStepDefinitions extends BaseStepDef {
       ScenarioContext.getContext("draftId") +
       ExplainWhyNotMethodsOneToFive.redirectUrl
     driver.get(url)
-    assert(ScenarioContext.getContext("why not methods 1-5") == ExplainWhyNotMethodsOneToFive.getText())
+    assert(ScenarioContext.getContext("why not methods 1-5") == ExplainWhyNotMethodsOneToFive.getText)
   }
 
   Then("I will be navigated to which method do you wish to adapt") { () =>
@@ -73,6 +73,6 @@ trait MethodSixStepDefinitions extends BaseStepDef {
       ScenarioContext.getContext("draftId") +
       ExplainHowYouHaveUsedMethodSix.redirectUrl
     driver.get(url)
-    assert(ScenarioContext.getContext("how method 6") == ExplainHowYouHaveUsedMethodSix.getText())
+    assert(ScenarioContext.getContext("how method 6") == ExplainHowYouHaveUsedMethodSix.getText)
   }
 }

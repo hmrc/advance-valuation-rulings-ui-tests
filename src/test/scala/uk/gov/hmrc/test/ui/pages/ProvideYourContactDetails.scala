@@ -36,10 +36,10 @@ object ProvideYourContactDetails extends BasePage {
     contactField.find.enterText(contact)
     jobTitleField.find.enterText(jobTitle)
   }
-  def getName(): String = nameField.find.getAttribute("value")
+  def getName: String = nameField.find.getAttribute("value")
 
-  def getEmail(): String = emailField.find.getAttribute("value")
+  def getEmail: String = emailField.find.getAttribute("value")
 
-  def getContact(): String = contactField.find.getAttribute("value")
+  def getContact: String = contactField.find.getAttribute("value")
 
 }

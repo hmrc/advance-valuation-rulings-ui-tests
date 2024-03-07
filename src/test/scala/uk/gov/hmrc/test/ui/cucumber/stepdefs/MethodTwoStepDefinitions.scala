@@ -62,6 +62,6 @@ trait MethodTwoStepDefinitions extends BaseStepDef {
       ScenarioContext.getContext("draftId") +
       DescribeTheIdenticalGoods.redirectUrl
     driver.get(url)
-    assert(ScenarioContext.getContext("identical goods") == DescribeTheIdenticalGoods.getText())
+    assert(ScenarioContext.getContext("identical goods") == DescribeTheIdenticalGoods.getText)
   }
 }

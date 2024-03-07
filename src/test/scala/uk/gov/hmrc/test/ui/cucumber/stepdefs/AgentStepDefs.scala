@@ -111,11 +111,11 @@ trait AgentStepDefs
       ScenarioContext.getContext("draftId") +
       AgentCompanyDetailsPage.redirectUrl
     driver.get(url)
-    assert(ScenarioContext.getContext("agent Eori") == AgentCompanyDetailsPage.getAgentEori())
-    assert(ScenarioContext.getContext("agent company") == AgentCompanyDetailsPage.getAgentCompanyName())
-    assert(ScenarioContext.getContext("agent company street") == AgentCompanyDetailsPage.getStreetAndNumber())
-    assert(ScenarioContext.getContext("agent company city") == AgentCompanyDetailsPage.getCity())
-    assert(ScenarioContext.getContext("agent company postcode") == AgentCompanyDetailsPage.getPostcode())
+    assert(ScenarioContext.getContext("agent Eori") == AgentCompanyDetailsPage.getAgentEori)
+    assert(ScenarioContext.getContext("agent company") == AgentCompanyDetailsPage.getAgentCompanyName)
+    assert(ScenarioContext.getContext("agent company street") == AgentCompanyDetailsPage.getStreetAndNumber)
+    assert(ScenarioContext.getContext("agent company city") == AgentCompanyDetailsPage.getCity)
+    assert(ScenarioContext.getContext("agent company postcode") == AgentCompanyDetailsPage.getPostcode)
   }
 
   And("I enter EORI number {string} on Provide traders EORI number page") { (eoriNo: String) =>

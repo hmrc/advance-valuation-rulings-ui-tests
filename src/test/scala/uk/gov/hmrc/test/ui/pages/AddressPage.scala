@@ -35,6 +35,6 @@ object AddressPageForPrivateEori extends YesNoPage {
 }
 
 object AddressPageForInvalidEori extends YesNoPage {
-  val pageTitle          = s"EORI number ${BasePage.invalidEORINumber} is invalid"
-  def getTitle(): String = driver.getTitle
+  val pageTitle        = s"EORI number ${BasePage.invalidEORINumber} is invalid"
+  def getTitle: String = driver.getTitle
 }

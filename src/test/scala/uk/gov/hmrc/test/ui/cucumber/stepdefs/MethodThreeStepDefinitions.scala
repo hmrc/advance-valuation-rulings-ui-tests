@@ -52,7 +52,7 @@ trait MethodThreeStepDefinitions extends BaseStepDef {
       ScenarioContext.getContext("draftId") +
       ExplainWhyNotMethodOneOrTwo.redirectUrl
     driver.get(url)
-    assert(ScenarioContext.getContext("why not method one or two") == ExplainWhyNotMethodOneOrTwo.getText())
+    assert(ScenarioContext.getContext("why not method one or two") == ExplainWhyNotMethodOneOrTwo.getText)
   }
 
   And("I enter a reason and continue in Describe the Similar Goods page") { () =>
@@ -70,7 +70,7 @@ trait MethodThreeStepDefinitions extends BaseStepDef {
       ScenarioContext.getContext("draftId") +
       DescribeTheSimilarGoodsPage.redirectUrl
     driver.get(url)
-    assert(ScenarioContext.getContext("similar goods description") == DescribeTheSimilarGoodsPage.getText())
+    assert(ScenarioContext.getContext("similar goods description") == DescribeTheSimilarGoodsPage.getText)
   }
 
   Then("I will be navigated to have you used Valuation Method 1 to import similar goods") { () =>

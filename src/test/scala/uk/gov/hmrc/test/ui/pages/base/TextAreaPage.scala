@@ -28,6 +28,6 @@ trait TextAreaPage extends BasePage {
     this
   }
 
-  def getText(): String =
+  def getText: String =
     textArea.find.getText
 }

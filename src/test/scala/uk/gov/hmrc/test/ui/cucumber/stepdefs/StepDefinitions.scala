@@ -47,7 +47,7 @@ class StepDefinitions
   }
 
   Given("I am on the ARS Home Page and Login without enrolment") { () =>
-    BasePage.invokeURL(BasePage.URL_ARSHomePage, "Individual", "User", false)
+    BasePage.invokeURL(BasePage.URL_ARSHomePage, "Individual", "User", hasEnrolment = false)
   }
 
   Then("user should see subscribe to advance rulings page to enrol") { () =>
@@ -119,7 +119,7 @@ class StepDefinitions
   Then("I navigate to describe confidential information page and compare the text") { () =>
     val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescriptionConfidentialInformation.redirectUrl
     driver.get(url)
-    assert(ScenarioContext.getContext("confidential information") == DescriptionConfidentialInformation.getText())
+    assert(ScenarioContext.getContext("confidential information") == DescriptionConfidentialInformation.getText)
   }
 
   And(
@@ -195,16 +195,16 @@ class StepDefinitions
   And("I am on Save as draft page and I click on your applications link") { () =>
     SaveAsDraftPage.loadPage()
     SaveAsDraftPage.clickReturnToApplicationLink()
-    draftId = ApplicationNoViewPage.getDraftId()
+    draftId = ApplicationNoViewPage.getDraftId
     ScenarioContext.setContext("draftId", draftId)
   }
 
   And("I navigate to provide your contact details page and compare the text") { () =>
     val url = s"$baseUrl/advance-valuation-ruling/" + draftId + ProvideYourContactDetails.redirectUrl
     driver.get(url)
-    assert(ScenarioContext.getContext("name") == ProvideYourContactDetails.getName())
-    assert(ScenarioContext.getContext("email") == ProvideYourContactDetails.getEmail())
-    assert(ScenarioContext.getContext("phone") == ProvideYourContactDetails.getContact())
+    assert(ScenarioContext.getContext("name") == ProvideYourContactDetails.getName)
+    assert(ScenarioContext.getContext("email") == ProvideYourContactDetails.getEmail)
+    assert(ScenarioContext.getContext("phone") == ProvideYourContactDetails.getContact)
   }
 
   Then("I will be navigated to the Select a Method page")(() => MethodSelectionPage.loadPage())
@@ -219,7 +219,7 @@ class StepDefinitions
   Then("I navigate to Description of the Goods page and compare the text") { () =>
     val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescriptionOfTheGoods.redirectUrl
     driver.get(url)
-    assert(ScenarioContext.getContext("goodsName") == DescriptionOfTheGoods.getText())
+    assert(ScenarioContext.getContext("goodsName") == DescriptionOfTheGoods.getText)
   }
 
   And("I enter {string} as the description") { (goodsName: String) =>
@@ -317,7 +317,7 @@ class StepDefinitions
   Then("I navigate to enter legal challenges page and compare the text") { () =>
     val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescribeTheLegalChallenges.redirectUrl
     driver.get(url)
-    assert(ScenarioContext.getContext("legal challenges") == DescribeTheLegalChallenges.getText())
+    assert(ScenarioContext.getContext("legal challenges") == DescribeTheLegalChallenges.getText)
   }
 
   Then("I will be navigated to You have uploaded supporting document") { () =>
@@ -353,7 +353,7 @@ class StepDefinitions
       ScenarioContext.getContext("draftId") +
       WhyComputedValue.redirectUrl
     driver.get(url)
-    assert(ScenarioContext.getContext("why not method 1-4") == WhyComputedValue.getText())
+    assert(ScenarioContext.getContext("why not method 1-4") == WhyComputedValue.getText)
   }
 
   Then("I will be navigated to Explain Reason Computed Value page") { () =>
@@ -385,7 +385,7 @@ class StepDefinitions
   And("I navigate to Describe how the parties are related page and compare the text") { () =>
     val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescribeHowPartiesAreRelated.redirectUrl
     driver.get(url)
-    assert(ScenarioContext.getContext("describe how parties are related") == DescribeHowPartiesAreRelated.getText())
+    assert(ScenarioContext.getContext("describe how parties are related") == DescribeHowPartiesAreRelated.getText)
   }
 
   And(
@@ -405,7 +405,7 @@ class StepDefinitions
   And("I navigate to Describe any restrictions on the use or resale of goods page and compare the text") { () =>
     val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescribeAnyRestrictions.redirectUrl
     driver.get(url)
-    assert(ScenarioContext.getContext("describe restrictions") == DescribeAnyRestrictions.getText())
+    assert(ScenarioContext.getContext("describe restrictions") == DescribeAnyRestrictions.getText)
   }
 
   And(
@@ -424,7 +424,7 @@ class StepDefinitions
   And("I navigate to Is the sale subject to any conditions or circumstances page and compare the text") { () =>
     val url = s"$baseUrl/advance-valuation-ruling/" + draftId + DescribeAnyConditions.redirectUrl
     driver.get(url)
-    assert(ScenarioContext.getContext("conditions which cannot be calculated") == DescribeAnyConditions.getText())
+    assert(ScenarioContext.getContext("conditions which cannot be calculated") == DescribeAnyConditions.getText)
   }
 
   And(

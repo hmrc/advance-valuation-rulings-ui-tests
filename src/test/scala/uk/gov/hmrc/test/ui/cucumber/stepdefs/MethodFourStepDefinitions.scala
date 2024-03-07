@@ -41,7 +41,7 @@ trait MethodFourStepDefinitions extends BaseStepDef {
       ScenarioContext.getContext("draftId") +
       ExplainWhyNotMethodsOneTwoOrThree.redirectUrl
     driver.get(url)
-    assert(ScenarioContext.getContext("why not method one tll three") == ExplainWhyNotMethodsOneTwoOrThree.getText())
+    assert(ScenarioContext.getContext("why not method one tll three") == ExplainWhyNotMethodsOneTwoOrThree.getText)
   }
 
   Then("I will be navigated to Explain why you have selected Method 4") { () =>

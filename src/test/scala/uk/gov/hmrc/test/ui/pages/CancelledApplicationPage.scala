@@ -25,5 +25,5 @@ object CancelledApplicationPage extends BasePage {
   val btn_applicationAndRulingsPage = "govuk-button"
 
   def clickGoToApplicationAndRulingButton(value: String): Unit =
-    driver.findElement(By.className(btn_applicationAndRulingsPage)).click
+    driver.findElement(By.className(btn_applicationAndRulingsPage)).click()
 }
