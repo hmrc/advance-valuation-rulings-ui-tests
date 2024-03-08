@@ -27,7 +27,7 @@ object YourEORIMustBeUpToDate extends BasePage {
 object TradersEoriMustBeUpToDate extends BasePage {
 
   val pageTitle =
-    "The trader’s EORI details must be correct to use this service"
+    "The trader’s details must be correct to use this service"
 }
 
 object TradersIncorrectPrivateEori extends BasePage {

@@ -28,11 +28,11 @@ object AgentSelectRole extends BasePage {
 
   def selectRole(role: String): Unit =
     if (role == "An employee of the organisation") {
-      driver.findElement(By.cssSelector(employeeOfTheOrganisation)).click
+      driver.findElement(By.cssSelector(employeeOfTheOrganisation)).click()
     } else if (role == "Agent acting on behalf of an organisation") {
-      driver.findElement(By.cssSelector(agentActingOnAnOrganisation)).click
+      driver.findElement(By.cssSelector(agentActingOnAnOrganisation)).click()
     } else if (role == "Agent acting on behalf of a trader") {
-      driver.findElement(By.cssSelector(agentActingOnBehalfOfTrader)).click
+      driver.findElement(By.cssSelector(agentActingOnBehalfOfTrader)).click()
     } else {
       throw new Exception("Invalid role selected")
     }

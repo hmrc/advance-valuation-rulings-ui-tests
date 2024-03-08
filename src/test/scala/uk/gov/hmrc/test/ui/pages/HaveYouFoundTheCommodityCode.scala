@@ -22,12 +22,12 @@ import org.openqa.selenium.By
 
 object HaveYouFoundTheCommodityCode extends YesNoPage {
 
-  val goodsNameDisaply = "Commodity code for the goods"
+  val goodsNameDisplay = "Commodity code for the goods"
   val pageTitle        = "Commodity code for the goods"
 
   override def loadPage(): this.type = {
     super.loadPage()
-    assert(driver.findElement(By.tagName("h1")).getText == goodsNameDisaply)
+    assert(driver.findElement(By.tagName("h1")).getText == goodsNameDisplay)
     this
   }
 }

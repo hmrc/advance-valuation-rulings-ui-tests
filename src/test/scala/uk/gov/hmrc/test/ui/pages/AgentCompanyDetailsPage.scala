@@ -47,13 +47,13 @@ object AgentCompanyDetailsPage extends BasePage {
     agentPostalCodeField.find.enterText(agentPostalCode)
   }
 
-  def getAgentEori(): String = agentEoriField.find.getAttribute("value")
+  def getAgentEori: String = agentEoriField.find.getAttribute("value")
 
-  def getAgentCompanyName(): String = agentCompanyNameField.find.getAttribute("value")
+  def getAgentCompanyName: String = agentCompanyNameField.find.getAttribute("value")
 
-  def getStreetAndNumber(): String = agentStreetAndNumberField.find.getAttribute("value")
+  def getStreetAndNumber: String = agentStreetAndNumberField.find.getAttribute("value")
 
-  def getCity(): String = agentCityField.find.getAttribute("value")
+  def getCity: String = agentCityField.find.getAttribute("value")
 
-  def getPostcode(): String = agentPostalCodeField.find.getAttribute("value")
+  def getPostcode: String = agentPostalCodeField.find.getAttribute("value")
 }

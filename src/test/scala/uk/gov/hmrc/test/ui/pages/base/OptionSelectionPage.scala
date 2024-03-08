@@ -23,7 +23,7 @@ trait OptionSelectionPage extends BasePage {
 
   private val optionRadio = (i: Int) => By.id(s"value_$i")
 
-  def selectOption(optionNumber: Int) = {
+  def selectOption(optionNumber: Int): OptionSelectionPage = {
     optionRadio(optionNumber - 1).find.click()
     this
   }
