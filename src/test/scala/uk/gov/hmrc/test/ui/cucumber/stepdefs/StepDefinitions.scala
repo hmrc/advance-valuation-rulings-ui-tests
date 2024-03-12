@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.ExpectedConditions
-import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.{clickCancelApplicationLink, clickSaveAsDraftButton, onPage, submitPage}
+import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.{clickCancelApplicationLink, onPage, submitPage}
 import uk.gov.hmrc.test.ui.pages._
 import uk.gov.hmrc.test.ui.pages.base.BasePage.{baseUrl, titleSuffix}
 import uk.gov.hmrc.test.ui.pages.base.{BasePage, ScenarioContext}
@@ -188,16 +188,7 @@ class StepDefinitions
     ScenarioContext.setContext("phone", phone)
   }
 
-  And("I click on Save as draft button")(() => clickSaveAsDraftButton())
-
   And("I click on Continue button")(() => submitPage())
-
-  And("I am on Save as draft page and I click on your applications link") { () =>
-    SaveAsDraftPage.loadPage()
-    SaveAsDraftPage.clickReturnToApplicationLink()
-    draftId = ApplicationNoViewPage.getDraftId
-    ScenarioContext.setContext("draftId", draftId)
-  }
 
   And("I navigate to provide your contact details page and compare the text") { () =>
     val url = s"$baseUrl/advance-valuation-ruling/" + draftId + ProvideYourContactDetails.redirectUrl
