@@ -124,4 +124,9 @@ object BasePage {
       driver.findElement(By.className(continueButton)).click()
     }
   }
+
+  def getLastDraftCreated()(implicit
+    driver: WebDriver
+  ): String =
+    driver.findElements(By.cssSelector("table tr td:nth-child(1)")).get(0).getText
 }

@@ -59,6 +59,17 @@ class StepDefinitions
   When("I click on Start new application in ARS Home") { () =>
     onPage(base.BasePage.arsHomePageText)
     submitPage()
+    val draftPattern = """(DRAFT\d+)""".r
+    val url          = driver.getCurrentUrl
+    draftPattern.findFirstIn(url) match {
+      case Some(draft) =>
+        draftId = draft
+      case _           => throw new IllegalArgumentException("No Draft Id created within the new application")
+    }
+  }
+
+  And("I verify that a new draft application was created") { () =>
+    base.BasePage.getLastDraftCreated() shouldBe draftId
   }
 
   And("I click continue on Information you need to complete an application page") { () =>
@@ -188,7 +199,7 @@ class StepDefinitions
     ScenarioContext.setContext("phone", phone)
   }
 
-  And("I click on Continue button")(() => submitPage())
+  And("I click on Save and continue button")(() => submitPage())
 
   And("I navigate to provide your contact details page and compare the text") { () =>
     val url = s"$baseUrl/advance-valuation-ruling/" + draftId + ProvideYourContactDetails.redirectUrl
@@ -460,7 +471,7 @@ class StepDefinitions
     CancelledApplicationPage.loadPage()
   }
 
-  Then("I click on go to application and rulings page button on application cancelled page") { () =>
+  Then("I click on go to application and rulings page button") { () =>
     CancelledApplicationPage.clickGoToApplicationAndRulingButton()
     ApplicationNoViewPage.loadPage()
   }

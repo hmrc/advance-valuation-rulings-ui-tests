@@ -20,9 +20,9 @@ Feature: Agent acting on behalf of a trader changes
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
     And I enter EORI number <EORINo> on Provide traders EORI number page
-    And I click on Continue button
+    And I click on Save and continue button
     And I select "Yes" for <EORIType> EORI on Check the name and address page
-    And I click on Continue button
+    And I click on Save and continue button
     Examples:
       | EORINo           | EORIType  |
       | "GB113888888041" | "public"  |
@@ -36,13 +36,13 @@ Feature: Agent acting on behalf of a trader changes
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
     And I enter EORI number <EORINo> on Provide traders EORI number page
-    And I click on Continue button
+    And I click on Save and continue button
     And I select "Yes" for <EORIType> EORI on Check the name and address page
-    And I click on Continue button
+    And I click on Save and continue button
     And I upload the document "test1.pdf" and continue in Upload letter of authority page
     And I click on continue on Uploaded letter of authority page
     And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211", Company name - "company test", Job title - "agent for trader" details
-    And I click on Continue button
+    And I click on Save and continue button
     And I select Method 1 and continue in Select the method page
     And I select "Yes" and continue in Is There a Sale Involved
     And I select "Yes" and continue in Is the sale between related parties
@@ -86,13 +86,13 @@ Feature: Agent acting on behalf of a trader changes
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
     And I enter EORI number <EORINo> on Provide traders EORI number page
-    And I click on Continue button
+    And I click on Save and continue button
     And I select "Yes" for <EORIType> EORI on Check the name and address page
-    And I click on Continue button
+    And I click on Save and continue button
     And I upload the document "test1.pdf" and continue in Upload letter of authority page
     And I click on continue on Uploaded letter of authority page
     And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211", Company name - "company test", Job title - "agent for trader" details
-    And I click on Continue button
+    And I click on Save and continue button
     And I select Method 1 and continue in Select the method page
     And I select "Yes" and continue in Is There a Sale Involved
     And I select "Yes" and continue in Is the sale between related parties
@@ -129,13 +129,13 @@ Feature: Agent acting on behalf of a trader changes
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
     And I enter EORI number "GB070081349000" on Provide traders EORI number page
-    And I click on Continue button
+    And I click on Save and continue button
     And I select "Yes" for "public" EORI on Check the name and address page
-    And I click on Continue button
+    And I click on Save and continue button
     And I upload the document "test1.pdf" and continue in Upload letter of authority page
     And I click on continue on Uploaded letter of authority page
     And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211", Company name - "company test", Job title - "agent for trader" details
-    And I click on Continue button
+    And I click on Save and continue button
     And I select Method 1 and continue in Select the method page
     And I select "Yes" and continue in Is There a Sale Involved
     And I select "Yes" and continue in Is the sale between related parties
