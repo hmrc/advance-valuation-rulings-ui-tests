@@ -15,10 +15,10 @@
  */
 
 package uk.gov.hmrc.test.ui.pages.base
+import org.openqa.selenium.support.ui.ExpectedConditions
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
-
-import org.openqa.selenium.{By, WebDriver}
+import org.openqa.selenium._
 import org.scalatest.matchers.should.Matchers
 
 trait BasePage extends BrowserDriver with Matchers {
@@ -30,6 +30,8 @@ trait BasePage extends BrowserDriver with Matchers {
   val ele_StartNewApplication = "csrfToken"
   val goToAppAndRuling        = "Apply for an Advance Valuation Ruling"
   val link_cancelButton       = "cancel_application"
+
+  lazy val js: JavascriptExecutor = driver.asInstanceOf[JavascriptExecutor]
 
   def submitPage(): Unit =
     driver.findElement(By.className(continueButton)).click()
@@ -55,9 +57,40 @@ trait BasePage extends BrowserDriver with Matchers {
     }
   }
 
-  def selectFromAutocomplete(inputId: String, data: String): Unit = {
-    driver.findElement(By.id(inputId)).sendKeys(data)
-    driver.findElement(By.cssSelector(s"""#country > option[value="$data"]""")).click()
+  private def findElementWithWait(element: By): WebElement = {
+    val webElement = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(element))
+    js.executeScript("arguments[0].scrollIntoView()", webElement)
+    webElement
+  }
+
+  private def cleanupAutoCompleteField(e: WebElement): Unit = {
+    e.click()
+    val currentText = Option(e.getAttribute("value")).getOrElse("").trim
+    (1 to currentText.length + 10).foreach(_ => e.sendKeys(Keys.BACK_SPACE))
+  }
+
+  private def findElement(element: By): WebElement = {
+    val webElement = driver.findElement(element)
+    js.executeScript("arguments[0].scrollIntoView()", webElement)
+    webElement
+  }
+
+  private def webDriverId(X: String): WebElement = findElement(By.id(X))
+
+  def chooseInAutocomplete(id: String, lookup: String): Unit = {
+    val e           = findElementWithWait(By.id(id))
+    val currentText = Option(e.getAttribute("value")).getOrElse("").trim
+
+    if (currentText != lookup) {
+      //cleanup the fields before populating
+      cleanupAutoCompleteField(e)
+      e.sendKeys(lookup)
+      if (id.equals("searchTerm")) {
+        webDriverId("searchTerm__option--0").click()
+      } else {
+        webDriverId(s"${id}__option--0").click()
+      }
+    }
   }
 }
 

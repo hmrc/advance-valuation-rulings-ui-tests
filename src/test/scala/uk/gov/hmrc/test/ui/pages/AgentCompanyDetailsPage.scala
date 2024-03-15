@@ -43,7 +43,7 @@ object AgentCompanyDetailsPage extends BasePage {
     agentCompanyNameField.find.enterText(agentCompanyName)
     agentStreetAndNumberField.find.enterText(agentStreetAndNumber)
     agentCityField.find.enterText(agentCity)
-    selectFromAutocomplete(agentCountryField, agentCountry)
+    chooseInAutocomplete(agentCountryField, agentCountry)
     agentPostalCodeField.find.enterText(agentPostalCode)
   }
 
