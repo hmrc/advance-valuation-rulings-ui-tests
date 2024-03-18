@@ -29,14 +29,10 @@ trait BasePage extends BrowserDriver with Matchers {
   val continueButton          = "govuk-button"
   val ele_StartNewApplication = "csrfToken"
   val goToAppAndRuling        = "Apply for an Advance Valuation Ruling"
-  val saveAsDraftButton       = "//button[contains(text(),'Save as draft')]"
   val link_cancelButton       = "cancel_application"
 
   def submitPage(): Unit =
     driver.findElement(By.className(continueButton)).click()
-
-  def clickSaveAsDraftButton(): Unit =
-    driver.findElement(By.xpath(saveAsDraftButton)).click()
 
   def clickGoToApplicationAndRulingButton(): Unit =
     driver.findElement(By.linkText(goToAppAndRuling)).click()
@@ -128,4 +124,9 @@ object BasePage {
       driver.findElement(By.className(continueButton)).click()
     }
   }
+
+  def getLastDraftCreated()(implicit
+    driver: WebDriver
+  ): String =
+    driver.findElements(By.cssSelector("table tr td:nth-child(1)")).get(0).getText
 }

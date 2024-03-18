@@ -45,7 +45,7 @@ Feature: Kickout Journeys
     And I click on confirm button on cancellation page
     And I click back button in the browser
     Then You cannot view this application page is displayed
-    And I click on go to application and rulings page button on application cancelled page
+    And I click on go to application and rulings page button
 
   Scenario: Agent on behalf of trader when invalid EORI is entered
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
@@ -55,7 +55,7 @@ Feature: Kickout Journeys
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
     When I enter EORI number "GB321888888041" on Provide traders EORI number page
-    And I click on Continue button
+    And I click on Save and continue button
     Then I verify error message for invalid EORI is displayed
 
   Scenario Outline: Agent on behalf of trader enters valid EORI and selects No on check name and address page
@@ -66,15 +66,24 @@ Feature: Kickout Journeys
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
     And I enter EORI number <EORINo> on Provide traders EORI number page
-    And I click on Continue button
+    And I click on Save and continue button
     When I select "No" for <EORIType> EORI on Check the name and address page
-    And I click on Continue button
+    And I click on Save and continue button
     Then I will be navigated to <EORIType> kickout screen
     Examples:
       | EORINo           | EORIType  |
       | "GB113888888041" | "public"  |
       | "GB112888888041" | "private" |
 
-
-
-
+  Scenario: User creates a Draft application when leaving journey without cancelling
+    Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
+    And I click on Start new application in ARS Home
+    And I select role as a "An employee of the organisation"
+    And I click continue on Information you need to complete an application page
+    And I select "Yes" and continue in Are you planning to import goods page
+    And I click on continue in How We Contact You page
+    And I select "Yes" and continue in Check the name and address page for employee of org
+    And I enter Name- "Automation Test" Email- "TestSaveAsDraft@automation.com",Phone- "9876543211", Job title- "employee of org" details
+    And I click on Save and continue button
+    And I click on go to application and rulings page button
+    And I verify that a new draft application was created

@@ -41,13 +41,13 @@ Feature: Method 3 flows which is based on Transaction value of similar goods
     And I select "Yes" and continue in Are you planning to import goods page
     And I click on continue in How We Contact You page
     And I enter EORI number <EORINo> on Provide traders EORI number page
-    And I click on Continue button
+    And I click on Save and continue button
     And I select "Yes" for <EORIType> EORI on Check the name and address page
-    And I click on Continue button
+    And I click on Save and continue button
     And I upload the document "test1.pdf" and continue in Upload letter of authority page
     And I click on continue on Uploaded letter of authority page
     And I enter Name- "Automation Test" Email- "Test@automation.com",Phone- "9876543211", Company name - "company test", Job title - "agent for trader" details
-    And I click on Continue button
+    And I click on Save and continue button
     And I select Method 3 and continue in Select the method page
     Then I will be navigated to Explain Why not select method one or two
     And I enter a reason and continue in Explain why not method one or two page
