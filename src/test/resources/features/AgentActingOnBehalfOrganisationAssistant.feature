@@ -11,7 +11,7 @@ Feature: Agent Acting on Behalf of Organisation End to End Journey
     And I click on continue in How We Contact You page
     And I select "Yes" and continue in Check the name and address page for agent for org
     And I enter Name: "Automation Test", Email: "Test@automation.com", Phone: "9876543211", Job title: "Agent for Org" details and continue in Provide your own contact details page
-    And I enter Eori: "GB123412341234", CompanyName: "Agent Company Name", StreetAndNumber: "#1 Street and Number", City: "City Upon River", Country: "GB", PostalCode: "PO11 1OD" and continue on Your company's contact page
+    And I enter Eori: "GB123412341234", CompanyName: "Agent Company Name", StreetAndNumber: "#1 Street and Number", City: "City Upon River", Country: "United Kingdom", PostalCode: "PO11 1OD" and continue on Your company's contact page
     And I select Method 1 and continue in Select the method page
     And I select "Yes" and continue in Is There a Sale Involved
     And I select "Yes" and continue in Is the sale between related parties
@@ -43,7 +43,7 @@ Feature: Agent Acting on Behalf of Organisation End to End Journey
     And I click on continue in How We Contact You page
     And I select "Yes" and continue in Check the name and address page for agent for org
     And I enter Name: "Automation Test", Email: "Test@automation.com", Phone: "9876543211", Job title: "Agent for Org" details and continue in Provide your own contact details page
-    And I enter Eori: "GB123412341234", CompanyName: "Agent Company Name", StreetAndNumber: "#1 Street and Number", City: "City Upon River", Country: "GB", PostalCode: "PO11 1OD" and continue on Your company's contact page
+    And I enter Eori: "GB123412341234", CompanyName: "Agent Company Name", StreetAndNumber: "#1 Street and Number", City: "City Upon River", Country: "United Kingdom", PostalCode: "PO11 1OD" and continue on Your company's contact page
     And I select Method 1 and continue in Select the method page
     And I select "Yes" and continue in Is There a Sale Involved
     And I select "Yes" and continue in Is the sale between related parties
