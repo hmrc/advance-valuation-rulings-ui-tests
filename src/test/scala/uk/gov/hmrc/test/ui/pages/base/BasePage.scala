@@ -58,7 +58,7 @@ trait BasePage extends BrowserDriver with Matchers {
   }
 
   private def findElementWithWait(element: By): WebElement = {
-    val webElement = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(element))
+    val webElement = webDriverWait().until(ExpectedConditions.visibilityOfElementLocated(element))
     js.executeScript("arguments[0].scrollIntoView()", webElement)
     webElement
   }
