@@ -1,4 +1,5 @@
 #!/bin/bash -e
+
 BROWSER=$1
 ENVIRONMENT=$2
 TAG=$3

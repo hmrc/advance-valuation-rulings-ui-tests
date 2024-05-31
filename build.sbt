@@ -1,13 +1,12 @@
-ThisBuild / scalaVersion := "2.13.13"
+ThisBuild / scalaVersion := "2.13.14"
 
 lazy val testSuite = (project in file("."))
   .disablePlugins(JUnitXmlReportPlugin) // Required to prevent https://github.com/scalatest/scalatest/issues/1427
   .settings(
     name := "advance-valuation-rulings-ui-tests",
-    version := "0.1.0",
-    scalacOptions ++= Seq("-feature"),
-    scalafmtOnCompile := true,
-    libraryDependencies ++= Dependencies.test,
+    version := "1.0.0",
+    scalacOptions += "-feature",
+    libraryDependencies ++= Dependencies(),
     // The testOptions from SbtAutoBuildPlugin supports only ScalaTest. Resetting testOptions for Cucumber Tests.
     Test / testOptions := Seq.empty
   )

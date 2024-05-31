@@ -21,7 +21,7 @@ import org.openqa.selenium.By
 trait TextAreaPage extends BasePage {
   import uk.gov.hmrc.test.ui.pages._
 
-  val textArea = By.id("value")
+  private val textArea = By.id("value")
 
   def enterText(content: String): TextAreaPage = {
     textArea.find.enterText(content)
