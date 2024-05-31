@@ -1,5 +1,3 @@
-!.gitignore
-!.gitattributes
 /.classpath
 tmp
 logs
@@ -8,6 +6,7 @@ logs
 *.DS_Store
 /.project
 .history
+dast-config-manager
 
 # IDE files
 /.bsp

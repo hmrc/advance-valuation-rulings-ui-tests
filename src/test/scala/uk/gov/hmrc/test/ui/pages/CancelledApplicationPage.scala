@@ -16,14 +16,10 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.pages.base.BasePage
 
 object CancelledApplicationPage extends BasePage {
 
-  val pageTitle                     = "You cannot view this application"
-  val btn_applicationAndRulingsPage = "govuk-button"
+  val pageTitle = "You cannot view this application"
 
-  def clickGoToApplicationAndRulingButton(value: String): Unit =
-    driver.findElement(By.className(btn_applicationAndRulingsPage)).click()
 }

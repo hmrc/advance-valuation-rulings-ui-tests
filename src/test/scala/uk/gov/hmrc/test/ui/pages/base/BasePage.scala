@@ -22,14 +22,18 @@ import org.openqa.selenium._
 import org.scalatest.matchers.should.Matchers
 
 trait BasePage extends BrowserDriver with Matchers {
-
   import BasePage._
+
   val pageTitle: String
 
-  val continueButton          = "govuk-button"
-  val ele_StartNewApplication = "csrfToken"
-  val goToAppAndRuling        = "Apply for an Advance Valuation Ruling"
-  val link_cancelButton       = "cancel_application"
+  val continueButton    = "govuk-button"
+  val goToAppAndRuling  = "Apply for an Advance Valuation Ruling"
+  val link_cancelButton = "cancel_application"
+
+  val nameField: By     = By.id("name")
+  val emailField: By    = By.id("email")
+  val contactField: By  = By.id("phone")
+  val jobTitleField: By = By.id("jobTitle")
 
   lazy val js: JavascriptExecutor = driver.asInstanceOf[JavascriptExecutor]
 
@@ -97,7 +101,11 @@ trait BasePage extends BrowserDriver with Matchers {
 case class PageNotFoundException(s: String) extends Exception(s)
 
 object BasePage {
-  lazy val baseUrl = TestConfiguration.environmentHost
+  lazy val baseUrl: String = TestConfiguration.environmentHost
+
+  val titleSuffix: String     = " - Apply for an Advance Valuation Ruling - GOV.UK"
+  val arsHomePageText: String = "Your applications" + titleSuffix
+  val URL_ARSHomePage: String = s"$baseUrl/advance-valuation-ruling/applications-and-rulings"
 
   val publicEORINumber  = "GBE9XSDF10BCKEYAX"
   val privateEORINumber = "GB112SDF10BCKEYAX"
@@ -105,28 +113,19 @@ object BasePage {
   val employeeOfOrg     = "An employee of the organisation"
   val agentOfOrg        = "Agent acting on behalf of an organisation"
   val agentForTrader    = "Agent acting on behalf of a trader"
-
-  val EORINumber      = "GB333186844456"
-  val continueButton  = "govuk-button"
-  val titleSuffix     = " - Apply for an Advance Valuation Ruling - GOV.UK"
-  val arsHomePageText = "Your applications" + titleSuffix
-  val URL_ARSHomePage = s"$baseUrl/advance-valuation-ruling/applications-and-rulings"
+  val EORINumber        = "GB333186844456"
+  val continueButton    = "govuk-button"
 
   def signOut()(implicit driver: WebDriver): Unit =
     driver.findElement(By.className("hmrc-sign-out-nav__link")).click()
 
-  def invokeURL(
-    url: String,
-    affinityGroup: String,
-    credentialRole: String,
-    hasEnrolment: Boolean = true
-  )(implicit
+  def invokeURL(url: String, affinityGroup: String, credentialRole: String, hasEnrolment: Boolean = true)(implicit
     driver: WebDriver
   ): Unit = {
     driver.manage().deleteAllCookies()
     driver.navigate().to(url)
-    val titlecheck = driver.getTitle
-    if (titlecheck == "Authority Wizard") {
+    val titleCheck = driver.getTitle
+    if (titleCheck == "Authority Wizard") {
       driver.findElement(By.id("redirectionUrl")).clear()
       driver.findElement(By.id("redirectionUrl")).sendKeys(URL_ARSHomePage)
       driver.findElement(By.id("redirectionUrl"))
@@ -158,8 +157,6 @@ object BasePage {
     }
   }
 
-  def getLastDraftCreated()(implicit
-    driver: WebDriver
-  ): String =
+  def getLastDraftCreated()(implicit driver: WebDriver): String =
     driver.findElements(By.cssSelector("table tr td:nth-child(1)")).get(0).getText
 }

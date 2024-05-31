@@ -17,14 +17,9 @@
 package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.pages.base.BasePage
-import org.openqa.selenium.By
 
 object OrganisationContactDetailsPage extends BasePage {
   val pageTitle     = "Your contact details"
-  val nameField     = By.id("name")
-  val emailField    = By.id("email")
-  val contactField  = By.id("phone")
-  val jobTitleField = By.id("jobTitle")
 
   def enterContactDetails(
     name: String,

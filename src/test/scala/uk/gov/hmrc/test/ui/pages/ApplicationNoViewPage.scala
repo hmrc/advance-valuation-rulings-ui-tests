@@ -21,12 +21,8 @@ import uk.gov.hmrc.test.ui.pages.base.BasePage
 
 object ApplicationNoViewPage extends BasePage {
 
-  val pageTitle               = "Your applications"
-  val btn_continueApplication = "Continue application"
-  val btn_deleteApplication   = "Delete application"
-
-  def clickContinueApplicationButton(value: String): Unit =
-    driver.findElement(By.linkText(btn_continueApplication))
+  val pageTitle             = "Your applications"
+  val btn_deleteApplication = "Delete application"
 
   def clickDeleteApplicationButton(): Unit =
     driver.findElement(By.partialLinkText(btn_deleteApplication))

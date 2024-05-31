@@ -17,7 +17,6 @@
 package uk.gov.hmrc.test.ui.driver
 
 import org.openqa.selenium.WebDriver
-import org.openqa.selenium.remote.RemoteWebDriver
 import org.openqa.selenium.support.ui.WebDriverWait
 import uk.gov.hmrc.selenium.webdriver.Driver
 
@@ -25,8 +24,7 @@ import java.time.Duration
 
 trait BrowserDriver {
 
-  implicit def driver: RemoteWebDriver =
-    Driver.instance
+  implicit def driver: WebDriver = Driver.instance
 
   def webDriverWait()(implicit driver: WebDriver): WebDriverWait = {
     val timeToWait = 15

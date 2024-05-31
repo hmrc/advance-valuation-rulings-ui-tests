@@ -22,14 +22,14 @@ import org.openqa.selenium.By
 
 object AgentCompanyDetailsPage extends BasePage {
   val pageTitle = "Your organisation’s contact details"
-
-  val agentEoriField            = By.id("agentEori")
-  val agentCompanyNameField     = By.id("agentCompanyName")
-  val agentStreetAndNumberField = By.id("agentStreetAndNumber")
-  val agentCityField            = By.id("agentCity")
-  val agentCountryField         = "country"
-  val agentPostalCodeField      = By.id("agentPostalCode")
   val redirectUrl               = "/agent-company-details"
+
+  private val agentEoriField            = By.id("agentEori")
+  private val agentCompanyNameField     = By.id("agentCompanyName")
+  private val agentStreetAndNumberField = By.id("agentStreetAndNumber")
+  private val agentCityField            = By.id("agentCity")
+  private val agentPostalCodeField      = By.id("agentPostalCode")
+  private val agentCountryField         = "country"
 
   def enterFormDetails(
     agentEori: String,

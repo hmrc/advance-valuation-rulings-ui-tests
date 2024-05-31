@@ -1,9 +1,50 @@
 #!/usr/bin/env bash
+#
+# Wrapper script for running DAST container locally
+# See https://github.com/hmrc/dast-config-manager#running-zap-locally
+#
+set -o errexit  # Exit immediately if any command or pipeline of commands fails
+set -o nounset  # Treat unset variables and parameters as an error
+set -o pipefail # Exit when command before pipe fails
+# set -o xtrace   # Debug mode expand everything and print it before execution
 
-BROWSER=$1
-ENVIRONMENT=$2
+cd "$(dirname "$0")" # Always run from script location
 
-export ZAP_LOCAL_ALERT_FILTERS="${PWD}/alert-filters.json"
+# We assume you started all required services using 'sm2' and MongoDB
 
-sbt clean -Dbrowser="${BROWSER:=chrome}" -Denvironment="${ENVIRONMENT:=local}" -Dsecurity.assessment="true" "testOnly uk.gov.hmrc.test.ui.cucumber.runner.ZapRunner" testReport
+export ZAP_FAIL_ON_SEVERITY=Low # Allowed values: High, Medium, Low, Informational
+export ZAP_FORWARD_ENABLE="true"
+ZAP_FORWARD_PORTS=$(sm2 -s | grep -E 'PASS|BOOT'| grep -v 'MONGO' | awk '{ print $8}' | tr "\n" " ")
+export ZAP_FORWARD_PORTS
+if [[ -f alert-filters.json ]]; then
+    export ZAP_LOCAL_ALERT_FILTERS="${PWD}/alert-filters.json"
+    echo "Using filters from ${ZAP_LOCAL_ALERT_FILTERS}"
+fi
+if ! [[ -d dast-config-manager ]]; then
+    git clone git@github.com:hmrc/dast-config-manager.git
+fi
+(
+    cd dast-config-manager
+    git fetch --all
+    git reset --hard "origin/$(git rev-parse --abbrev-ref origin/HEAD | cut -d "/" -f 2)"
+    git pull --force
+    make local-zap-running
+)
 
+TEST_FAILED=false
+# Modify following sbt command accordingly to your tests
+sbt -Dbrowser=chrome -Dsecurity.assessment=true -Denvironment=local clean 'testOnly uk.gov.hmrc.test.ui.cucumber.runner.AllTestsRunner' || TEST_FAILED=true
+
+(
+    cd dast-config-manager
+    make local-zap-stop
+)
+
+# display the results in a browser window
+echo "Displaying results in browser..."
+open ./dast-config-manager/target/dast-reports/index.html
+
+if [[ "${TEST_FAILED}" == "true" ]]; then
+    echo "Your sbt tests failed, but you can still check partial ZAP report and session in dast-config-manager/target"
+    exit 1
+fi

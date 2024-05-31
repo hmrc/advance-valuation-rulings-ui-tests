@@ -22,13 +22,8 @@ import uk.gov.hmrc.test.ui.pages.base.BasePage
 object AgentForTraderContactDetailsPage extends BasePage {
 
   val pageTitle        = "Your contact details"
-  val nameField        = By.id("name")
-  val emailField       = By.id("email")
-  val contactField     = By.id("phone")
-  val companyNameField = By.id("companyName")
-  val jobTitleField    = By.id("jobTitle")
 
-  val redirectUrl = "/business-contact-details"
+  val companyNameField: By = By.id("companyName")
 
   def enterContactDetails(name: String, email: String, contact: String, companyName: String, jobTitle: String): Unit = {
     nameField.find.enterText(name)
@@ -37,6 +32,7 @@ object AgentForTraderContactDetailsPage extends BasePage {
     companyNameField.find.enterText(companyName)
     jobTitleField.find.enterText(jobTitle)
   }
+
   def getName: String = nameField.find.getAttribute("value")
 
   def getEmail: String = emailField.find.getAttribute("value")

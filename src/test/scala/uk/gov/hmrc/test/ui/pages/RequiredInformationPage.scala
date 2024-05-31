@@ -20,12 +20,7 @@ import uk.gov.hmrc.test.ui.pages.base.BasePage
 
 object RequiredInformationPage extends BasePage {
 
-  import org.openqa.selenium.By
-
-  val pageTitle =
-    "Before you start your application"
-
-  val ele_Continue = By.id("continue-button")
+  val pageTitle = "Before you start your application"
 
   def returnChecklistTextForRole(role: String): String =
     if (role == "An employee of the organisation") {

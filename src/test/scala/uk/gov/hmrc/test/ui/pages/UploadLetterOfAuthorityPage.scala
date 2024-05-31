@@ -17,7 +17,6 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
-import org.openqa.selenium.remote.LocalFileDetector
 import uk.gov.hmrc.test.ui.pages.base.BasePage
 
 object UploadLetterOfAuthorityPage extends BasePage {
@@ -25,9 +24,7 @@ object UploadLetterOfAuthorityPage extends BasePage {
   val pageTitle          = "Upload your letter of authority"
   val ele_UploadDocument = "file-input"
 
-  def uploadDocument(uploadFilePath: String): Unit = {
-    driver.setFileDetector(new LocalFileDetector())
+  def uploadDocument(uploadFilePath: String): Unit =
     driver.findElement(By.id(ele_UploadDocument)).sendKeys(uploadFilePath)
-  }
 
 }

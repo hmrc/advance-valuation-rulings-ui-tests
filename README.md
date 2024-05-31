@@ -1,88 +1,56 @@
+# Advance Valuation Rulings UI Tests
 
-# advance-valuation-rulings-ui-tests
 UI test suite for the `advance-valuation-rulings-frontend` using Selenium WebDriver and Cucumber.  
 
 ---
 
-### Running tests locally against a containerised browser - on a developer machine
+## Starting Services
 
-Prior to executing the tests ensure you have:
- - Docker - to run mongo and browser (Chrome, Firefox or Edge) inside a container 
- - Appropriate [drivers installed](#installing-local-driver-binaries) - to run tests against locally installed Browser
- - Installed/configured [service manager](https://github.com/hmrc/service-manager).  
+To start the required services via [service manager](https://github.com/hmrc/sm2), run:
 
-Run the following command to start services locally:
-
-```
-docker run --rm -d --name mongo -d -p 27017:27017 mongo:5.0
-```
-
-```
+```shell
 sm2 --start ARS_ALL
 ```
 
-The new UI test tooling requires an instance of selenium grid available at localhost:4444 to be able to create browsers.
-HMRC has provided and maintain hmrc/docker-selenium-grid for that purpose which will point selenium to localhost:4444.
-At the time of writing an easy way to run these tests is to use [HMRC docker selenium-grid](https://github.com/hmrc/docker-selenium-grid)
-Clone this repo and follow the readme to start selenium-grid in a docker container.
+## Executing tests
 
-For this project to run against a containerised remote webdriver browser instance:
+### UI tests
+
+The UI tests utilise automatic browser management facilitated by Selenium Manager for UI journey tests.
+By default, the tests are configured to run in headless mode, providing efficiency and speed without launching
+a visible browser window. However, if you prefer to observe the test execution visually, you can override this setting
+by adding `-Dbrowser.option.headless=false` in the relevant script when running your tests.
+
+#### Running tests - Local
+
+To run the UI tests locally, execute the script:
 
 ```bash
 ./run-tests.sh chrome local
 ```
 
----
-
-### Running the tests against a test environment
+#### Running tests - Environment
 
 To run the tests against an environment set the corresponding `host` environment property as specified under
  `<env>.host.services` in the [application.conf](/src/test/resources/application.conf). 
 
-For example, to execute the `run_journey_tests.sh` script using Chrome remote-webdriver against QA environment 
-
-```bash
-./run-tests.sh chrome qa
-```    
-
-For example, to execute the `run_journey_tests.sh` script using Chrome remote-webdriver against Staging environment
+To run the UI smoke tests in staging environment, execute the script:
 
 ```bash
 ./run-tests.sh chrome staging
 ```
 
----
+### ZAP tests
 
-### Running ZAP tests
+The `run_zap_tests.sh` script uses [dast-config-manager](https://github.com/hmrc/dast-config-manager) to run ZAP tests locally using the DAST Docker image.
 
-ZAP tests can be ran by setting the system variable to `true` when running the tests via sbt command
-
-`-Dsecurity.assessment="true"`
-
-to disable zap tests from being ran set sys variable to `false` 
-
-`-Dsecurity.assessment="false"`
-
-e.g.
-
-```
-sbt clean -Dbrowser="chrome" -Denvironment="local" -Dsecurity.assessment="true" "testOnly uk.gov.hmrc.test.ui.cucumber.runner.ZapRunner" testReport
-```
-
-To execute ZAP tests selenium-grid remote chrome browser
+To run the ZAP tests locally, execute the script:
 
 ```bash
-./run_zap_tests.sh chrome local
+./run_zap_tests.sh
 ```
 
----
-
-### Running tests using BrowserStack
-If you would like to run your tests via BrowserStack from your local development environment please refer to the [webdriver-factory](https://github.com/hmrc/webdriver-factory/blob/main/README.md/#user-content-running-tests-using-browser-stack) project.
-
----
-
-### Run all formatting and dependency checks
+## Run all formatting and dependency checks
 
 Check all project files are formatted as expected as follows:
 
@@ -90,6 +58,6 @@ Check all project files are formatted as expected as follows:
 ./run_format_and_deps.sh
 ```
 
-### License
+## License
 
 This code is open source software licensed under the [Apache 2.0 License]("http://www.apache.org/licenses/LICENSE-2.0.html").
