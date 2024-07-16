@@ -19,7 +19,7 @@ package uk.gov.hmrc.test.ui.pages
 import uk.gov.hmrc.test.ui.pages.base.BasePage
 
 object OrganisationContactDetailsPage extends BasePage {
-  val pageTitle     = "Your contact details"
+  val pageTitle = "Your contact details"
 
   def enterContactDetails(
     name: String,
