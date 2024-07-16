@@ -21,7 +21,7 @@ import uk.gov.hmrc.test.ui.pages.base.BasePage
 
 object AgentForTraderContactDetailsPage extends BasePage {
 
-  val pageTitle        = "Your contact details"
+  val pageTitle = "Your contact details"
 
   val companyNameField: By = By.id("companyName")
 

@@ -21,8 +21,8 @@ import uk.gov.hmrc.test.ui.pages.base.BasePage
 import org.openqa.selenium.By
 
 object AgentCompanyDetailsPage extends BasePage {
-  val pageTitle = "Your organisation’s contact details"
-  val redirectUrl               = "/agent-company-details"
+  val pageTitle   = "Your organisation’s contact details"
+  val redirectUrl = "/agent-company-details"
 
   private val agentEoriField            = By.id("agentEori")
   private val agentCompanyNameField     = By.id("agentCompanyName")

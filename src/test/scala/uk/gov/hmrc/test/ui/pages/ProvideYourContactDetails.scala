@@ -20,8 +20,8 @@ import uk.gov.hmrc.test.ui.pages.base.BasePage
 
 object ProvideYourContactDetails extends BasePage {
 
-  val pageTitle     = "Your contact details"
-  val redirectUrl   = "/provide-contact-details"
+  val pageTitle   = "Your contact details"
+  val redirectUrl = "/provide-contact-details"
 
   def enterContactDetails(name: String, email: String, contact: String, jobTitle: String): Unit = {
     nameField.find.enterText(name)
