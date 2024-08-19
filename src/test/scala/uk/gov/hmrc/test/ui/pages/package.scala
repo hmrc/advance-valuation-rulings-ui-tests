@@ -21,17 +21,14 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 
 package object pages {
-  implicit class ByExtension(val by: By) extends AnyVal {
-    def find(implicit driver: WebDriver): WebElement = driver.findElement(by)
-  }
+  extension (by: By)
+    def find(using driver: WebDriver): WebElement = driver.findElement(by)
 
-  implicit class WebElementExtension(val element: WebElement) extends AnyVal {
+  extension (element: WebElement)
     def click(): Unit = element.click()
-
     def enterText(text: String): WebElement = {
       element.clear()
       element.sendKeys(text)
       element
     }
-  }
 }

@@ -25,7 +25,7 @@ object UploadSupportingDocuments extends BasePage {
 
   val ele_UploadDocument = "file-input"
 
-  def uploadDocument(uploadFilePath: String)(implicit driver: WebDriver): Unit =
+  def uploadDocument(uploadFilePath: String)(using driver: WebDriver): Unit =
     driver
       .findElement(By.id(ele_UploadDocument))
       .sendKeys(uploadFilePath)
