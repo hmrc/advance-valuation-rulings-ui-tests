@@ -24,7 +24,7 @@ import org.scalatest.matchers.should.Matchers
 
 trait BaseStepDef extends ScalaDsl with EN with BrowserDriver with Eventually with Matchers {
 
-  ParameterType("booleanValue", ".*") { value: String =>
+  ParameterType("booleanValue", ".*") { value =>
     value.filterNot(_ == '\"') match {
       case "yes" | "Yes" | "YES" => true
       case _                     => false

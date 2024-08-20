@@ -116,10 +116,10 @@ object BasePage {
   val EORINumber        = "GB333186844456"
   val continueButton    = "govuk-button"
 
-  def signOut()(implicit driver: WebDriver): Unit =
+  def signOut()(using driver: WebDriver): Unit =
     driver.findElement(By.className("hmrc-sign-out-nav__link")).click()
 
-  def invokeURL(url: String, affinityGroup: String, credentialRole: String, hasEnrolment: Boolean = true)(implicit
+  def invokeURL(url: String, affinityGroup: String, credentialRole: String, hasEnrolment: Boolean = true)(using
     driver: WebDriver
   ): Unit = {
     driver.manage().deleteAllCookies()
@@ -157,6 +157,6 @@ object BasePage {
     }
   }
 
-  def getLastDraftCreated()(implicit driver: WebDriver): String =
+  def getLastDraftCreated()(using driver: WebDriver): String =
     driver.findElements(By.cssSelector("table tr td:nth-child(1)")).get(0).getText
 }

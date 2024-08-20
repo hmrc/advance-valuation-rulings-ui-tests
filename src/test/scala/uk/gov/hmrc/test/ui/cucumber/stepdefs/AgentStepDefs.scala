@@ -28,13 +28,13 @@ trait AgentStepDefs
     with MethodFourStepDefinitions
     with MethodSixStepDefinitions {
 
-  When("I select role as a {string}") { role: String =>
+  When("I select role as a {string}") { (role: String) =>
     AgentSelectRole.selectRole(role: String)
     ScenarioContext.setContext("Description Of Role", role)
     submitPage()
   }
 
-  And("I verify starter checklist page for {string} is displayed") { role: String =>
+  And("I verify starter checklist page for {string} is displayed") { (role: String) =>
     RequiredInformationPage.loadPage()
     assert(driver.getPageSource.contains(RequiredInformationPage.returnChecklistTextForRole(role)))
   }
