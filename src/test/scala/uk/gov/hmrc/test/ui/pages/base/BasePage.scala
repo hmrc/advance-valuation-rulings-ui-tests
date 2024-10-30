@@ -86,7 +86,7 @@ trait BasePage extends BrowserDriver with Matchers {
     val currentText = Option(e.getAttribute("value")).getOrElse("").trim
 
     if (currentText != lookup) {
-      //cleanup the fields before populating
+      // cleanup the fields before populating
       cleanupAutoCompleteField(e)
       e.sendKeys(lookup)
       if (id.equals("searchTerm")) {
