@@ -21,11 +21,10 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 
 package object pages {
-  extension (by: By)
-    def find(using driver: WebDriver): WebElement = driver.findElement(by)
+  extension (by: By) def find(using driver: WebDriver): WebElement = driver.findElement(by)
 
   extension (element: WebElement)
-    def click(): Unit = element.click()
+    def click(): Unit                       = element.click()
     def enterText(text: String): WebElement = {
       element.clear()
       element.sendKeys(text)
