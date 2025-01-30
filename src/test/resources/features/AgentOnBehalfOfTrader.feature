@@ -113,6 +113,7 @@ Feature: Agent acting on behalf of a trader changes
     And I select "No" and continue in Do you want to add any confidential information page
     And I select "No" and continue in Do you want to upload any supporting documents page
     And I will be navigated to the Check Your Answers page
+    And I check my "Trader’s registered business name" and "Trader’s registered business address" are correct and are unable to be changed
     And I check my answers and click on continue
     Then I will be navigated to the Application Complete page
     Examples:
@@ -156,5 +157,6 @@ Feature: Agent acting on behalf of a trader changes
     And I select "No" and continue in Do you want to add any confidential information page
     And I select "No" and continue in Do you want to upload any supporting documents page
     And I will be navigated to the Check Your Answers page
+    And I check my "Trader’s registered business name" and "Trader’s registered business address" are correct and are unable to be changed
     And I check my answers and click on continue
     Then I will be navigated to the Application Complete page
