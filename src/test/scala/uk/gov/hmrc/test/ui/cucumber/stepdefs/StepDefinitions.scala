@@ -434,7 +434,7 @@ class StepDefinitions
   )((option: Boolean) => IsSaleSubjectToConditions.select(option).submitPage())
 
   Then("I will be navigated to the Check Your Answers page")(() => CheckYourAnswers.loadPage())
-  
+
   And("I check my {string} and {string} are correct and are unable to be changed"){(name: String, business: String) =>
     val text = CheckYourAnswers.noChangeButton
     assert(text.head.contains(name))
