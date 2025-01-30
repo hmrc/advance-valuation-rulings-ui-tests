@@ -20,6 +20,7 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 import org.openqa.selenium._
 import org.scalatest.matchers.should.Matchers
+import scala.jdk.CollectionConverters.*
 
 trait BasePage extends BrowserDriver with Matchers {
   import BasePage._
@@ -34,6 +35,7 @@ trait BasePage extends BrowserDriver with Matchers {
   val emailField: By    = By.id("email")
   val contactField: By  = By.id("phone")
   val jobTitleField: By = By.id("jobTitle")
+  val fieldsWithNoActions : By = By.className("govuk-summary-list__row--no-actions")
 
   lazy val js: JavascriptExecutor = driver.asInstanceOf[JavascriptExecutor]
 
@@ -45,6 +47,9 @@ trait BasePage extends BrowserDriver with Matchers {
 
   def clickCancelApplicationLink(): Unit =
     driver.findElement(By.id(link_cancelButton)).click()
+
+  def noChangeButton: List[String] =
+    driver.findElements(fieldsWithNoActions).asScala.toList.map(_.getText)
 
   def loadPage(): this.type = {
     onPage(this.pageTitle + titleSuffix)

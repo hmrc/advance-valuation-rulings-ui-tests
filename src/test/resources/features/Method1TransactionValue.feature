@@ -67,5 +67,6 @@ Feature: End To End Journey for Method 1 which is based on Transaction value of 
     Then I will be navigated to You have uploaded second supporting document
     Then I select "No" on You have uploaded second supporting document
     Then I will be navigated to the Check Your Answers page
+    And I check my "Registered business name" and "Registered business address" are correct and are unable to be changed
     And I check my answers and click on continue
     Then I will be navigated to the Application Complete page
