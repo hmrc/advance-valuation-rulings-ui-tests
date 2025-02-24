@@ -30,7 +30,7 @@ Feature: Employee of Organisation End To End Journey
     And I select "No" and continue in Do you want to add any confidential information page
     And I select "No" and continue in Do you want to upload any supporting documents page
     Then I will be navigated to the Check Your Answers page
-    And I check my "Registered business name" and "Registered business address" are correct and are unable to be changed
+    And I check my "Organisation’s registered business name" and "Organisation’s registered business address" are correct and are unable to be changed
     And I check my answers and click on continue
     Then I will be navigated to the Application Complete page
 
@@ -62,7 +62,7 @@ Feature: Employee of Organisation End To End Journey
     And I select "No" and continue in Do you want to add any confidential information page
     And I select "No" and continue in Do you want to upload any supporting documents page
     Then I will be navigated to the Check Your Answers page
-    And I check my "Registered business name" and "Registered business address" are correct and are unable to be changed
+    And I check my "Organisation’s registered business name" and "Organisation’s registered business address" are correct and are unable to be changed
     And I check my answers and click on continue
     Then I will be navigated to the Application Complete page
     Examples:

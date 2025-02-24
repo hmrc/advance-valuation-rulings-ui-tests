@@ -31,11 +31,11 @@ trait BasePage extends BrowserDriver with Matchers {
   val goToAppAndRuling  = "Apply for an Advance Valuation Ruling"
   val link_cancelButton = "cancel_application"
 
-  val nameField: By     = By.id("name")
-  val emailField: By    = By.id("email")
-  val contactField: By  = By.id("phone")
-  val jobTitleField: By = By.id("jobTitle")
-  val fieldsWithNoActions : By = By.className("govuk-summary-list__row--no-actions")
+  val nameField: By           = By.id("name")
+  val emailField: By          = By.id("email")
+  val contactField: By        = By.id("phone")
+  val jobTitleField: By       = By.id("jobTitle")
+  val fieldsWithNoActions: By = By.className("govuk-summary-list__row--no-actions")
 
   lazy val js: JavascriptExecutor = driver.asInstanceOf[JavascriptExecutor]
 
