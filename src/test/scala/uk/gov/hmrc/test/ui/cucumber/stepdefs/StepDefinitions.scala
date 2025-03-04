@@ -463,6 +463,11 @@ class StepDefinitions
     clickCancelApplicationLink()
     CancelApplicationPage.loadPage()
   }
+  And("I select {booleanValue} and continue on cancellation page") { (option: Boolean) =>
+    CancelApplicationPage.loadPage()
+    CancelApplicationPage.select(option)
+    CancelApplicationPage.clickConfirmCancellationButton()
+  }
 
   And("I click on confirm button on cancellation page") { () =>
     CancelApplicationPage.clickConfirmCancellationButton()
