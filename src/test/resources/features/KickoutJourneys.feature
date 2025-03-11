@@ -58,7 +58,6 @@ Feature: Kickout Journeys
     And I enter Name- "Automation Test" Email- "TestSaveAsDraft@automation.com",Phone- "9876543211", Job title- "employee of org" details
     When I click on cancel application link
     And I select "No" and continue on cancellation page
-    And I click back button in the browser
 
   Scenario: Agent on behalf of trader when invalid EORI is entered
     Given I am on the ARS Home Page with affinity group as a "Individual" and Credential role as a "User"
