@@ -435,6 +435,8 @@ class StepDefinitions
 
   Then("I will be navigated to the Check Your Answers page")(() => CheckYourAnswers.loadPage())
 
+  Then("I will be navigated to the Your Contact details page")(() => ProvideYourContactDetails.loadPage())
+
   And("I check my {string} and {string} are correct and are unable to be changed") { (name: String, business: String) =>
     val text = CheckYourAnswers.noChangeButton
     assert(text.head.contains(name))
