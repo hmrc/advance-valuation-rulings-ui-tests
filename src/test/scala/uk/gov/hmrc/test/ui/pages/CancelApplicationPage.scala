@@ -17,11 +17,11 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
-import uk.gov.hmrc.test.ui.pages.base.BasePage
+import uk.gov.hmrc.test.ui.pages.base.YesNoPage
 
-object CancelApplicationPage extends BasePage {
+object CancelApplicationPage extends YesNoPage {
 
-  val pageTitle                = "Are you sure you want to cancel your application?"
+  val pageTitle                = "Are you sure you want to cancel this application?"
   val btn_confirm_cancellation = "govuk-button"
 
   def clickConfirmCancellationButton(): Unit =
