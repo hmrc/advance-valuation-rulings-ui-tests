@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.pages.base
 
 import org.openqa.selenium.By
+import org.openqa.selenium.support.ui.ExpectedConditions
 
 trait TextAreaPage extends BasePage {
   import uk.gov.hmrc.test.ui.pages._
@@ -24,10 +25,20 @@ trait TextAreaPage extends BasePage {
   private val textArea = By.id("value")
 
   def enterText(content: String): TextAreaPage = {
-    textArea.find.enterText(content)
+    // Use FluentWait to find the element fresh each time
+    val element = fluentWait.until(ExpectedConditions.visibilityOfElementLocated(textArea))
+
+    // Clear the field safely
+    element.clear()
+
+    // Enter the new text
+    element.sendKeys(content)
+
     this
   }
 
-  def getText: String =
-    textArea.find.getText
+  def getText: String = {
+    val element = fluentWait.until(ExpectedConditions.visibilityOfElementLocated(textArea))
+    element.getText
+  }
 }

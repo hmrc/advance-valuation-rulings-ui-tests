@@ -16,7 +16,10 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import org.openqa.selenium.By
+import org.openqa.selenium.support.ui.FluentWait
+import org.openqa.selenium.{By, WebDriver}
+
+import java.time.Duration
 
 trait ChangeImporterRoleSteps extends BaseStepDef {
 
@@ -46,6 +49,15 @@ trait ChangeImporterRoleSteps extends BaseStepDef {
   }
 
   And("^The page title is: (.*)$") { (titleExpected: String) =>
+    val fluentWait = new FluentWait[WebDriver](driver)
+      .withTimeout(Duration.ofSeconds(15))
+      .pollingEvery(Duration.ofMillis(500))
+      .ignoring(classOf[Exception])
+
+    fluentWait.until((driver: WebDriver) => {
+      driver.getTitle.contains(titleExpected)
+    })
+
     val title: String = driver.getTitle
     title should include(titleExpected)
   }

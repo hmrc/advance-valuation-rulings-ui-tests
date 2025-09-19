@@ -16,12 +16,14 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import org.openqa.selenium.By
-import org.openqa.selenium.support.ui.ExpectedConditions
+import org.openqa.selenium.{By, WebDriver}
+import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.{clickCancelApplicationLink, onPage, submitPage}
-import uk.gov.hmrc.test.ui.pages._
+import uk.gov.hmrc.test.ui.pages.*
 import uk.gov.hmrc.test.ui.pages.base.BasePage.{baseUrl, titleSuffix}
 import uk.gov.hmrc.test.ui.pages.base.{BasePage, ScenarioContext}
+
+import java.time.Duration
 
 class StepDefinitions
     extends BaseStepDef
@@ -33,6 +35,11 @@ class StepDefinitions
     with ChangeImporterRoleSteps {
 
   var draftId = ""
+
+  val fluentWait = new FluentWait[WebDriver](driver)
+    .withTimeout(Duration.ofSeconds(15))
+    .pollingEvery(Duration.ofMillis(500))
+    .ignoring(classOf[Exception])
 
   Given(
     "I am on the ARS Home Page with affinity group as a {string} and Credential role as a {string}"
@@ -59,12 +66,20 @@ class StepDefinitions
   When("I click on Start new application in ARS Home") { () =>
     onPage(base.BasePage.arsHomePageText)
     submitPage()
+
+    // Wait for URL to change and contain draft pattern
     val draftPattern = """(DRAFT\d+)""".r
-    val url          = driver.getCurrentUrl
+
+    fluentWait.until((driver: WebDriver) => {
+      val url = driver.getCurrentUrl
+      draftPattern.findFirstIn(url).isDefined
+    })
+
+    val url = driver.getCurrentUrl
     draftPattern.findFirstIn(url) match {
       case Some(draft) =>
         draftId = draft
-      case _           => throw new IllegalArgumentException("No Draft Id created within the new application")
+      case _ => throw new IllegalArgumentException("No Draft Id created within the new application")
     }
   }
 
@@ -323,20 +338,31 @@ class StepDefinitions
   }
 
   Then("I will be navigated to You have uploaded supporting document") { () =>
-    if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader) {
-      assert(driver.getTitle == UploadedOneSupportingDocumentForAgentForTrader.pageTitle + titleSuffix)
+    val expectedTitle = if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader) {
+      UploadedOneSupportingDocumentForAgentForTrader.pageTitle + titleSuffix
     } else {
-      assert(driver.getTitle == UploadedOneSupportingDocumentForEmployeeAndAgentOfOrg.pageTitle + titleSuffix)
+      UploadedOneSupportingDocumentForEmployeeAndAgentOfOrg.pageTitle + titleSuffix
     }
+
+    fluentWait.until((driver: WebDriver) => {
+      driver.getTitle == expectedTitle
+    })
+
+    assert(driver.getTitle == expectedTitle)
   }
 
   Then("I will be navigated to You have uploaded second supporting document") { () =>
-    if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader) {
-      assert(driver.getTitle == UploadedTwoSupportingDocumentsForAgentForTrader.pageTitle + titleSuffix)
-
+    val expectedTitle = if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader) {
+      UploadedTwoSupportingDocumentsForAgentForTrader.pageTitle + titleSuffix
     } else {
-      assert(driver.getTitle == UploadedTwoSupportingDocumentsForEmployeeAndAgentOfOrg.pageTitle + titleSuffix)
+      UploadedTwoSupportingDocumentsForEmployeeAndAgentOfOrg.pageTitle + titleSuffix
     }
+
+    fluentWait.until((driver: WebDriver) => {
+      driver.getTitle == expectedTitle
+    })
+
+    assert(driver.getTitle == expectedTitle)
   }
 
   Then("I will be navigated to Why Computed Value page")(() => WhyComputedValue.loadPage())
