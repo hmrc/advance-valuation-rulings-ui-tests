@@ -18,11 +18,8 @@ package uk.gov.hmrc.test.ui.pages.base
 import org.openqa.selenium.support.ui.ExpectedConditions
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
-import org.openqa.selenium.*
-import org.scalatest.concurrent.Eventually.eventually
-import org.scalatest.concurrent.Futures.{interval, timeout}
+import org.openqa.selenium._
 import org.scalatest.matchers.should.Matchers
-
 import scala.jdk.CollectionConverters.*
 
 trait BasePage extends BrowserDriver with Matchers {
@@ -60,13 +57,13 @@ trait BasePage extends BrowserDriver with Matchers {
   }
 
   def onPage(pageTitle: String): Unit = {
-    eventually(timeout(20.seconds), interval(500.millis)) {
-      val actual: String = driver.getTitle.trim
-      if (actual != pageTitle) {
-        throw PageNotFoundException(
-          s"Expected '$pageTitle' page, but found '$actual' page."
-        )
-      }
+    webDriverWait()
+    val actual: String = driver.getTitle.trim
+
+    if (actual != pageTitle) {
+      throw PageNotFoundException(
+        s"Expected '$pageTitle' page, but found '$actual' page."
+      )
     }
   }
 
