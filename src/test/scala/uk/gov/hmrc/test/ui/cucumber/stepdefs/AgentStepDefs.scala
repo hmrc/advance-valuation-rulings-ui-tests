@@ -16,8 +16,9 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import org.openqa.selenium.support.ui.ExpectedConditions
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.submitPage
-import uk.gov.hmrc.test.ui.pages._
+import uk.gov.hmrc.test.ui.pages.*
 import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
 import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
 
@@ -143,6 +144,7 @@ trait AgentStepDefs
   And(
     "I enter Name- {string} Email- {string},Phone- {string}, Company name - {string}, Job title - {string} details"
   ) { (name: String, email: String, phone: String, companyName: String, jobTitle: String) =>
+    webDriverWait().until(ExpectedConditions.titleContains(ApplicationComplete.pageTitle))
     AgentForTraderContactDetailsPage.loadPage()
     AgentForTraderContactDetailsPage.enterContactDetails(name, email, phone, companyName, jobTitle)
   }

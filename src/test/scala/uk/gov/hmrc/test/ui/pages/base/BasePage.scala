@@ -57,7 +57,6 @@ trait BasePage extends BrowserDriver with Matchers {
   }
 
   def onPage(pageTitle: String): Unit = {
-    webDriverWait()
     val actual: String = driver.getTitle.trim
 
     if (actual != pageTitle) {
