@@ -144,7 +144,6 @@ trait AgentStepDefs
   And(
     "I enter Name- {string} Email- {string},Phone- {string}, Company name - {string}, Job title - {string} details"
   ) { (name: String, email: String, phone: String, companyName: String, jobTitle: String) =>
-    webDriverWait().until(ExpectedConditions.titleContains(ApplicationComplete.pageTitle))
     AgentForTraderContactDetailsPage.loadPage()
     AgentForTraderContactDetailsPage.enterContactDetails(name, email, phone, companyName, jobTitle)
   }
