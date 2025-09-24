@@ -18,9 +18,13 @@ package uk.gov.hmrc.test.ui.pages.base
 import org.openqa.selenium.support.ui.ExpectedConditions
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
-import org.openqa.selenium._
+import org.openqa.selenium.*
+import org.scalatest.concurrent.Eventually.eventually
+import org.scalatest.concurrent.Futures.{interval, timeout}
 import org.scalatest.matchers.should.Matchers
+
 import scala.jdk.CollectionConverters.*
+import scala.concurrent.duration.*
 
 trait BasePage extends BrowserDriver with Matchers {
   import BasePage._
@@ -52,6 +56,7 @@ trait BasePage extends BrowserDriver with Matchers {
     driver.findElements(fieldsWithNoActions).asScala.toList.map(_.getText)
 
   def loadPage(): this.type = {
+    waitForPageToLoad()
     onPage(this.pageTitle + titleSuffix)
     this
   }
@@ -63,6 +68,27 @@ trait BasePage extends BrowserDriver with Matchers {
       throw PageNotFoundException(
         s"Expected '$pageTitle' page, but found '$actual' page."
       )
+    }
+  }
+
+  def waitForPageToLoad(): Unit = {
+    // Wait for document ready state
+    eventually(timeout(20.seconds), interval(500.millis)) {
+      val completed = js
+        .executeScript("return document.readyState")
+        .toString
+        .equals("complete")
+      if (!completed) {
+        throw new RuntimeException("Page not loaded yet")
+      }
+    }
+
+    // Wait for title to match (using eventually instead of WebDriverWait)
+    eventually(timeout(15.seconds), interval(1.second)) {
+      val currentTitle = driver.getTitle.trim
+      if (!currentTitle.contains(pageTitle)) {
+        throw new RuntimeException(s"Expected title containing '$pageTitle', but got '$currentTitle'")
+      }
     }
   }
 
