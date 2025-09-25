@@ -15,7 +15,7 @@
  */
 
 package uk.gov.hmrc.test.ui.pages.base
-import org.openqa.selenium.support.ui.ExpectedConditions
+import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 import org.openqa.selenium.*
@@ -23,8 +23,10 @@ import org.scalatest.concurrent.Eventually.eventually
 import org.scalatest.concurrent.Futures.{interval, timeout}
 import org.scalatest.matchers.should.Matchers
 
+import java.time.Duration
 import scala.jdk.CollectionConverters.*
-import scala.concurrent.duration.*
+
+
 
 trait BasePage extends BrowserDriver with Matchers {
   import BasePage._
@@ -43,37 +45,97 @@ trait BasePage extends BrowserDriver with Matchers {
 
   lazy val js: JavascriptExecutor = driver.asInstanceOf[JavascriptExecutor]
 
-  def submitPage(): Unit =
-    driver.findElement(By.className(continueButton)).click()
+  lazy val fluentWait: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
+    .withTimeout(Duration.ofSeconds(15))
+    .pollingEvery(Duration.ofMillis(500))
+    .ignoring(classOf[StaleElementReferenceException])
+    .ignoring(classOf[NoSuchElementException])
+    .ignoring(classOf[ElementNotInteractableException])
 
-  def clickGoToApplicationAndRulingButton(): Unit =
-    driver.findElement(By.linkText(goToAppAndRuling)).click()
 
-  def clickCancelApplicationLink(): Unit =
-    driver.findElement(By.id(link_cancelButton)).click()
-
-  def noChangeButton: List[String] =
-    driver.findElements(fieldsWithNoActions).asScala.toList.map(_.getText)
-
-  def loadPage(): this.type = {
-    waitForPageToLoad()
-    onPage(this.pageTitle + titleSuffix)
-    this
+  def findElementWithWait(by: By): WebElement = {
+    val element = fluentWait.until(ExpectedConditions.presenceOfElementLocated(by))
+    js.executeScript("arguments[0].scrollIntoView(true);", element)
+    element
   }
 
-  def onPage(pageTitle: String): Unit = {
-    val actual: String = driver.getTitle.trim
+  def findClickableElementWithWait(by: By): WebElement = {
+    fluentWait.until(ExpectedConditions.elementToBeClickable(by))
+  }
 
-    if (actual != pageTitle) {
-      throw PageNotFoundException(
-        s"Expected '$pageTitle' page, but found '$actual' page."
-      )
+  def waitForElementToBeVisible(by: By): WebElement = {
+    fluentWait.until(ExpectedConditions.visibilityOfElementLocated(by))
+  }
+
+  def submitPage(): Unit = {
+    val currentUrl = driver.getCurrentUrl
+    val submitBtn = findClickableElementWithWait(By.className(continueButton))
+    submitBtn.click()
+
+    // Wait for navigation to complete (URL change or page load)
+    fluentWait.until((driver: WebDriver) => {
+      val newUrl = driver.getCurrentUrl
+      newUrl != currentUrl || js.executeScript("return document.readyState").toString == "complete"
+    })
+
+    waitForPageToLoad()
+  }
+
+  def clickGoToApplicationAndRulingButton(): Unit =
+    val button = findClickableElementWithWait(By.linkText(goToAppAndRuling))
+    button.click()
+    waitForPageToLoad()
+
+  def clickCancelApplicationLink(): Unit = {
+    val link = findClickableElementWithWait(By.id(link_cancelButton))
+    link.click()
+    waitForPageToLoad()
+  }
+
+  def noChangeButton: List[String] = {
+    fluentWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(fieldsWithNoActions))
+    driver.findElements(fieldsWithNoActions).asScala.toList.map(_.getText)
+  }
+
+  def waitForPageTitleToMatch(): Unit = {
+    val expectedTitle = this.pageTitle + titleSuffix
+    fluentWait.until((driver: WebDriver) => {
+      val currentTitle = driver.getTitle.trim
+      currentTitle == expectedTitle
+    })
+  }
+
+  def loadPage(): this.type = {
+    try {
+      waitForPageToLoad()
+      waitForPageTitleToMatch()
+      this
+    } catch {
+      case e: TimeoutException =>
+        val currentTitle = driver.getTitle.trim
+        val expectedTitle = this.pageTitle + titleSuffix
+        throw PageNotFoundException(
+          s"Page load timeout. Expected '$expectedTitle' but found '$currentTitle'. URL: ${driver.getCurrentUrl}"
+        )
+      case e: Exception =>
+        throw PageNotFoundException(
+          s"Error loading page: ${e.getMessage}. Current title: '${driver.getTitle}'. URL: ${driver.getCurrentUrl}"
+        )
     }
   }
 
+  def onPage(pageTitle: String): Unit = {
+    fluentWait.until((driver: WebDriver) => {
+      val actual: String = driver.getTitle.trim
+      if (actual != pageTitle) {
+        false // This will cause FluentWait to retry
+      } else {
+        true
+      }
+    })
+  }
+
   def waitForPageToLoad(): Unit = {
-    // Wait for document ready state
-    eventually(timeout(20.seconds), interval(500.millis)) {
       val completed = js
         .executeScript("return document.readyState")
         .toString
@@ -81,22 +143,14 @@ trait BasePage extends BrowserDriver with Matchers {
       if (!completed) {
         throw new RuntimeException("Page not loaded yet")
       }
-    }
 
-    // Wait for title to match (using eventually instead of WebDriverWait)
-    eventually(timeout(15.seconds), interval(1.second)) {
       val currentTitle = driver.getTitle.trim
       if (!currentTitle.contains(pageTitle)) {
         throw new RuntimeException(s"Expected title containing '$pageTitle', but got '$currentTitle'")
       }
-    }
   }
 
-  private def findElementWithWait(element: By): WebElement = {
-    val webElement = webDriverWait().until(ExpectedConditions.visibilityOfElementLocated(element))
-    js.executeScript("arguments[0].scrollIntoView()", webElement)
-    webElement
-  }
+
 
   private def cleanupAutoCompleteField(e: WebElement): Unit = {
     e.click()
@@ -105,8 +159,8 @@ trait BasePage extends BrowserDriver with Matchers {
   }
 
   private def findElement(element: By): WebElement = {
-    val webElement = driver.findElement(element)
-    js.executeScript("arguments[0].scrollIntoView()", webElement)
+    val webElement = findElementWithWait(element)
+    js.executeScript("arguments[0].scrollIntoView(true);", webElement)
     webElement
   }
 
@@ -147,47 +201,60 @@ object BasePage {
   val EORINumber        = "GB333186844456"
   val continueButton    = "govuk-button"
 
-  def signOut()(using driver: WebDriver): Unit =
-    driver.findElement(By.className("hmrc-sign-out-nav__link")).click()
+  def signOut()(using driver: WebDriver): Unit = {
+    val fluentWait = new FluentWait[WebDriver](driver)
+      .withTimeout(Duration.ofSeconds(10))
+      .pollingEvery(Duration.ofMillis(500))
+      .ignoring(classOf[Exception])
+
+    val signOutLink = fluentWait.until(ExpectedConditions.elementToBeClickable(By.className("hmrc-sign-out-nav__link")))
+    signOutLink.click()
+  }
 
   def invokeURL(url: String, affinityGroup: String, credentialRole: String, hasEnrolment: Boolean = true)(using
-    driver: WebDriver
+                                                                                                          driver: WebDriver
   ): Unit = {
+    val fluentWait = new FluentWait[WebDriver](driver)
+      .withTimeout(Duration.ofSeconds(15))
+      .pollingEvery(Duration.ofMillis(500))
+      .ignoring(classOf[Exception])
+
     driver.manage().deleteAllCookies()
     driver.navigate().to(url)
+
+    fluentWait.until((driver: WebDriver) => {
+      driver.getTitle != null && driver.getTitle.nonEmpty
+    })
+
     val titleCheck = driver.getTitle
     if (titleCheck == "Authority Wizard") {
-      driver.findElement(By.id("redirectionUrl")).clear()
+      fluentWait.until(ExpectedConditions.presenceOfElementLocated(By.id("redirectionUrl"))).clear()
       driver.findElement(By.id("redirectionUrl")).sendKeys(URL_ARSHomePage)
-      driver.findElement(By.id("redirectionUrl"))
       driver.findElement(By.id("affinityGroupSelect")).sendKeys(affinityGroup)
       driver.findElement(By.id("credential-role-select")).sendKeys(credentialRole)
+
       if (hasEnrolment) {
-        driver
-          .findElement(By.cssSelector("input[name='enrolment[0].name']"))
-          .sendKeys("HMRC-ATAR-ORG")
-        driver
-          .findElement(By.cssSelector("input[name='enrolment[0].taxIdentifier[0].name']"))
-          .sendKeys("EORINumber")
-        driver
-          .findElement(By.cssSelector("input[name='enrolment[0].taxIdentifier[0].value']"))
-          .sendKeys(EORINumber)
+        driver.findElement(By.cssSelector("input[name='enrolment[0].name']")).sendKeys("HMRC-ATAR-ORG")
+        driver.findElement(By.cssSelector("input[name='enrolment[0].taxIdentifier[0].name']")).sendKeys("EORINumber")
+        driver.findElement(By.cssSelector("input[name='enrolment[0].taxIdentifier[0].value']")).sendKeys(EORINumber)
       } else {
-        driver
-          .findElement(By.cssSelector("input[name='enrolment[0].name']"))
-          .clear()
-        driver
-          .findElement(By.cssSelector("input[name='enrolment[0].taxIdentifier[0].name']"))
-          .clear()
-        driver
-          .findElement(By.cssSelector("input[name='enrolment[0].taxIdentifier[0].value']"))
-          .clear()
+        driver.findElement(By.cssSelector("input[name='enrolment[0].name']")).clear()
+        driver.findElement(By.cssSelector("input[name='enrolment[0].taxIdentifier[0].name']")).clear()
+        driver.findElement(By.cssSelector("input[name='enrolment[0].taxIdentifier[0].value']")).clear()
       }
 
-      driver.findElement(By.className(continueButton)).click()
+      val continueBtn = fluentWait.until(ExpectedConditions.elementToBeClickable(By.className(continueButton)))
+      continueBtn.click()
     }
   }
 
-  def getLastDraftCreated()(using driver: WebDriver): String =
+  def getLastDraftCreated()(using driver: WebDriver): String = {
+    val fluentWait = new FluentWait[WebDriver](driver)
+      .withTimeout(Duration.ofSeconds(10))
+      .pollingEvery(Duration.ofMillis(500))
+      .ignoring(classOf[Exception])
+
+    fluentWait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("table tr td:nth-child(1)")))
     driver.findElements(By.cssSelector("table tr td:nth-child(1)")).get(0).getText
+  }
 }
