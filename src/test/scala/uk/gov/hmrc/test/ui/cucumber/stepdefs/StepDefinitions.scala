@@ -16,12 +16,14 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import org.openqa.selenium.By
-import org.openqa.selenium.support.ui.ExpectedConditions
+import org.openqa.selenium.{By, WebDriver}
+import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.{clickCancelApplicationLink, onPage, submitPage}
-import uk.gov.hmrc.test.ui.pages._
+import uk.gov.hmrc.test.ui.pages.*
 import uk.gov.hmrc.test.ui.pages.base.BasePage.{baseUrl, titleSuffix}
 import uk.gov.hmrc.test.ui.pages.base.{BasePage, ScenarioContext}
+
+import java.time.Duration
 
 class StepDefinitions
     extends BaseStepDef
@@ -323,11 +325,22 @@ class StepDefinitions
   }
 
   Then("I will be navigated to You have uploaded supporting document") { () =>
-    if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader) {
-      assert(driver.getTitle == UploadedOneSupportingDocumentForAgentForTrader.pageTitle + titleSuffix)
+    val expectedTitle = if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader) {
+      UploadedOneSupportingDocumentForAgentForTrader.pageTitle + titleSuffix
     } else {
-      assert(driver.getTitle == UploadedOneSupportingDocumentForEmployeeAndAgentOfOrg.pageTitle + titleSuffix)
+      UploadedOneSupportingDocumentForEmployeeAndAgentOfOrg.pageTitle + titleSuffix
     }
+
+    val fluentWait = new FluentWait[WebDriver](driver)
+      .withTimeout(Duration.ofSeconds(15))
+      .pollingEvery(Duration.ofMillis(500))
+      .ignoring(classOf[Exception])
+
+    fluentWait.until((driver: WebDriver) => {
+      driver.getTitle == expectedTitle
+    })
+
+    assert(driver.getTitle == expectedTitle)
   }
 
   Then("I will be navigated to You have uploaded second supporting document") { () =>
