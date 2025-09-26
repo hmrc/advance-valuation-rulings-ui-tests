@@ -29,13 +29,13 @@ trait YesNoPage extends BasePage {
   private val noRadio  = By.xpath(radioOptionNo)
 
   def selectYes(): YesNoPage = {
-    val element = fluentWait.until(ExpectedConditions.elementToBeClickable(yesRadio))
+    val element = fluentWait.until(ExpectedConditions.presenceOfElementLocated(yesRadio))
     element.click()
     this
   }
 
   def selectNo(): YesNoPage = {
-    val element = fluentWait.until(ExpectedConditions.elementToBeClickable(noRadio))
+    val element = fluentWait.until(ExpectedConditions.presenceOfElementLocated(noRadio))
     element.click()
     this
   }
