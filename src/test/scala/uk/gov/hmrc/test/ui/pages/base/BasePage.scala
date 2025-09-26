@@ -48,8 +48,10 @@ trait BasePage extends BrowserDriver with Matchers {
     .ignoring(classOf[NoSuchElementException])
     .ignoring(classOf[ElementNotInteractableException])
 
-  def submitPage(): Unit =
-    driver.findElement(By.className(continueButton)).click()
+  def submitPage(): Unit = {
+    val button = fluentWait.until(ExpectedConditions.elementToBeClickable(By.className(continueButton)))
+    button.click()
+  }
 
   def clickGoToApplicationAndRulingButton(): Unit =
     driver.findElement(By.linkText(goToAppAndRuling)).click()
