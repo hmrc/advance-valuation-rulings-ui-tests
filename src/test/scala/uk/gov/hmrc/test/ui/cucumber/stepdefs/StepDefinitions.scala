@@ -344,12 +344,22 @@ class StepDefinitions
   }
 
   Then("I will be navigated to You have uploaded second supporting document") { () =>
-    if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader) {
-      assert(driver.getTitle == UploadedTwoSupportingDocumentsForAgentForTrader.pageTitle + titleSuffix)
-
+    val expectedTitle = if (ScenarioContext.getContext("Description Of Role") == BasePage.agentForTrader) {
+      UploadedTwoSupportingDocumentsForAgentForTrader.pageTitle + titleSuffix
     } else {
-      assert(driver.getTitle == UploadedTwoSupportingDocumentsForEmployeeAndAgentOfOrg.pageTitle + titleSuffix)
+      UploadedTwoSupportingDocumentsForEmployeeAndAgentOfOrg.pageTitle + titleSuffix
     }
+
+    val fluentWait = new FluentWait[WebDriver](driver)
+      .withTimeout(Duration.ofSeconds(15))
+      .pollingEvery(Duration.ofMillis(500))
+      .ignoring(classOf[Exception])
+
+    fluentWait.until((driver: WebDriver) => {
+      driver.getTitle == expectedTitle
+    })
+
+    assert(driver.getTitle == expectedTitle)
   }
 
   Then("I will be navigated to Why Computed Value page")(() => WhyComputedValue.loadPage())
