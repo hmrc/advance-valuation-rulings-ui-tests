@@ -16,7 +16,8 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
+import org.openqa.selenium.{By, WebDriver}
+import org.openqa.selenium.support.ui.ExpectedConditions
 import uk.gov.hmrc.test.ui.pages.base.BasePage
 
 object UploadLetterOfAuthorityPage extends BasePage {
@@ -24,7 +25,9 @@ object UploadLetterOfAuthorityPage extends BasePage {
   val pageTitle          = "Upload your letter of authority"
   val ele_UploadDocument = "file-input"
 
-  def uploadDocument(uploadFilePath: String): Unit =
-    driver.findElement(By.id(ele_UploadDocument)).sendKeys(uploadFilePath)
+  def uploadDocument(uploadFilePath: String)(using driver: WebDriver): Unit = {
+    val fileInput = fluentWait.until(ExpectedConditions.presenceOfElementLocated(By.id(ele_UploadDocument)))
+    fileInput.sendKeys(uploadFilePath)
+  }
 
 }
