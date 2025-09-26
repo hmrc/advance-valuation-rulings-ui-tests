@@ -36,6 +36,11 @@ class StepDefinitions
 
   var draftId = ""
 
+  val fluentWait = new FluentWait[WebDriver](driver)
+    .withTimeout(Duration.ofSeconds(15))
+    .pollingEvery(Duration.ofMillis(500))
+    .ignoring(classOf[Exception])
+
   Given(
     "I am on the ARS Home Page with affinity group as a {string} and Credential role as a {string}"
   )((affinityGroup: String, credentialRole: String) =>
@@ -61,12 +66,20 @@ class StepDefinitions
   When("I click on Start new application in ARS Home") { () =>
     onPage(base.BasePage.arsHomePageText)
     submitPage()
+
+    // Wait for URL to change and contain draft pattern
     val draftPattern = """(DRAFT\d+)""".r
-    val url          = driver.getCurrentUrl
+
+    fluentWait.until((driver: WebDriver) => {
+      val url = driver.getCurrentUrl
+      draftPattern.findFirstIn(url).isDefined
+    })
+
+    val url = driver.getCurrentUrl
     draftPattern.findFirstIn(url) match {
       case Some(draft) =>
         draftId = draft
-      case _           => throw new IllegalArgumentException("No Draft Id created within the new application")
+      case _ => throw new IllegalArgumentException("No Draft Id created within the new application")
     }
   }
 
@@ -331,11 +344,6 @@ class StepDefinitions
       UploadedOneSupportingDocumentForEmployeeAndAgentOfOrg.pageTitle + titleSuffix
     }
 
-    val fluentWait = new FluentWait[WebDriver](driver)
-      .withTimeout(Duration.ofSeconds(15))
-      .pollingEvery(Duration.ofMillis(500))
-      .ignoring(classOf[Exception])
-
     fluentWait.until((driver: WebDriver) => {
       driver.getTitle == expectedTitle
     })
@@ -349,11 +357,6 @@ class StepDefinitions
     } else {
       UploadedTwoSupportingDocumentsForEmployeeAndAgentOfOrg.pageTitle + titleSuffix
     }
-
-    val fluentWait = new FluentWait[WebDriver](driver)
-      .withTimeout(Duration.ofSeconds(15))
-      .pollingEvery(Duration.ofMillis(500))
-      .ignoring(classOf[Exception])
 
     fluentWait.until((driver: WebDriver) => {
       driver.getTitle == expectedTitle

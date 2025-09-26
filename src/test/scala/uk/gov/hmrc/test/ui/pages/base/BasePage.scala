@@ -59,8 +59,10 @@ trait BasePage extends BrowserDriver with Matchers {
   def clickCancelApplicationLink(): Unit =
     driver.findElement(By.id(link_cancelButton)).click()
 
-  def noChangeButton: List[String] =
+  def noChangeButton: List[String] = {
+    fluentWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(fieldsWithNoActions))
     driver.findElements(fieldsWithNoActions).asScala.toList.map(_.getText)
+  }
 
   def loadPage(): this.type = {
     onPage(this.pageTitle + titleSuffix)
