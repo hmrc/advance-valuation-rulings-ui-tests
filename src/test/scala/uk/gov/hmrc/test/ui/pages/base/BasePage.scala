@@ -15,11 +15,13 @@
  */
 
 package uk.gov.hmrc.test.ui.pages.base
-import org.openqa.selenium.support.ui.ExpectedConditions
+import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
-import org.openqa.selenium._
+import org.openqa.selenium.*
 import org.scalatest.matchers.should.Matchers
+
+import java.time.Duration
 import scala.jdk.CollectionConverters.*
 
 trait BasePage extends BrowserDriver with Matchers {
@@ -39,8 +41,17 @@ trait BasePage extends BrowserDriver with Matchers {
 
   lazy val js: JavascriptExecutor = driver.asInstanceOf[JavascriptExecutor]
 
-  def submitPage(): Unit =
-    driver.findElement(By.className(continueButton)).click()
+  lazy val fluentWait: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
+    .withTimeout(Duration.ofSeconds(20))
+    .pollingEvery(Duration.ofMillis(500))
+    .ignoring(classOf[StaleElementReferenceException])
+    .ignoring(classOf[NoSuchElementException])
+    .ignoring(classOf[ElementNotInteractableException])
+
+  def submitPage(): Unit = {
+    val button = fluentWait.until(ExpectedConditions.elementToBeClickable(By.className(continueButton)))
+    button.click()
+  }
 
   def clickGoToApplicationAndRulingButton(): Unit =
     driver.findElement(By.linkText(goToAppAndRuling)).click()
@@ -48,8 +59,10 @@ trait BasePage extends BrowserDriver with Matchers {
   def clickCancelApplicationLink(): Unit =
     driver.findElement(By.id(link_cancelButton)).click()
 
-  def noChangeButton: List[String] =
+  def noChangeButton: List[String] = {
+    fluentWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(fieldsWithNoActions))
     driver.findElements(fieldsWithNoActions).asScala.toList.map(_.getText)
+  }
 
   def loadPage(): this.type = {
     onPage(this.pageTitle + titleSuffix)
@@ -57,17 +70,19 @@ trait BasePage extends BrowserDriver with Matchers {
   }
 
   def onPage(pageTitle: String): Unit = {
-    val actual: String = driver.getTitle.trim
-
-    if (actual != pageTitle) {
-      throw PageNotFoundException(
-        s"Expected '$pageTitle' page, but found '$actual' page."
-      )
-    }
+    // Use FluentWait for title checking to handle timing issues
+    fluentWait.until((driver: WebDriver) => {
+      val actual: String = driver.getTitle.trim
+      if (actual != pageTitle) {
+        false
+      } else {
+        true
+      }
+    })
   }
 
   private def findElementWithWait(element: By): WebElement = {
-    val webElement = webDriverWait().until(ExpectedConditions.visibilityOfElementLocated(element))
+    val webElement = fluentWait.until(ExpectedConditions.visibilityOfElementLocated(element))
     js.executeScript("arguments[0].scrollIntoView()", webElement)
     webElement
   }

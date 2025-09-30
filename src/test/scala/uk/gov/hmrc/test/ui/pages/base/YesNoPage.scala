@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.pages.base
 
 import org.openqa.selenium.By
+import org.openqa.selenium.support.ui.ExpectedConditions
 
 trait YesNoPage extends BasePage {
   import uk.gov.hmrc.test.ui.pages._
@@ -28,11 +29,14 @@ trait YesNoPage extends BasePage {
   private val noRadio  = By.xpath(radioOptionNo)
 
   def selectYes(): YesNoPage = {
-    yesRadio.find.click()
+    val element = fluentWait.until(ExpectedConditions.presenceOfElementLocated(yesRadio))
+    element.click()
     this
   }
-  def selectNo(): YesNoPage  = {
-    noRadio.find.click()
+
+  def selectNo(): YesNoPage = {
+    val element = fluentWait.until(ExpectedConditions.presenceOfElementLocated(noRadio))
+    element.click()
     this
   }
 

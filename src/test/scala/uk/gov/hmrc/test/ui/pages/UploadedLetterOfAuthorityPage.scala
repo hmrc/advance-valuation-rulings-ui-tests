@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
+import org.openqa.selenium.{By, StaleElementReferenceException, WebDriver}
 import org.openqa.selenium.support.ui.FluentWait
 import uk.gov.hmrc.test.ui.pages.base.BasePage
 
@@ -28,15 +28,11 @@ object UploadedLetterOfAuthorityPage extends BasePage {
   val ele_UploadDocument = "file-input"
 
   def uploadAuthLetterPollingClick(): Unit = {
-    val threeSeconds   = 3
-    val fifteenSeconds = 15
-    new FluentWait(
-      driver.findElement(By.className(continueButton)).click()
-    ).pollingEvery(Duration.ofSeconds(threeSeconds))
-      .withTimeout(Duration.ofSeconds(fifteenSeconds))
-      .until { _ =>
-        driver.findElement(By.className(continueButton)).click()
-        driver.findElement(By.tagName("h1")).getText == pageTitle
-      }
+    fluentWait.until((driver: WebDriver) => {
+      val button = driver.findElement(By.className(continueButton))
+      button.click()
+      driver.findElement(By.tagName("h1")).getText == pageTitle
+    })
   }
+
 }
