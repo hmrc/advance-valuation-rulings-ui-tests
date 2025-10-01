@@ -25,15 +25,9 @@ trait TextAreaPage extends BasePage {
   private val textArea = By.id("value")
 
   def enterText(content: String): TextAreaPage = {
-    // Use FluentWait to find the element fresh each time
-    val element = fluentWait.until(ExpectedConditions.visibilityOfElementLocated(textArea))
-
-    // Clear the field safely
+    val element = fluentWait.until(ExpectedConditions.elementToBeClickable(textArea))
     element.clear()
-
-    // Enter the new text
     element.sendKeys(content)
-
     this
   }
 
