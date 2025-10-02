@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.{By, StaleElementReferenceException, WebDriver}
-import org.openqa.selenium.support.ui.FluentWait
+import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
 import uk.gov.hmrc.test.ui.pages.base.BasePage
 
 import java.time.Duration
@@ -29,9 +29,11 @@ object UploadedLetterOfAuthorityPage extends BasePage {
 
   def uploadAuthLetterPollingClick(): Unit = {
     fluentWait.until((driver: WebDriver) => {
-      val button = driver.findElement(By.className(continueButton))
+      val button = fluentWait.until(ExpectedConditions.elementToBeClickable(By.className(continueButton)))
       button.click()
-      driver.findElement(By.tagName("h1")).getText == pageTitle
+
+      val h1 = fluentWait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("h1")))
+      h1.getText == pageTitle
     })
   }
 

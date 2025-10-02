@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages.base
 
-import org.openqa.selenium.By
+import org.openqa.selenium.{By, StaleElementReferenceException}
 import org.openqa.selenium.support.ui.ExpectedConditions
 
 trait YesNoPage extends BasePage {
@@ -29,14 +29,34 @@ trait YesNoPage extends BasePage {
   private val noRadio  = By.xpath(radioOptionNo)
 
   def selectYes(): YesNoPage = {
-    val element = fluentWait.until(ExpectedConditions.presenceOfElementLocated(yesRadio))
-    element.click()
+    var attempts = 0
+    while (attempts < 3) {
+      try {
+        val element = fluentWait.until(ExpectedConditions.presenceOfElementLocated(yesRadio))
+        element.click()
+        return this
+      } catch {
+        case _: StaleElementReferenceException =>
+          attempts += 1
+          if (attempts >= 3) throw new RuntimeException("Failed to click Yes radio after 3 attempts")
+      }
+    }
     this
   }
 
   def selectNo(): YesNoPage = {
-    val element = fluentWait.until(ExpectedConditions.presenceOfElementLocated(noRadio))
-    element.click()
+    var attempts = 0
+    while (attempts < 3) {
+      try {
+        val element = fluentWait.until(ExpectedConditions.presenceOfElementLocated(noRadio))
+        element.click()
+        return this
+      } catch {
+        case _: StaleElementReferenceException =>
+          attempts += 1
+          if (attempts >= 3) throw new RuntimeException("Failed to click No radio after 3 attempts")
+      }
+    }
     this
   }
 
