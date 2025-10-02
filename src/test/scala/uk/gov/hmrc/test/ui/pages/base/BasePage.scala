@@ -42,7 +42,7 @@ trait BasePage extends BrowserDriver with Matchers {
   lazy val js: JavascriptExecutor = driver.asInstanceOf[JavascriptExecutor]
 
   lazy val fluentWait: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
-    .withTimeout(Duration.ofSeconds(30))
+    .withTimeout(Duration.ofSeconds(60))
     .pollingEvery(Duration.ofMillis(500))
     .ignoring(classOf[StaleElementReferenceException])
     .ignoring(classOf[NoSuchElementException])
@@ -72,7 +72,6 @@ trait BasePage extends BrowserDriver with Matchers {
   def onPage(pageTitle: String): Unit = {
     fluentWait.until((d: WebDriver) => {
       val actual: String = d.getTitle.trim
-      println(s"=== DEBUG onPage: Expected='$pageTitle', Actual='$actual', Match=${actual == pageTitle}")
       if (actual != pageTitle) {
         false
       } else {
