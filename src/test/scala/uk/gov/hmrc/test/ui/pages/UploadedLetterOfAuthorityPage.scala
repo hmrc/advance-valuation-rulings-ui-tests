@@ -28,12 +28,16 @@ object UploadedLetterOfAuthorityPage extends BasePage {
   val ele_UploadDocument = "file-input"
 
   def uploadAuthLetterPollingClick(): Unit = {
-    fluentWait.until((driver: WebDriver) => {
-      val button = fluentWait.until(ExpectedConditions.elementToBeClickable(By.className(continueButton)))
-      button.click()
+    val button = fluentWait.until(ExpectedConditions.elementToBeClickable(By.className(continueButton)))
+    button.click()
 
-      val h1 = fluentWait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("h1")))
-      h1.getText == pageTitle
+    fluentWait.until((driver: WebDriver) => {
+      try {
+        val h1 = driver.findElement(By.tagName("h1"))
+        h1.getText == pageTitle
+      } catch {
+        case _: Exception => false
+      }
     })
   }
 
