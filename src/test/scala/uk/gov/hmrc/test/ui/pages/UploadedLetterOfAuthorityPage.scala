@@ -30,6 +30,10 @@ object UploadedLetterOfAuthorityPage extends BasePage {
   def uploadAuthLetterPollingClick(): Unit = {
     val button = fluentWait.until(ExpectedConditions.elementToBeClickable(By.className(continueButton)))
     button.click()
-    findElement(By.tagName("h1"))
+
+    // Just wait for upload to complete
+    fluentWait.until((d: WebDriver) => {
+      !d.getCurrentUrl.contains("upload-in-progress")
+    })
   }
 }
