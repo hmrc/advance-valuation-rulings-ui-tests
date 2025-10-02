@@ -70,9 +70,9 @@ trait BasePage extends BrowserDriver with Matchers {
   }
 
   def onPage(pageTitle: String): Unit = {
-    // Use FluentWait for title checking to handle timing issues
-    fluentWait.until((driver: WebDriver) => {
-      val actual: String = driver.getTitle.trim
+    fluentWait.until((d: WebDriver) => {
+      val actual: String = d.getTitle.trim
+      println(s"=== DEBUG onPage: Expected='$pageTitle', Actual='$actual', Match=${actual == pageTitle}")
       if (actual != pageTitle) {
         false
       } else {

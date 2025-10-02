@@ -19,7 +19,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import org.openqa.selenium.support.ui.ExpectedConditions
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.submitPage
 import uk.gov.hmrc.test.ui.pages.*
-import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
+import uk.gov.hmrc.test.ui.pages.base.BasePage.{baseUrl, titleSuffix}
 import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
 
 trait AgentStepDefs
@@ -130,13 +130,24 @@ trait AgentStepDefs
 
   And("I upload the document {string} and continue in Upload letter of authority page") { (filename: String) =>
     val path = getClass.getResource(s"/testdata/$filename").toURI.getPath
+
+    println(s"=== DEBUG: Before upload - URL: ${driver.getCurrentUrl}")
     UploadLetterOfAuthorityPage
       .loadPage()
       .uploadDocument(path)
+
+    println(s"=== DEBUG: After upload, before click - URL: ${driver.getCurrentUrl}")
     UploadedLetterOfAuthorityPage.uploadAuthLetterPollingClick()
+
+    println(s"=== DEBUG: After click - URL: ${driver.getCurrentUrl}")
+    println(s"=== DEBUG: After click - Title: ${driver.getTitle}")
   }
 
   And("I click on continue on Uploaded letter of authority page") { () =>
+    println(s"=== DEBUG: Current URL before loadPage: ${driver.getCurrentUrl}")
+    println(s"=== DEBUG: Current page title: ${driver.getTitle}")
+    println(s"=== DEBUG: Expected title: ${UploadedLetterOfAuthorityPage.pageTitle + titleSuffix}")
+
     UploadedLetterOfAuthorityPage.loadPage()
     submitPage()
   }
