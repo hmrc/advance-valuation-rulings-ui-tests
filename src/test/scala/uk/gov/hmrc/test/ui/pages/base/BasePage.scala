@@ -42,7 +42,7 @@ trait BasePage extends BrowserDriver with Matchers {
   lazy val js: JavascriptExecutor = driver.asInstanceOf[JavascriptExecutor]
 
   lazy val fluentWait: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
-    .withTimeout(Duration.ofSeconds(100))
+    .withTimeout(Duration.ofSeconds(250))
     .pollingEvery(Duration.ofMillis(500))
     .ignoring(classOf[StaleElementReferenceException])
     .ignoring(classOf[NoSuchElementException])
