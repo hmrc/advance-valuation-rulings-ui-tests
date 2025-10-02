@@ -24,7 +24,7 @@ import java.time.Duration
 
 object UploadedLetterOfAuthorityPage extends BasePage {
 
-  val pageTitle          = "Uploaded letter of authority"
+  val pageTitle = "Uploaded letter of authority"
   val ele_UploadDocument = "file-input"
 
   def uploadAuthLetterPollingClick(): Unit = {
@@ -39,7 +39,8 @@ object UploadedLetterOfAuthorityPage extends BasePage {
           matched = true
         }
       } catch {
-        case _: Exception => 
+        case _: Exception =>
       }
     }
   }
+}
