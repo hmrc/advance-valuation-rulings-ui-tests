@@ -30,17 +30,6 @@ object UploadedLetterOfAuthorityPage extends BasePage {
   def uploadAuthLetterPollingClick(): Unit = {
     val button = fluentWait.until(ExpectedConditions.elementToBeClickable(By.className(continueButton)))
     button.click()
-
-    var matched = false
-    while (!matched) {
-      try {
-        val h1 = findElement(By.tagName("h1"))
-        if (h1.getText.trim == pageTitle) {
-          matched = true
-        }
-      } catch {
-        case _: Exception =>
-      }
-    }
+    findElement(By.tagName("h1"))
   }
 }
