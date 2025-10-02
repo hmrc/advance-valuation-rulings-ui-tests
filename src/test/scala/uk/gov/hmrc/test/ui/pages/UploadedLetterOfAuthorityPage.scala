@@ -31,14 +31,15 @@ object UploadedLetterOfAuthorityPage extends BasePage {
     val button = fluentWait.until(ExpectedConditions.elementToBeClickable(By.className(continueButton)))
     button.click()
 
-    fluentWait.until((driver: WebDriver) => {
+    var matched = false
+    while (!matched) {
       try {
-        val h1 = driver.findElement(By.tagName("h1"))
-        h1.getText == pageTitle
+        val h1 = findElement(By.tagName("h1"))
+        if (h1.getText.trim == pageTitle) {
+          matched = true
+        }
       } catch {
-        case _: Exception => false
+        case _: Exception => 
       }
-    })
+    }
   }
-
-}

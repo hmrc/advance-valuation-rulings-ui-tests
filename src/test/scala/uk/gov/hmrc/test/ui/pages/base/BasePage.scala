@@ -81,7 +81,7 @@ trait BasePage extends BrowserDriver with Matchers {
     })
   }
 
-  private def findElementWithWait(element: By): WebElement = {
+  protected def findElement(element: By): WebElement = {
     val webElement = fluentWait.until(ExpectedConditions.visibilityOfElementLocated(element))
     js.executeScript("arguments[0].scrollIntoView()", webElement)
     webElement
@@ -93,16 +93,10 @@ trait BasePage extends BrowserDriver with Matchers {
     (1 to currentText.length + 10).foreach(_ => e.sendKeys(Keys.BACK_SPACE))
   }
 
-  private def findElement(element: By): WebElement = {
-    val webElement = driver.findElement(element)
-    js.executeScript("arguments[0].scrollIntoView()", webElement)
-    webElement
-  }
-
   private def webDriverId(X: String): WebElement = findElement(By.id(X))
 
   def chooseInAutocomplete(id: String, lookup: String): Unit = {
-    val e           = findElementWithWait(By.id(id))
+    val e           = findElement(By.id(id))
     val currentText = Option(e.getAttribute("value")).getOrElse("").trim
 
     if (currentText != lookup) {
