@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages.base
 
-import org.openqa.selenium.By
+import org.openqa.selenium.{By, StaleElementReferenceException}
 import org.openqa.selenium.support.ui.ExpectedConditions
 
 trait TextAreaPage extends BasePage {
@@ -25,9 +25,17 @@ trait TextAreaPage extends BasePage {
   private val textArea = By.id("value")
 
   def enterText(content: String): TextAreaPage = {
-    val element = fluentWait.until(ExpectedConditions.elementToBeClickable(textArea))
-    element.clear()
-    element.sendKeys(content)
+    try {
+      val element = fluentWait.until(ExpectedConditions.elementToBeClickable(textArea))
+      element.clear()
+      element.sendKeys(content)
+    } catch {
+      case e: StaleElementReferenceException =>
+        println("StaleElementReferenceException caught. Retrying with fresh element...")
+        val refreshedElement = fluentWait.until(ExpectedConditions.elementToBeClickable(textArea))
+        refreshedElement.clear()
+        refreshedElement.sendKeys(content)
+    }
     this
   }
 
