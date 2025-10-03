@@ -53,15 +53,19 @@ trait BasePage extends BrowserDriver with Matchers {
     button.click()
   }
 
-  def clickGoToApplicationAndRulingButton(): Unit =
-    driver.findElement(By.linkText(goToAppAndRuling)).click()
+  def clickGoToApplicationAndRulingButton(): Unit = {
+    val button = fluentWait.until(ExpectedConditions.elementToBeClickable(By.linkText(goToAppAndRuling)))
+    button.click()
+  }
 
-  def clickCancelApplicationLink(): Unit =
-    driver.findElement(By.id(link_cancelButton)).click()
+  def clickCancelApplicationLink(): Unit = {
+    val link = fluentWait.until(ExpectedConditions.elementToBeClickable(By.id(link_cancelButton)))
+    link.click()
+  }
 
   def noChangeButton: List[String] = {
-    fluentWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(fieldsWithNoActions))
-    driver.findElements(fieldsWithNoActions).asScala.toList.map(_.getText)
+    val elements = fluentWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(fieldsWithNoActions))
+    elements.asScala.toList.map(_.getText)
   }
 
   def loadPage(): this.type = {
