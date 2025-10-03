@@ -24,17 +24,20 @@ import java.time.Duration
 
 object UploadedLetterOfAuthorityPage extends BasePage {
 
-  val pageTitle          = "Uploaded letter of authority"
+  val pageTitle = "Uploaded letter of authority"
   val ele_UploadDocument = "file-input"
 
   def uploadAuthLetterPollingClick(): Unit = {
+
     fluentWait.until((driver: WebDriver) => {
       val button = fluentWait.until(ExpectedConditions.elementToBeClickable(By.className(continueButton)))
       button.click()
 
       val h1 = fluentWait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("h1")))
-      h1.getText == pageTitle
-    })
-  }
+      val h1Text = h1.getText
 
+      h1Text == pageTitle
+    })
+
+  }
 }

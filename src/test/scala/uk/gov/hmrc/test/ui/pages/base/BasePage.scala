@@ -42,7 +42,7 @@ trait BasePage extends BrowserDriver with Matchers {
   lazy val js: JavascriptExecutor = driver.asInstanceOf[JavascriptExecutor]
 
   lazy val fluentWait: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
-    .withTimeout(Duration.ofSeconds(30))
+    .withTimeout(Duration.ofSeconds(250))
     .pollingEvery(Duration.ofMillis(500))
     .ignoring(classOf[StaleElementReferenceException])
     .ignoring(classOf[NoSuchElementException])
@@ -70,9 +70,8 @@ trait BasePage extends BrowserDriver with Matchers {
   }
 
   def onPage(pageTitle: String): Unit = {
-    // Use FluentWait for title checking to handle timing issues
-    fluentWait.until((driver: WebDriver) => {
-      val actual: String = driver.getTitle.trim
+    fluentWait.until((d: WebDriver) => {
+      val actual: String = d.getTitle.trim
       if (actual != pageTitle) {
         false
       } else {
@@ -81,7 +80,7 @@ trait BasePage extends BrowserDriver with Matchers {
     })
   }
 
-  private def findElementWithWait(element: By): WebElement = {
+  protected def findElement(element: By): WebElement = {
     val webElement = fluentWait.until(ExpectedConditions.visibilityOfElementLocated(element))
     js.executeScript("arguments[0].scrollIntoView()", webElement)
     webElement
@@ -93,16 +92,10 @@ trait BasePage extends BrowserDriver with Matchers {
     (1 to currentText.length + 10).foreach(_ => e.sendKeys(Keys.BACK_SPACE))
   }
 
-  private def findElement(element: By): WebElement = {
-    val webElement = driver.findElement(element)
-    js.executeScript("arguments[0].scrollIntoView()", webElement)
-    webElement
-  }
-
   private def webDriverId(X: String): WebElement = findElement(By.id(X))
 
   def chooseInAutocomplete(id: String, lookup: String): Unit = {
-    val e           = findElementWithWait(By.id(id))
+    val e           = findElement(By.id(id))
     val currentText = Option(e.getAttribute("value")).getOrElse("").trim
 
     if (currentText != lookup) {
