@@ -67,7 +67,7 @@ trait ChangeImporterRoleSteps extends BaseStepDef {
   }
 
   And("I click on the service header") { () =>
-    driver.findElement(By.className("govuk-header__service-name")).click()
+    driver.findElement(By.className("govuk-service-navigation__service-name")).click()
   }
 
   And("I click on the 'Continue application' link") { () =>

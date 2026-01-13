@@ -16,11 +16,9 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.{By, WebDriver}
-import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
 import uk.gov.hmrc.test.ui.pages.base.YesNoPage
-
-import java.time.Duration
 
 object DoYouWantThisFileToBeMarkedAsConfidential extends YesNoPage {
 

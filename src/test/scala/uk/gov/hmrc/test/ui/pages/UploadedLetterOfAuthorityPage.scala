@@ -16,15 +16,13 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.{By, StaleElementReferenceException, WebDriver}
-import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
+import org.openqa.selenium.support.ui.ExpectedConditions
+import org.openqa.selenium.{By, WebDriver}
 import uk.gov.hmrc.test.ui.pages.base.BasePage
-
-import java.time.Duration
 
 object UploadedLetterOfAuthorityPage extends BasePage {
 
-  val pageTitle = "Uploaded letter of authority"
+  val pageTitle          = "Uploaded letter of authority"
   val ele_UploadDocument = "file-input"
 
   def uploadAuthLetterPollingClick(): Unit = {
@@ -33,7 +31,7 @@ object UploadedLetterOfAuthorityPage extends BasePage {
       val button = fluentWait.until(ExpectedConditions.elementToBeClickable(By.className(continueButton)))
       button.click()
 
-      val h1 = fluentWait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("h1")))
+      val h1     = fluentWait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("h1")))
       val h1Text = h1.getText
 
       h1Text == pageTitle
