@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 HM Revenue & Customs
+ * Copyright 2026 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -67,7 +67,7 @@ trait ChangeImporterRoleSteps extends BaseStepDef {
   }
 
   And("I click on the service header") { () =>
-    driver.findElement(By.className("govuk-header__service-name")).click()
+    driver.findElement(By.className("govuk-service-navigation__service-name")).click()
   }
 
   And("I click on the 'Continue application' link") { () =>
