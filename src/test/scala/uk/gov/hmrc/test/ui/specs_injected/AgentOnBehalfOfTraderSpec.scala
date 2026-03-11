@@ -213,13 +213,13 @@ class AgentOnBehalfOfTraderSpec extends BaseSpec with BeforeAndAfterAll {
         andISelectBooleanValueAndContinueInAreThereAnyRestrictionsOnTheUseOrResaleOfTheGoods(true)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
 
       And("I enter restrictions and continue in Describe any restrictions on the use or resale of goods")
-        andIEnterStringAndContinueInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods("")  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
+        andIEnterStringAndContinueInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods("restrictions")  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
         // --- Other possible matches ---
         // andINavigateToDescribeAnyRestrictionsOnTheUseOrResaleOfGoodsPageAndCompareTheText() [0.66] (StepDefinitionsSteps.scala) pattern: I navigate to Describe any restrictions on the use or resale of goods page and compare the text
         // andIEnterStringInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods() [0.65] (StepDefinitionsSteps.scala) pattern: I enter {string} in Describe any restrictions on the use or resale of goods
 
       And("I select Yes and continue in Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods")
-        andINavigateToIsTheSaleSubjectToAnyConditionsOrCircumstancesPageAndCompareTheText()  // auto-chosen (score=0.69, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods(true)  // auto-chosen (score=0.69, StepDefinitionsSteps.scala)
         // --- Other possible matches ---
         // andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods() [0.67] (StepDefinitionsSteps.scala) pattern: I select {booleanValue} and continue in Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods
 
@@ -357,13 +357,13 @@ class AgentOnBehalfOfTraderSpec extends BaseSpec with BeforeAndAfterAll {
         andISelectBooleanValueAndContinueInAreThereAnyRestrictionsOnTheUseOrResaleOfTheGoods(true)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
 
       And("I enter restrictions and continue in Describe any restrictions on the use or resale of goods")
-        andIEnterStringAndContinueInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods("")  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
+        andIEnterStringAndContinueInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods("restrictions")  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
         // --- Other possible matches ---
         // andINavigateToDescribeAnyRestrictionsOnTheUseOrResaleOfGoodsPageAndCompareTheText() [0.66] (StepDefinitionsSteps.scala) pattern: I navigate to Describe any restrictions on the use or resale of goods page and compare the text
         // andIEnterStringInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods() [0.65] (StepDefinitionsSteps.scala) pattern: I enter {string} in Describe any restrictions on the use or resale of goods
 
       And("I select Yes and continue in Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods")
-        andINavigateToIsTheSaleSubjectToAnyConditionsOrCircumstancesPageAndCompareTheText()  // auto-chosen (score=0.69, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods(true)  // auto-chosen (score=0.69, StepDefinitionsSteps.scala)
         // --- Other possible matches ---
         // andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods() [0.67] (StepDefinitionsSteps.scala) pattern: I select {booleanValue} and continue in Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods
 
@@ -501,13 +501,13 @@ class AgentOnBehalfOfTraderSpec extends BaseSpec with BeforeAndAfterAll {
         andISelectBooleanValueAndContinueInAreThereAnyRestrictionsOnTheUseOrResaleOfTheGoods(true)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
 
       And("I enter restrictions and continue in Describe any restrictions on the use or resale of goods")
-        andIEnterStringAndContinueInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods("")  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
+        andIEnterStringAndContinueInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods("restrictions")  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
         // --- Other possible matches ---
         // andINavigateToDescribeAnyRestrictionsOnTheUseOrResaleOfGoodsPageAndCompareTheText() [0.66] (StepDefinitionsSteps.scala) pattern: I navigate to Describe any restrictions on the use or resale of goods page and compare the text
         // andIEnterStringInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods() [0.65] (StepDefinitionsSteps.scala) pattern: I enter {string} in Describe any restrictions on the use or resale of goods
 
       And("I select Yes and continue in Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods")
-        andINavigateToIsTheSaleSubjectToAnyConditionsOrCircumstancesPageAndCompareTheText()  // auto-chosen (score=0.69, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods(true)  // auto-chosen (score=0.69, StepDefinitionsSteps.scala)
         // --- Other possible matches ---
         // andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods() [0.67] (StepDefinitionsSteps.scala) pattern: I select {booleanValue} and continue in Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods
 
@@ -622,13 +622,13 @@ class AgentOnBehalfOfTraderSpec extends BaseSpec with BeforeAndAfterAll {
         andISelectBooleanValueAndContinueInAreThereAnyRestrictionsOnTheUseOrResaleOfTheGoods(true)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
 
       And("I enter restrictions and continue in Describe any restrictions on the use or resale of goods")
-        andIEnterStringAndContinueInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods("")  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
+        andIEnterStringAndContinueInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods("restrictions")  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
         // --- Other possible matches ---
         // andINavigateToDescribeAnyRestrictionsOnTheUseOrResaleOfGoodsPageAndCompareTheText() [0.66] (StepDefinitionsSteps.scala) pattern: I navigate to Describe any restrictions on the use or resale of goods page and compare the text
         // andIEnterStringInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods() [0.65] (StepDefinitionsSteps.scala) pattern: I enter {string} in Describe any restrictions on the use or resale of goods
 
       And("I select Yes and continue in Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods")
-        andINavigateToIsTheSaleSubjectToAnyConditionsOrCircumstancesPageAndCompareTheText()  // auto-chosen (score=0.69, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods(true)  // auto-chosen (score=0.69, StepDefinitionsSteps.scala)
         // --- Other possible matches ---
         // andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods() [0.67] (StepDefinitionsSteps.scala) pattern: I select {booleanValue} and continue in Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods
 
@@ -743,13 +743,13 @@ class AgentOnBehalfOfTraderSpec extends BaseSpec with BeforeAndAfterAll {
         andISelectBooleanValueAndContinueInAreThereAnyRestrictionsOnTheUseOrResaleOfTheGoods(true)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
 
       And("I enter restrictions and continue in Describe any restrictions on the use or resale of goods")
-        andIEnterStringAndContinueInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods("")  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
+        andIEnterStringAndContinueInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods("restrictions")  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
         // --- Other possible matches ---
         // andINavigateToDescribeAnyRestrictionsOnTheUseOrResaleOfGoodsPageAndCompareTheText() [0.66] (StepDefinitionsSteps.scala) pattern: I navigate to Describe any restrictions on the use or resale of goods page and compare the text
         // andIEnterStringInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods() [0.65] (StepDefinitionsSteps.scala) pattern: I enter {string} in Describe any restrictions on the use or resale of goods
 
       And("I select Yes and continue in Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods")
-        andINavigateToIsTheSaleSubjectToAnyConditionsOrCircumstancesPageAndCompareTheText()  // auto-chosen (score=0.69, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods(true)  // auto-chosen (score=0.69, StepDefinitionsSteps.scala)
         // --- Other possible matches ---
         // andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods() [0.67] (StepDefinitionsSteps.scala) pattern: I select {booleanValue} and continue in Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods
 
