@@ -25,28 +25,39 @@ import uk.gov.hmrc.ui.specsteps.MethodSixStepDefinitionsSteps._
 import uk.gov.hmrc.ui.specsteps.ChangeImporterRoleStepsSteps._
 
 import uk.gov.hmrc.ui.specs.BaseSpec
+import org.scalatest.BeforeAndAfterAll
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.featurespec.AnyFeatureSpec
 
-class KickoutJourneysSpec extends BaseSpec {
+class KickoutJourneysSpec extends BaseSpec with BeforeAndAfterAll {
+
+  // Keep a single browser session for all scenarios in this spec.
+  override def beforeAll(): Unit =
+    startBrowser()
+
+  override def afterAll(): Unit =
+    quitBrowser()
+
+  override def beforeEach(): Unit = ()
+  override def afterEach(): Unit = ()
 
   Feature("Kickout Journeys") {
 
     Scenario("User  EORI number details are incorrect for employee of the org and agent of the org [role=An employee of the organisation]") {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
-        // ⚠️ No step-def match found for: I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+        givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
       When("I click on Start new application in ARS Home")
         whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select role as a An employee of the organisation")
-        // ⚠️ No step-def match found for: I select role as a An employee of the organisation
+        whenISelectRoleAsAString("An employee of the organisation")
 
       And("I click continue on Information you need to complete an application page")
         andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select Yes and continue in Are you planning to import goods page")
-        // ⚠️ No step-def match found for: I select Yes and continue in Are you planning to import goods page
+        andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
 
       And("I click on continue in How We Contact You page")
         andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
@@ -55,27 +66,25 @@ class KickoutJourneysSpec extends BaseSpec {
         andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForEmployeeOfOrg(false)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
 
       Then("I will be navigated to Your EORI number details must be correct for An employee of the organisation to use this service")
-        thenIWillBeNavigatedToYourEORINumberDetailsMustBeCorrectToUseThisService()  // auto-chosen (score=0.70, StepDefinitionsSteps.scala)
-        // --- Other possible matches ---
-        // thenIWillBeNavigatedToYourEORINumberDetailsMustBeCorrectForStringToUseThisService() [0.66] (StepDefinitionsSteps.scala) pattern: I will be navigated to Your EORI number details must be correct for {string} to use this service
+        thenIWillBeNavigatedToYourEORINumberDetailsMustBeCorrectForStringToUseThisService("An employee of the organisation")
 
     }
 
     Scenario("User  EORI number details are incorrect for employee of the org and agent of the org [role=Agent acting on behalf of an organisation]") {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
-        // ⚠️ No step-def match found for: I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+        givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
       When("I click on Start new application in ARS Home")
         whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select role as a Agent acting on behalf of an organisation")
-        // ⚠️ No step-def match found for: I select role as a Agent acting on behalf of an organisation
+        whenISelectRoleAsAString("Agent acting on behalf of an organisation")
 
       And("I click continue on Information you need to complete an application page")
         andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select Yes and continue in Are you planning to import goods page")
-        // ⚠️ No step-def match found for: I select Yes and continue in Are you planning to import goods page
+        andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
 
       And("I click on continue in How We Contact You page")
         andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
@@ -84,9 +93,7 @@ class KickoutJourneysSpec extends BaseSpec {
         andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForAgentForOrg(false)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
 
       Then("I will be navigated to Your EORI number details must be correct for Agent acting on behalf of an organisation to use this service")
-        thenIWillBeNavigatedToYourEORINumberDetailsMustBeCorrectToUseThisService()  // auto-chosen (score=0.70, StepDefinitionsSteps.scala)
-        // --- Other possible matches ---
-        // thenIWillBeNavigatedToYourEORINumberDetailsMustBeCorrectForStringToUseThisService() [0.66] (StepDefinitionsSteps.scala) pattern: I will be navigated to Your EORI number details must be correct for {string} to use this service
+        thenIWillBeNavigatedToYourEORINumberDetailsMustBeCorrectForStringToUseThisService("Agent acting on behalf of an organisation")
 
     }
 
@@ -104,19 +111,19 @@ class KickoutJourneysSpec extends BaseSpec {
 
     Scenario("User clicks on cancel application link with yes value") {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
-        // ⚠️ No step-def match found for: I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+        givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
       And("I click on Start new application in ARS Home")
         whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select role as a An employee of the organisation")
-        // ⚠️ No step-def match found for: I select role as a An employee of the organisation
+        whenISelectRoleAsAString("An employee of the organisation")
 
       And("I click continue on Information you need to complete an application page")
         andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select Yes and continue in Are you planning to import goods page")
-        // ⚠️ No step-def match found for: I select Yes and continue in Are you planning to import goods page
+        andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
 
       And("I click on continue in How We Contact You page")
         andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
@@ -125,13 +132,13 @@ class KickoutJourneysSpec extends BaseSpec {
         andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForEmployeeOfOrg(true)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
 
       And("I enter Name- Automation Test Email- TestSaveAsDraft@automation.com,Phone- 9876543211, Job title- employee of org details")
-        // ⚠️ No step-def match found for: I enter Name- Automation Test Email- TestSaveAsDraft@automation.com,Phone- 9876543211, Job title- employee of org details
+        andIEnterNameStringEmailStringPhoneStringJobTitleStringDetails("Automation Test", "TestSaveAsDraft@automation.com", "9876543211", "employee of org")
 
       When("I click on cancel application link")
         andIClickOnCancelApplicationLink()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select Yes and continue on cancellation page")
-        // ⚠️ No step-def match found for: I select Yes and continue on cancellation page
+        andISelectBooleanValueAndContinueOnCancellationPage(true)
 
       And("I click back button in the browser")
         andIClickBackButtonInTheBrowser()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
@@ -146,19 +153,19 @@ class KickoutJourneysSpec extends BaseSpec {
 
     Scenario("User clicks on cancel application link with no value") {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
-        // ⚠️ No step-def match found for: I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+        givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
       And("I click on Start new application in ARS Home")
         whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select role as a An employee of the organisation")
-        // ⚠️ No step-def match found for: I select role as a An employee of the organisation
+        whenISelectRoleAsAString("An employee of the organisation")
 
       And("I click continue on Information you need to complete an application page")
         andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select Yes and continue in Are you planning to import goods page")
-        // ⚠️ No step-def match found for: I select Yes and continue in Are you planning to import goods page
+        andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
 
       And("I click on continue in How We Contact You page")
         andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
@@ -167,13 +174,13 @@ class KickoutJourneysSpec extends BaseSpec {
         andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForEmployeeOfOrg(true)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
 
       And("I enter Name- Automation Test Email- TestSaveAsDraft@automation.com,Phone- 9876543211, Job title- employee of org details")
-        // ⚠️ No step-def match found for: I enter Name- Automation Test Email- TestSaveAsDraft@automation.com,Phone- 9876543211, Job title- employee of org details
+        andIEnterNameStringEmailStringPhoneStringJobTitleStringDetails("Automation Test", "TestSaveAsDraft@automation.com", "9876543211", "employee of org")
 
       When("I click on cancel application link")
         andIClickOnCancelApplicationLink()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select No and continue on cancellation page")
-        // ⚠️ No step-def match found for: I select No and continue on cancellation page
+        andISelectBooleanValueAndContinueOnCancellationPage(false)
 
       Then("I will be navigated to the Your Contact details page")
         thenIWillBeNavigatedToTheYourContactDetailsPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
@@ -182,25 +189,25 @@ class KickoutJourneysSpec extends BaseSpec {
 
     Scenario("Agent on behalf of trader when invalid EORI is entered") {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
-        // ⚠️ No step-def match found for: I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+        givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
       And("I click on Start new application in ARS Home")
         whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select role as a Agent acting on behalf of a trader")
-        // ⚠️ No step-def match found for: I select role as a Agent acting on behalf of a trader
+        whenISelectRoleAsAString("Agent acting on behalf of a trader")
 
       And("I click continue on Information you need to complete an application page")
         andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select Yes and continue in Are you planning to import goods page")
-        // ⚠️ No step-def match found for: I select Yes and continue in Are you planning to import goods page
+        andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
 
       And("I click on continue in How We Contact You page")
         andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       When("I enter EORI number GB321888888041 on Provide traders EORI number page")
-        // ⚠️ No step-def match found for: I enter EORI number GB321888888041 on Provide traders EORI number page
+        andIEnterEORINumberStringOnProvideTradersEORINumberPage("GB321888888041")
 
       And("I click on Save and continue button")
         andIClickOnSaveAndContinueButton()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
@@ -212,91 +219,91 @@ class KickoutJourneysSpec extends BaseSpec {
 
     Scenario("Agent on behalf of trader enters valid EORI and selects No on check name and address page [EORINo=GB113888888041, EORIType=public]") {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
-        // ⚠️ No step-def match found for: I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+        givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
       And("I click on Start new application in ARS Home")
         whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select role as a Agent acting on behalf of a trader")
-        // ⚠️ No step-def match found for: I select role as a Agent acting on behalf of a trader
+        whenISelectRoleAsAString("Agent acting on behalf of a trader")
 
       And("I click continue on Information you need to complete an application page")
         andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select Yes and continue in Are you planning to import goods page")
-        // ⚠️ No step-def match found for: I select Yes and continue in Are you planning to import goods page
+        andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
 
       And("I click on continue in How We Contact You page")
         andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I enter EORI number GB113888888041 on Provide traders EORI number page")
-        // ⚠️ No step-def match found for: I enter EORI number GB113888888041 on Provide traders EORI number page
+        andIEnterEORINumberStringOnProvideTradersEORINumberPage("GB113888888041")
 
       And("I click on Save and continue button")
         andIClickOnSaveAndContinueButton()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       When("I select No for public EORI on Check the name and address page")
-        // ⚠️ No step-def match found for: I select No for public EORI on Check the name and address page
+        andISelectBooleanValueForStringEORIOnCheckTheNameAndAddressPage(false, "public")
 
       And("I click on Save and continue button")
         andIClickOnSaveAndContinueButton()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       Then("I will be navigated to public kickout screen")
-        // ⚠️ No step-def match found for: I will be navigated to public kickout screen
+        thenIWillBeNavigatedToStringKickoutScreen("public")
 
     }
 
     Scenario("Agent on behalf of trader enters valid EORI and selects No on check name and address page [EORINo=GB112888888041, EORIType=private]") {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
-        // ⚠️ No step-def match found for: I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+        givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
       And("I click on Start new application in ARS Home")
         whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select role as a Agent acting on behalf of a trader")
-        // ⚠️ No step-def match found for: I select role as a Agent acting on behalf of a trader
+        whenISelectRoleAsAString("Agent acting on behalf of a trader")
 
       And("I click continue on Information you need to complete an application page")
         andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select Yes and continue in Are you planning to import goods page")
-        // ⚠️ No step-def match found for: I select Yes and continue in Are you planning to import goods page
+        andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
 
       And("I click on continue in How We Contact You page")
         andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I enter EORI number GB112888888041 on Provide traders EORI number page")
-        // ⚠️ No step-def match found for: I enter EORI number GB112888888041 on Provide traders EORI number page
+        andIEnterEORINumberStringOnProvideTradersEORINumberPage("GB112888888041")
 
       And("I click on Save and continue button")
         andIClickOnSaveAndContinueButton()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       When("I select No for private EORI on Check the name and address page")
-        // ⚠️ No step-def match found for: I select No for private EORI on Check the name and address page
+        andISelectBooleanValueForStringEORIOnCheckTheNameAndAddressPage(false, "private")
 
       And("I click on Save and continue button")
         andIClickOnSaveAndContinueButton()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       Then("I will be navigated to private kickout screen")
-        // ⚠️ No step-def match found for: I will be navigated to private kickout screen
+        thenIWillBeNavigatedToStringKickoutScreen("private")
 
     }
 
     Scenario("User creates a Draft application when leaving journey without cancelling") {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
-        // ⚠️ No step-def match found for: I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+        givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
       And("I click on Start new application in ARS Home")
         whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select role as a An employee of the organisation")
-        // ⚠️ No step-def match found for: I select role as a An employee of the organisation
+        whenISelectRoleAsAString("An employee of the organisation")
 
       And("I click continue on Information you need to complete an application page")
         andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select Yes and continue in Are you planning to import goods page")
-        // ⚠️ No step-def match found for: I select Yes and continue in Are you planning to import goods page
+        andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
 
       And("I click on continue in How We Contact You page")
         andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
@@ -305,7 +312,7 @@ class KickoutJourneysSpec extends BaseSpec {
         andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForEmployeeOfOrg(true)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
 
       And("I enter Name- Automation Test Email- TestSaveAsDraft@automation.com,Phone- 9876543211, Job title- employee of org details")
-        // ⚠️ No step-def match found for: I enter Name- Automation Test Email- TestSaveAsDraft@automation.com,Phone- 9876543211, Job title- employee of org details
+        andIEnterNameStringEmailStringPhoneStringJobTitleStringDetails("Automation Test", "TestSaveAsDraft@automation.com", "9876543211", "employee of org")
 
       And("I click on Save and continue button")
         andIClickOnSaveAndContinueButton()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
