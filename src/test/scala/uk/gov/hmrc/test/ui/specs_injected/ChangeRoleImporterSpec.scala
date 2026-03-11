@@ -25,14 +25,26 @@ import uk.gov.hmrc.ui.specsteps.MethodSixStepDefinitionsSteps._
 import uk.gov.hmrc.ui.specsteps.ChangeImporterRoleStepsSteps._
 
 import uk.gov.hmrc.ui.specs.BaseSpec
+import org.scalatest.BeforeAndAfterAll
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.featurespec.AnyFeatureSpec
 
-class ChangeRoleImporterSpec extends BaseSpec {
+class ChangeRoleImporterSpec extends BaseSpec with BeforeAndAfterAll {
+
+  // Keep a single browser session for all scenarios in this spec.
+  override def beforeAll(): Unit =
+    startBrowser()
+
+  override def afterAll(): Unit =
+    quitBrowser()
+
+  override def beforeEach(): Unit = ()
+  override def afterEach(): Unit = ()
 
   Feature("A user attempts to change their importer role") {
 
     Scenario("User clicks change link but does not change the role") {
+      navigateToCheckYourAnswers()
       Then("I click on the change link on the check your answers page")
         andIClickOnTheChangeLinkOnTheCheckYourAnswersPage()  // auto-chosen (score=1.00, ChangeImporterRoleStepsSteps.scala)
 
@@ -51,6 +63,7 @@ class ChangeRoleImporterSpec extends BaseSpec {
     }
 
     Scenario("User clicks change link and changes the role but does not wish to actually change the role.") {
+      navigateToCheckYourAnswers()
       Then("I click on the change link on the check your answers page")
         andIClickOnTheChangeLinkOnTheCheckYourAnswersPage()  // auto-chosen (score=1.00, ChangeImporterRoleStepsSteps.scala)
 
@@ -90,6 +103,7 @@ class ChangeRoleImporterSpec extends BaseSpec {
     }
 
     Scenario("User clicks change link and changes the role and successfully changes their role to 'Agent acting on behalf of an organisation'") {
+      navigateToCheckYourAnswers()
       Then("I click on the change link on the check your answers page")
         andIClickOnTheChangeLinkOnTheCheckYourAnswersPage()  // auto-chosen (score=1.00, ChangeImporterRoleStepsSteps.scala)
 
@@ -120,6 +134,7 @@ class ChangeRoleImporterSpec extends BaseSpec {
     }
 
     Scenario("User returns to a application via the start application/previous application page and changes the Role") {
+      navigateToCheckYourAnswers()
       And("I click on the service header")
         andIClickOnTheServiceHeader()  // auto-chosen (score=1.00, ChangeImporterRoleStepsSteps.scala)
 
@@ -190,5 +205,42 @@ class ChangeRoleImporterSpec extends BaseSpec {
         andThePageTitleIsX("Before you start your application")  // auto-chosen (score=1.00, ChangeImporterRoleStepsSteps.scala)
 
     }
+  }
+
+  // Mirrors ChangeRoleImporter.feature Background: completes journey up to CYA page.
+  private def navigateToCheckYourAnswers(): Unit = {
+    givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
+    whenIClickOnStartNewApplicationInARSHome()
+    whenISelectRoleAsAString("An employee of the organisation")
+    andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()
+    andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
+    andIClickOnContinueInHowWeContactYouPage()
+    andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForEmployeeOfOrg(true)
+    andIEnterNameStringEmailStringPhoneStringJobTitleStringDetailsAndContinueInProvideYourContactDetailsPage(
+      "Automation Test",
+      "Test6@automation.com",
+      "9876543211",
+      "Accountant"
+    )
+    andISelectMethodIntAndContinueInSelectTheMethodPage(1)
+    andISelectBooleanValueAndContinueInIsThereASaleInvolved(true)
+    andISelectBooleanValueAndContinueInIsTheSaleBetweenRelatedParties(true)
+    andIEnterStringAndContinueInDescribeHowThePartiesAreRelated("description")
+    andISelectBooleanValueAndContinueInAreThereAnyRestrictionsOnTheUseOrResaleOfTheGoods(true)
+    andIEnterStringAndContinueInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods("restrictions")
+    andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods(true)
+    andIEnterStringAsTheConditionsWhichCannotBeCalculatedAndPressContinue("various conditions")
+    thenINavigateToDescriptionOfTheGoods()
+    andIEnterStringAsTheDescriptionAndPressContinue("nice things")
+    andISelectBooleanValueAndContinueInTellUsAboutThePreviousRulingPage(true)
+    andIEnterStringAndContinue("previous ruling information")
+    andISelectBooleanValueOnAnyOtherRulingsThatHaveUsedASimilarMethodAndContinue(true)
+    andIEnterStringOnAboutTheRulingsForSimilarGoodsPageAndContinue("other rulings for similar goods")
+    andISelectBooleanValueAndContinueInHaveYouFoundTheCommodityCode(false)
+    thenIWillBeNavigatedToHaveTheGoodsBeenSubjectToLegalChallenges()
+    andISelectThatTheGoodsHaveNotBeenSubjectToLegalChallenges()
+    andISelectBooleanValueAndContinueInDoYouWantToAddAnyConfidentialInformationPage(false)
+    andISelectBooleanValueAndContinueInDoYouWantToUploadAnySupportingDocumentsPage(false)
+    thenIWillBeNavigatedToTheCheckYourAnswersPage()
   }
 }
