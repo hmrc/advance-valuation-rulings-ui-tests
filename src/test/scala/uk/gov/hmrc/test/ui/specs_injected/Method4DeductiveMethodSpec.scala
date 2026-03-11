@@ -25,28 +25,39 @@ import uk.gov.hmrc.ui.specsteps.MethodSixStepDefinitionsSteps._
 import uk.gov.hmrc.ui.specsteps.ChangeImporterRoleStepsSteps._
 
 import uk.gov.hmrc.ui.specs.BaseSpec
+import org.scalatest.BeforeAndAfterAll
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.featurespec.AnyFeatureSpec
 
-class Method4DeductiveMethodSpec extends BaseSpec {
+class Method4DeductiveMethodSpec extends BaseSpec with BeforeAndAfterAll {
+
+  // Keep a single browser session for all scenarios in this spec.
+  override def beforeAll(): Unit =
+    startBrowser()
+
+  override def afterAll(): Unit =
+    quitBrowser()
+
+  override def beforeEach(): Unit = ()
+  override def afterEach(): Unit = ()
 
   Feature("Method 4 which is deductive method to value goods flows") {
 
     Scenario("Method 4 which is deductive method to value goods journey all pages for employee of org") {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
-        // ⚠️ No step-def match found for: I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+        givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
       When("I click on Start new application in ARS Home")
         whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select role as a An employee of the organisation")
-        // ⚠️ No step-def match found for: I select role as a An employee of the organisation
+        whenISelectRoleAsAString("An employee of the organisation")
 
       And("I click continue on Information you need to complete an application page")
         andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select Yes and continue in Are you planning to import goods page")
-        // ⚠️ No step-def match found for: I select Yes and continue in Are you planning to import goods page
+        andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
 
       And("I click on continue in How We Contact You page")
         andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
@@ -55,10 +66,10 @@ class Method4DeductiveMethodSpec extends BaseSpec {
         andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForEmployeeOfOrg(true)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
 
       And("I enter Name- Automation Test Email- Test6@automation.com,Phone- 9876543211, Job title- Accountant details and continue in Provide your contact details page")
-        // ⚠️ No step-def match found for: I enter Name- Automation Test Email- Test6@automation.com,Phone- 9876543211, Job title- Accountant details and continue in Provide your contact details page
+        andIEnterNameStringEmailStringPhoneStringJobTitleStringDetailsAndContinueInProvideYourContactDetailsPage("Automation Test", "Test6@automation.com", "9876543211", "Accountant")
 
       And("I select Method 4 and continue in Select the method page")
-        // ⚠️ No step-def match found for: I select Method 4 and continue in Select the method page
+        andISelectMethodIntAndContinueInSelectTheMethodPage(4)
 
       Then("I will be navigated to explain why not methods one till three")
         thenIWillBeNavigatedToExplainWhyNotMethodsOneTillThree()  // auto-chosen (score=1.00, MethodFourStepDefinitionsSteps.scala)
@@ -66,36 +77,34 @@ class Method4DeductiveMethodSpec extends BaseSpec {
         // thenIWillBeNavigatedToExplainWhyNotSelectMethodOneOrTwo() [0.69] (MethodThreeStepDefinitionsSteps.scala) pattern: I will be navigated to Explain Why not select method one or two
 
       And("I enter not applicable as my reason why I did not select methods one till three and continue")
-        andIEnterStringAsMyReasonWhyIDidNotSelectMethodsOneTillThreeAndContinue("")  // auto-chosen (score=0.66, MethodFourStepDefinitionsSteps.scala)
-        // --- Other possible matches ---
-        // andIEnterStringAsMyReasonWhyIDidNotSelectMethodsOneTillThree() [0.65] (MethodFourStepDefinitionsSteps.scala) pattern: I enter {string} as my reason why I did not select methods one till three
+        andIEnterStringAsMyReasonWhyIDidNotSelectMethodsOneTillThreeAndContinue("not applicable")
 
       Then("I will be navigated to Explain why you have selected Method 4")
         thenIWillBeNavigatedToExplainWhyYouHaveSelectedMethod4()  // auto-chosen (score=1.00, MethodFourStepDefinitionsSteps.scala)
 
       And("I enter string as my reason for selecting method Method 4")
-        andIEnterStringAsMyReasonForSelectingMethodMethod4("")  // auto-chosen (score=1.00, MethodFourStepDefinitionsSteps.scala)
+        andIEnterStringAsMyReasonForSelectingMethodMethod4("reason for selecting method 4")
 
       Then("I navigate to Description of the Goods")
         thenINavigateToDescriptionOfTheGoods()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I enter Coffee as the description and press continue")
-        // ⚠️ No step-def match found for: I enter Coffee as the description and press continue
+        andIEnterStringAsTheDescriptionAndPressContinue("Coffee")
 
       And("I select Yes and continue in Tell us about the previous ruling page")
-        // ⚠️ No step-def match found for: I select Yes and continue in Tell us about the previous ruling page
+        andISelectBooleanValueAndContinueInTellUsAboutThePreviousRulingPage(true)
 
       And("I enter previous ruling information and continue")
-        // ⚠️ No step-def match found for: I enter previous ruling information and continue
+        andIEnterStringAndContinue("previous ruling information")
 
       And("I select Yes on any other rulings that have used a similar method and continue")
         andISelectBooleanValueOnAnyOtherRulingsThatHaveUsedASimilarMethodAndContinue(true)  // auto-chosen (score=0.65, StepDefinitionsSteps.scala)
 
       And("I enter other rulings for similar goods on about the rulings for similar goods page and continue")
-        // ⚠️ No step-def match found for: I enter other rulings for similar goods on about the rulings for similar goods page and continue
+        andIEnterStringOnAboutTheRulingsForSimilarGoodsPageAndContinue("other rulings for similar goods")
 
       And("I select No and continue in Have you found the commodity code")
-        // ⚠️ No step-def match found for: I select No and continue in Have you found the commodity code
+        andISelectBooleanValueAndContinueInHaveYouFoundTheCommodityCode(false)
 
       Then("I will be navigated to Have the goods been subject to legal challenges")
         thenIWillBeNavigatedToHaveTheGoodsBeenSubjectToLegalChallenges()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
@@ -104,49 +113,49 @@ class Method4DeductiveMethodSpec extends BaseSpec {
 
     Scenario("Method 4 which is deductive method to value goods journey through all pages for agent for trader [EORINo=GB112888888041, EORIType=private]") {
       Given("I am on the ARS Home Page with affinity group as a Organisation and Credential role as a User")
-        // ⚠️ No step-def match found for: I am on the ARS Home Page with affinity group as a Organisation and Credential role as a User
+        givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Organisation", "User")
 
       When("I click on Start new application in ARS Home")
         whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select role as a Agent acting on behalf of a trader")
-        // ⚠️ No step-def match found for: I select role as a Agent acting on behalf of a trader
+        whenISelectRoleAsAString("Agent acting on behalf of a trader")
 
       And("I click continue on Information you need to complete an application page")
         andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select Yes and continue in Are you planning to import goods page")
-        // ⚠️ No step-def match found for: I select Yes and continue in Are you planning to import goods page
+        andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
 
       And("I click on continue in How We Contact You page")
         andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I enter EORI number GB112888888041 on Provide traders EORI number page")
-        // ⚠️ No step-def match found for: I enter EORI number GB112888888041 on Provide traders EORI number page
+        andIEnterEORINumberStringOnProvideTradersEORINumberPage("GB112888888041")
 
       And("I click on Save and continue button")
         andIClickOnSaveAndContinueButton()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select Yes for private EORI on Check the name and address page")
-        // ⚠️ No step-def match found for: I select Yes for private EORI on Check the name and address page
+        andISelectBooleanValueForStringEORIOnCheckTheNameAndAddressPage(true, "private")
 
       And("I click on Save and continue button")
         andIClickOnSaveAndContinueButton()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I upload the document test1.pdf and continue in Upload letter of authority page")
-        // ⚠️ No step-def match found for: I upload the document test1.pdf and continue in Upload letter of authority page
+        andIUploadTheDocumentStringAndContinueInUploadLetterOfAuthorityPage("test1.pdf")
 
       And("I click on continue on Uploaded letter of authority page")
         andIClickOnContinueOnUploadedLetterOfAuthorityPage()  // auto-chosen (score=1.00, AgentStepDefsSteps.scala)
 
       And("I enter Name- Automation Test Email- Test@automation.com,Phone- 9876543211, Company name - company test, Job title - agent for trader details")
-        // ⚠️ No step-def match found for: I enter Name- Automation Test Email- Test@automation.com,Phone- 9876543211, Company name - company test, Job title - agent for trader details
+        andIEnterNameStringEmailStringPhoneStringCompanyNameStringJobTitleStringDetails("Automation Test", "Test@automation.com", "9876543211", "company test", "agent for trader")
 
       And("I click on Save and continue button")
         andIClickOnSaveAndContinueButton()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select Method 4 and continue in Select the method page")
-        // ⚠️ No step-def match found for: I select Method 4 and continue in Select the method page
+        andISelectMethodIntAndContinueInSelectTheMethodPage(4)
 
       Then("I will be navigated to explain why not methods one till three")
         thenIWillBeNavigatedToExplainWhyNotMethodsOneTillThree()  // auto-chosen (score=1.00, MethodFourStepDefinitionsSteps.scala)
@@ -154,36 +163,34 @@ class Method4DeductiveMethodSpec extends BaseSpec {
         // thenIWillBeNavigatedToExplainWhyNotSelectMethodOneOrTwo() [0.69] (MethodThreeStepDefinitionsSteps.scala) pattern: I will be navigated to Explain Why not select method one or two
 
       And("I enter not applicable as my reason why I did not select methods one till three and continue")
-        andIEnterStringAsMyReasonWhyIDidNotSelectMethodsOneTillThreeAndContinue("")  // auto-chosen (score=0.66, MethodFourStepDefinitionsSteps.scala)
-        // --- Other possible matches ---
-        // andIEnterStringAsMyReasonWhyIDidNotSelectMethodsOneTillThree() [0.65] (MethodFourStepDefinitionsSteps.scala) pattern: I enter {string} as my reason why I did not select methods one till three
+        andIEnterStringAsMyReasonWhyIDidNotSelectMethodsOneTillThreeAndContinue("not applicable")
 
       Then("I will be navigated to Explain why you have selected Method 4")
         thenIWillBeNavigatedToExplainWhyYouHaveSelectedMethod4()  // auto-chosen (score=1.00, MethodFourStepDefinitionsSteps.scala)
 
       And("I enter string as my reason for selecting method Method 4")
-        andIEnterStringAsMyReasonForSelectingMethodMethod4("")  // auto-chosen (score=1.00, MethodFourStepDefinitionsSteps.scala)
+        andIEnterStringAsMyReasonForSelectingMethodMethod4("reason for selecting method 4")
 
       Then("I navigate to Description of the Goods")
         thenINavigateToDescriptionOfTheGoods()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I enter Coffee as the description and press continue")
-        // ⚠️ No step-def match found for: I enter Coffee as the description and press continue
+        andIEnterStringAsTheDescriptionAndPressContinue("Coffee")
 
       And("I select Yes and continue in Tell us about the previous ruling page")
-        // ⚠️ No step-def match found for: I select Yes and continue in Tell us about the previous ruling page
+        andISelectBooleanValueAndContinueInTellUsAboutThePreviousRulingPage(true)
 
       And("I enter previous ruling information and continue")
-        // ⚠️ No step-def match found for: I enter previous ruling information and continue
+        andIEnterStringAndContinue("previous ruling information")
 
       And("I select Yes on any other rulings that have used a similar method and continue")
         andISelectBooleanValueOnAnyOtherRulingsThatHaveUsedASimilarMethodAndContinue(true)  // auto-chosen (score=0.65, StepDefinitionsSteps.scala)
 
       And("I enter other rulings for similar goods on about the rulings for similar goods page and continue")
-        // ⚠️ No step-def match found for: I enter other rulings for similar goods on about the rulings for similar goods page and continue
+        andIEnterStringOnAboutTheRulingsForSimilarGoodsPageAndContinue("other rulings for similar goods")
 
       And("I select No and continue in Have you found the commodity code")
-        // ⚠️ No step-def match found for: I select No and continue in Have you found the commodity code
+        andISelectBooleanValueAndContinueInHaveYouFoundTheCommodityCode(false)
 
       Then("I will be navigated to Have the goods been subject to legal challenges")
         thenIWillBeNavigatedToHaveTheGoodsBeenSubjectToLegalChallenges()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
