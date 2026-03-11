@@ -25,28 +25,39 @@ import uk.gov.hmrc.ui.specsteps.MethodSixStepDefinitionsSteps._
 import uk.gov.hmrc.ui.specsteps.ChangeImporterRoleStepsSteps._
 
 import uk.gov.hmrc.ui.specs.BaseSpec
+import org.scalatest.BeforeAndAfterAll
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.featurespec.AnyFeatureSpec
 
-class Method2TransactionValueOfIdenticalGoodsSpec extends BaseSpec {
+class Method2TransactionValueOfIdenticalGoodsSpec extends BaseSpec with BeforeAndAfterAll {
+
+  // Keep a single browser session for all scenarios in this spec.
+  override def beforeAll(): Unit =
+    startBrowser()
+
+  override def afterAll(): Unit =
+    quitBrowser()
+
+  override def beforeEach(): Unit = ()
+  override def afterEach(): Unit = ()
 
   Feature("Flows for Method 2 which is based on Transaction value of identical goods") {
 
     Scenario("Method 2 which is based on Transaction value of identical goods where all pages answered 'yes'") {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
-        // ⚠️ No step-def match found for: I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+        givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
       When("I click on Start new application in ARS Home")
         whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select role as a An employee of the organisation")
-        // ⚠️ No step-def match found for: I select role as a An employee of the organisation
+        whenISelectRoleAsAString("An employee of the organisation")
 
       And("I click continue on Information you need to complete an application page")
         andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select Yes and continue in Are you planning to import goods page")
-        // ⚠️ No step-def match found for: I select Yes and continue in Are you planning to import goods page
+        andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
 
       And("I click on continue in How We Contact You page")
         andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
@@ -55,16 +66,16 @@ class Method2TransactionValueOfIdenticalGoodsSpec extends BaseSpec {
         andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForEmployeeOfOrg(true)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
 
       And("I enter Name- Automation Test Email- Test6@automation.com,Phone- 9876543211, Job title- Accountant details and continue in Provide your contact details page")
-        // ⚠️ No step-def match found for: I enter Name- Automation Test Email- Test6@automation.com,Phone- 9876543211, Job title- Accountant details and continue in Provide your contact details page
+        andIEnterNameStringEmailStringPhoneStringJobTitleStringDetailsAndContinueInProvideYourContactDetailsPage("Automation Test", "Test6@automation.com", "9876543211", "Accountant")
 
       And("I select Method 2 and continue in Select the method page")
-        // ⚠️ No step-def match found for: I select Method 2 and continue in Select the method page
+        andISelectMethodIntAndContinueInSelectTheMethodPage(2)
 
       Then("I will be navigated to Outline Why Not Method One page")
         thenIWillBeNavigatedToOutlineWhyNotMethodOnePage()  // auto-chosen (score=1.00, MethodTwoStepDefinitionsSteps.scala)
 
       And("I enter not applicable as my reason why I did not select method 1")
-        // ⚠️ No step-def match found for: I enter not applicable as my reason why I did not select method 1
+        andIEnterStringAsMyReasonWhyIDidNotSelectMethod1("not applicable")
 
       Then("I will be navigated to In the Past Have you used Method 1 to import any goods")
         thenIWillBeNavigatedToInThePastHaveYouUsedMethod1ToImportAnyGoods()  // auto-chosen (score=1.00, MethodTwoStepDefinitionsSteps.scala)
@@ -78,7 +89,7 @@ class Method2TransactionValueOfIdenticalGoodsSpec extends BaseSpec {
         thenIWillBeNavigatedToDescribeTheIdenticalGoods()  // auto-chosen (score=1.00, MethodTwoStepDefinitionsSteps.scala)
 
       And("I enter many details as the description of the identical goods and press continue")
-        // ⚠️ No step-def match found for: I enter many details as the description of the identical goods and press continue
+        andIEnterStringAsTheDescriptionOfTheIdenticalGoodsAndPressContinue("many details")
 
       Then("I navigate to Description of the Goods")
         thenINavigateToDescriptionOfTheGoods()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
@@ -87,19 +98,19 @@ class Method2TransactionValueOfIdenticalGoodsSpec extends BaseSpec {
 
     Scenario("Method 2 which is based on Transaction value of identical goods: Have not used Method 1 to import identical goods in past") {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
-        // ⚠️ No step-def match found for: I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+        givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
       When("I click on Start new application in ARS Home")
         whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select role as a An employee of the organisation")
-        // ⚠️ No step-def match found for: I select role as a An employee of the organisation
+        whenISelectRoleAsAString("An employee of the organisation")
 
       And("I click continue on Information you need to complete an application page")
         andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select Yes and continue in Are you planning to import goods page")
-        // ⚠️ No step-def match found for: I select Yes and continue in Are you planning to import goods page
+        andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
 
       And("I click on continue in How We Contact You page")
         andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
@@ -108,16 +119,16 @@ class Method2TransactionValueOfIdenticalGoodsSpec extends BaseSpec {
         andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForEmployeeOfOrg(true)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
 
       And("I enter Name- Automation Test Email- Test6@automation.com,Phone- 9876543211, Job title- Accountant details and continue in Provide your contact details page")
-        // ⚠️ No step-def match found for: I enter Name- Automation Test Email- Test6@automation.com,Phone- 9876543211, Job title- Accountant details and continue in Provide your contact details page
+        andIEnterNameStringEmailStringPhoneStringJobTitleStringDetailsAndContinueInProvideYourContactDetailsPage("Automation Test", "Test6@automation.com", "9876543211", "Accountant")
 
       And("I select Method 2 and continue in Select the method page")
-        // ⚠️ No step-def match found for: I select Method 2 and continue in Select the method page
+        andISelectMethodIntAndContinueInSelectTheMethodPage(2)
 
       Then("I will be navigated to Outline Why Not Method One page")
         thenIWillBeNavigatedToOutlineWhyNotMethodOnePage()  // auto-chosen (score=1.00, MethodTwoStepDefinitionsSteps.scala)
 
       And("I enter not applicable as my reason why I did not select method 1")
-        // ⚠️ No step-def match found for: I enter not applicable as my reason why I did not select method 1
+        andIEnterStringAsMyReasonWhyIDidNotSelectMethod1("not applicable")
 
       Then("I will be navigated to In the Past Have you used Method 1 to import any goods")
         thenIWillBeNavigatedToInThePastHaveYouUsedMethod1ToImportAnyGoods()  // auto-chosen (score=1.00, MethodTwoStepDefinitionsSteps.scala)
@@ -134,55 +145,55 @@ class Method2TransactionValueOfIdenticalGoodsSpec extends BaseSpec {
 
     Scenario("Method 2: Have not used Method 1 to import identical goods in past [EORINo=GB113888888041, EORIType=public]") {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
-        // ⚠️ No step-def match found for: I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+        givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
       And("I click on Start new application in ARS Home")
         whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select role as a Agent acting on behalf of a trader")
-        // ⚠️ No step-def match found for: I select role as a Agent acting on behalf of a trader
+        whenISelectRoleAsAString("Agent acting on behalf of a trader")
 
       And("I click continue on Information you need to complete an application page")
         andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select Yes and continue in Are you planning to import goods page")
-        // ⚠️ No step-def match found for: I select Yes and continue in Are you planning to import goods page
+        andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
 
       And("I click on continue in How We Contact You page")
         andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I enter EORI number GB113888888041 on Provide traders EORI number page")
-        // ⚠️ No step-def match found for: I enter EORI number GB113888888041 on Provide traders EORI number page
+        andIEnterEORINumberStringOnProvideTradersEORINumberPage("GB113888888041")
 
       And("I click on Save and continue button")
         andIClickOnSaveAndContinueButton()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select Yes for public EORI on Check the name and address page")
-        // ⚠️ No step-def match found for: I select Yes for public EORI on Check the name and address page
+        andISelectBooleanValueForStringEORIOnCheckTheNameAndAddressPage(true, "public")
 
       And("I click on Save and continue button")
         andIClickOnSaveAndContinueButton()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I upload the document test1.pdf and continue in Upload letter of authority page")
-        // ⚠️ No step-def match found for: I upload the document test1.pdf and continue in Upload letter of authority page
+        andIUploadTheDocumentStringAndContinueInUploadLetterOfAuthorityPage("test1.pdf")
 
       And("I click on continue on Uploaded letter of authority page")
         andIClickOnContinueOnUploadedLetterOfAuthorityPage()  // auto-chosen (score=1.00, AgentStepDefsSteps.scala)
 
       And("I enter Name- Automation Test Email- Test@automation.com,Phone- 9876543211, Company name - company test, Job title - agent for trader details")
-        // ⚠️ No step-def match found for: I enter Name- Automation Test Email- Test@automation.com,Phone- 9876543211, Company name - company test, Job title - agent for trader details
+        andIEnterNameStringEmailStringPhoneStringCompanyNameStringJobTitleStringDetails("Automation Test", "Test@automation.com", "9876543211", "company test", "agent for trader")
 
       And("I click on Save and continue button")
         andIClickOnSaveAndContinueButton()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select Method 2 and continue in Select the method page")
-        // ⚠️ No step-def match found for: I select Method 2 and continue in Select the method page
+        andISelectMethodIntAndContinueInSelectTheMethodPage(2)
 
       Then("I will be navigated to Outline Why Not Method One page")
         thenIWillBeNavigatedToOutlineWhyNotMethodOnePage()  // auto-chosen (score=1.00, MethodTwoStepDefinitionsSteps.scala)
 
       And("I enter not applicable as my reason why I did not select method 1")
-        // ⚠️ No step-def match found for: I enter not applicable as my reason why I did not select method 1
+        andIEnterStringAsMyReasonWhyIDidNotSelectMethod1("not applicable")
 
       Then("I will be navigated to In the Past Have you used Method 1 to import any goods")
         thenIWillBeNavigatedToInThePastHaveYouUsedMethod1ToImportAnyGoods()  // auto-chosen (score=1.00, MethodTwoStepDefinitionsSteps.scala)
@@ -199,55 +210,55 @@ class Method2TransactionValueOfIdenticalGoodsSpec extends BaseSpec {
 
     Scenario("Method 2: Have not used Method 1 to import identical goods in past [EORINo=GB112888888041, EORIType=private]") {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
-        // ⚠️ No step-def match found for: I am on the ARS Home Page with affinity group as a Individual and Credential role as a User
+        givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
       And("I click on Start new application in ARS Home")
         whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select role as a Agent acting on behalf of a trader")
-        // ⚠️ No step-def match found for: I select role as a Agent acting on behalf of a trader
+        whenISelectRoleAsAString("Agent acting on behalf of a trader")
 
       And("I click continue on Information you need to complete an application page")
         andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select Yes and continue in Are you planning to import goods page")
-        // ⚠️ No step-def match found for: I select Yes and continue in Are you planning to import goods page
+        andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
 
       And("I click on continue in How We Contact You page")
         andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I enter EORI number GB112888888041 on Provide traders EORI number page")
-        // ⚠️ No step-def match found for: I enter EORI number GB112888888041 on Provide traders EORI number page
+        andIEnterEORINumberStringOnProvideTradersEORINumberPage("GB112888888041")
 
       And("I click on Save and continue button")
         andIClickOnSaveAndContinueButton()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select Yes for private EORI on Check the name and address page")
-        // ⚠️ No step-def match found for: I select Yes for private EORI on Check the name and address page
+        andISelectBooleanValueForStringEORIOnCheckTheNameAndAddressPage(true, "private")
 
       And("I click on Save and continue button")
         andIClickOnSaveAndContinueButton()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I upload the document test1.pdf and continue in Upload letter of authority page")
-        // ⚠️ No step-def match found for: I upload the document test1.pdf and continue in Upload letter of authority page
+        andIUploadTheDocumentStringAndContinueInUploadLetterOfAuthorityPage("test1.pdf")
 
       And("I click on continue on Uploaded letter of authority page")
         andIClickOnContinueOnUploadedLetterOfAuthorityPage()  // auto-chosen (score=1.00, AgentStepDefsSteps.scala)
 
       And("I enter Name- Automation Test Email- Test@automation.com,Phone- 9876543211, Company name - company test, Job title - agent for trader details")
-        // ⚠️ No step-def match found for: I enter Name- Automation Test Email- Test@automation.com,Phone- 9876543211, Company name - company test, Job title - agent for trader details
+        andIEnterNameStringEmailStringPhoneStringCompanyNameStringJobTitleStringDetails("Automation Test", "Test@automation.com", "9876543211", "company test", "agent for trader")
 
       And("I click on Save and continue button")
         andIClickOnSaveAndContinueButton()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
       And("I select Method 2 and continue in Select the method page")
-        // ⚠️ No step-def match found for: I select Method 2 and continue in Select the method page
+        andISelectMethodIntAndContinueInSelectTheMethodPage(2)
 
       Then("I will be navigated to Outline Why Not Method One page")
         thenIWillBeNavigatedToOutlineWhyNotMethodOnePage()  // auto-chosen (score=1.00, MethodTwoStepDefinitionsSteps.scala)
 
       And("I enter not applicable as my reason why I did not select method 1")
-        // ⚠️ No step-def match found for: I enter not applicable as my reason why I did not select method 1
+        andIEnterStringAsMyReasonWhyIDidNotSelectMethod1("not applicable")
 
       Then("I will be navigated to In the Past Have you used Method 1 to import any goods")
         thenIWillBeNavigatedToInThePastHaveYouUsedMethod1ToImportAnyGoods()  // auto-chosen (score=1.00, MethodTwoStepDefinitionsSteps.scala)
