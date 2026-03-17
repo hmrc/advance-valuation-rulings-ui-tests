@@ -24,9 +24,10 @@ import java.time.Duration
 
 trait BrowserDriver {
 
-  given driver: WebDriver = Driver.instance
+  def driver: WebDriver = Driver.instance
+  transparent inline given currentDriver: WebDriver = Driver.instance
 
-  def webDriverWait()(using driver: WebDriver): WebDriverWait = {
+  def webDriverWait(): WebDriverWait = {
     val timeToWait = 15
     new WebDriverWait(driver, Duration.ofSeconds(timeToWait))
   }

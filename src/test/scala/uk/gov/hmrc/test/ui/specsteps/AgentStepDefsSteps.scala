@@ -16,12 +16,16 @@
 
 package uk.gov.hmrc.ui.specsteps
 
+import java.time.Duration
+
+import org.openqa.selenium.support.ui.FluentWait
+import org.openqa.selenium.{NoSuchElementException, StaleElementReferenceException, WebDriver}
 import org.scalatest.matchers.should.Matchers.*
 import org.scalatest.Assertions.fail
 
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.submitPage
 import uk.gov.hmrc.test.ui.pages.*
-import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl
+import uk.gov.hmrc.test.ui.pages.base.BasePage.{baseUrl, titleSuffix}
 import uk.gov.hmrc.test.ui.pages.base.ScenarioContext
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
@@ -123,11 +127,31 @@ object AgentStepDefsSteps extends BrowserDriver {
   def andIUploadTheDocumentStringAndContinueInUploadLetterOfAuthorityPage(filename: String): Unit = {
     val path = getClass.getResource(s"/testdata/$filename").toURI.getPath
 
-        UploadLetterOfAuthorityPage
-          .loadPage()
-          .uploadDocument(path)
+    UploadLetterOfAuthorityPage
+      .loadPage()
+      .uploadDocument(path)
 
-        UploadedLetterOfAuthorityPage.uploadAuthLetterPollingClick()
+    val uploadPageTitle    = UploadLetterOfAuthorityPage.pageTitle + titleSuffix
+    val uploadedPageTitle  = UploadedLetterOfAuthorityPage.pageTitle + titleSuffix
+    val uploadingPageTitle = UploadingInProgressPage.pageTitle + titleSuffix
+
+    new FluentWait[WebDriver](driver)
+      .withTimeout(Duration.ofSeconds(60))
+      .pollingEvery(Duration.ofMillis(500))
+      .ignoring(classOf[NoSuchElementException])
+      .ignoring(classOf[StaleElementReferenceException])
+      .until((d: WebDriver) => {
+        d.getTitle.trim match {
+          case `uploadPageTitle`    =>
+            submitPage()
+            false
+          case `uploadedPageTitle`  => true
+          case `uploadingPageTitle` =>
+            UploadingInProgressPage.clickCheckProgressButton()
+            false
+          case _                    => false
+        }
+      })
   }
 
   // I click on continue on Uploaded letter of authority page

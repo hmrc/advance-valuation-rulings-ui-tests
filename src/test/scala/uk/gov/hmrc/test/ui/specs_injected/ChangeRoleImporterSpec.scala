@@ -133,7 +133,7 @@ class ChangeRoleImporterSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("User returns to a application via the start application/previous application page and changes the Role") {
+    Scenario("User returns to an application via the start application previous application page and changes the Role") {
       navigateToCheckYourAnswers()
       And("I click on the service header")
         andIClickOnTheServiceHeader()  // auto-chosen (score=1.00, ChangeImporterRoleStepsSteps.scala)

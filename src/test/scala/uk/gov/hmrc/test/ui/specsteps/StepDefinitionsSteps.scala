@@ -31,7 +31,10 @@ import uk.gov.hmrc.test.ui.driver.BrowserDriver
 object StepDefinitionsSteps extends BrowserDriver {
 
   var draftId = ""
-  val fluentWait = new FluentWait[WebDriver](driver)
+  def fluentWait: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
+    .withTimeout(Duration.ofSeconds(15))
+    .pollingEvery(Duration.ofMillis(500))
+    .ignoring(classOf[Exception])
 
   // I am on the ARS Home Page with affinity group as a {string} and Credential role as a {string}
   def givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString(affinityGroup: String, credentialRole: String): Unit = {

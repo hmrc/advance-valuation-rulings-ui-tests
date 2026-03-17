@@ -93,8 +93,8 @@ class Method6FallbackMethodSpec extends BaseSpec with BeforeAndAfterAll {
     }
 
     Scenario("Agent on behalf of trader selects Method 6 all pages") {
-      Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
-        givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
+      Given("I am on the ARS Home Page with affinity group as a Agent and Credential role as a Assistant")
+        givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Agent", "Assistant")
 
       When("I click on Start new application in ARS Home")
         whenIClickOnStartNewApplicationInARSHome()

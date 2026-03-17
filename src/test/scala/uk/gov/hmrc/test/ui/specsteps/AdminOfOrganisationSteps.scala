@@ -21,7 +21,6 @@ import org.scalatest.Assertions.fail
 
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
-import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage
 import uk.gov.hmrc.test.ui.pages.*
@@ -34,7 +33,7 @@ AdminOfOrganisationSteps extends BrowserDriver {
 
   private var draftId: String = ""
 
-  private val fluentWait: FluentWait[WebDriver] = new FluentWait[WebDriver](Driver.instance)
+  private def fluentWait: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
     .withTimeout(Duration.ofSeconds(15))
     .pollingEvery(Duration.ofMillis(500))
     .ignoring(classOf[Exception])
@@ -56,7 +55,7 @@ AdminOfOrganisationSteps extends BrowserDriver {
       draftPattern.findFirstIn(url).isDefined
     })
 
-    val url = Driver.instance.getCurrentUrl
+    val url = driver.getCurrentUrl
     draftPattern.findFirstIn(url) match {
       case Some(draft) =>
         draftId = draft
