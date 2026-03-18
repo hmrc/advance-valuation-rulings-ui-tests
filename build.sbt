@@ -6,9 +6,7 @@ lazy val testSuite = (project in file("."))
     name := "advance-valuation-rulings-ui-tests",
     version := "2.0.0",
     scalacOptions += "-feature",
-    libraryDependencies ++= Dependencies(),
-    // The testOptions from SbtAutoBuildPlugin supports only ScalaTest. Resetting testOptions for Cucumber Tests.
-    Test / testOptions := Seq.empty
+    libraryDependencies ++= Dependencies()
   )
 
 addCommandAlias("scalafmtAll", "all scalafmtSbt scalafmt Test/scalafmt")
