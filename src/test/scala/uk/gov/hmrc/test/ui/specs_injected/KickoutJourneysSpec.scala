@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.ui.specs
 
+import uk.gov.hmrc.ui.tags.AllTests
 import uk.gov.hmrc.ui.specsteps.StepDefinitionsSteps._
 import uk.gov.hmrc.ui.specsteps.AgentStepDefsSteps._
 import uk.gov.hmrc.ui.specsteps.MethodTwoStepDefinitionsSteps._
@@ -43,7 +44,7 @@ class KickoutJourneysSpec extends BaseSpec with BeforeAndAfterAll {
 
   Feature("Kickout Journeys") {
 
-    Scenario("User  EORI number details are incorrect for employee of the org and agent of the org [role=An employee of the organisation]") {
+    Scenario("User  EORI number details are incorrect for employee of the org and agent of the org [role=An employee of the organisation]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -70,7 +71,7 @@ class KickoutJourneysSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("User  EORI number details are incorrect for employee of the org and agent of the org [role=Agent acting on behalf of an organisation]") {
+    Scenario("User  EORI number details are incorrect for employee of the org and agent of the org [role=Agent acting on behalf of an organisation]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -97,7 +98,7 @@ class KickoutJourneysSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("User does not have an enrolment to access service") {
+    Scenario("User does not have an enrolment to access service", AllTests) {
       Given("I am on the ARS Home Page and Login without enrolment")
         givenIAmOnTheARSHomePageAndLoginWithoutEnrolment()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
 
@@ -109,7 +110,7 @@ class KickoutJourneysSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("User clicks on cancel application link with yes value") {
+    Scenario("User clicks on cancel application link with yes value", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -151,7 +152,7 @@ class KickoutJourneysSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("User clicks on cancel application link with no value") {
+    Scenario("User clicks on cancel application link with no value", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -187,7 +188,7 @@ class KickoutJourneysSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("Agent on behalf of trader when invalid EORI is entered") {
+    Scenario("Agent on behalf of trader when invalid EORI is entered", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -217,7 +218,7 @@ class KickoutJourneysSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("Agent on behalf of trader enters valid EORI and selects No on check name and address page [EORINo=GB113888888041, EORIType=public]") {
+    Scenario("Agent on behalf of trader enters valid EORI and selects No on check name and address page [EORINo=GB113888888041, EORIType=public]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -253,7 +254,7 @@ class KickoutJourneysSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("Agent on behalf of trader enters valid EORI and selects No on check name and address page [EORINo=GB112888888041, EORIType=private]") {
+    Scenario("Agent on behalf of trader enters valid EORI and selects No on check name and address page [EORINo=GB112888888041, EORIType=private]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -289,7 +290,7 @@ class KickoutJourneysSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("User creates a Draft application when leaving journey without cancelling") {
+    Scenario("User creates a Draft application when leaving journey without cancelling", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 

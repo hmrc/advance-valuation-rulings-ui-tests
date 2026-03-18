@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.ui.specs
 
+import uk.gov.hmrc.ui.tags.AllTests
 import uk.gov.hmrc.ui.specsteps.StepDefinitionsSteps._
 import uk.gov.hmrc.ui.specsteps.AgentStepDefsSteps._
 import uk.gov.hmrc.ui.specsteps.MethodTwoStepDefinitionsSteps._
@@ -44,7 +45,7 @@ class AdminOfOrganisationSpec extends BaseSpec with BeforeAndAfterAll {
 
   Feature("Employee of Organisation End To End Journey") {
 
-    Scenario("Organisation User End To End Journey without upload") {
+    Scenario("Organisation User End To End Journey without upload", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
       When("I click on Start new application in ARS Home")
@@ -120,7 +121,7 @@ class AdminOfOrganisationSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("Organisation User End To End Journey without upload [AffinityGroup=Organisation, CredentialRole=Assistant]") {
+    Scenario("Organisation User End To End Journey without upload [AffinityGroup=Organisation, CredentialRole=Assistant]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Organisation and Credential role as a Assistant")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Organisation", "Assistant")
       When("I click on Start new application in ARS Home")
@@ -192,7 +193,7 @@ class AdminOfOrganisationSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("Organisation User End To End Journey without upload [AffinityGroup=Agent, CredentialRole=User]") {
+    Scenario("Organisation User End To End Journey without upload [AffinityGroup=Agent, CredentialRole=User]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Agent and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Agent", "User")
       When("I click on Start new application in ARS Home")
@@ -264,7 +265,7 @@ class AdminOfOrganisationSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("Organisation User End To End Journey without upload [AffinityGroup=Agent, CredentialRole=Assistant]") {
+    Scenario("Organisation User End To End Journey without upload [AffinityGroup=Agent, CredentialRole=Assistant]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Agent and Credential role as a Assistant")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Agent", "Assistant")
       When("I click on Start new application in ARS Home")

@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.ui.specs
 
+import uk.gov.hmrc.ui.tags.AllTests
 import uk.gov.hmrc.ui.specsteps.StepDefinitionsSteps._
 import uk.gov.hmrc.ui.specsteps.AgentStepDefsSteps._
 import uk.gov.hmrc.ui.specsteps.MethodTwoStepDefinitionsSteps._
@@ -43,7 +44,7 @@ class Method1TransactionValueSpec extends BaseSpec with BeforeAndAfterAll {
 
   Feature("End To End Journey for Method 1 which is based on Transaction value of goods") {
 
-    Scenario("Method 1 based on Transaction value short flow") {
+    Scenario("Method 1 based on Transaction value short flow", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -88,7 +89,7 @@ class Method1TransactionValueSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("Method 1 based on Transaction value and no sale involved") {
+    Scenario("Method 1 based on Transaction value and no sale involved", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -124,7 +125,7 @@ class Method1TransactionValueSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("Employee of Org selects Method 1 based on Transaction value with full flow with multiple upload") {
+    Scenario("Employee of Org selects Method 1 based on Transaction value with full flow with multiple upload", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Organisation and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Organisation", "User")
 

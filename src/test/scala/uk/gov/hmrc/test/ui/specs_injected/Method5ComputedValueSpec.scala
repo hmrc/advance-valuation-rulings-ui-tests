@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.ui.specs
 
+import uk.gov.hmrc.ui.tags.AllTests
 import uk.gov.hmrc.ui.specsteps.StepDefinitionsSteps._
 import uk.gov.hmrc.ui.specsteps.AgentStepDefsSteps._
 import uk.gov.hmrc.ui.specsteps.MethodTwoStepDefinitionsSteps._
@@ -43,7 +44,7 @@ class Method5ComputedValueSpec extends BaseSpec with BeforeAndAfterAll {
 
   Feature("Method 5 which is computed value to value goods flows") {
 
-    Scenario("Method 5 which is computed value to value goods flow for employee of org") {
+    Scenario("Method 5 which is computed value to value goods flow for employee of org", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -87,7 +88,7 @@ class Method5ComputedValueSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("Method 5 computed value to value goods flow for agent on behalf of trader [EORINo=GB113888888041, EORIType=public]") {
+    Scenario("Method 5 computed value to value goods flow for agent on behalf of trader [EORINo=GB113888888041, EORIType=public]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -149,7 +150,7 @@ class Method5ComputedValueSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("Method 5 computed value to value goods flow for agent on behalf of trader [EORINo=GB112888888041, EORIType=private]") {
+    Scenario("Method 5 computed value to value goods flow for agent on behalf of trader [EORINo=GB112888888041, EORIType=private]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 

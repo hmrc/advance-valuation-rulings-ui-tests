@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.ui.specs
 
+import uk.gov.hmrc.ui.tags.AllTests
 import uk.gov.hmrc.ui.specsteps.StepDefinitionsSteps._
 import uk.gov.hmrc.ui.specsteps.AgentStepDefsSteps._
 import uk.gov.hmrc.ui.specsteps.MethodTwoStepDefinitionsSteps._
@@ -43,7 +44,7 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
 
   Feature("Agent Acting on Behalf of Organisation End to End Journey") {
 
-    Scenario("Organisation Assistant End To End Journey - when Org assistant chosen") {
+    Scenario("Organisation Assistant End To End Journey - when Org assistant chosen", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Organisation and Credential role as a Assistant")
       givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Organisation", "Assistant")
 
@@ -146,7 +147,7 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
 
     }
 
-    Scenario("Organisation Assistant End To End Journey - when affinity group doesn't matter [AffinityGroup=Organisation, CredentialRole=User]") {
+    Scenario("Organisation Assistant End To End Journey - when affinity group doesn't matter [AffinityGroup=Organisation, CredentialRole=User]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Organisation and Credential role as a User")
       givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Organisation", "User")
 
@@ -252,7 +253,7 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
 
     }
 
-    Scenario("Organisation Assistant End To End Journey - when affinity group doesn't matter [AffinityGroup=Individual, CredentialRole=User]") {
+    Scenario("Organisation Assistant End To End Journey - when affinity group doesn't matter [AffinityGroup=Individual, CredentialRole=User]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
       givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -358,7 +359,7 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
 
     }
 
-    Scenario("Organisation Assistant End To End Journey - when affinity group doesn't matter [AffinityGroup=Agent, CredentialRole=User]") {
+    Scenario("Organisation Assistant End To End Journey - when affinity group doesn't matter [AffinityGroup=Agent, CredentialRole=User]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Agent and Credential role as a User")
       givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Agent", "User")
 
@@ -464,7 +465,7 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
 
     }
 
-    Scenario("Organisation Assistant End To End Journey - when affinity group doesn't matter [AffinityGroup=Agent, CredentialRole=Assistant]") {
+    Scenario("Organisation Assistant End To End Journey - when affinity group doesn't matter [AffinityGroup=Agent, CredentialRole=Assistant]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Agent and Credential role as a Assistant")
       givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Agent", "Assistant")
 

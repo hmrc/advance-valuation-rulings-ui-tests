@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.ui.specs
 
+import uk.gov.hmrc.ui.tags.AllTests
 import uk.gov.hmrc.ui.specsteps.StepDefinitionsSteps._
 import uk.gov.hmrc.ui.specsteps.AgentStepDefsSteps._
 import uk.gov.hmrc.ui.specsteps.MethodTwoStepDefinitionsSteps._
@@ -43,7 +44,7 @@ class AgentOnBehalfOfTraderSpec extends BaseSpec with BeforeAndAfterAll {
 
   Feature("Agent acting on behalf of a trader changes") {
 
-    Scenario("Agent on behalf of trader starter checklist for three roles [role=An employee of the organisation]") {
+    Scenario("Agent on behalf of trader starter checklist for three roles [role=An employee of the organisation]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -58,7 +59,7 @@ class AgentOnBehalfOfTraderSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("Agent on behalf of trader starter checklist for three roles [role=Agent acting on behalf of an organisation]") {
+    Scenario("Agent on behalf of trader starter checklist for three roles [role=Agent acting on behalf of an organisation]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -73,7 +74,7 @@ class AgentOnBehalfOfTraderSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("Agent on behalf of trader starter checklist for three roles [role=Agent acting on behalf of a trader]") {
+    Scenario("Agent on behalf of trader starter checklist for three roles [role=Agent acting on behalf of a trader]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -88,7 +89,7 @@ class AgentOnBehalfOfTraderSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("Agent for trader when public or private EORI is entered [EORINo=GB113888888041, EORIType=public]") {
+    Scenario("Agent for trader when public or private EORI is entered [EORINo=GB113888888041, EORIType=public]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -121,7 +122,7 @@ class AgentOnBehalfOfTraderSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("Agent for trader when public or private EORI is entered [EORINo=GB112888888041, EORIType=private]") {
+    Scenario("Agent for trader when public or private EORI is entered [EORINo=GB112888888041, EORIType=private]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -154,7 +155,7 @@ class AgentOnBehalfOfTraderSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("Agent for trader journey for public or private EORI is entered with upload supporting documents [EORINo=GB113888888041, EORIType=public]") {
+    Scenario("Agent for trader journey for public or private EORI is entered with upload supporting documents [EORINo=GB113888888041, EORIType=public]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -298,7 +299,7 @@ class AgentOnBehalfOfTraderSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("Agent for trader journey for public or private EORI is entered with upload supporting documents [EORINo=GB112888888041, EORIType=private]") {
+    Scenario("Agent for trader journey for public or private EORI is entered with upload supporting documents [EORINo=GB112888888041, EORIType=private]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -442,7 +443,7 @@ class AgentOnBehalfOfTraderSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("Agent for trader journey for public or private EORI is entered with upload supporting documents [EORINo=GB113888888041, EORIType=public, AffinityGroup=Organisation, CredentialRole=Assistant]") {
+    Scenario("Agent for trader journey for public or private EORI is entered with upload supporting documents [EORINo=GB113888888041, EORIType=public, AffinityGroup=Organisation, CredentialRole=Assistant]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Organisation and Credential role as a Assistant")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Organisation", "Assistant")
 
@@ -563,7 +564,7 @@ class AgentOnBehalfOfTraderSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("Agent for trader journey for public or private EORI is entered with upload supporting documents [EORINo=GB113888888041, EORIType=public, AffinityGroup=Agent, CredentialRole=User]") {
+    Scenario("Agent for trader journey for public or private EORI is entered with upload supporting documents [EORINo=GB113888888041, EORIType=public, AffinityGroup=Agent, CredentialRole=User]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Agent and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Agent", "User")
 
@@ -684,7 +685,7 @@ class AgentOnBehalfOfTraderSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("Agent for trader journey for public or private EORI is entered with upload supporting documents") {
+    Scenario("Agent for trader journey for public or private EORI is entered with upload supporting documents", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 

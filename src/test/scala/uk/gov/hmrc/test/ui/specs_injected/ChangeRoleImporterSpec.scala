@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.ui.specs
 
+import uk.gov.hmrc.ui.tags.AllTests
 import uk.gov.hmrc.ui.specsteps.StepDefinitionsSteps._
 import uk.gov.hmrc.ui.specsteps.AgentStepDefsSteps._
 import uk.gov.hmrc.ui.specsteps.MethodTwoStepDefinitionsSteps._
@@ -43,7 +44,7 @@ class ChangeRoleImporterSpec extends BaseSpec with BeforeAndAfterAll {
 
   Feature("A user attempts to change their importer role") {
 
-    Scenario("User clicks change link but does not change the role") {
+    Scenario("User clicks change link but does not change the role", AllTests) {
       navigateToCheckYourAnswers()
       Then("I click on the change link on the check your answers page")
         andIClickOnTheChangeLinkOnTheCheckYourAnswersPage()  // auto-chosen (score=1.00, ChangeImporterRoleStepsSteps.scala)
@@ -62,7 +63,7 @@ class ChangeRoleImporterSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("User clicks change link and changes the role but does not wish to actually change the role.") {
+    Scenario("User clicks change link and changes the role but does not wish to actually change the role.", AllTests) {
       navigateToCheckYourAnswers()
       Then("I click on the change link on the check your answers page")
         andIClickOnTheChangeLinkOnTheCheckYourAnswersPage()  // auto-chosen (score=1.00, ChangeImporterRoleStepsSteps.scala)
@@ -102,7 +103,7 @@ class ChangeRoleImporterSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("User clicks change link and changes the role and successfully changes their role to 'Agent acting on behalf of an organisation'") {
+    Scenario("User clicks change link and changes the role and successfully changes their role to 'Agent acting on behalf of an organisation'", AllTests) {
       navigateToCheckYourAnswers()
       Then("I click on the change link on the check your answers page")
         andIClickOnTheChangeLinkOnTheCheckYourAnswersPage()  // auto-chosen (score=1.00, ChangeImporterRoleStepsSteps.scala)
@@ -133,7 +134,7 @@ class ChangeRoleImporterSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("User returns to an application via the start application previous application page and changes the Role") {
+    Scenario("User returns to an application via the start application previous application page and changes the Role", AllTests) {
       navigateToCheckYourAnswers()
       And("I click on the service header")
         andIClickOnTheServiceHeader()  // auto-chosen (score=1.00, ChangeImporterRoleStepsSteps.scala)

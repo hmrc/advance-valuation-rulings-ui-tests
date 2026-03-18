@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.ui.specs
 
+import uk.gov.hmrc.ui.tags.AllTests
 import uk.gov.hmrc.ui.specsteps.StepDefinitionsSteps._
 import uk.gov.hmrc.ui.specsteps.AgentStepDefsSteps._
 import uk.gov.hmrc.ui.specsteps.MethodTwoStepDefinitionsSteps._
@@ -43,7 +44,7 @@ class Method3TransactionValueOfSimilarGoodsSpec extends BaseSpec with BeforeAndA
 
   Feature("Method 3 flows which is based on Transaction value of similar goods") {
 
-    Scenario("Employee of the org selects Method 3 which is based on Transaction value of similar goods") {
+    Scenario("Employee of the org selects Method 3 which is based on Transaction value of similar goods", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -95,7 +96,7 @@ class Method3TransactionValueOfSimilarGoodsSpec extends BaseSpec with BeforeAndA
 
     }
 
-    Scenario("Employee of org selects Method 3: Have not used Method 1 to import similar goods in past") {
+    Scenario("Employee of org selects Method 3: Have not used Method 1 to import similar goods in past", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -142,7 +143,7 @@ class Method3TransactionValueOfSimilarGoodsSpec extends BaseSpec with BeforeAndA
 
     }
 
-    Scenario("Agent on behalf of trader selects Method 3 which is based on Transaction value of similar goods [EORINo=GB113888888041, EORIType=public]") {
+    Scenario("Agent on behalf of trader selects Method 3 which is based on Transaction value of similar goods [EORINo=GB113888888041, EORIType=public]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -212,7 +213,7 @@ class Method3TransactionValueOfSimilarGoodsSpec extends BaseSpec with BeforeAndA
 
     }
 
-    Scenario("Agent on behalf of trader selects Method 3 which is based on Transaction value of similar goods [EORINo=GB112888888041, EORIType=private]") {
+    Scenario("Agent on behalf of trader selects Method 3 which is based on Transaction value of similar goods [EORINo=GB112888888041, EORIType=private]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 

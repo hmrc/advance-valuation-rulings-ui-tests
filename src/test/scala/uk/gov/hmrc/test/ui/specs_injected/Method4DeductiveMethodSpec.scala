@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.ui.specs
 
+import uk.gov.hmrc.ui.tags.AllTests
 import uk.gov.hmrc.ui.specsteps.StepDefinitionsSteps._
 import uk.gov.hmrc.ui.specsteps.AgentStepDefsSteps._
 import uk.gov.hmrc.ui.specsteps.MethodTwoStepDefinitionsSteps._
@@ -43,7 +44,7 @@ class Method4DeductiveMethodSpec extends BaseSpec with BeforeAndAfterAll {
 
   Feature("Method 4 which is deductive method to value goods flows") {
 
-    Scenario("Method 4 which is deductive method to value goods journey all pages for employee of org") {
+    Scenario("Method 4 which is deductive method to value goods journey all pages for employee of org", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -111,7 +112,7 @@ class Method4DeductiveMethodSpec extends BaseSpec with BeforeAndAfterAll {
 
     }
 
-    Scenario("Method 4 which is deductive method to value goods journey through all pages for agent for trader [EORINo=GB112888888041, EORIType=private]") {
+    Scenario("Method 4 which is deductive method to value goods journey through all pages for agent for trader [EORINo=GB112888888041, EORIType=private]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Organisation and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Organisation", "User")
 

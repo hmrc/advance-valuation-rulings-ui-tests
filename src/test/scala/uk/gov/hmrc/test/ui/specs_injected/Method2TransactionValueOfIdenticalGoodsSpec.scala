@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.ui.specs
 
+import uk.gov.hmrc.ui.tags.AllTests
 import uk.gov.hmrc.ui.specsteps.StepDefinitionsSteps._
 import uk.gov.hmrc.ui.specsteps.AgentStepDefsSteps._
 import uk.gov.hmrc.ui.specsteps.MethodTwoStepDefinitionsSteps._
@@ -43,7 +44,7 @@ class Method2TransactionValueOfIdenticalGoodsSpec extends BaseSpec with BeforeAn
 
   Feature("Flows for Method 2 which is based on Transaction value of identical goods") {
 
-    Scenario("Method 2 which is based on Transaction value of identical goods where all pages answered 'yes'") {
+    Scenario("Method 2 which is based on Transaction value of identical goods where all pages answered 'yes'", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -96,7 +97,7 @@ class Method2TransactionValueOfIdenticalGoodsSpec extends BaseSpec with BeforeAn
 
     }
 
-    Scenario("Method 2 which is based on Transaction value of identical goods: Have not used Method 1 to import identical goods in past") {
+    Scenario("Method 2 which is based on Transaction value of identical goods: Have not used Method 1 to import identical goods in past", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -143,7 +144,7 @@ class Method2TransactionValueOfIdenticalGoodsSpec extends BaseSpec with BeforeAn
 
     }
 
-    Scenario("Method 2: Have not used Method 1 to import identical goods in past [EORINo=GB113888888041, EORIType=public]") {
+    Scenario("Method 2: Have not used Method 1 to import identical goods in past [EORINo=GB113888888041, EORIType=public]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -208,7 +209,7 @@ class Method2TransactionValueOfIdenticalGoodsSpec extends BaseSpec with BeforeAn
 
     }
 
-    Scenario("Method 2: Have not used Method 1 to import identical goods in past [EORINo=GB112888888041, EORIType=private]") {
+    Scenario("Method 2: Have not used Method 1 to import identical goods in past [EORINo=GB112888888041, EORIType=private]", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 

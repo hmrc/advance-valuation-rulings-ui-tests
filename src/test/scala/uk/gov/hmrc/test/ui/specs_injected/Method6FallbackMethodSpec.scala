@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.ui.specs
 
+import uk.gov.hmrc.ui.tags.AllTests
 import uk.gov.hmrc.ui.specsteps.StepDefinitionsSteps._
 import uk.gov.hmrc.ui.specsteps.AgentStepDefsSteps._
 import uk.gov.hmrc.ui.specsteps.MethodTwoStepDefinitionsSteps._
@@ -42,7 +43,7 @@ class Method6FallbackMethodSpec extends BaseSpec with BeforeAndAfterAll {
 
   Feature("Journeys for Method 6 which is Fallback method") {
 
-    Scenario("Journey for Method 6 all pages for employee of org") {
+    Scenario("Journey for Method 6 all pages for employee of org", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
@@ -92,7 +93,7 @@ class Method6FallbackMethodSpec extends BaseSpec with BeforeAndAfterAll {
         thenINavigateToDescriptionOfTheGoods()
     }
 
-    Scenario("Agent on behalf of trader selects Method 6 all pages") {
+    Scenario("Agent on behalf of trader selects Method 6 all pages", AllTests) {
       Given("I am on the ARS Home Page with affinity group as a Agent and Credential role as a Assistant")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Agent", "Assistant")
 
