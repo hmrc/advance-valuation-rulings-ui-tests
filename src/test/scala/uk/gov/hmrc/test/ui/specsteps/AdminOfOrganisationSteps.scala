@@ -17,7 +17,6 @@
 package uk.gov.hmrc.ui.specsteps
 
 import org.scalatest.matchers.should.Matchers.*
-import org.scalatest.Assertions.fail
 
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}

@@ -19,16 +19,7 @@ package uk.gov.hmrc.ui.specs
 import uk.gov.hmrc.ui.tags.AllTests
 import uk.gov.hmrc.ui.specsteps.StepDefinitionsSteps._
 import uk.gov.hmrc.ui.specsteps.AgentStepDefsSteps._
-import uk.gov.hmrc.ui.specsteps.MethodTwoStepDefinitionsSteps._
-import uk.gov.hmrc.ui.specsteps.MethodThreeStepDefinitionsSteps._
-import uk.gov.hmrc.ui.specsteps.MethodFourStepDefinitionsSteps._
-import uk.gov.hmrc.ui.specsteps.MethodSixStepDefinitionsSteps._
-import uk.gov.hmrc.ui.specsteps.ChangeImporterRoleStepsSteps._
-
-import uk.gov.hmrc.ui.specs.BaseSpec
 import org.scalatest.BeforeAndAfterAll
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.featurespec.AnyFeatureSpec
 
 class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeAndAfterAll {
 
@@ -49,22 +40,22 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
       givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Organisation", "Assistant")
 
       When("I click on Start new application in ARS Home")
-        whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        whenIClickOnStartNewApplicationInARSHome()
 
       Then("I select role as a Agent acting on behalf of an organisation")
         whenISelectRoleAsAString("Agent acting on behalf of an organisation")
 
       And("I click continue on Information you need to complete an application page")
-        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()
 
       And("I select Yes and continue in Are you planning to import goods page")
         andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
 
       And("I click on continue in How We Contact You page")
-        andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickOnContinueInHowWeContactYouPage()
 
       And("I select Yes and continue in Check the name and address page for agent for org")
-        andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForAgentForOrg(true)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForAgentForOrg(true)
 
       And("I enter Name: Automation Test, Email: Test@automation.com, Phone: 9876543211, Job title: Agent for Org details and continue in Provide your own contact details page")
         andIEnterNameStringEmailStringPhoneStringJobTitleStringDetailsAndContinueInProvideYourOwnContactDetailsPage("Automation Test", "Test@automation.com", "9876543211", "Agent for Org")
@@ -85,16 +76,16 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
         andIEnterStringAndContinueInDescribeHowThePartiesAreRelated("description")
 
       And("I select Yes and continue in Are there any restrictions on the use or resale of the goods")
-        andISelectBooleanValueAndContinueInAreThereAnyRestrictionsOnTheUseOrResaleOfTheGoods(true)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInAreThereAnyRestrictionsOnTheUseOrResaleOfTheGoods(true)
 
       And("I enter restrictions and continue in Describe any restrictions on the use or resale of goods")
-        andIEnterStringAndContinueInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods("restrictions")  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
+        andIEnterStringAndContinueInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods("restrictions")
         // --- Other possible matches ---
         // andINavigateToDescribeAnyRestrictionsOnTheUseOrResaleOfGoodsPageAndCompareTheText() [0.66] (StepDefinitionsSteps.scala) pattern: I navigate to Describe any restrictions on the use or resale of goods page and compare the text
         // andIEnterStringInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods() [0.65] (StepDefinitionsSteps.scala) pattern: I enter {string} in Describe any restrictions on the use or resale of goods
 
       And("I select Yes and continue in Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods")
-        andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods(true)  // auto-chosen (score=0.69, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods(true)
         // --- Other possible matches ---
         // andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods() [0.67] (StepDefinitionsSteps.scala) pattern: I select {booleanValue} and continue in Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods
 
@@ -102,7 +93,7 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
         andIEnterStringAsTheConditionsWhichCannotBeCalculatedAndPressContinue("various conditions")
 
       Then("I navigate to Description of the Goods")
-        thenINavigateToDescriptionOfTheGoods()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenINavigateToDescriptionOfTheGoods()
 
       And("I enter nice things as the description and press continue")
         andIEnterStringAsTheDescriptionAndPressContinue("nice things")
@@ -114,36 +105,36 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
         andIEnterStringAndContinue("previous ruling information")
 
       And("I select No on any other rulings that have used a similar method and continue")
-        andISelectBooleanValueOnAnyOtherRulingsThatHaveUsedASimilarMethodAndContinue(false)  // auto-chosen (score=0.65, StepDefinitionsSteps.scala)
+        andISelectBooleanValueOnAnyOtherRulingsThatHaveUsedASimilarMethodAndContinue(false)
 
       And("I select No and continue in Have you found the commodity code")
         andISelectBooleanValueAndContinueInHaveYouFoundTheCommodityCode(false)
 
       Then("I will be navigated to Have the goods been subject to legal challenges")
-        thenIWillBeNavigatedToHaveTheGoodsBeenSubjectToLegalChallenges()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToHaveTheGoodsBeenSubjectToLegalChallenges()
 
       And("I select that the goods have not been subject to legal challenges")
-        andISelectThatTheGoodsHaveNotBeenSubjectToLegalChallenges()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andISelectThatTheGoodsHaveNotBeenSubjectToLegalChallenges()
         // --- Other possible matches ---
         // andISelectThatTheGoodsBeenSubjectToLegalChallenges() [0.70] (StepDefinitionsSteps.scala) pattern: I select that the goods been subject to legal challenges
 
       And("I select No and continue in Do you want to add any confidential information page")
-        andISelectBooleanValueAndContinueInDoYouWantToAddAnyConfidentialInformationPage(false)  // auto-chosen (score=0.65, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInDoYouWantToAddAnyConfidentialInformationPage(false)
 
       And("I select No and continue in Do you want to upload any supporting documents page")
-        andISelectBooleanValueAndContinueInDoYouWantToUploadAnySupportingDocumentsPage(false)  // auto-chosen (score=0.65, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInDoYouWantToUploadAnySupportingDocumentsPage(false)
 
       Then("I will be navigated to the Check Your Answers page")
-        thenIWillBeNavigatedToTheCheckYourAnswersPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToTheCheckYourAnswersPage()
 
       And("I check my Company’s registered business name and Company’s registered business address are correct and are unable to be changed")
         andICheckMyStringAndStringAreCorrectAndAreUnableToBeChanged("Company’s registered business name", "Company’s registered business address")
 
       And("I check my answers and click on continue")
-        andICheckMyAnswersAndClickOnContinue()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andICheckMyAnswersAndClickOnContinue()
 
       Then("I will be navigated to the Application Complete page")
-        thenIWillBeNavigatedToTheApplicationCompletePage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToTheApplicationCompletePage()
 
     }
 
@@ -152,22 +143,22 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
       givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Organisation", "User")
 
       When("I click on Start new application in ARS Home")
-        whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        whenIClickOnStartNewApplicationInARSHome()
 
       And("I select role as a Agent acting on behalf of an organisation")
         whenISelectRoleAsAString("Agent acting on behalf of an organisation")
 
       And("I click continue on Information you need to complete an application page")
-        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()
 
       And("I select Yes and continue in Are you planning to import goods page")
         andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
 
       And("I click on continue in How We Contact You page")
-        andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickOnContinueInHowWeContactYouPage()
 
       And("I select Yes and continue in Check the name and address page for agent for org")
-        andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForAgentForOrg(true)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForAgentForOrg(true)
 
       And("I enter Name: Automation Test, Email: Test@automation.com, Phone: 9876543211, Job title: Agent for Org details and continue in Provide your own contact details page")
         andIEnterNameStringEmailStringPhoneStringJobTitleStringDetailsAndContinueInProvideYourOwnContactDetailsPage("Automation Test", "Test@automation.com", "9876543211", "Agent for Org")
@@ -188,16 +179,16 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
         andIEnterStringAndContinueInDescribeHowThePartiesAreRelated("description")
 
       And("I select Yes and continue in Are there any restrictions on the use or resale of the goods")
-        andISelectBooleanValueAndContinueInAreThereAnyRestrictionsOnTheUseOrResaleOfTheGoods(true)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInAreThereAnyRestrictionsOnTheUseOrResaleOfTheGoods(true)
 
       And("I enter restrictions and continue in Describe any restrictions on the use or resale of goods")
-        andIEnterStringAndContinueInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods("restrictions")  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
+        andIEnterStringAndContinueInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods("restrictions")
         // --- Other possible matches ---
         // andINavigateToDescribeAnyRestrictionsOnTheUseOrResaleOfGoodsPageAndCompareTheText() [0.66] (StepDefinitionsSteps.scala) pattern: I navigate to Describe any restrictions on the use or resale of goods page and compare the text
         // andIEnterStringInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods() [0.65] (StepDefinitionsSteps.scala) pattern: I enter {string} in Describe any restrictions on the use or resale of goods
 
       And("I select Yes and continue in Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods")
-        andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods(true)  // auto-chosen (score=0.69, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods(true)
         // --- Other possible matches ---
         // andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods() [0.67] (StepDefinitionsSteps.scala) pattern: I select {booleanValue} and continue in Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods
 
@@ -205,7 +196,7 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
         andIEnterStringAsTheConditionsWhichCannotBeCalculatedAndPressContinue("various conditions")
 
       Then("I navigate to Description of the Goods")
-        thenINavigateToDescriptionOfTheGoods()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenINavigateToDescriptionOfTheGoods()
 
       And("I enter nice things as the description and press continue")
         andIEnterStringAsTheDescriptionAndPressContinue("nice things")
@@ -217,7 +208,7 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
         andIEnterStringAndContinue("previous ruling information")
 
       And("I select Yes on any other rulings that have used a similar method and continue")
-        andISelectBooleanValueOnAnyOtherRulingsThatHaveUsedASimilarMethodAndContinue(true)  // auto-chosen (score=0.65, StepDefinitionsSteps.scala)
+        andISelectBooleanValueOnAnyOtherRulingsThatHaveUsedASimilarMethodAndContinue(true)
 
       And("I enter other rulings for similar goods on about the rulings for similar goods page and continue")
         andIEnterStringOnAboutTheRulingsForSimilarGoodsPageAndContinue("other rulings for similar goods")
@@ -226,30 +217,30 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
         andISelectBooleanValueAndContinueInHaveYouFoundTheCommodityCode(false)
 
       Then("I will be navigated to Have the goods been subject to legal challenges")
-        thenIWillBeNavigatedToHaveTheGoodsBeenSubjectToLegalChallenges()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToHaveTheGoodsBeenSubjectToLegalChallenges()
 
       And("I select that the goods have not been subject to legal challenges")
-        andISelectThatTheGoodsHaveNotBeenSubjectToLegalChallenges()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andISelectThatTheGoodsHaveNotBeenSubjectToLegalChallenges()
         // --- Other possible matches ---
         // andISelectThatTheGoodsBeenSubjectToLegalChallenges() [0.70] (StepDefinitionsSteps.scala) pattern: I select that the goods been subject to legal challenges
 
       And("I select No and continue in Do you want to add any confidential information page")
-        andISelectBooleanValueAndContinueInDoYouWantToAddAnyConfidentialInformationPage(false)  // auto-chosen (score=0.65, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInDoYouWantToAddAnyConfidentialInformationPage(false)
 
       And("I select No and continue in Do you want to upload any supporting documents page")
-        andISelectBooleanValueAndContinueInDoYouWantToUploadAnySupportingDocumentsPage(false)  // auto-chosen (score=0.65, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInDoYouWantToUploadAnySupportingDocumentsPage(false)
 
       Then("I will be navigated to the Check Your Answers page")
-        thenIWillBeNavigatedToTheCheckYourAnswersPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToTheCheckYourAnswersPage()
 
       And("I check my Company’s registered business name and Company’s registered business address are correct and are unable to be changed")
         andICheckMyStringAndStringAreCorrectAndAreUnableToBeChanged("Company’s registered business name", "Company’s registered business address")
 
       And("I check my answers and click on continue")
-        andICheckMyAnswersAndClickOnContinue()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andICheckMyAnswersAndClickOnContinue()
 
       Then("I will be navigated to the Application Complete page")
-        thenIWillBeNavigatedToTheApplicationCompletePage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToTheApplicationCompletePage()
 
     }
 
@@ -258,22 +249,22 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
       givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
       When("I click on Start new application in ARS Home")
-        whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        whenIClickOnStartNewApplicationInARSHome()
 
       And("I select role as a Agent acting on behalf of an organisation")
         whenISelectRoleAsAString("Agent acting on behalf of an organisation")
 
       And("I click continue on Information you need to complete an application page")
-        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()
 
       And("I select Yes and continue in Are you planning to import goods page")
         andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
 
       And("I click on continue in How We Contact You page")
-        andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickOnContinueInHowWeContactYouPage()
 
       And("I select Yes and continue in Check the name and address page for agent for org")
-        andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForAgentForOrg(true)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForAgentForOrg(true)
 
       And("I enter Name: Automation Test, Email: Test@automation.com, Phone: 9876543211, Job title: Agent for Org details and continue in Provide your own contact details page")
         andIEnterNameStringEmailStringPhoneStringJobTitleStringDetailsAndContinueInProvideYourOwnContactDetailsPage("Automation Test", "Test@automation.com", "9876543211", "Agent for Org")
@@ -294,16 +285,16 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
         andIEnterStringAndContinueInDescribeHowThePartiesAreRelated("description")
 
       And("I select Yes and continue in Are there any restrictions on the use or resale of the goods")
-        andISelectBooleanValueAndContinueInAreThereAnyRestrictionsOnTheUseOrResaleOfTheGoods(true)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInAreThereAnyRestrictionsOnTheUseOrResaleOfTheGoods(true)
 
       And("I enter restrictions and continue in Describe any restrictions on the use or resale of goods")
-        andIEnterStringAndContinueInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods("restrictions")  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
+        andIEnterStringAndContinueInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods("restrictions")
         // --- Other possible matches ---
         // andINavigateToDescribeAnyRestrictionsOnTheUseOrResaleOfGoodsPageAndCompareTheText() [0.66] (StepDefinitionsSteps.scala) pattern: I navigate to Describe any restrictions on the use or resale of goods page and compare the text
         // andIEnterStringInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods() [0.65] (StepDefinitionsSteps.scala) pattern: I enter {string} in Describe any restrictions on the use or resale of goods
 
       And("I select Yes and continue in Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods")
-        andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods(true)  // auto-chosen (score=0.69, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods(true)
         // --- Other possible matches ---
         // andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods() [0.67] (StepDefinitionsSteps.scala) pattern: I select {booleanValue} and continue in Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods
 
@@ -311,7 +302,7 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
         andIEnterStringAsTheConditionsWhichCannotBeCalculatedAndPressContinue("various conditions")
 
       Then("I navigate to Description of the Goods")
-        thenINavigateToDescriptionOfTheGoods()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenINavigateToDescriptionOfTheGoods()
 
       And("I enter nice things as the description and press continue")
         andIEnterStringAsTheDescriptionAndPressContinue("nice things")
@@ -323,7 +314,7 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
         andIEnterStringAndContinue("previous ruling information")
 
       And("I select Yes on any other rulings that have used a similar method and continue")
-        andISelectBooleanValueOnAnyOtherRulingsThatHaveUsedASimilarMethodAndContinue(true)  // auto-chosen (score=0.65, StepDefinitionsSteps.scala)
+        andISelectBooleanValueOnAnyOtherRulingsThatHaveUsedASimilarMethodAndContinue(true)
 
       And("I enter other rulings for similar goods on about the rulings for similar goods page and continue")
         andIEnterStringOnAboutTheRulingsForSimilarGoodsPageAndContinue("other rulings for similar goods")
@@ -332,30 +323,30 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
         andISelectBooleanValueAndContinueInHaveYouFoundTheCommodityCode(false)
 
       Then("I will be navigated to Have the goods been subject to legal challenges")
-        thenIWillBeNavigatedToHaveTheGoodsBeenSubjectToLegalChallenges()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToHaveTheGoodsBeenSubjectToLegalChallenges()
 
       And("I select that the goods have not been subject to legal challenges")
-        andISelectThatTheGoodsHaveNotBeenSubjectToLegalChallenges()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andISelectThatTheGoodsHaveNotBeenSubjectToLegalChallenges()
         // --- Other possible matches ---
         // andISelectThatTheGoodsBeenSubjectToLegalChallenges() [0.70] (StepDefinitionsSteps.scala) pattern: I select that the goods been subject to legal challenges
 
       And("I select No and continue in Do you want to add any confidential information page")
-        andISelectBooleanValueAndContinueInDoYouWantToAddAnyConfidentialInformationPage(false)  // auto-chosen (score=0.65, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInDoYouWantToAddAnyConfidentialInformationPage(false)
 
       And("I select No and continue in Do you want to upload any supporting documents page")
-        andISelectBooleanValueAndContinueInDoYouWantToUploadAnySupportingDocumentsPage(false)  // auto-chosen (score=0.65, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInDoYouWantToUploadAnySupportingDocumentsPage(false)
 
       Then("I will be navigated to the Check Your Answers page")
-        thenIWillBeNavigatedToTheCheckYourAnswersPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToTheCheckYourAnswersPage()
 
       And("I check my Company’s registered business name and Company’s registered business address are correct and are unable to be changed")
         andICheckMyStringAndStringAreCorrectAndAreUnableToBeChanged("Company’s registered business name", "Company’s registered business address")
 
       And("I check my answers and click on continue")
-        andICheckMyAnswersAndClickOnContinue()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andICheckMyAnswersAndClickOnContinue()
 
       Then("I will be navigated to the Application Complete page")
-        thenIWillBeNavigatedToTheApplicationCompletePage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToTheApplicationCompletePage()
 
     }
 
@@ -364,22 +355,22 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
       givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Agent", "User")
 
       When("I click on Start new application in ARS Home")
-        whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        whenIClickOnStartNewApplicationInARSHome()
 
       And("I select role as a Agent acting on behalf of an organisation")
         whenISelectRoleAsAString("Agent acting on behalf of an organisation")
 
       And("I click continue on Information you need to complete an application page")
-        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()
 
       And("I select Yes and continue in Are you planning to import goods page")
         andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
 
       And("I click on continue in How We Contact You page")
-        andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickOnContinueInHowWeContactYouPage()
 
       And("I select Yes and continue in Check the name and address page for agent for org")
-        andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForAgentForOrg(true)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForAgentForOrg(true)
 
       And("I enter Name: Automation Test, Email: Test@automation.com, Phone: 9876543211, Job title: Agent for Org details and continue in Provide your own contact details page")
         andIEnterNameStringEmailStringPhoneStringJobTitleStringDetailsAndContinueInProvideYourOwnContactDetailsPage("Automation Test", "Test@automation.com", "9876543211", "Agent for Org")
@@ -400,16 +391,16 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
         andIEnterStringAndContinueInDescribeHowThePartiesAreRelated("description")
 
       And("I select Yes and continue in Are there any restrictions on the use or resale of the goods")
-        andISelectBooleanValueAndContinueInAreThereAnyRestrictionsOnTheUseOrResaleOfTheGoods(true)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInAreThereAnyRestrictionsOnTheUseOrResaleOfTheGoods(true)
 
       And("I enter restrictions and continue in Describe any restrictions on the use or resale of goods")
-        andIEnterStringAndContinueInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods("restrictions")  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
+        andIEnterStringAndContinueInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods("restrictions")
         // --- Other possible matches ---
         // andINavigateToDescribeAnyRestrictionsOnTheUseOrResaleOfGoodsPageAndCompareTheText() [0.66] (StepDefinitionsSteps.scala) pattern: I navigate to Describe any restrictions on the use or resale of goods page and compare the text
         // andIEnterStringInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods() [0.65] (StepDefinitionsSteps.scala) pattern: I enter {string} in Describe any restrictions on the use or resale of goods
 
       And("I select Yes and continue in Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods")
-        andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods(true)  // auto-chosen (score=0.69, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods(true)
         // --- Other possible matches ---
         // andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods() [0.67] (StepDefinitionsSteps.scala) pattern: I select {booleanValue} and continue in Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods
 
@@ -417,7 +408,7 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
         andIEnterStringAsTheConditionsWhichCannotBeCalculatedAndPressContinue("various conditions")
 
       Then("I navigate to Description of the Goods")
-        thenINavigateToDescriptionOfTheGoods()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenINavigateToDescriptionOfTheGoods()
 
       And("I enter nice things as the description and press continue")
         andIEnterStringAsTheDescriptionAndPressContinue("nice things")
@@ -429,7 +420,7 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
         andIEnterStringAndContinue("previous ruling information")
 
       And("I select Yes on any other rulings that have used a similar method and continue")
-        andISelectBooleanValueOnAnyOtherRulingsThatHaveUsedASimilarMethodAndContinue(true)  // auto-chosen (score=0.65, StepDefinitionsSteps.scala)
+        andISelectBooleanValueOnAnyOtherRulingsThatHaveUsedASimilarMethodAndContinue(true)
 
       And("I enter other rulings for similar goods on about the rulings for similar goods page and continue")
         andIEnterStringOnAboutTheRulingsForSimilarGoodsPageAndContinue("other rulings for similar goods")
@@ -438,30 +429,30 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
         andISelectBooleanValueAndContinueInHaveYouFoundTheCommodityCode(false)
 
       Then("I will be navigated to Have the goods been subject to legal challenges")
-        thenIWillBeNavigatedToHaveTheGoodsBeenSubjectToLegalChallenges()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToHaveTheGoodsBeenSubjectToLegalChallenges()
 
       And("I select that the goods have not been subject to legal challenges")
-        andISelectThatTheGoodsHaveNotBeenSubjectToLegalChallenges()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andISelectThatTheGoodsHaveNotBeenSubjectToLegalChallenges()
         // --- Other possible matches ---
         // andISelectThatTheGoodsBeenSubjectToLegalChallenges() [0.70] (StepDefinitionsSteps.scala) pattern: I select that the goods been subject to legal challenges
 
       And("I select No and continue in Do you want to add any confidential information page")
-        andISelectBooleanValueAndContinueInDoYouWantToAddAnyConfidentialInformationPage(false)  // auto-chosen (score=0.65, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInDoYouWantToAddAnyConfidentialInformationPage(false)
 
       And("I select No and continue in Do you want to upload any supporting documents page")
-        andISelectBooleanValueAndContinueInDoYouWantToUploadAnySupportingDocumentsPage(false)  // auto-chosen (score=0.65, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInDoYouWantToUploadAnySupportingDocumentsPage(false)
 
       Then("I will be navigated to the Check Your Answers page")
-        thenIWillBeNavigatedToTheCheckYourAnswersPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToTheCheckYourAnswersPage()
 
       And("I check my Company’s registered business name and Company’s registered business address are correct and are unable to be changed")
         andICheckMyStringAndStringAreCorrectAndAreUnableToBeChanged("Company’s registered business name", "Company’s registered business address")
 
       And("I check my answers and click on continue")
-        andICheckMyAnswersAndClickOnContinue()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andICheckMyAnswersAndClickOnContinue()
 
       Then("I will be navigated to the Application Complete page")
-        thenIWillBeNavigatedToTheApplicationCompletePage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToTheApplicationCompletePage()
 
     }
 
@@ -470,22 +461,22 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
       givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Agent", "Assistant")
 
       When("I click on Start new application in ARS Home")
-        whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        whenIClickOnStartNewApplicationInARSHome()
 
       And("I select role as a Agent acting on behalf of an organisation")
         whenISelectRoleAsAString("Agent acting on behalf of an organisation")
 
       And("I click continue on Information you need to complete an application page")
-        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()
 
       And("I select Yes and continue in Are you planning to import goods page")
         andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
 
       And("I click on continue in How We Contact You page")
-        andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickOnContinueInHowWeContactYouPage()
 
       And("I select Yes and continue in Check the name and address page for agent for org")
-        andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForAgentForOrg(true)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForAgentForOrg(true)
 
       And("I enter Name: Automation Test, Email: Test@automation.com, Phone: 9876543211, Job title: Agent for Org details and continue in Provide your own contact details page")
         andIEnterNameStringEmailStringPhoneStringJobTitleStringDetailsAndContinueInProvideYourOwnContactDetailsPage("Automation Test", "Test@automation.com", "9876543211", "Agent for Org")
@@ -506,16 +497,16 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
         andIEnterStringAndContinueInDescribeHowThePartiesAreRelated("description")
 
       And("I select Yes and continue in Are there any restrictions on the use or resale of the goods")
-        andISelectBooleanValueAndContinueInAreThereAnyRestrictionsOnTheUseOrResaleOfTheGoods(true)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInAreThereAnyRestrictionsOnTheUseOrResaleOfTheGoods(true)
 
       And("I enter restrictions and continue in Describe any restrictions on the use or resale of goods")
-        andIEnterStringAndContinueInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods("restrictions")  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
+        andIEnterStringAndContinueInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods("restrictions")
         // --- Other possible matches ---
         // andINavigateToDescribeAnyRestrictionsOnTheUseOrResaleOfGoodsPageAndCompareTheText() [0.66] (StepDefinitionsSteps.scala) pattern: I navigate to Describe any restrictions on the use or resale of goods page and compare the text
         // andIEnterStringInDescribeAnyRestrictionsOnTheUseOrResaleOfGoods() [0.65] (StepDefinitionsSteps.scala) pattern: I enter {string} in Describe any restrictions on the use or resale of goods
 
       And("I select Yes and continue in Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods")
-        andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods(true)  // auto-chosen (score=0.69, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods(true)
         // --- Other possible matches ---
         // andISelectBooleanValueAndContinueInIsTheSaleSubjectToAnyConditionsOrCircumstancesThatCouldRestrictYouFromValuingTheGoods() [0.67] (StepDefinitionsSteps.scala) pattern: I select {booleanValue} and continue in Is the sale subject to any conditions or circumstances that could restrict you from valuing the goods
 
@@ -523,7 +514,7 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
         andIEnterStringAsTheConditionsWhichCannotBeCalculatedAndPressContinue("various conditions")
 
       Then("I navigate to Description of the Goods")
-        thenINavigateToDescriptionOfTheGoods()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenINavigateToDescriptionOfTheGoods()
 
       And("I enter nice things as the description and press continue")
         andIEnterStringAsTheDescriptionAndPressContinue("nice things")
@@ -535,7 +526,7 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
         andIEnterStringAndContinue("previous ruling information")
 
       And("I select Yes on any other rulings that have used a similar method and continue")
-        andISelectBooleanValueOnAnyOtherRulingsThatHaveUsedASimilarMethodAndContinue(true)  // auto-chosen (score=0.65, StepDefinitionsSteps.scala)
+        andISelectBooleanValueOnAnyOtherRulingsThatHaveUsedASimilarMethodAndContinue(true)
 
       And("I enter other rulings for similar goods on about the rulings for similar goods page and continue")
         andIEnterStringOnAboutTheRulingsForSimilarGoodsPageAndContinue("other rulings for similar goods")
@@ -544,30 +535,30 @@ class AgentActingOnBehalfOrganisationAssistantSpec extends BaseSpec with BeforeA
         andISelectBooleanValueAndContinueInHaveYouFoundTheCommodityCode(false)
 
       Then("I will be navigated to Have the goods been subject to legal challenges")
-        thenIWillBeNavigatedToHaveTheGoodsBeenSubjectToLegalChallenges()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToHaveTheGoodsBeenSubjectToLegalChallenges()
 
       And("I select that the goods have not been subject to legal challenges")
-        andISelectThatTheGoodsHaveNotBeenSubjectToLegalChallenges()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andISelectThatTheGoodsHaveNotBeenSubjectToLegalChallenges()
         // --- Other possible matches ---
         // andISelectThatTheGoodsBeenSubjectToLegalChallenges() [0.70] (StepDefinitionsSteps.scala) pattern: I select that the goods been subject to legal challenges
 
       And("I select No and continue in Do you want to add any confidential information page")
-        andISelectBooleanValueAndContinueInDoYouWantToAddAnyConfidentialInformationPage(false)  // auto-chosen (score=0.65, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInDoYouWantToAddAnyConfidentialInformationPage(false)
 
       And("I select No and continue in Do you want to upload any supporting documents page")
-        andISelectBooleanValueAndContinueInDoYouWantToUploadAnySupportingDocumentsPage(false)  // auto-chosen (score=0.65, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInDoYouWantToUploadAnySupportingDocumentsPage(false)
 
       Then("I will be navigated to the Check Your Answers page")
-        thenIWillBeNavigatedToTheCheckYourAnswersPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToTheCheckYourAnswersPage()
 
       And("I check my Company’s registered business name and Company’s registered business address are correct and are unable to be changed")
         andICheckMyStringAndStringAreCorrectAndAreUnableToBeChanged("Company’s registered business name", "Company’s registered business address")
 
       And("I check my answers and click on continue")
-        andICheckMyAnswersAndClickOnContinue()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andICheckMyAnswersAndClickOnContinue()
 
       Then("I will be navigated to the Application Complete page")
-        thenIWillBeNavigatedToTheApplicationCompletePage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToTheApplicationCompletePage()
 
     }
   }

@@ -19,16 +19,7 @@ package uk.gov.hmrc.ui.specs
 import uk.gov.hmrc.ui.tags.AllTests
 import uk.gov.hmrc.ui.specsteps.StepDefinitionsSteps._
 import uk.gov.hmrc.ui.specsteps.AgentStepDefsSteps._
-import uk.gov.hmrc.ui.specsteps.MethodTwoStepDefinitionsSteps._
-import uk.gov.hmrc.ui.specsteps.MethodThreeStepDefinitionsSteps._
-import uk.gov.hmrc.ui.specsteps.MethodFourStepDefinitionsSteps._
-import uk.gov.hmrc.ui.specsteps.MethodSixStepDefinitionsSteps._
-import uk.gov.hmrc.ui.specsteps.ChangeImporterRoleStepsSteps._
-
-import uk.gov.hmrc.ui.specs.BaseSpec
 import org.scalatest.BeforeAndAfterAll
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.featurespec.AnyFeatureSpec
 
 class Method5ComputedValueSpec extends BaseSpec with BeforeAndAfterAll {
 
@@ -49,22 +40,22 @@ class Method5ComputedValueSpec extends BaseSpec with BeforeAndAfterAll {
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
       When("I click on Start new application in ARS Home")
-        whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        whenIClickOnStartNewApplicationInARSHome()
 
       And("I select role as a An employee of the organisation")
         whenISelectRoleAsAString("An employee of the organisation")
 
       And("I click continue on Information you need to complete an application page")
-        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()
 
       And("I select Yes and continue in Are you planning to import goods page")
         andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
 
       And("I click on continue in How We Contact You page")
-        andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickOnContinueInHowWeContactYouPage()
 
       And("I select Yes and continue in Check the name and address page for employee of org")
-        andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForEmployeeOfOrg(true)  // auto-chosen (score=0.66, StepDefinitionsSteps.scala)
+        andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForEmployeeOfOrg(true)
 
       And("I enter Name- Automation Test Email- Test6@automation.com,Phone- 9876543211, Job title- Accountant details and continue in Provide your contact details page")
         andIEnterNameStringEmailStringPhoneStringJobTitleStringDetailsAndContinueInProvideYourContactDetailsPage("Automation Test", "Test6@automation.com", "9876543211", "Accountant")
@@ -73,18 +64,18 @@ class Method5ComputedValueSpec extends BaseSpec with BeforeAndAfterAll {
         andISelectMethodIntAndContinueInSelectTheMethodPage(5)
 
       Then("I will be navigated to Why Computed Value page")
-        thenIWillBeNavigatedToWhyComputedValuePage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToWhyComputedValuePage()
 
       And("I enter a reason and continue in Why Computed Value page and continue")
-        andIEnterAReasonAndContinueInWhyComputedValuePageAndContinue()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIEnterAReasonAndContinueInWhyComputedValuePageAndContinue()
 
       Then("I will be navigated to Explain Reason Computed Value page")
-        thenIWillBeNavigatedToExplainReasonComputedValuePage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToExplainReasonComputedValuePage()
         // --- Other possible matches ---
         // andIEnterAReasonAndContinueInExplainReasonComputedValuePage() [0.67] (StepDefinitionsSteps.scala) pattern: I enter a reason and continue in Explain Reason Computed Value page
 
       And("I enter a reason and continue in Explain Reason Computed Value page")
-        andIEnterAReasonAndContinueInExplainReasonComputedValuePage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIEnterAReasonAndContinueInExplainReasonComputedValuePage()
 
     }
 
@@ -93,60 +84,60 @@ class Method5ComputedValueSpec extends BaseSpec with BeforeAndAfterAll {
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
       When("I click on Start new application in ARS Home")
-        whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        whenIClickOnStartNewApplicationInARSHome()
 
       And("I select role as a Agent acting on behalf of a trader")
         whenISelectRoleAsAString("Agent acting on behalf of a trader")
 
       And("I click continue on Information you need to complete an application page")
-        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()
 
       And("I select Yes and continue in Are you planning to import goods page")
         andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
 
       And("I click on continue in How We Contact You page")
-        andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickOnContinueInHowWeContactYouPage()
 
       And("I enter EORI number GB113888888041 on Provide traders EORI number page")
         andIEnterEORINumberStringOnProvideTradersEORINumberPage("GB113888888041")
 
       And("I click on Save and continue button")
-        andIClickOnSaveAndContinueButton()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickOnSaveAndContinueButton()
 
       And("I select Yes for public EORI on Check the name and address page")
         andISelectBooleanValueForStringEORIOnCheckTheNameAndAddressPage(true, "public")
 
       And("I click on Save and continue button")
-        andIClickOnSaveAndContinueButton()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickOnSaveAndContinueButton()
 
       And("I upload the document test1.pdf and continue in Upload letter of authority page")
         andIUploadTheDocumentStringAndContinueInUploadLetterOfAuthorityPage("test1.pdf")
 
       And("I click on continue on Uploaded letter of authority page")
-        andIClickOnContinueOnUploadedLetterOfAuthorityPage()  // auto-chosen (score=1.00, AgentStepDefsSteps.scala)
+        andIClickOnContinueOnUploadedLetterOfAuthorityPage()
 
       And("I enter Name- Automation Test Email- Test@automation.com,Phone- 9876543211, Company name - company test, Job title - agent for trader details")
         andIEnterNameStringEmailStringPhoneStringCompanyNameStringJobTitleStringDetails("Automation Test", "Test@automation.com", "9876543211", "company test", "agent for trader")
 
       And("I click on Save and continue button")
-        andIClickOnSaveAndContinueButton()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickOnSaveAndContinueButton()
 
       And("I select Method 5 and continue in Select the method page")
         andISelectMethodIntAndContinueInSelectTheMethodPage(5)
 
       Then("I will be navigated to Why Computed Value page")
-        thenIWillBeNavigatedToWhyComputedValuePage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToWhyComputedValuePage()
 
       And("I enter a reason and continue in Why Computed Value page and continue")
-        andIEnterAReasonAndContinueInWhyComputedValuePageAndContinue()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIEnterAReasonAndContinueInWhyComputedValuePageAndContinue()
 
       Then("I will be navigated to Explain Reason Computed Value page")
-        thenIWillBeNavigatedToExplainReasonComputedValuePage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToExplainReasonComputedValuePage()
         // --- Other possible matches ---
         // andIEnterAReasonAndContinueInExplainReasonComputedValuePage() [0.67] (StepDefinitionsSteps.scala) pattern: I enter a reason and continue in Explain Reason Computed Value page
 
       And("I enter a reason and continue in Explain Reason Computed Value page")
-        andIEnterAReasonAndContinueInExplainReasonComputedValuePage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIEnterAReasonAndContinueInExplainReasonComputedValuePage()
 
     }
 
@@ -155,60 +146,60 @@ class Method5ComputedValueSpec extends BaseSpec with BeforeAndAfterAll {
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
 
       When("I click on Start new application in ARS Home")
-        whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        whenIClickOnStartNewApplicationInARSHome()
 
       And("I select role as a Agent acting on behalf of a trader")
         whenISelectRoleAsAString("Agent acting on behalf of a trader")
 
       And("I click continue on Information you need to complete an application page")
-        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()
 
       And("I select Yes and continue in Are you planning to import goods page")
         andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
 
       And("I click on continue in How We Contact You page")
-        andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickOnContinueInHowWeContactYouPage()
 
       And("I enter EORI number GB112888888041 on Provide traders EORI number page")
         andIEnterEORINumberStringOnProvideTradersEORINumberPage("GB112888888041")
 
       And("I click on Save and continue button")
-        andIClickOnSaveAndContinueButton()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickOnSaveAndContinueButton()
 
       And("I select Yes for private EORI on Check the name and address page")
         andISelectBooleanValueForStringEORIOnCheckTheNameAndAddressPage(true, "private")
 
       And("I click on Save and continue button")
-        andIClickOnSaveAndContinueButton()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickOnSaveAndContinueButton()
 
       And("I upload the document test1.pdf and continue in Upload letter of authority page")
         andIUploadTheDocumentStringAndContinueInUploadLetterOfAuthorityPage("test1.pdf")
 
       And("I click on continue on Uploaded letter of authority page")
-        andIClickOnContinueOnUploadedLetterOfAuthorityPage()  // auto-chosen (score=1.00, AgentStepDefsSteps.scala)
+        andIClickOnContinueOnUploadedLetterOfAuthorityPage()
 
       And("I enter Name- Automation Test Email- Test@automation.com,Phone- 9876543211, Company name - company test, Job title - agent for trader details")
         andIEnterNameStringEmailStringPhoneStringCompanyNameStringJobTitleStringDetails("Automation Test", "Test@automation.com", "9876543211", "company test", "agent for trader")
 
       And("I click on Save and continue button")
-        andIClickOnSaveAndContinueButton()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickOnSaveAndContinueButton()
 
       And("I select Method 5 and continue in Select the method page")
         andISelectMethodIntAndContinueInSelectTheMethodPage(5)
 
       Then("I will be navigated to Why Computed Value page")
-        thenIWillBeNavigatedToWhyComputedValuePage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToWhyComputedValuePage()
 
       And("I enter a reason and continue in Why Computed Value page and continue")
-        andIEnterAReasonAndContinueInWhyComputedValuePageAndContinue()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIEnterAReasonAndContinueInWhyComputedValuePageAndContinue()
 
       Then("I will be navigated to Explain Reason Computed Value page")
-        thenIWillBeNavigatedToExplainReasonComputedValuePage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToExplainReasonComputedValuePage()
         // --- Other possible matches ---
         // andIEnterAReasonAndContinueInExplainReasonComputedValuePage() [0.67] (StepDefinitionsSteps.scala) pattern: I enter a reason and continue in Explain Reason Computed Value page
 
       And("I enter a reason and continue in Explain Reason Computed Value page")
-        andIEnterAReasonAndContinueInExplainReasonComputedValuePage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIEnterAReasonAndContinueInExplainReasonComputedValuePage()
 
     }
   }

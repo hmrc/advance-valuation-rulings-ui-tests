@@ -17,7 +17,6 @@
 package uk.gov.hmrc.ui.specsteps
 
 import org.scalatest.matchers.should.Matchers.*
-import org.scalatest.Assertions.fail
 
 import uk.gov.hmrc.test.ui.pages._
 import uk.gov.hmrc.test.ui.pages.base.BasePage.baseUrl

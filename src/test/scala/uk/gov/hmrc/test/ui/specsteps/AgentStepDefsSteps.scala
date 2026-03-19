@@ -21,7 +21,6 @@ import java.time.Duration
 import org.openqa.selenium.support.ui.FluentWait
 import org.openqa.selenium.{NoSuchElementException, StaleElementReferenceException, WebDriver}
 import org.scalatest.matchers.should.Matchers.*
-import org.scalatest.Assertions.fail
 
 import uk.gov.hmrc.test.ui.pages.RequiredInformationPage.submitPage
 import uk.gov.hmrc.test.ui.pages.*

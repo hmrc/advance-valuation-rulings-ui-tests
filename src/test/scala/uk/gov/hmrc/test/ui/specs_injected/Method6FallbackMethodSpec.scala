@@ -19,16 +19,8 @@ package uk.gov.hmrc.ui.specs
 import uk.gov.hmrc.ui.tags.AllTests
 import uk.gov.hmrc.ui.specsteps.StepDefinitionsSteps._
 import uk.gov.hmrc.ui.specsteps.AgentStepDefsSteps._
-import uk.gov.hmrc.ui.specsteps.MethodTwoStepDefinitionsSteps._
-import uk.gov.hmrc.ui.specsteps.MethodThreeStepDefinitionsSteps._
-import uk.gov.hmrc.ui.specsteps.MethodFourStepDefinitionsSteps._
 import uk.gov.hmrc.ui.specsteps.MethodSixStepDefinitionsSteps._
-import uk.gov.hmrc.ui.specsteps.ChangeImporterRoleStepsSteps._
-
-import uk.gov.hmrc.ui.specs.BaseSpec
 import org.scalatest.BeforeAndAfterAll
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.featurespec.AnyFeatureSpec
 
 class Method6FallbackMethodSpec extends BaseSpec with BeforeAndAfterAll {
 

@@ -19,16 +19,7 @@ package uk.gov.hmrc.ui.specs
 import uk.gov.hmrc.ui.tags.AllTests
 import uk.gov.hmrc.ui.specsteps.StepDefinitionsSteps._
 import uk.gov.hmrc.ui.specsteps.AgentStepDefsSteps._
-import uk.gov.hmrc.ui.specsteps.MethodTwoStepDefinitionsSteps._
-import uk.gov.hmrc.ui.specsteps.MethodThreeStepDefinitionsSteps._
-import uk.gov.hmrc.ui.specsteps.MethodFourStepDefinitionsSteps._
-import uk.gov.hmrc.ui.specsteps.MethodSixStepDefinitionsSteps._
-import uk.gov.hmrc.ui.specsteps.ChangeImporterRoleStepsSteps._
-
-import uk.gov.hmrc.ui.specs.BaseSpec
 import org.scalatest.BeforeAndAfterAll
-import org.scalatest.matchers.should.Matchers
-import org.scalatest.featurespec.AnyFeatureSpec
 
 
 class AdminOfOrganisationSpec extends BaseSpec with BeforeAndAfterAll {
@@ -49,17 +40,17 @@ class AdminOfOrganisationSpec extends BaseSpec with BeforeAndAfterAll {
       Given("I am on the ARS Home Page with affinity group as a Individual and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Individual", "User")
       When("I click on Start new application in ARS Home")
-        whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        whenIClickOnStartNewApplicationInARSHome()
 
       And("I select role as a An employee of the organisation")
         whenISelectRoleAsAString("An employee of the organisation")
       And("I click continue on Information you need to complete an application page")
-        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()
 
       And("I select Yes and continue in Are you planning to import goods page")
         andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
       And("I click on continue in How We Contact You page")
-        andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickOnContinueInHowWeContactYouPage()
 
       And("I select Yes and continue in Check the name and address page for employee of org")
         andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForEmployeeOfOrg(true)
@@ -82,7 +73,7 @@ class AdminOfOrganisationSpec extends BaseSpec with BeforeAndAfterAll {
       And("I enter various conditions as the conditions which cannot be calculated and press continue")
         andIEnterStringAsTheConditionsWhichCannotBeCalculatedAndPressContinue("various conditions")
       Then("I navigate to Description of the Goods")
-        thenINavigateToDescriptionOfTheGoods()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenINavigateToDescriptionOfTheGoods()
 
       And("I enter nice things as the description and press continue")
         andIEnterStringAsTheDescriptionAndPressContinue("nice things")
@@ -97,10 +88,10 @@ class AdminOfOrganisationSpec extends BaseSpec with BeforeAndAfterAll {
       And("I select No and continue in Have you found the commodity code")
         andISelectBooleanValueAndContinueInHaveYouFoundTheCommodityCode(false)
       Then("I will be navigated to Have the goods been subject to legal challenges")
-        thenIWillBeNavigatedToHaveTheGoodsBeenSubjectToLegalChallenges()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToHaveTheGoodsBeenSubjectToLegalChallenges()
 
       And("I select that the goods have not been subject to legal challenges")
-        andISelectThatTheGoodsHaveNotBeenSubjectToLegalChallenges()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andISelectThatTheGoodsHaveNotBeenSubjectToLegalChallenges()
         // --- Other possible matches ---
         // andISelectThatTheGoodsBeenSubjectToLegalChallenges() [0.70] (StepDefinitionsSteps.scala) pattern: I select that the goods been subject to legal challenges
 
@@ -109,15 +100,15 @@ class AdminOfOrganisationSpec extends BaseSpec with BeforeAndAfterAll {
       And("I select No and continue in Do you want to upload any supporting documents page")
         andISelectBooleanValueAndContinueInDoYouWantToUploadAnySupportingDocumentsPage(false)
       Then("I will be navigated to the Check Your Answers page")
-        thenIWillBeNavigatedToTheCheckYourAnswersPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToTheCheckYourAnswersPage()
 
       And("I check my Organisation’s registered business name and Organisation’s registered business address are correct and are unable to be changed")
         andICheckMyStringAndStringAreCorrectAndAreUnableToBeChanged("Organisation’s registered business name", "Organisation’s registered business address")
       And("I check my answers and click on continue")
-        andICheckMyAnswersAndClickOnContinue()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andICheckMyAnswersAndClickOnContinue()
 
       Then("I will be navigated to the Application Complete page")
-        thenIWillBeNavigatedToTheApplicationCompletePage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToTheApplicationCompletePage()
 
     }
 
@@ -125,17 +116,17 @@ class AdminOfOrganisationSpec extends BaseSpec with BeforeAndAfterAll {
       Given("I am on the ARS Home Page with affinity group as a Organisation and Credential role as a Assistant")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Organisation", "Assistant")
       When("I click on Start new application in ARS Home")
-        whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        whenIClickOnStartNewApplicationInARSHome()
 
       And("I select role as a An employee of the organisation")
         whenISelectRoleAsAString("An employee of the organisation")
       And("I click continue on Information you need to complete an application page")
-        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()
 
       And("I select Yes and continue in Are you planning to import goods page")
         andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
       And("I click on continue in How We Contact You page")
-        andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickOnContinueInHowWeContactYouPage()
 
       And("I select Yes and continue in Check the name and address page for employee of org")
         andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForEmployeeOfOrg(true)
@@ -158,7 +149,7 @@ class AdminOfOrganisationSpec extends BaseSpec with BeforeAndAfterAll {
       And("I enter various conditions as the conditions which cannot be calculated and press continue")
         andIEnterStringAsTheConditionsWhichCannotBeCalculatedAndPressContinue("various conditions")
       Then("I navigate to Description of the Goods")
-        thenINavigateToDescriptionOfTheGoods()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenINavigateToDescriptionOfTheGoods()
 
       And("I enter nice things as the description and press continue")
         andIEnterStringAsTheDescriptionAndPressContinue("nice things")
@@ -169,10 +160,10 @@ class AdminOfOrganisationSpec extends BaseSpec with BeforeAndAfterAll {
       And("I select No and continue in Have you found the commodity code")
         andISelectBooleanValueAndContinueInHaveYouFoundTheCommodityCode(false)
       Then("I will be navigated to Have the goods been subject to legal challenges")
-        thenIWillBeNavigatedToHaveTheGoodsBeenSubjectToLegalChallenges()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToHaveTheGoodsBeenSubjectToLegalChallenges()
 
       And("I select that the goods have not been subject to legal challenges")
-        andISelectThatTheGoodsHaveNotBeenSubjectToLegalChallenges()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andISelectThatTheGoodsHaveNotBeenSubjectToLegalChallenges()
         // --- Other possible matches ---
         // andISelectThatTheGoodsBeenSubjectToLegalChallenges() [0.70] (StepDefinitionsSteps.scala) pattern: I select that the goods been subject to legal challenges
 
@@ -181,15 +172,15 @@ class AdminOfOrganisationSpec extends BaseSpec with BeforeAndAfterAll {
       And("I select No and continue in Do you want to upload any supporting documents page")
         andISelectBooleanValueAndContinueInDoYouWantToUploadAnySupportingDocumentsPage(false)
       Then("I will be navigated to the Check Your Answers page")
-        thenIWillBeNavigatedToTheCheckYourAnswersPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToTheCheckYourAnswersPage()
 
       And("I check my Organisation’s registered business name and Organisation’s registered business address are correct and are unable to be changed")
         andICheckMyStringAndStringAreCorrectAndAreUnableToBeChanged("Organisation’s registered business name", "Organisation’s registered business address")
       And("I check my answers and click on continue")
-        andICheckMyAnswersAndClickOnContinue()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andICheckMyAnswersAndClickOnContinue()
 
       Then("I will be navigated to the Application Complete page")
-        thenIWillBeNavigatedToTheApplicationCompletePage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToTheApplicationCompletePage()
 
     }
 
@@ -197,17 +188,17 @@ class AdminOfOrganisationSpec extends BaseSpec with BeforeAndAfterAll {
       Given("I am on the ARS Home Page with affinity group as a Agent and Credential role as a User")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Agent", "User")
       When("I click on Start new application in ARS Home")
-        whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        whenIClickOnStartNewApplicationInARSHome()
 
       And("I select role as a An employee of the organisation")
         whenISelectRoleAsAString("An employee of the organisation")
       And("I click continue on Information you need to complete an application page")
-        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()
 
       And("I select Yes and continue in Are you planning to import goods page")
         andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
       And("I click on continue in How We Contact You page")
-        andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickOnContinueInHowWeContactYouPage()
 
       And("I select Yes and continue in Check the name and address page for employee of org")
         andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForEmployeeOfOrg(true)
@@ -230,7 +221,7 @@ class AdminOfOrganisationSpec extends BaseSpec with BeforeAndAfterAll {
       And("I enter various conditions as the conditions which cannot be calculated and press continue")
         andIEnterStringAsTheConditionsWhichCannotBeCalculatedAndPressContinue("various conditions")
       Then("I navigate to Description of the Goods")
-        thenINavigateToDescriptionOfTheGoods()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenINavigateToDescriptionOfTheGoods()
 
       And("I enter nice things as the description and press continue")
         andIEnterStringAsTheDescriptionAndPressContinue("nice things")
@@ -241,10 +232,10 @@ class AdminOfOrganisationSpec extends BaseSpec with BeforeAndAfterAll {
       And("I select No and continue in Have you found the commodity code")
         andISelectBooleanValueAndContinueInHaveYouFoundTheCommodityCode(false)
       Then("I will be navigated to Have the goods been subject to legal challenges")
-        thenIWillBeNavigatedToHaveTheGoodsBeenSubjectToLegalChallenges()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToHaveTheGoodsBeenSubjectToLegalChallenges()
 
       And("I select that the goods have not been subject to legal challenges")
-        andISelectThatTheGoodsHaveNotBeenSubjectToLegalChallenges()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andISelectThatTheGoodsHaveNotBeenSubjectToLegalChallenges()
         // --- Other possible matches ---
         // andISelectThatTheGoodsBeenSubjectToLegalChallenges() [0.70] (StepDefinitionsSteps.scala) pattern: I select that the goods been subject to legal challenges
 
@@ -253,15 +244,15 @@ class AdminOfOrganisationSpec extends BaseSpec with BeforeAndAfterAll {
       And("I select No and continue in Do you want to upload any supporting documents page")
         andISelectBooleanValueAndContinueInDoYouWantToUploadAnySupportingDocumentsPage(false)
       Then("I will be navigated to the Check Your Answers page")
-        thenIWillBeNavigatedToTheCheckYourAnswersPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToTheCheckYourAnswersPage()
 
       And("I check my Organisation’s registered business name and Organisation’s registered business address are correct and are unable to be changed")
         andICheckMyStringAndStringAreCorrectAndAreUnableToBeChanged("Organisation’s registered business name", "Organisation’s registered business address")
       And("I check my answers and click on continue")
-        andICheckMyAnswersAndClickOnContinue()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andICheckMyAnswersAndClickOnContinue()
 
       Then("I will be navigated to the Application Complete page")
-        thenIWillBeNavigatedToTheApplicationCompletePage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToTheApplicationCompletePage()
 
     }
 
@@ -269,17 +260,17 @@ class AdminOfOrganisationSpec extends BaseSpec with BeforeAndAfterAll {
       Given("I am on the ARS Home Page with affinity group as a Agent and Credential role as a Assistant")
         givenIAmOnTheARSHomePageWithAffinityGroupAsAStringAndCredentialRoleAsAString("Agent", "Assistant")
       When("I click on Start new application in ARS Home")
-        whenIClickOnStartNewApplicationInARSHome()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        whenIClickOnStartNewApplicationInARSHome()
 
       And("I select role as a An employee of the organisation")
         whenISelectRoleAsAString("An employee of the organisation")
       And("I click continue on Information you need to complete an application page")
-        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickContinueOnInformationYouNeedToCompleteAnApplicationPage()
 
       And("I select Yes and continue in Are you planning to import goods page")
         andISelectBooleanValueAndContinueInAreYouPlanningToImportGoodsPage(true)
       And("I click on continue in How We Contact You page")
-        andIClickOnContinueInHowWeContactYouPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andIClickOnContinueInHowWeContactYouPage()
 
       And("I select Yes and continue in Check the name and address page for employee of org")
         andISelectBooleanValueAndContinueInCheckTheNameAndAddressPageForEmployeeOfOrg(true)
@@ -302,7 +293,7 @@ class AdminOfOrganisationSpec extends BaseSpec with BeforeAndAfterAll {
       And("I enter various conditions as the conditions which cannot be calculated and press continue")
         andIEnterStringAsTheConditionsWhichCannotBeCalculatedAndPressContinue("various conditions")
       Then("I navigate to Description of the Goods")
-        thenINavigateToDescriptionOfTheGoods()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenINavigateToDescriptionOfTheGoods()
 
       And("I enter nice things as the description and press continue")
         andIEnterStringAsTheDescriptionAndPressContinue("nice things")
@@ -313,10 +304,10 @@ class AdminOfOrganisationSpec extends BaseSpec with BeforeAndAfterAll {
       And("I select No and continue in Have you found the commodity code")
         andISelectBooleanValueAndContinueInHaveYouFoundTheCommodityCode(false)
       Then("I will be navigated to Have the goods been subject to legal challenges")
-        thenIWillBeNavigatedToHaveTheGoodsBeenSubjectToLegalChallenges()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToHaveTheGoodsBeenSubjectToLegalChallenges()
 
       And("I select that the goods have not been subject to legal challenges")
-        andISelectThatTheGoodsHaveNotBeenSubjectToLegalChallenges()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andISelectThatTheGoodsHaveNotBeenSubjectToLegalChallenges()
         // --- Other possible matches ---
         // andISelectThatTheGoodsBeenSubjectToLegalChallenges() [0.70] (StepDefinitionsSteps.scala) pattern: I select that the goods been subject to legal challenges
 
@@ -325,15 +316,15 @@ class AdminOfOrganisationSpec extends BaseSpec with BeforeAndAfterAll {
       And("I select No and continue in Do you want to upload any supporting documents page")
         andISelectBooleanValueAndContinueInDoYouWantToUploadAnySupportingDocumentsPage(false)
       Then("I will be navigated to the Check Your Answers page")
-        thenIWillBeNavigatedToTheCheckYourAnswersPage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToTheCheckYourAnswersPage()
 
       And("I check my Organisation’s registered business name and Organisation’s registered business address are correct and are unable to be changed")
         andICheckMyStringAndStringAreCorrectAndAreUnableToBeChanged("Organisation’s registered business name", "Organisation’s registered business address")
       And("I check my answers and click on continue")
-        andICheckMyAnswersAndClickOnContinue()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        andICheckMyAnswersAndClickOnContinue()
 
       Then("I will be navigated to the Application Complete page")
-        thenIWillBeNavigatedToTheApplicationCompletePage()  // auto-chosen (score=1.00, StepDefinitionsSteps.scala)
+        thenIWillBeNavigatedToTheApplicationCompletePage()
 
     }
   }
