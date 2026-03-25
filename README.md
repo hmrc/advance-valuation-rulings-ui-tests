@@ -1,6 +1,6 @@
 # Advance Valuation Rulings UI Tests
 
-UI test suite for the `advance-valuation-rulings-frontend` using Selenium WebDriver and Cucumber.  
+UI test suite for the `advance-valuation-rulings-frontend` using Selenium WebDriver and ScalaTest.  
 
 ---
 

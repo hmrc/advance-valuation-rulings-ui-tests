@@ -33,7 +33,7 @@ fi
 
 TEST_FAILED=false
 # Modify following sbt command accordingly to your tests
-sbt -Dbrowser=chrome -Dsecurity.assessment=true -Denvironment=local clean 'testOnly uk.gov.hmrc.test.ui.cucumber.runner.AllTestsRunner' || TEST_FAILED=true
+sbt -Dbrowser=chrome -Dsecurity.assessment=true -Denvironment=local clean 'testOnly uk.gov.hmrc.ui.specs.*' || TEST_FAILED=true
 
 (
     cd dast-config-manager

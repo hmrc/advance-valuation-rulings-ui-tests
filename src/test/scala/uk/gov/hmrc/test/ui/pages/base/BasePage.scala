@@ -39,9 +39,9 @@ trait BasePage extends BrowserDriver with Matchers {
   val jobTitleField: By       = By.id("jobTitle")
   val fieldsWithNoActions: By = By.className("govuk-summary-list__row--no-actions")
 
-  lazy val js: JavascriptExecutor = driver.asInstanceOf[JavascriptExecutor]
+  def js: JavascriptExecutor = driver.asInstanceOf[JavascriptExecutor]
 
-  lazy val fluentWait: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
+  def fluentWait: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
     .withTimeout(Duration.ofSeconds(250))
     .pollingEvery(Duration.ofMillis(500))
     .ignoring(classOf[StaleElementReferenceException])
