@@ -24,7 +24,7 @@ import org.openqa.selenium.{By, WebDriver}
 import java.time.Duration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
-object ChangeImporterRoleStepsSteps extends BrowserDriver {
+object ChangeImporterRoleSteps extends BrowserDriver {
 
   // I click on the 'Back' link
   def andIClickOnTheBackLink(): Unit = {

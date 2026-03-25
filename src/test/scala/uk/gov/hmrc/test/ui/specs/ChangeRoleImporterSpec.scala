@@ -19,7 +19,7 @@ package uk.gov.hmrc.ui.specs
 import uk.gov.hmrc.ui.tags.AllTests
 import uk.gov.hmrc.ui.specsteps.StepDefinitionsSteps._
 import uk.gov.hmrc.ui.specsteps.AgentStepDefsSteps._
-import uk.gov.hmrc.ui.specsteps.ChangeImporterRoleStepsSteps._
+import uk.gov.hmrc.ui.specsteps.ChangeImporterRoleSteps._
 
 import org.scalatest.BeforeAndAfterAll
 
