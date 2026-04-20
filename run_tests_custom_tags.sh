@@ -9,3 +9,5 @@ sbt clean \
   -Denvironment="${ENVIRONMENT:=local}" \
   "testOnly uk.gov.hmrc.ui.specs.* -- -n uk.gov.hmrc.ui.tags.${TAG} -l uk.gov.hmrc.ui.tags.Ignore" \
   testReport
+
+bash scripts/create_accessibility_compatibility_files.sh
