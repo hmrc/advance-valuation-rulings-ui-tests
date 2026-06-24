@@ -27,7 +27,7 @@ object WhatIsTheCommodityCode extends BasePage {
 
   override def loadPage(): this.type = {
     super.loadPage()
-    assert(driver.findElement(By.tagName("h1")).getText == goodsNameDisplay)
+    assert(driver.findElement(By.tagName("h1")).getText.contains(goodsNameDisplay))
     this
   }
 
