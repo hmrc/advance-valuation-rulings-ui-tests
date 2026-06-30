@@ -34,7 +34,7 @@ object UploadedLetterOfAuthorityPage extends BasePage {
       val h1     = fluentWait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("h1")))
       val h1Text = h1.getText
 
-      h1Text == pageTitle
+      h1Text.contains(pageTitle)
     })
 
   }

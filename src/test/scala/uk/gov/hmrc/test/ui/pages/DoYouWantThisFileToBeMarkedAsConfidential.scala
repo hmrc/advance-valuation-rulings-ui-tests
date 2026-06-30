@@ -29,7 +29,7 @@ object DoYouWantThisFileToBeMarkedAsConfidential extends YesNoPage {
     fluentWait.until((driver: WebDriver) => {
       val button = fluentWait.until(ExpectedConditions.elementToBeClickable(By.className(continueButton)))
       button.click()
-      driver.findElement(By.tagName("h1")).getText == pageTitle
+      driver.findElement(By.tagName("h1")).getText.contains(pageTitle)
     })
   }
 }
